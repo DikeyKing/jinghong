@@ -36,7 +36,9 @@
 //登录按钮
 - (IBAction)startLogin:(id)sender
 {
-    
+    NSLog(@"开始登录");
+    //todo：显示HUD
+    //返回数据的时候
 }
 
 //键盘切换
@@ -51,7 +53,6 @@
     [self startLoginProgress];
     //直接登录
 
-    
     return YES;
 }
 
