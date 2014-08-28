@@ -10,7 +10,6 @@
 
 @interface JHLoginViewController : UIViewController<UITextFieldDelegate>
 
-
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *userPassword;
 
