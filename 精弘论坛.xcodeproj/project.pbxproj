@@ -14,13 +14,13 @@
 		A9F2B21819ADC1E90067B6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F2B21719ADC1E90067B6A4 /* main.m */; };
 		A9F2B21C19ADC1E90067B6A4 /* JHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F2B21B19ADC1E90067B6A4 /* JHAppDelegate.m */; };
 		A9F2B21F19ADC1E90067B6A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9F2B21D19ADC1E90067B6A4 /* Main.storyboard */; };
-		A9F2B22219ADC1E90067B6A4 /* JHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F2B22119ADC1E90067B6A4 /* JHViewController.m */; };
 		A9F2B22419ADC1E90067B6A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9F2B22319ADC1E90067B6A4 /* Images.xcassets */; };
 		A9F2B22B19ADC1E90067B6A4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B22A19ADC1E90067B6A4 /* XCTest.framework */; };
 		A9F2B22C19ADC1E90067B6A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B20B19ADC1E90067B6A4 /* Foundation.framework */; };
 		A9F2B22D19ADC1E90067B6A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B20F19ADC1E90067B6A4 /* UIKit.framework */; };
 		A9F2B23519ADC1E90067B6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9F2B23319ADC1E90067B6A4 /* InfoPlist.strings */; };
 		A9F2B23719ADC1E90067B6A4 /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F2B23619ADC1E90067B6A4 /* ____Tests.m */; };
+		A9F2B24419ADC2300067B6A4 /* JHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F2B24319ADC2300067B6A4 /* JHLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +45,14 @@
 		A9F2B21A19ADC1E90067B6A4 /* JHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHAppDelegate.h; sourceTree = "<group>"; };
 		A9F2B21B19ADC1E90067B6A4 /* JHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHAppDelegate.m; sourceTree = "<group>"; };
 		A9F2B21E19ADC1E90067B6A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A9F2B22019ADC1E90067B6A4 /* JHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHViewController.h; sourceTree = "<group>"; };
-		A9F2B22119ADC1E90067B6A4 /* JHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHViewController.m; sourceTree = "<group>"; };
 		A9F2B22319ADC1E90067B6A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A9F2B22919ADC1E90067B6A4 /* 精弘论坛Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "精弘论坛Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F2B22A19ADC1E90067B6A4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A9F2B23219ADC1E90067B6A4 /* 精弘论坛Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "精弘论坛Tests-Info.plist"; sourceTree = "<group>"; };
 		A9F2B23419ADC1E90067B6A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A9F2B23619ADC1E90067B6A4 /* ____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____Tests.m"; sourceTree = "<group>"; };
+		A9F2B24219ADC2300067B6A4 /* JHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHLoginViewController.h; path = Controller/JHLoginViewController.h; sourceTree = "<group>"; };
+		A9F2B24319ADC2300067B6A4 /* JHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHLoginViewController.m; path = Controller/JHLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +112,11 @@
 		A9F2B21119ADC1E90067B6A4 /* 精弘论坛 */ = {
 			isa = PBXGroup;
 			children = (
+				A9F2B21D19ADC1E90067B6A4 /* Main.storyboard */,
 				A9F2B21A19ADC1E90067B6A4 /* JHAppDelegate.h */,
 				A9F2B21B19ADC1E90067B6A4 /* JHAppDelegate.m */,
-				A9F2B21D19ADC1E90067B6A4 /* Main.storyboard */,
-				A9F2B22019ADC1E90067B6A4 /* JHViewController.h */,
-				A9F2B22119ADC1E90067B6A4 /* JHViewController.m */,
+				A9F2B24119ADC2130067B6A4 /* Controller */,
+				A9F2B24019ADC20A0067B6A4 /* Model */,
 				A9F2B22319ADC1E90067B6A4 /* Images.xcassets */,
 				A9F2B21219ADC1E90067B6A4 /* Supporting Files */,
 			);
@@ -150,6 +150,22 @@
 				A9F2B23319ADC1E90067B6A4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A9F2B24019ADC20A0067B6A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A9F2B24119ADC2130067B6A4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A9F2B24219ADC2300067B6A4 /* JHLoginViewController.h */,
+				A9F2B24319ADC2300067B6A4 /* JHLoginViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,8 +266,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9F2B24419ADC2300067B6A4 /* JHLoginViewController.m in Sources */,
 				A9F2B21C19ADC1E90067B6A4 /* JHAppDelegate.m in Sources */,
-				A9F2B22219ADC1E90067B6A4 /* JHViewController.m in Sources */,
 				A9F2B21819ADC1E90067B6A4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
