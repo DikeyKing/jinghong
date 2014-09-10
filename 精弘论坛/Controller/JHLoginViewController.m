@@ -30,7 +30,8 @@
 //开始登录
 -(void)startLoginProgress
 {
-    
+    NSLog(@"开始登录");
+
 }
 
 //登录按钮

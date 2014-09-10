@@ -37,6 +37,7 @@
 /* Begin PBXFileReference section */
 		77F8721D29574767BE45EA8D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9DE607510E42E5B41B6DF1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		A94C1DD719BBF79500CC08B8 /* ForumAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ForumAPI.h; path = Storeage/ForumAPI.h; sourceTree = "<group>"; };
 		A9F2B20819ADC1E90067B6A4 /* 精弘论坛.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "精弘论坛.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F2B20B19ADC1E90067B6A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A9F2B20D19ADC1E90067B6A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -83,6 +84,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A94C1DD819BBF7BA00CC08B8 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Storage;
+			sourceTree = "<group>";
+		};
 		A9F2B1FF19ADC1E90067B6A4 = {
 			isa = PBXGroup;
 			children = (
@@ -121,8 +129,9 @@
 				A9F2B21D19ADC1E90067B6A4 /* Main.storyboard */,
 				A9F2B21A19ADC1E90067B6A4 /* JHAppDelegate.h */,
 				A9F2B21B19ADC1E90067B6A4 /* JHAppDelegate.m */,
-				A9F2B24119ADC2130067B6A4 /* Controller */,
 				A9F2B24019ADC20A0067B6A4 /* Model */,
+				A9F2B24119ADC2130067B6A4 /* Controller */,
+				A94C1DD819BBF7BA00CC08B8 /* Storage */,
 				A9F2B22319ADC1E90067B6A4 /* Images.xcassets */,
 				A9F2B21219ADC1E90067B6A4 /* Supporting Files */,
 			);
@@ -161,6 +170,7 @@
 		A9F2B24019ADC20A0067B6A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A94C1DD719BBF79500CC08B8 /* ForumAPI.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
