@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6B71C43F4FB54BCCA33B72C5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F8721D29574767BE45EA8D /* libPods.a */; };
+		A9CE8AD319C5176B00B3117A /* JHRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8AD219C5176B00B3117A /* JHRegisterViewController.m */; };
+		A9CE8AD719C5211600B3117A /* JHMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8AD619C5211600B3117A /* JHMasterViewController.m */; };
+		A9CE8ADC19C5243900B3117A /* JHLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8ADB19C5243900B3117A /* JHLeftViewController.m */; };
+		A9CE8ADF19C5244D00B3117A /* JHRightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8ADE19C5244D00B3117A /* JHRightViewController.m */; };
+		A9CE8AE319C524ED00B3117A /* JHCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8AE219C524ED00B3117A /* JHCenterViewController.m */; };
 		A9F2B20C19ADC1E90067B6A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B20B19ADC1E90067B6A4 /* Foundation.framework */; };
 		A9F2B20E19ADC1E90067B6A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B20D19ADC1E90067B6A4 /* CoreGraphics.framework */; };
 		A9F2B21019ADC1E90067B6A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B20F19ADC1E90067B6A4 /* UIKit.framework */; };
@@ -38,6 +43,16 @@
 		77F8721D29574767BE45EA8D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9DE607510E42E5B41B6DF1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A94C1DD719BBF79500CC08B8 /* ForumAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ForumAPI.h; path = Storeage/ForumAPI.h; sourceTree = "<group>"; };
+		A9CE8AD119C5176B00B3117A /* JHRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHRegisterViewController.h; path = Controller/JHRegisterViewController.h; sourceTree = "<group>"; };
+		A9CE8AD219C5176B00B3117A /* JHRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHRegisterViewController.m; path = Controller/JHRegisterViewController.m; sourceTree = "<group>"; };
+		A9CE8AD519C5211600B3117A /* JHMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHMasterViewController.h; path = Controller/JHMasterViewController.h; sourceTree = "<group>"; };
+		A9CE8AD619C5211600B3117A /* JHMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHMasterViewController.m; path = Controller/JHMasterViewController.m; sourceTree = "<group>"; };
+		A9CE8ADA19C5243900B3117A /* JHLeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHLeftViewController.h; path = Controller/LeftView/JHLeftViewController.h; sourceTree = "<group>"; };
+		A9CE8ADB19C5243900B3117A /* JHLeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHLeftViewController.m; path = Controller/LeftView/JHLeftViewController.m; sourceTree = "<group>"; };
+		A9CE8ADD19C5244D00B3117A /* JHRightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHRightViewController.h; path = Controller/RightView/JHRightViewController.h; sourceTree = "<group>"; };
+		A9CE8ADE19C5244D00B3117A /* JHRightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHRightViewController.m; path = Controller/RightView/JHRightViewController.m; sourceTree = "<group>"; };
+		A9CE8AE119C524ED00B3117A /* JHCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHCenterViewController.h; path = Controller/CenterView/JHCenterViewController.h; sourceTree = "<group>"; };
+		A9CE8AE219C524ED00B3117A /* JHCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHCenterViewController.m; path = Controller/CenterView/JHCenterViewController.m; sourceTree = "<group>"; };
 		A9F2B20819ADC1E90067B6A4 /* 精弘论坛.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "精弘论坛.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F2B20B19ADC1E90067B6A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A9F2B20D19ADC1E90067B6A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,6 +104,43 @@
 			children = (
 			);
 			name = Storage;
+			sourceTree = "<group>";
+		};
+		A9CE8AD419C520B200B3117A /* MasterVC */ = {
+			isa = PBXGroup;
+			children = (
+				A9CE8AE019C524B800B3117A /* Center VIew */,
+				A9CE8AD919C523F700B3117A /* Left View */,
+				A9CE8AD819C523F400B3117A /* Right View */,
+			);
+			name = MasterVC;
+			sourceTree = "<group>";
+		};
+		A9CE8AD819C523F400B3117A /* Right View */ = {
+			isa = PBXGroup;
+			children = (
+				A9CE8ADD19C5244D00B3117A /* JHRightViewController.h */,
+				A9CE8ADE19C5244D00B3117A /* JHRightViewController.m */,
+			);
+			name = "Right View";
+			sourceTree = "<group>";
+		};
+		A9CE8AD919C523F700B3117A /* Left View */ = {
+			isa = PBXGroup;
+			children = (
+				A9CE8ADA19C5243900B3117A /* JHLeftViewController.h */,
+				A9CE8ADB19C5243900B3117A /* JHLeftViewController.m */,
+			);
+			name = "Left View";
+			sourceTree = "<group>";
+		};
+		A9CE8AE019C524B800B3117A /* Center VIew */ = {
+			isa = PBXGroup;
+			children = (
+				A9CE8AE119C524ED00B3117A /* JHCenterViewController.h */,
+				A9CE8AE219C524ED00B3117A /* JHCenterViewController.m */,
+			);
+			name = "Center VIew";
 			sourceTree = "<group>";
 		};
 		A9F2B1FF19ADC1E90067B6A4 = {
@@ -178,8 +230,13 @@
 		A9F2B24119ADC2130067B6A4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A9CE8AD519C5211600B3117A /* JHMasterViewController.h */,
+				A9CE8AD619C5211600B3117A /* JHMasterViewController.m */,
 				A9F2B24219ADC2300067B6A4 /* JHLoginViewController.h */,
 				A9F2B24319ADC2300067B6A4 /* JHLoginViewController.m */,
+				A9CE8AD119C5176B00B3117A /* JHRegisterViewController.h */,
+				A9CE8AD219C5176B00B3117A /* JHRegisterViewController.m */,
+				A9CE8AD419C520B200B3117A /* MasterVC */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -318,8 +375,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9F2B24419ADC2300067B6A4 /* JHLoginViewController.m in Sources */,
+				A9CE8ADF19C5244D00B3117A /* JHRightViewController.m in Sources */,
 				A9F2B21C19ADC1E90067B6A4 /* JHAppDelegate.m in Sources */,
 				A9F2B21819ADC1E90067B6A4 /* main.m in Sources */,
+				A9CE8AD319C5176B00B3117A /* JHRegisterViewController.m in Sources */,
+				A9CE8AE319C524ED00B3117A /* JHCenterViewController.m in Sources */,
+				A9CE8AD719C5211600B3117A /* JHMasterViewController.m in Sources */,
+				A9CE8ADC19C5243900B3117A /* JHLeftViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -433,7 +495,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -445,10 +507,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: guodong wang (NG47A28ZQB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "精弘论坛/精弘论坛-Prefix.pch";
 				INFOPLIST_FILE = "精弘论坛/精弘论坛-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6DF31DD8-77A6-403B-9770-6B7E1E7036AD";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -459,10 +524,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: guodong wang (NG47A28ZQB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "精弘论坛/精弘论坛-Prefix.pch";
 				INFOPLIST_FILE = "精弘论坛/精弘论坛-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6DF31DD8-77A6-403B-9770-6B7E1E7036AD";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

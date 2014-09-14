@@ -7,9 +7,10 @@
 //
 
 #import "JHLoginViewController.h"
+#import "MBProgressHUD.h"
 
 @interface JHLoginViewController ()
-
+@property (strong,nonatomic) MBProgressHUD *loginHud;
 @end
 
 @implementation JHLoginViewController
@@ -38,8 +39,21 @@
 - (IBAction)startLogin:(id)sender
 {
     NSLog(@"开始登录");
+    
+    _loginHud = [[MBProgressHUD alloc]initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:_loginHud];
+    _loginHud.delegate = (id)self;
+    _loginHud.labelText = @"Loading";
+    [_loginHud showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+    
     //todo：显示HUD
     //返回数据的时候
+}
+
+- (void)myTask {
+	// Do something usefull in here instead of sleeping ...
+	sleep(3);
+    
 }
 
 //键盘切换
@@ -51,7 +65,8 @@
     if (textField == _userPassword) {
         [_userPassword resignFirstResponder];
     }
-    [self startLoginProgress];
+    [self startLoginProgress];    
+    
     //直接登录
 
     return YES;
