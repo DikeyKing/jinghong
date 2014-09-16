@@ -27,7 +27,6 @@
     [super didReceiveMemoryWarning];
 }
 
-
 //开始登录
 -(void)startLoginProgress
 {
