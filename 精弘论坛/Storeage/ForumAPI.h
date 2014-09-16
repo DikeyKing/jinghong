@@ -12,6 +12,11 @@
 
 #define HTTP_API [NSString stringWithFormat:@"http://bbs.zjut.edu.cn/forum.php?mod=forumdisplay&fid=%d", _fid]
 
+forum.php?mod=forumdisplay&fid=30&mobile=yes『音乐影视』
+
+forum.php?mod=forumdisplay&fid=303&mobile=yes『 池塘边 』
+
+
 http://bbs.zjut.edu.cn/forum.php?mod=forumdisplay&fid=483
 
 forum.php?mod=forumdisplay&fid=483&mobile=yes『社团招新』

@@ -9,6 +9,9 @@
 #import "JHLoginViewController.h"
 #import "MBProgressHUD.h"
 
+#import "AFNetworking.h"
+
+
 @interface JHLoginViewController ()
 @property (strong,nonatomic) MBProgressHUD *loginHud;
 @end
@@ -31,8 +34,76 @@
 -(void)startLoginProgress
 {
     NSLog(@"开始登录");
+    
+    NSString *urlString = @"http://bbs.zjut.edu.cn/forum.php?mod=forumdisplay&fid=303&mobile=yes";
+    
+    NSDictionary  *parameters = @{@"mod": @"forumdisplay",@"fid":@"303"};
+    
+    
+    
+//    NSURL *url = [NSURL URLWithString:urlString];
+//    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+//    NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:req delegate:self startImmediately:YES];
+ 
 
+     //get 方式
+     NSString *properlyEscapedURL = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+     NSURL *URL = [NSURL URLWithString:properlyEscapedURL];
+     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSData *responseObject) {
+     
+        
+       NSString *src = [self GBKresponse2String:responseObject];
+     
+        NSLog(@"%@", src);
+
+        
+        
+        
+        
+//    NSString *requestTmp = [NSString stringWithString:operation.responseString];
+//    NSData *resData = [[NSData alloc] initWithData:[requestTmp dataUsingEncoding:NSUTF8StringEncoding]];
+//        
+//     //系统自带JSON解析
+//     NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:resData options:NSJSONReadingMutableLeaves error:nil];
+//     NSLog(@"resultDic:%@", resultDic);
+
+    }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+     NSLog(@"error:%@",error);}];
+     [operation start];
+
+    
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//  
+//    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"%@",responseObject);
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"返回失败");
+//    }];
 }
+
+//-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+//{
+//    NSData *receivedDate = [[NSData alloc]init];
+//    receivedDate  = data;
+//    NSLog(@"收到的数据%@",data);
+//    
+//}
+
+
+- (NSString *)GBKresponse2String:(id) responseObject {
+    
+    NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    
+    NSString *src = [[NSString alloc] initWithData:responseObject encoding:gbkEncoding];
+    if (!src) src = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+    return src;
+}
+
+
 
 //登录按钮
 - (IBAction)startLogin:(id)sender
@@ -44,6 +115,7 @@
     _loginHud.delegate = (id)self;
     _loginHud.labelText = @"Loading";
     [_loginHud showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+    [self startLoginProgress];
     
     //todo：显示HUD
     //返回数据的时候

@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JHLoginViewController : UIViewController<UITextFieldDelegate>
+@interface JHLoginViewController : UIViewController<UITextFieldDelegate,NSURLConnectionDataDelegate,NSURLConnectionDelegate>
+
 
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *userPassword;
+
+- (NSString *)GBKresponse2String:(id) responseObject;
 
 
 @end
