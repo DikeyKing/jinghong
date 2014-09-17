@@ -7,13 +7,10 @@
 //
 
 #import "JHLoginViewController.h"
-#import "MBProgressHUD.h"
-
 #import "AFNetworking.h"
-
+#import "SVProgressHUD.h"
 
 @interface JHLoginViewController ()
-@property (strong,nonatomic) MBProgressHUD *loginHud;
 @end
 
 @implementation JHLoginViewController
@@ -22,7 +19,6 @@
     [super viewDidLoad];
     _userName.delegate =self;
     _userPassword.delegate =self;
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,11 +48,11 @@
                                  };
     
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    
-        NSLog(@"JSON: %@", responseObject);
+
         NSDictionary *dic = responseObject;
         
         if ([[dic objectForKey:@"rs"] boolValue] == 1) {
+            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
             
             //保存设置
 //            [Toolkit saveUserName:_nameTextField.text];
@@ -64,45 +60,20 @@
 //            [Toolkit saveName:[dic objectForKey:@"name"]];
 //            [Toolkit saveToken:[dic objectForKey:@"token"]];
 
-            _loginHud = [[MBProgressHUD alloc]initWithView:self.navigationController.view];
-            [self.view addSubview:_loginHud];
-            _loginHud.delegate = (id)self;
-            _loginHud.labelText = @"登录成功";
-            [_loginHud showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
-            
         }
         else{
-            _loginHud = [[MBProgressHUD alloc]initWithView:self.navigationController.view];
-            [self.view addSubview:_loginHud];
-            _loginHud.delegate = (id)self;
-            _loginHud.labelText = @"输入有误";
-            [_loginHud showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
-        
+            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+
         }
-
-        
-
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
-    
-    
-    
-    
-    
 }
-
-
-
-
 
 
 //登录按钮
 - (IBAction)startLogin:(id)sender
 {
-
     [self startLoginProgress];
 
 }
@@ -110,7 +81,6 @@
 - (void)myTask {
 	// Do something usefull in here instead of sleeping ...
 	//sleep(0.5);
-    
 }
 
 //键盘切换
@@ -128,7 +98,6 @@
 
     return YES;
 }
-
 
 //点击背景
 - (IBAction)backGroundTapped:(id)sender

@@ -18,6 +18,8 @@
 		A9CE8ADF19C5244D00B3117A /* JHRightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8ADE19C5244D00B3117A /* JHRightViewController.m */; };
 		A9CE8AE319C524ED00B3117A /* JHCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8AE219C524ED00B3117A /* JHCenterViewController.m */; };
 		A9DA88C519C99F8C00FEB6B2 /* JHUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DA88C419C99F8C00FEB6B2 /* JHUserDefaults.m */; };
+		A9DA88CC19C9BAF800FEB6B2 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A9DA88C919C9BAF800FEB6B2 /* SVProgressHUD.bundle */; };
+		A9DA88CD19C9BAF800FEB6B2 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DA88CB19C9BAF800FEB6B2 /* SVProgressHUD.m */; };
 		A9F2B20C19ADC1E90067B6A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B20B19ADC1E90067B6A4 /* Foundation.framework */; };
 		A9F2B20E19ADC1E90067B6A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B20D19ADC1E90067B6A4 /* CoreGraphics.framework */; };
 		A9F2B21019ADC1E90067B6A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B20F19ADC1E90067B6A4 /* UIKit.framework */; };
@@ -68,6 +70,10 @@
 		A9CE8AE219C524ED00B3117A /* JHCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHCenterViewController.m; path = Controller/CenterView/JHCenterViewController.m; sourceTree = "<group>"; };
 		A9DA88C319C99F8C00FEB6B2 /* JHUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHUserDefaults.h; path = Modal/JHUserDefaults.h; sourceTree = "<group>"; };
 		A9DA88C419C99F8C00FEB6B2 /* JHUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHUserDefaults.m; path = Modal/JHUserDefaults.m; sourceTree = "<group>"; };
+		A9DA88C819C9BAF800FEB6B2 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		A9DA88C919C9BAF800FEB6B2 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		A9DA88CA19C9BAF800FEB6B2 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		A9DA88CB19C9BAF800FEB6B2 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		A9F2B20819ADC1E90067B6A4 /* 精弘论坛.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "精弘论坛.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F2B20B19ADC1E90067B6A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A9F2B20D19ADC1E90067B6A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -169,12 +175,32 @@
 			name = "Center VIew";
 			sourceTree = "<group>";
 		};
+		A9DA88C619C9BAE900FEB6B2 /* 其他框架 */ = {
+			isa = PBXGroup;
+			children = (
+				A9DA88C719C9BAF800FEB6B2 /* SVProgressHUD */,
+			);
+			name = "其他框架";
+			sourceTree = "<group>";
+		};
+		A9DA88C719C9BAF800FEB6B2 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A9DA88C819C9BAF800FEB6B2 /* SVProgressHUD-Prefix.pch */,
+				A9DA88C919C9BAF800FEB6B2 /* SVProgressHUD.bundle */,
+				A9DA88CA19C9BAF800FEB6B2 /* SVProgressHUD.h */,
+				A9DA88CB19C9BAF800FEB6B2 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		A9F2B1FF19ADC1E90067B6A4 = {
 			isa = PBXGroup;
 			children = (
 				A9F2B21119ADC1E90067B6A4 /* 精弘论坛 */,
 				A9F2B23019ADC1E90067B6A4 /* 精弘论坛Tests */,
 				A9F2B20A19ADC1E90067B6A4 /* Frameworks */,
+				A9DA88C619C9BAE900FEB6B2 /* 其他框架 */,
 				A9F2B20919ADC1E90067B6A4 /* Products */,
 				8B9DE607510E42E5B41B6DF1 /* Pods.xcconfig */,
 			);
@@ -356,6 +382,7 @@
 				A9F2B22419ADC1E90067B6A4 /* Images.xcassets in Resources */,
 				A9F2B21619ADC1E90067B6A4 /* InfoPlist.strings in Resources */,
 				A9F2B21F19ADC1E90067B6A4 /* Main.storyboard in Resources */,
+				A9DA88CC19C9BAF800FEB6B2 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +437,7 @@
 				A9DA88C519C99F8C00FEB6B2 /* JHUserDefaults.m in Sources */,
 				A9F2B24419ADC2300067B6A4 /* JHLoginViewController.m in Sources */,
 				A9CE8ADF19C5244D00B3117A /* JHRightViewController.m in Sources */,
+				A9DA88CD19C9BAF800FEB6B2 /* SVProgressHUD.m in Sources */,
 				A9F2B21C19ADC1E90067B6A4 /* JHAppDelegate.m in Sources */,
 				A948296319C816DF00C51243 /* JHHTMLParse.m in Sources */,
 				A912A63E19C97AF400F8F471 /* JHUser.m in Sources */,
