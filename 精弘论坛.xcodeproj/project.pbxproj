@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6B71C43F4FB54BCCA33B72C5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F8721D29574767BE45EA8D /* libPods.a */; };
+		A912A63B19C9772D00F8F471 /* JHForumAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A912A63A19C9772D00F8F471 /* JHForumAPI.m */; };
+		A912A63E19C97AF400F8F471 /* JHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A912A63D19C97AF400F8F471 /* JHUser.m */; };
+		A948296319C816DF00C51243 /* JHHTMLParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A948296219C816DF00C51243 /* JHHTMLParse.m */; };
+		A948296619C81A8C00C51243 /* JHNewPosts.m in Sources */ = {isa = PBXBuildFile; fileRef = A948296519C81A8C00C51243 /* JHNewPosts.m */; };
 		A9CE8AD319C5176B00B3117A /* JHRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8AD219C5176B00B3117A /* JHRegisterViewController.m */; };
 		A9CE8AD719C5211600B3117A /* JHMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8AD619C5211600B3117A /* JHMasterViewController.m */; };
 		A9CE8ADC19C5243900B3117A /* JHLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8ADB19C5243900B3117A /* JHLeftViewController.m */; };
@@ -42,6 +46,14 @@
 /* Begin PBXFileReference section */
 		77F8721D29574767BE45EA8D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9DE607510E42E5B41B6DF1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		A912A63919C9772D00F8F471 /* JHForumAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHForumAPI.h; path = Modal/JHForumAPI.h; sourceTree = "<group>"; };
+		A912A63A19C9772D00F8F471 /* JHForumAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHForumAPI.m; path = Modal/JHForumAPI.m; sourceTree = "<group>"; };
+		A912A63C19C97AF400F8F471 /* JHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHUser.h; path = Modal/JHUser.h; sourceTree = "<group>"; };
+		A912A63D19C97AF400F8F471 /* JHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHUser.m; path = Modal/JHUser.m; sourceTree = "<group>"; };
+		A948296119C816DF00C51243 /* JHHTMLParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHHTMLParse.h; path = Modal/JHHTMLParse.h; sourceTree = "<group>"; };
+		A948296219C816DF00C51243 /* JHHTMLParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHHTMLParse.m; path = Modal/JHHTMLParse.m; sourceTree = "<group>"; };
+		A948296419C81A8C00C51243 /* JHNewPosts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHNewPosts.h; path = Modal/JHNewPosts.h; sourceTree = "<group>"; };
+		A948296519C81A8C00C51243 /* JHNewPosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHNewPosts.m; path = Modal/JHNewPosts.m; sourceTree = "<group>"; };
 		A94C1DD719BBF79500CC08B8 /* ForumAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ForumAPI.h; path = Storeage/ForumAPI.h; sourceTree = "<group>"; };
 		A9CE8AD119C5176B00B3117A /* JHRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHRegisterViewController.h; path = Controller/JHRegisterViewController.h; sourceTree = "<group>"; };
 		A9CE8AD219C5176B00B3117A /* JHRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHRegisterViewController.m; path = Controller/JHRegisterViewController.m; sourceTree = "<group>"; };
@@ -99,6 +111,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A912A63819C9743100F8F471 /* unused */ = {
+			isa = PBXGroup;
+			children = (
+				A948296119C816DF00C51243 /* JHHTMLParse.h */,
+				A948296219C816DF00C51243 /* JHHTMLParse.m */,
+				A948296419C81A8C00C51243 /* JHNewPosts.h */,
+				A948296519C81A8C00C51243 /* JHNewPosts.m */,
+			);
+			name = unused;
+			sourceTree = "<group>";
+		};
 		A94C1DD819BBF7BA00CC08B8 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +201,7 @@
 		A9F2B21119ADC1E90067B6A4 /* 精弘论坛 */ = {
 			isa = PBXGroup;
 			children = (
+				A912A63819C9743100F8F471 /* unused */,
 				A9F2B21D19ADC1E90067B6A4 /* Main.storyboard */,
 				A9F2B21A19ADC1E90067B6A4 /* JHAppDelegate.h */,
 				A9F2B21B19ADC1E90067B6A4 /* JHAppDelegate.m */,
@@ -223,6 +247,10 @@
 			isa = PBXGroup;
 			children = (
 				A94C1DD719BBF79500CC08B8 /* ForumAPI.h */,
+				A912A63C19C97AF400F8F471 /* JHUser.h */,
+				A912A63D19C97AF400F8F471 /* JHUser.m */,
+				A912A63919C9772D00F8F471 /* JHForumAPI.h */,
+				A912A63A19C9772D00F8F471 /* JHForumAPI.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -377,10 +405,14 @@
 				A9F2B24419ADC2300067B6A4 /* JHLoginViewController.m in Sources */,
 				A9CE8ADF19C5244D00B3117A /* JHRightViewController.m in Sources */,
 				A9F2B21C19ADC1E90067B6A4 /* JHAppDelegate.m in Sources */,
+				A948296319C816DF00C51243 /* JHHTMLParse.m in Sources */,
+				A912A63E19C97AF400F8F471 /* JHUser.m in Sources */,
 				A9F2B21819ADC1E90067B6A4 /* main.m in Sources */,
 				A9CE8AD319C5176B00B3117A /* JHRegisterViewController.m in Sources */,
+				A912A63B19C9772D00F8F471 /* JHForumAPI.m in Sources */,
 				A9CE8AE319C524ED00B3117A /* JHCenterViewController.m in Sources */,
 				A9CE8AD719C5211600B3117A /* JHMasterViewController.m in Sources */,
+				A948296619C81A8C00C51243 /* JHNewPosts.m in Sources */,
 				A9CE8ADC19C5243900B3117A /* JHLeftViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
