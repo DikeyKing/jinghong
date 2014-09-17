@@ -33,13 +33,40 @@
                                  @"platType": JH_PLATTYPE,
                                  @"appName": JH_APPNAME,
                                  @"sdkVersion": JH_SDKVERSION,
-                                 
+
                                  @"email": @"iosapp",
                                  @"password": @"appletest"
                                  };
     
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        
+        NSDictionary *dic = responseObject;
+        if ([[dic objectForKey:@"rs"] boolValue] == 1) {
+            
+            //保存设置
+            //            [Toolkit saveUserName:_nameTextField.text];
+            //            [Toolkit saveID:[dic objectForKey:@"id"]];
+            //            [Toolkit saveName:[dic objectForKey:@"name"]];
+            //            [Toolkit saveToken:[dic objectForKey:@"token"]];
+            
+//            _loginHud = [[MBProgressHUD alloc]initWithView:self.navigationController.view];
+//            [self.navigationController.view addSubview:_loginHud];
+//            _loginHud.delegate = (id)self;
+//            _loginHud.labelText = @"登录成功";
+//            [_loginHud showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+//            
+        }
+        else{
+//            _loginHud = [[MBProgressHUD alloc]initWithView:self.navigationController.view];
+//            [self.navigationController.view addSubview:_loginHud];
+//            _loginHud.delegate = (id)self;
+//            _loginHud.labelText = @"输入有误";
+//            [_loginHud showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+//            
+        }
+        
+        
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];

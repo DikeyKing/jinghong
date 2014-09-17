@@ -33,16 +33,12 @@
 //开始登录
 -(void)startLoginProgress
 {
-    NSLog(@"开始登录");
-    
-    
     NSString *urlString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
-
-//    forumType=7&forumKey=CIuLQ1lkdPtOlhNuV4&sdkType=1&packageName=com.mobcent.newforum.app82036&platType=5&appName=精弘论坛&email=Dikey&sdkVersion=2.0.0&password=123
-//    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
+    
+////    http://bbs.zjut.edu.cn/mobcent/login/login.phpforumType=7&forumKey=CIuLQ1lkdPtOlhNuV4&sdkType=1&packageName=com.mobcent.newforum.app82036&platType=5&appName=精弘论坛
+//    &email=Dikey&sdkVersion=2.0.0&password=123
     
     NSDictionary *parameters = @{@"forumType": @"7",
                                  @"forumKey": @"CIuLQ1lkdPtOlhNuV4",
@@ -56,10 +52,45 @@
                                  };
     
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
         NSLog(@"JSON: %@", responseObject);
+        NSDictionary *dic = responseObject;
+        
+        if ([[dic objectForKey:@"rs"] boolValue] == 1) {
+            
+            //保存设置
+//            [Toolkit saveUserName:_nameTextField.text];
+//            [Toolkit saveID:[dic objectForKey:@"id"]];
+//            [Toolkit saveName:[dic objectForKey:@"name"]];
+//            [Toolkit saveToken:[dic objectForKey:@"token"]];
+
+            _loginHud = [[MBProgressHUD alloc]initWithView:self.navigationController.view];
+            [self.view addSubview:_loginHud];
+            _loginHud.delegate = (id)self;
+            _loginHud.labelText = @"登录成功";
+            [_loginHud showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+            
+        }
+        else{
+            _loginHud = [[MBProgressHUD alloc]initWithView:self.navigationController.view];
+            [self.view addSubview:_loginHud];
+            _loginHud.delegate = (id)self;
+            _loginHud.labelText = @"输入有误";
+            [_loginHud showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+        
+        }
+
+        
+
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+    
+    
+    
+    
+    
     
 }
 
@@ -71,22 +102,14 @@
 //登录按钮
 - (IBAction)startLogin:(id)sender
 {
-    NSLog(@"开始登录");
-    
-    _loginHud = [[MBProgressHUD alloc]initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:_loginHud];
-    _loginHud.delegate = (id)self;
-    _loginHud.labelText = @"Loading";
-    [_loginHud showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+
     [self startLoginProgress];
-    
-    //todo：显示HUD
-    //返回数据的时候
+
 }
 
 - (void)myTask {
 	// Do something usefull in here instead of sleeping ...
-	sleep(3);
+	//sleep(0.5);
     
 }
 
