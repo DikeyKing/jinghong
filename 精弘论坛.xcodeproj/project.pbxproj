@@ -234,6 +234,8 @@
 				A9F2B21D19ADC1E90067B6A4 /* Main.storyboard */,
 				A9F2B21A19ADC1E90067B6A4 /* JHAppDelegate.h */,
 				A9F2B21B19ADC1E90067B6A4 /* JHAppDelegate.m */,
+				A9CE8AD519C5211600B3117A /* JHMasterViewController.h */,
+				A9CE8AD619C5211600B3117A /* JHMasterViewController.m */,
 				A9F2B24019ADC20A0067B6A4 /* Model */,
 				A9F2B24119ADC2130067B6A4 /* Controller */,
 				A94C1DD819BBF7BA00CC08B8 /* Storage */,
@@ -289,8 +291,6 @@
 		A9F2B24119ADC2130067B6A4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A9CE8AD519C5211600B3117A /* JHMasterViewController.h */,
-				A9CE8AD619C5211600B3117A /* JHMasterViewController.m */,
 				A9F2B24219ADC2300067B6A4 /* JHLoginViewController.h */,
 				A9F2B24319ADC2300067B6A4 /* JHLoginViewController.m */,
 				A9CE8AD119C5176B00B3117A /* JHRegisterViewController.h */,

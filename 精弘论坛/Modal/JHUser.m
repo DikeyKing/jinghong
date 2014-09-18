@@ -7,7 +7,18 @@
 //
 
 #import "JHUser.h"
+#import "JHUserDefaults.h"
 
 @implementation JHUser
++(instancetype)sharedInstance
+{
+    static JHUser *sharedJHUser =nil;
+    static dispatch_once_t oneceToken;
+    dispatch_once(&oneceToken,^{
+        sharedJHUser = [[JHUser alloc]init];
+        
+    });
+    return sharedJHUser;
+}
 
 @end

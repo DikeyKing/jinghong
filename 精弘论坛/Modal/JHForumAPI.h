@@ -10,9 +10,6 @@
 
 @interface JHForumAPI : NSObject
 //登录
-+(void)login;
-
-
 
 
 @end

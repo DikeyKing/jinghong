@@ -7,6 +7,17 @@
 //
 
 #import "JHMasterViewController.h"
+#import "JHUser.h"
+#import "JHLoginViewController.h"
+
+#import "MMDrawerController.h"
+#import "MMDrawerVisualState.h"
+#import "JHLeftViewController.h"
+#import "JHRightViewController.h"
+#import "JHCenterViewController.h"
+
+static const CGFloat kPublicLeftMenuWidth = 140.0f;
+static const CGFloat kPublicRightMenuWidth = 240.0f;
 
 @interface JHMasterViewController ()
 
@@ -14,35 +25,52 @@
 
 @implementation JHMasterViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setThreeViews];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self login];
+}
+
+-(void)login
+{
+    if ([JHUser sharedInstance].loginState == 0) {
+        JHLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHLoginViewController"];
+        [self presentViewController:loginVC animated:NO completion:^{
+        }];
+    }
+}
+
+-(void)setThreeViews
+{
+    JHLeftViewController *leftView = [self.storyboard instantiateViewControllerWithIdentifier:@"JHLeftViewController"];
+    JHCenterViewController *centerView = [self.storyboard instantiateViewControllerWithIdentifier:@"JHCenterViewController"];
+    JHRightViewController *rightView = [self.storyboard instantiateViewControllerWithIdentifier:@"JHRightViewController"];
+    
+    self.leftDrawerViewController = leftView;
+    self.centerViewController = centerView;
+    self.rightDrawerViewController = rightView;
+    
+    [self setMaximumLeftDrawerWidth:kPublicLeftMenuWidth];
+    [self setMaximumLeftDrawerWidth:kPublicRightMenuWidth];
+    
+    [self setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    [self setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+        MMDrawerControllerDrawerVisualStateBlock block;
+        block = [MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0];
+        block(drawerController, drawerSide, percentVisible);
+    }];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
 @end

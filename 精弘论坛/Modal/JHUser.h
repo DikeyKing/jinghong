@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface JHUser : NSObject
-@property(nonatomic, copy)NSString *myID; //ID
-@property(nonatomic, copy)NSString * name;
-@property(nonatomic, copy)NSString * token;
++(instancetype)sharedInstance;
 
-@property(nonatomic, copy)NSURL * avatar;
+@property(nonatomic, copy) NSString *myID; //ID
+@property(nonatomic, copy) NSString * name;
+@property(nonatomic, copy) NSString * token;
+
+@property(nonatomic, copy) NSURL * avatar;
+@property(nonatomic, assign) BOOL *loginState;
 
 @end
