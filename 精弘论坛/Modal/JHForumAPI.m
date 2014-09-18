@@ -22,11 +22,4 @@
 @implementation JHForumAPI
 
 
-
-
-+(void)login
-{
-
-}
-
 @end

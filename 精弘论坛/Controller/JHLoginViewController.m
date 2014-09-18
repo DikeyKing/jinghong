@@ -9,6 +9,8 @@
 #import "JHLoginViewController.h"
 #import "AFNetworking.h"
 #import "SVProgressHUD.h"
+#import "JHUser.h"
+#import "JHForumAPI.h"
 
 @interface JHLoginViewController ()
 @end
@@ -35,13 +37,11 @@
 //开始登录
 -(void)startLoginProgress
 {
-    
     [SVProgressHUD showWithStatus:@"登录中"];
+
     NSString *urlString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-    
     NSDictionary *parameters = @{@"forumType": @"7",
                                  @"forumKey": @"CIuLQ1lkdPtOlhNuV4",
                                  @"sdkType": @"1",
@@ -52,11 +52,8 @@
                                  @"sdkVersion": @"2.0.0",
                                  @"password": _userPassword.text
                                  };
-    
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
         NSDictionary *dic = responseObject;
-        
         if ([[dic objectForKey:@"rs"] boolValue] == 1) {
             [SVProgressHUD showSuccessWithStatus:@"登录成功"];
             //保存设置
@@ -64,23 +61,25 @@
             //            [Toolkit saveID:[dic objectForKey:@"id"]];
             //            [Toolkit saveName:[dic objectForKey:@"name"]];
             //            [Toolkit saveToken:[dic objectForKey:@"token"]];
+            [JHUser sharedInstance].token = [dic objectForKey:@"token"];
+            [JHUser sharedInstance].secretToken = [dic objectForKey:@"secret"];
             [self dismissViewControllerAnimated:YES completion:^{
-                
             }];
         }else{
             [SVProgressHUD showErrorWithStatus:@"用户名或密码错误"];
         }
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
         NSLog(@"Error: %@", error);
     }];
-
+    
+    
+    
 }
 
 //登录按钮
 - (IBAction)startLogin:(id)sender
 {
+
     [self startLoginProgress];
 }
 
