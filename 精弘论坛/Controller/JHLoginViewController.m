@@ -52,6 +52,7 @@
                                  @"sdkVersion": @"2.0.0",
                                  @"password": _userPassword.text
                                  };
+    
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *dic = responseObject;
         if ([[dic objectForKey:@"rs"] boolValue] == 1) {
@@ -71,9 +72,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
-    
-    
+
 }
 
 //登录按钮
@@ -103,6 +102,51 @@
 {
     [_userPassword resignFirstResponder];
     [_userName resignFirstResponder];
+}
+
+
+-(void)getFormList
+{
+    NSString *urlString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
+    NSDictionary *parameters = @{
+                                 @"r":@"forum/forumlist",
+                                 @"baikeType":@"1",
+                                 @"appName":@"精弘论坛",
+                                 @"sdkVersion": @"2.0.0",
+                                 @"forumKey": @"CIuLQ1lkdPtOlhNuV4",
+                                 @"accessToken":@"8a7e56597e8b55881c67b1cb28b1b",
+                                 
+                                 @"forumType":@"7",
+                                 @"sdkType": @"1",
+                                 @"accessSecret":@"2a113ad6cfadce314a60a79d33cb7",
+                                 
+                                 @"forumId":@"1",
+                                 @"packageName": @"com.mobcent.newforum.app82036",
+                                 @"platType": @"5"
+                                 };
+    
+    [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *dic = responseObject;
+        NSArray *array = responseObject;
+        
+        if ([[dic objectForKey:@"rs"] boolValue] == 1) {
+            
+            NSLog(@"%@",dic);
+            //      NSLog(@"%@",array);
+            
+            
+            
+            [self dismissViewControllerAnimated:YES completion:^{
+            }];
+        }else{
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
 }
 
 @end

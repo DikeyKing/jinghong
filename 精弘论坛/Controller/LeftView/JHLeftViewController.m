@@ -8,6 +8,8 @@
 
 #import "JHLeftViewController.h"
 
+
+
 @interface JHLeftViewController ()
 @end
 @implementation JHLeftViewController
@@ -15,11 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 

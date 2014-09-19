@@ -16,7 +16,7 @@
 #import "JHRightViewController.h"
 #import "JHCenterViewController.h"
 
-static const CGFloat kPublicLeftMenuWidth = 140.0f;
+static const CGFloat kPublicLeftMenuWidth = 160.0f;
 static const CGFloat kPublicRightMenuWidth = 240.0f;
 
 @interface JHMasterViewController ()

@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JHUser.h"
+#import "JHForumListCell.h"
 
-@interface JHCenterViewController : UIViewController
+
+@interface JHCenterViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
+@property (copy, nonatomic) NSArray *forumList;
+@property (copy, nonatomic) NSArray *boardList;
+
 
 @end
