@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "JHUser.h"
 #import "JHForumListCell.h"
+#import "JHTopicsViewController.h"
 
 @interface JHCenterViewController ()
 
@@ -40,12 +41,11 @@
                                  
                                  @"sdkVersion": @"2.0.0",
                                  @"accessToken":[JHUser sharedInstance].token,
-                                 //@"accessToken":@"8a7e56597e8b55881c67b1cb28b1b",
+
                                  
                                  @"forumType":@"7",
                                  @"sdkType": @"1",
                                  @"accessSecret":[JHUser sharedInstance].secretToken,
-                                 //@"accessSecret":@"2a113ad6cfadce314a60a79d33cb7",
                                  
                                  @"forumId":@"1",
                                  @"packageName": @"com.mobcent.newforum.app82036",
@@ -60,10 +60,7 @@
             }
             _forumList = [dic objectForKey:@"list"];
             [_tableView reloadData];
-            
-            
-            
-            
+
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -116,15 +113,41 @@
     
     JHForumListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JHForumListCell"];
     if (_forumList) {
+        _boardList = [_forumList[indexPath.section] objectForKey:@"board_list"];
         
-        _boardList = [_forumList[0] objectForKey:@"board_list"];
+        //_boardID[indexPath.row] = [_forumList[indexPath.section] objectForKey:@"board_id"];
         
-        cell.boardName.text = [_boardList[0] objectForKey:@"board_name"];
-        
+        cell.boardName.text = (NSString*)[_boardList[indexPath.row] objectForKey:@"board_name"];
+        cell.tdPostCount.text = [NSString stringWithFormat:@"%@",[_boardList[indexPath.row] objectForKey:@"td_posts_num"]];
         
     }
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _boardList = [_forumList[indexPath.section] objectForKey:@"board_list"];
+    NSLog(@"编号%@ 版块%@",[_boardList[indexPath.row] objectForKey:@"board_id"],[_boardList[indexPath.row] objectForKey:@"board_name"]);
+    
+    JHTopicsViewController *jHTopicsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicsViewController"];
+    jHTopicsVC.boardID = [_boardList[indexPath.row] objectForKey:@"board_id"];
+    
+    [self.navigationController pushViewController:jHTopicsVC animated:YES];
+    
+    
+    
+    
+    
+    //todo:根据推送至下一个界面，下一个界面根据board_id来获取页面内容
+    
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+#pragma sementControll
 
 - (IBAction)selectedSegment:(id)sender
 {
@@ -143,9 +166,5 @@
             break;
     }
 }
-
-
-
-#pragma sementControll
 
 @end

@@ -10,5 +10,6 @@
 
 @interface JHForumListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *boardName;
+@property (weak, nonatomic) IBOutlet UILabel *tdPostCount;
 
 @end

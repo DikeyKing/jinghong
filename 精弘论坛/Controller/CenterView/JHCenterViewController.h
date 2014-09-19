@@ -18,6 +18,7 @@
 
 @property (copy, nonatomic) NSArray *forumList;
 @property (copy, nonatomic) NSArray *boardList;
+@property (copy, nonatomic) NSMutableArray *boardID;
 
 
 @end

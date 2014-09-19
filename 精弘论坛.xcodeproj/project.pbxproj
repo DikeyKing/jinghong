@@ -13,6 +13,10 @@
 		A948296319C816DF00C51243 /* JHHTMLParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A948296219C816DF00C51243 /* JHHTMLParse.m */; };
 		A948296619C81A8C00C51243 /* JHNewPosts.m in Sources */ = {isa = PBXBuildFile; fileRef = A948296519C81A8C00C51243 /* JHNewPosts.m */; };
 		A9482A8619CBCF7500453DD5 /* JHForumListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9482A8519CBCF7500453DD5 /* JHForumListCell.m */; };
+		A9BCA1FD19CC16230025EA2D /* JHBoardItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA1FC19CC16230025EA2D /* JHBoardItem.m */; };
+		A9BCA20119CC25FF0025EA2D /* JHTopicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA20019CC25FF0025EA2D /* JHTopicsViewController.m */; };
+		A9BCA20419CC26210025EA2D /* JHTopicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA20319CC26210025EA2D /* JHTopicsCell.m */; };
+		A9BCA20819CC2ADB0025EA2D /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA20719CC2ADB0025EA2D /* DataModel.m */; };
 		A9CE8AD319C5176B00B3117A /* JHRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8AD219C5176B00B3117A /* JHRegisterViewController.m */; };
 		A9CE8AD719C5211600B3117A /* JHMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8AD619C5211600B3117A /* JHMasterViewController.m */; };
 		A9CE8ADC19C5243900B3117A /* JHLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8ADB19C5243900B3117A /* JHLeftViewController.m */; };
@@ -61,6 +65,14 @@
 		A9482A8419CBCF7500453DD5 /* JHForumListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHForumListCell.h; path = Controller/LeftView/JHForumListCell.h; sourceTree = "<group>"; };
 		A9482A8519CBCF7500453DD5 /* JHForumListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHForumListCell.m; path = Controller/LeftView/JHForumListCell.m; sourceTree = "<group>"; };
 		A94C1DD719BBF79500CC08B8 /* ForumAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ForumAPI.h; path = Storeage/ForumAPI.h; sourceTree = "<group>"; };
+		A9BCA1FB19CC16230025EA2D /* JHBoardItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHBoardItem.h; path = Modal/JHBoardItem.h; sourceTree = "<group>"; };
+		A9BCA1FC19CC16230025EA2D /* JHBoardItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHBoardItem.m; path = Modal/JHBoardItem.m; sourceTree = "<group>"; };
+		A9BCA1FF19CC25FF0025EA2D /* JHTopicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHTopicsViewController.h; path = Controller/CenterView/topics/JHTopicsViewController.h; sourceTree = "<group>"; };
+		A9BCA20019CC25FF0025EA2D /* JHTopicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHTopicsViewController.m; path = Controller/CenterView/topics/JHTopicsViewController.m; sourceTree = "<group>"; };
+		A9BCA20219CC26210025EA2D /* JHTopicsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHTopicsCell.h; path = Controller/CenterView/topics/JHTopicsCell.h; sourceTree = "<group>"; };
+		A9BCA20319CC26210025EA2D /* JHTopicsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHTopicsCell.m; path = Controller/CenterView/topics/JHTopicsCell.m; sourceTree = "<group>"; };
+		A9BCA20619CC2ADB0025EA2D /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataModel.h; path = Modal/DataModel.h; sourceTree = "<group>"; };
+		A9BCA20719CC2ADB0025EA2D /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataModel.m; path = Modal/DataModel.m; sourceTree = "<group>"; };
 		A9CE8AD119C5176B00B3117A /* JHRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHRegisterViewController.h; path = Controller/JHRegisterViewController.h; sourceTree = "<group>"; };
 		A9CE8AD219C5176B00B3117A /* JHRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHRegisterViewController.m; path = Controller/JHRegisterViewController.m; sourceTree = "<group>"; };
 		A9CE8AD519C5211600B3117A /* JHMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHMasterViewController.h; path = Controller/JHMasterViewController.h; sourceTree = "<group>"; };
@@ -141,6 +153,17 @@
 			name = Storage;
 			sourceTree = "<group>";
 		};
+		A9BCA1FE19CC25BB0025EA2D /* Topics */ = {
+			isa = PBXGroup;
+			children = (
+				A9BCA1FF19CC25FF0025EA2D /* JHTopicsViewController.h */,
+				A9BCA20019CC25FF0025EA2D /* JHTopicsViewController.m */,
+				A9BCA20219CC26210025EA2D /* JHTopicsCell.h */,
+				A9BCA20319CC26210025EA2D /* JHTopicsCell.m */,
+			);
+			name = Topics;
+			sourceTree = "<group>";
+		};
 		A9CE8AD419C520B200B3117A /* MasterVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,8 +188,6 @@
 			children = (
 				A9CE8ADA19C5243900B3117A /* JHLeftViewController.h */,
 				A9CE8ADB19C5243900B3117A /* JHLeftViewController.m */,
-				A9482A8419CBCF7500453DD5 /* JHForumListCell.h */,
-				A9482A8519CBCF7500453DD5 /* JHForumListCell.m */,
 			);
 			name = "Left View";
 			sourceTree = "<group>";
@@ -176,6 +197,9 @@
 			children = (
 				A9CE8AE119C524ED00B3117A /* JHCenterViewController.h */,
 				A9CE8AE219C524ED00B3117A /* JHCenterViewController.m */,
+				A9482A8419CBCF7500453DD5 /* JHForumListCell.h */,
+				A9482A8519CBCF7500453DD5 /* JHForumListCell.m */,
+				A9BCA1FE19CC25BB0025EA2D /* Topics */,
 			);
 			name = "Center VIew";
 			sourceTree = "<group>";
@@ -283,12 +307,16 @@
 			isa = PBXGroup;
 			children = (
 				A94C1DD719BBF79500CC08B8 /* ForumAPI.h */,
+				A9BCA20619CC2ADB0025EA2D /* DataModel.h */,
+				A9BCA20719CC2ADB0025EA2D /* DataModel.m */,
 				A912A63C19C97AF400F8F471 /* JHUser.h */,
 				A912A63D19C97AF400F8F471 /* JHUser.m */,
 				A912A63919C9772D00F8F471 /* JHForumAPI.h */,
 				A912A63A19C9772D00F8F471 /* JHForumAPI.m */,
 				A9DA88C319C99F8C00FEB6B2 /* JHUserDefaults.h */,
 				A9DA88C419C99F8C00FEB6B2 /* JHUserDefaults.m */,
+				A9BCA1FB19CC16230025EA2D /* JHBoardItem.h */,
+				A9BCA1FC19CC16230025EA2D /* JHBoardItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -440,12 +468,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9DA88C519C99F8C00FEB6B2 /* JHUserDefaults.m in Sources */,
+				A9BCA1FD19CC16230025EA2D /* JHBoardItem.m in Sources */,
 				A9F2B24419ADC2300067B6A4 /* JHLoginViewController.m in Sources */,
+				A9BCA20419CC26210025EA2D /* JHTopicsCell.m in Sources */,
 				A9CE8ADF19C5244D00B3117A /* JHRightViewController.m in Sources */,
 				A9482A8619CBCF7500453DD5 /* JHForumListCell.m in Sources */,
 				A9DA88CD19C9BAF800FEB6B2 /* SVProgressHUD.m in Sources */,
+				A9BCA20819CC2ADB0025EA2D /* DataModel.m in Sources */,
 				A9F2B21C19ADC1E90067B6A4 /* JHAppDelegate.m in Sources */,
 				A948296319C816DF00C51243 /* JHHTMLParse.m in Sources */,
+				A9BCA20119CC25FF0025EA2D /* JHTopicsViewController.m in Sources */,
 				A912A63E19C97AF400F8F471 /* JHUser.m in Sources */,
 				A9F2B21819ADC1E90067B6A4 /* main.m in Sources */,
 				A9CE8AD319C5176B00B3117A /* JHRegisterViewController.m in Sources */,

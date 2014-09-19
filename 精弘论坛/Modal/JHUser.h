@@ -18,6 +18,6 @@
 @property(nonatomic, copy) NSString *secretToken;
 
 @property(nonatomic, copy) NSURL * avatar;
-@property(nonatomic, assign) BOOL *loginState;
+@property(nonatomic, assign) BOOL loginState;
 
 @end

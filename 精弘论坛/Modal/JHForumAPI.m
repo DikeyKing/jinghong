@@ -21,5 +21,4 @@
 
 @implementation JHForumAPI
 
-
 @end

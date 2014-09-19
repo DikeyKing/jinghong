@@ -57,6 +57,8 @@
         NSDictionary *dic = responseObject;
         if ([[dic objectForKey:@"rs"] boolValue] == 1) {
             [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+            [JHUser sharedInstance].loginState= YES ;
+            
             //保存设置
             //            [Toolkit saveUserName:_nameTextField.text];
             //            [Toolkit saveID:[dic objectForKey:@"id"]];
@@ -129,7 +131,6 @@
     
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *dic = responseObject;
-        NSArray *array = responseObject;
         
         if ([[dic objectForKey:@"rs"] boolValue] == 1) {
             
