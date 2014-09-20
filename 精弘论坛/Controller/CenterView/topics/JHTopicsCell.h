@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface JHTopicsCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *topicTitle;
+@property (weak, nonatomic) IBOutlet UILabel *authorName;
 
 @end

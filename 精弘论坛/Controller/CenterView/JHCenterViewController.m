@@ -38,7 +38,7 @@
                                  
                                  @"appName":@"精弘论坛",
                                  @"forumKey": @"CIuLQ1lkdPtOlhNuV4",
-                                 
+    
                                  @"sdkVersion": @"2.0.0",
                                  @"accessToken":[JHUser sharedInstance].token,
 
