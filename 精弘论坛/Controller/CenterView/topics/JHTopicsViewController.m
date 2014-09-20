@@ -145,4 +145,59 @@
     return jHTopicsCell;
 }
 
+
+
+
+/*
+ imsi	FD33C5E7-D99D-4166-9A7F-80DC5EED184B
+ appName	精弘论坛
+ sdkVersion	2.0.0
+ forumKey	CIuLQ1lkdPtOlhNuV4
+ pageSize	10
+ accessToken	8a7e56597e8b55881c67b1cb28b1b
+ imei	FD33C5E7-D99D-4166-9A7F-80DC5EED184B
+ forumType	7
+ sortby	publish
+ page	1
+ sdkType	1
+ accessSecret	2a113ad6cfadce314a60a79d33cb7
+ forumId	1
+ packageName	com.mobcent.newforum.app82036
+ platType	5
+ 
+ API
+ "page": 1,
+ "has_next": 1,
+ "total_num": 336242
+ */
+
+
+
+
+/*
+ "list": [
+ {
+ "board_id": 303,
+ "board_name": "『 池塘边 』",
+ "topic_id": 1627152,
+ "type": "normal",
+ "title": "在线求助",
+ "user_id": 154266,
+ "user_nick_name": "小酒儿",
+ "last_reply_date": "1411201532000",
+ "vote": 0,
+ "hot": 0,
+ "hits": 0,
+ "replies": 0,
+ "essence": 0,
+ "top": 0,
+ "subject": "屏峰里面有个招待所，对外开放吗？多钱？怎么样？怎么预定？ ",
+ "pic_path": ""
+ },
+ 
+ 
+ 
+ */
+
+
 @end
