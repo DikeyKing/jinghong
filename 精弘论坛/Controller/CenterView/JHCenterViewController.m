@@ -32,6 +32,7 @@
     NSString *urlString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
+    
     NSDictionary *parameters = @{
                                  @"r":@"forum/forumlist",
                                  @"baikeType":@"1",

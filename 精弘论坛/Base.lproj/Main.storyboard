@@ -207,7 +207,7 @@
             </objects>
             <point key="canvasLocation" x="-118" y="141"/>
         </scene>
-        <!--Topics View Controller-->
+        <!--Topics View Controller - Title-->
         <scene sceneID="jbo-nX-IuN">
             <objects>
                 <viewController storyboardIdentifier="JHTopicsViewController" id="L4Q-7x-0GL" customClass="JHTopicsViewController" sceneMemberID="viewController">
@@ -225,7 +225,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JHTopicsCell" rowHeight="88" id="s1m-ny-NMR" customClass="JHTopicsCell">
-                                        <rect key="frame" x="0.0" y="116" width="320" height="88"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="88"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s1m-ny-NMR" id="lww-2J-nE3">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
@@ -262,7 +262,12 @@
                             <constraint firstAttribute="trailing" secondItem="seu-KI-fo7" secondAttribute="trailing" id="kPQ-M3-oXC"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black"/>
+                    <navigationItem key="navigationItem" title="Title" id="9v0-Vs-UpW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TSe-Ur-Cmt">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="topicsTableView" destination="seu-KI-fo7" id="EkN-ES-ih4"/>
                     </connections>
