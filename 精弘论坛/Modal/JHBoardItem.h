@@ -21,6 +21,7 @@
  "board_content": 1,
  "forumRedirect": ""
  */
+
 @property (assign,nonatomic) int boardId;
 @property (copy,nonatomic) NSString* boardName;
 @property (assign,nonatomic) NSString* boardChild;
@@ -30,8 +31,6 @@
 @property (copy,nonatomic) NSString *lastPostsDate;
 @property (assign,nonatomic) int boardcontent;
 @property (copy,nonatomic) NSString *forumRedirect;
-
-
 
 @end
 

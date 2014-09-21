@@ -14,7 +14,7 @@
 
 @implementation JHForumAPI
 
-+(NSString *)getBaseURLString:(int)getParameter
++(NSString *)getBaseURLString:(int)getParameter //好像baseURL都是一样的-_-
 {
     NSString *baseURLString = [NSString new];
     switch (getParameter) {
@@ -27,8 +27,18 @@
             break;
             
         case GET_TOPICS_DETAIL:
+            baseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
+            break;
+            
+        
+        case GET_RECENT_TOPICS:
             baseURLString = @"";
             break;
+       
+        case GET_PERSONAL_INFO:
+            baseURLString = @" http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
+            break;
+            
             
         default:
             break;
@@ -44,55 +54,115 @@
         case GET_BOARD_LIST:
             parameterDic = @{
                              @"r":@"forum/forumlist",
-                             @"baikeType":@"1",
-                             
-                             @"appName":@"精弘论坛",
-                             @"forumKey": @"CIuLQ1lkdPtOlhNuV4",
-                             
-                             @"sdkVersion": @"2.0.0",
-                             @"accessToken":[JHUser sharedInstance].token,
-                             
-                             
-                             @"forumType":@"7",
-                             @"sdkType": @"1",
-                             @"accessSecret":[JHUser sharedInstance].secretToken,
-                             
-                             @"forumId":@"1",
-                             @"packageName": @"com.mobcent.newforum.app82036",
-                             @"platType": @"5"
+                             @"baikeType":@"1", //这个参数什么意思？
+                
+                             @"accessToken":[JHCommonConfigs sharedConfig].token,
+                             @"accessSecret":[JHCommonConfigs sharedConfig].secretToken,
+
+                             @"appName":JH_APPNAME,
+                             @"forumKey":JH_FORUMKEY,
+                             @"sdkVersion": JH_SDKVERSION,
+                             @"forumType":JH_FORUMTYPE,
+                             @"sdkType": JH_SDKTYPE,
+                             @"forumId":JH_FORUMID,
+                             @"packageName": JH_PACKAGENAME,
+                             @"platType": JH_PLATTYPE
                              };
             break;
             
         case GET_TOPICS_LIST:
             parameterDic = @{
-                                         @"r":@"forum/topiclist",
-                                         @"boardId":_boardID,
-                                         @"appName":JH_APPNAME,
-                                         @"forumKey":JH_FORUMKEY,
-                                         @"sdkVersion": JH_SDKVERSION,
-                                         @"accessToken":[JHUser sharedInstance].token,
-                                         @"forumType":JH_FORUMTYPE,
-                                         @"sdkType": JH_SDKTYPE,
-                                         @"accessSecret":[JHUser sharedInstance].secretToken,
-                                         @"forumId":JH_FORUMID,
-                                         @"packageName": JH_PACKAGENAME,
-                                         @"platType": JH_PLATTYPE,
-                                         @"page":[NSString stringWithFormat:@"%d",_page],
-                                         @"pageSize":[NSString stringWithFormat:@"%d",10]
-                                         
-                                         
-                                         /*
-                                          "page": 1,
-                                          "has_next": 1,
-                                          "total_num": 78097
-                                          */
-                                         };
+                            @"r":@"forum/topiclist",
+                            @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID],
+
+                            @"accessToken":[JHCommonConfigs sharedConfig].token,
+                            @"accessSecret":[JHCommonConfigs sharedConfig].secretToken,
+
+
+                            
+                            @"page":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].page], //获取第几页
+                            @"pageSize":[NSString stringWithFormat:@"%d",10], //每页多少个
+                            
+                            @"appName":JH_APPNAME,
+                            @"forumKey":JH_FORUMKEY,
+                            @"sdkVersion": JH_SDKVERSION,
+                            @"forumType":JH_FORUMTYPE,
+                            @"sdkType": JH_SDKTYPE,
+                            @"forumId":JH_FORUMID,
+                            @"packageName": JH_PACKAGENAME,
+                            @"platType": JH_PLATTYPE
+                            };
             break;
             
         case GET_TOPICS_DETAIL:
-            parameterDic = @"";
-            break;
+            parameterDic = @{
+                             @"r":@"forum/topiclist",
+                             
+                             @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
+                             
+                             @"accessToken":[JHCommonConfigs sharedConfig].token,
+                             @"accessSecret":[JHCommonConfigs sharedConfig].secretToken,
+                             
+                             @"appName":JH_APPNAME,
+                             @"forumKey":JH_FORUMKEY,
+                             @"sdkVersion": JH_SDKVERSION,
+                             @"forumType":JH_FORUMTYPE,
+                             @"sdkType": JH_SDKTYPE,
+                             @"forumId":JH_FORUMID,
+                             @"packageName": JH_PACKAGENAME,
+                             @"platType": JH_PLATTYPE
+                             };            break;
+           
             
+        case GET_RECENT_TOPICS:
+            parameterDic = nil;
+            break;
+
+            
+            /*  recent 10 topics
+             http://bbs.zjut.edu.cn/mobcent/app/web/index.php?
+             
+             r=forum/topiclist
+             
+             appName	精弘论坛
+             sdkVersion	2.0.0
+             forumKey	CIuLQ1lkdPtOlhNuV4
+             pageSize	10
+             accessToken	8a7e56597e8b55881c67b1cb28b1b
+             forumType	7
+             sortby	publish
+             page	1
+             sdkType	1
+             accessSecret	2a113ad6cfadce314a60a79d33cb7
+             forumId	1
+             packageName	com.mobcent.newforum.app82036
+             platType	5
+             
+             API
+             "page": 1,
+             "has_next": 1,
+             "total_num": 336242
+             */
+            
+        case GET_PERSONAL_INFO:
+            parameterDic = @{
+                @"r":@"user/userinfo",
+                @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
+                
+                @"accessToken":[JHCommonConfigs sharedConfig].token,
+                @"accessSecret":[JHCommonConfigs sharedConfig].secretToken,
+                
+                @"appName":JH_APPNAME,
+                @"forumKey":JH_FORUMKEY,
+                @"sdkVersion": JH_SDKVERSION,
+                @"forumType":JH_FORUMTYPE,
+                @"sdkType": JH_SDKTYPE,
+                @"forumId":JH_FORUMID,
+                @"packageName": JH_PACKAGENAME,
+                @"platType": JH_PLATTYPE
+            };
+            break;
+      
         default:
             break;
     }
@@ -106,18 +176,14 @@
 {
 //    @property (copy, nonatomic) NSString *baseURL;
 //    @property (copy, nonatomic) NSMutableDictionary *parametersDic;
-    
-    
-    
-    
-    
+ 
     return nil;
 }
 @end
 
 
 
-/* 个人信息
+/* 个人信息 3
  http://bbs.zjut.edu.cn/mobcent/app/web/index.php
  
  r	user/userinfo
@@ -127,10 +193,8 @@
  userId	273684
  forumKey	CIuLQ1lkdPtOlhNuV4
  accessToken	8a7e56597e8b55881c67b1cb28b1b
- imei	FD33C5E7-D99D-4166-9A7F-80DC5EED184B
  forumType	7
  sdkType	1
- imsi	FD33C5E7-D99D-4166-9A7F-80DC5EED184B
  accessSecret	2a113ad6cfadce314a60a79d33cb7
  packageName	com.mobcent.newforum.app82036
  platType	5
@@ -178,8 +242,8 @@
 
 
 
-/*  最近的十个帖子
- http://bbs.zjut.edu.cn/mobcent/app/web/index.php?
+/*  recent 10 topics
+ http://bbs.zjut.edu.cn/mobcent/app/web/index.php
  
  r=forum/topiclist
  imsi	FD33C5E7-D99D-4166-9A7F-80DC5EED184B
@@ -207,7 +271,7 @@
 
 
 
-/*
+/* topics list
  
  
  
@@ -238,7 +302,8 @@
 
 
 
-/*
+/* get recentPhotos  (图片墙)
+ 
  http://bbs.zjut.edu.cn/mobcent/app/web/index.php
  
  r	forum/photogallery
@@ -256,3 +321,6 @@
  forumId	1
  packageName	com.mobcent.newforum.app82036
  platType	5
+ 
+ */
+

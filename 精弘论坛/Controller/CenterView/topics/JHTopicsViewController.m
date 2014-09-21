@@ -8,7 +8,8 @@
 
 #import "JHTopicsViewController.h"
 #import "JHTopicsCell.h"
-#import "DataModel.h"
+#import "JHJsonToModel.h"
+#import "AFNetworking.h"
 
 @interface JHTopicsViewController ()
 
@@ -37,41 +38,18 @@
 
 -(void)getTopics
 {
-    NSString *urlString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
+    NSString *urlString = JH_BASE_URL;
+    NSDictionary *parameters = [JHForumAPI getParameterDic:GET_TOPICS_LIST];
+
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-    NSDictionary *parameters = @{
-                                 @"r":@"forum/topiclist",
-                                 @"boardId":_boardID,
-                                 @"appName":JH_APPNAME,
-                                 @"forumKey":JH_FORUMKEY,
-                                 @"sdkVersion": JH_SDKVERSION,
-                                 @"accessToken":[JHUser sharedInstance].token,
-                                 @"forumType":JH_FORUMTYPE,
-                                 @"sdkType": JH_SDKTYPE,
-                                 @"accessSecret":[JHUser sharedInstance].secretToken,
-                                 @"forumId":JH_FORUMID,
-                                 @"packageName": JH_PACKAGENAME,
-                                 @"platType": JH_PLATTYPE,
-                                 @"page":[NSString stringWithFormat:@"%d",_page],
-                                 @"pageSize":[NSString stringWithFormat:@"%d",10]
-
-                                 
-                                 /*
-                                  "page": 1,
-                                  "has_next": 1,
-                                  "total_num": 78097
-                                  */
-                                 };
     
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *dic = responseObject;
         if ([[dic objectForKey:@"rs"] boolValue] == 1) {
             _topicsList = [dic objectForKey:@"list"];
-            [_topicsTableView reloadData];     
-            
+            [_topicsTableView reloadData];
         }
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];

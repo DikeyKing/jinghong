@@ -7,6 +7,8 @@
 //
 
 #import "JHLoginViewController.h"
+#import "DataModel.h"
+
 #import "AFNetworking.h"
 #import "SVProgressHUD.h"
 #import "JHUser.h"
@@ -57,15 +59,16 @@
         NSDictionary *dic = responseObject;
         if ([[dic objectForKey:@"rs"] boolValue] == 1) {
             [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-            [JHUser sharedInstance].loginState= YES ;
+            [JHCommonConfigs sharedConfig].loginState= YES ;
             
             //保存设置
             //            [Toolkit saveUserName:_nameTextField.text];
             //            [Toolkit saveID:[dic objectForKey:@"id"]];
             //            [Toolkit saveName:[dic objectForKey:@"name"]];
             //            [Toolkit saveToken:[dic objectForKey:@"token"]];
-            [JHUser sharedInstance].token = [dic objectForKey:@"token"];
-            [JHUser sharedInstance].secretToken = [dic objectForKey:@"secret"];
+            
+            [JHCommonConfigs sharedConfig].token = [dic objectForKey:@"token"];
+            [JHCommonConfigs sharedConfig].secretToken = [dic objectForKey:@"secret"];
             [self dismissViewControllerAnimated:YES completion:^{
             }];
         }else{

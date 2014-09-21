@@ -19,6 +19,7 @@
 		A9BCA20819CC2ADB0025EA2D /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA20719CC2ADB0025EA2D /* DataModel.m */; };
 		A9BCA20B19CD1AAC0025EA2D /* JHJsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA20A19CD1AAC0025EA2D /* JHJsonToModel.m */; };
 		A9BCA20E19CD1C9E0025EA2D /* JHTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA20D19CD1C9E0025EA2D /* JHTopic.m */; };
+		A9BCA21119CE4EDD0025EA2D /* JHCommonConfigs.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA21019CE4EDD0025EA2D /* JHCommonConfigs.m */; };
 		A9CE8AD319C5176B00B3117A /* JHRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8AD219C5176B00B3117A /* JHRegisterViewController.m */; };
 		A9CE8AD719C5211600B3117A /* JHMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8AD619C5211600B3117A /* JHMasterViewController.m */; };
 		A9CE8ADC19C5243900B3117A /* JHLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8ADB19C5243900B3117A /* JHLeftViewController.m */; };
@@ -66,7 +67,7 @@
 		A948296519C81A8C00C51243 /* JHNewPosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHNewPosts.m; path = Modal/JHNewPosts.m; sourceTree = "<group>"; };
 		A9482A8419CBCF7500453DD5 /* JHForumListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHForumListCell.h; path = Controller/LeftView/JHForumListCell.h; sourceTree = "<group>"; };
 		A9482A8519CBCF7500453DD5 /* JHForumListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHForumListCell.m; path = Controller/LeftView/JHForumListCell.m; sourceTree = "<group>"; };
-		A94C1DD719BBF79500CC08B8 /* ForumAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ForumAPI.h; path = Storeage/ForumAPI.h; sourceTree = "<group>"; };
+		A94C1DD719BBF79500CC08B8 /* unused.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = unused.h; path = Storeage/unused.h; sourceTree = "<group>"; };
 		A9BCA1FB19CC16230025EA2D /* JHBoardItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHBoardItem.h; path = Modal/JHBoardItem.h; sourceTree = "<group>"; };
 		A9BCA1FC19CC16230025EA2D /* JHBoardItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHBoardItem.m; path = Modal/JHBoardItem.m; sourceTree = "<group>"; };
 		A9BCA1FF19CC25FF0025EA2D /* JHTopicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHTopicsViewController.h; path = Controller/CenterView/topics/JHTopicsViewController.h; sourceTree = "<group>"; };
@@ -79,6 +80,8 @@
 		A9BCA20A19CD1AAC0025EA2D /* JHJsonToModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHJsonToModel.m; path = Modal/JHJsonToModel.m; sourceTree = "<group>"; };
 		A9BCA20C19CD1C9E0025EA2D /* JHTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHTopic.h; path = Modal/JHTopic.h; sourceTree = "<group>"; };
 		A9BCA20D19CD1C9E0025EA2D /* JHTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHTopic.m; path = Modal/JHTopic.m; sourceTree = "<group>"; };
+		A9BCA20F19CE4EDD0025EA2D /* JHCommonConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHCommonConfigs.h; path = Modal/JHCommonConfigs.h; sourceTree = "<group>"; };
+		A9BCA21019CE4EDD0025EA2D /* JHCommonConfigs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHCommonConfigs.m; path = Modal/JHCommonConfigs.m; sourceTree = "<group>"; };
 		A9CE8AD119C5176B00B3117A /* JHRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHRegisterViewController.h; path = Controller/JHRegisterViewController.h; sourceTree = "<group>"; };
 		A9CE8AD219C5176B00B3117A /* JHRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHRegisterViewController.m; path = Controller/JHRegisterViewController.m; sourceTree = "<group>"; };
 		A9CE8AD519C5211600B3117A /* JHMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHMasterViewController.h; path = Controller/JHMasterViewController.h; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 		A912A63819C9743100F8F471 /* unused */ = {
 			isa = PBXGroup;
 			children = (
+				A94C1DD719BBF79500CC08B8 /* unused.h */,
 				A948296119C816DF00C51243 /* JHHTMLParse.h */,
 				A948296219C816DF00C51243 /* JHHTMLParse.m */,
 				A948296419C81A8C00C51243 /* JHNewPosts.h */,
@@ -312,7 +316,6 @@
 		A9F2B24019ADC20A0067B6A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A94C1DD719BBF79500CC08B8 /* ForumAPI.h */,
 				A9BCA20619CC2ADB0025EA2D /* DataModel.h */,
 				A9BCA20719CC2ADB0025EA2D /* DataModel.m */,
 				A912A63C19C97AF400F8F471 /* JHUser.h */,
@@ -327,6 +330,8 @@
 				A9BCA20A19CD1AAC0025EA2D /* JHJsonToModel.m */,
 				A912A63919C9772D00F8F471 /* JHForumAPI.h */,
 				A912A63A19C9772D00F8F471 /* JHForumAPI.m */,
+				A9BCA20F19CE4EDD0025EA2D /* JHCommonConfigs.h */,
+				A9BCA21019CE4EDD0025EA2D /* JHCommonConfigs.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -483,6 +488,7 @@
 				A9BCA20419CC26210025EA2D /* JHTopicsCell.m in Sources */,
 				A9CE8ADF19C5244D00B3117A /* JHRightViewController.m in Sources */,
 				A9482A8619CBCF7500453DD5 /* JHForumListCell.m in Sources */,
+				A9BCA21119CE4EDD0025EA2D /* JHCommonConfigs.m in Sources */,
 				A9DA88CD19C9BAF800FEB6B2 /* SVProgressHUD.m in Sources */,
 				A9BCA20819CC2ADB0025EA2D /* DataModel.m in Sources */,
 				A9F2B21C19ADC1E90067B6A4 /* JHAppDelegate.m in Sources */,

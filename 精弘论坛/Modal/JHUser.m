@@ -16,9 +16,7 @@
     static dispatch_once_t oneceToken;
     dispatch_once(&oneceToken,^{
         sharedJHUser = [[JHUser alloc]init];
-        sharedJHUser.secretToken = @"";
-        sharedJHUser.token = @"";
-    });
+      });
     return sharedJHUser;
 }
 

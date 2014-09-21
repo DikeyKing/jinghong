@@ -7,8 +7,9 @@
 //
 
 #import "JHCenterViewController.h"
+
 #import "AFNetworking.h"
-#import "JHUser.h"
+#import "JHForumAPI.h"
 #import "JHForumListCell.h"
 #import "JHTopicsViewController.h"
 
@@ -24,35 +25,18 @@
     _tableView.delegate =self;
     _tableView.dataSource = self;
     
-    [self getFormList];
+    [self getBoardList];
 }
 
--(void)getFormList
+#warning 这里还需要加入判定，可能板块中还有板块(会闪退)
+-(void)getBoardList
 {
-    NSString *urlString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
+    NSString *urlString =JH_BASE_URL;
+    NSDictionary *parameters = [JHForumAPI getParameterDic:GET_BOARD_LIST];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-    
-    NSDictionary *parameters = @{
-                                 @"r":@"forum/forumlist",
-                                 @"baikeType":@"1",
-                                 
-                                 @"appName":@"精弘论坛",
-                                 @"forumKey": @"CIuLQ1lkdPtOlhNuV4",
-    
-                                 @"sdkVersion": @"2.0.0",
-                                 @"accessToken":[JHUser sharedInstance].token,
-
-                                 
-                                 @"forumType":@"7",
-                                 @"sdkType": @"1",
-                                 @"accessSecret":[JHUser sharedInstance].secretToken,
-                                 
-                                 @"forumId":@"1",
-                                 @"packageName": @"com.mobcent.newforum.app82036",
-                                 @"platType": @"5"
-                                 };
-    
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *dic = responseObject;
         if ([[dic objectForKey:@"rs"] boolValue] == 1) {
@@ -61,9 +45,7 @@
             }
             _forumList = [dic objectForKey:@"list"];
             [_tableView reloadData];
-
         }
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
@@ -89,7 +71,6 @@
         return [[_forumList[section]objectForKey:@"board_list"] count];
     }
     return 0;
-    
 }
 
 
