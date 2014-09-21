@@ -11,4 +11,7 @@
 
 @interface JHJsonToModel : NSObject
 
++(NSArray *)getBoardItem:(NSDictionary *)dicObject;
+
+
 @end

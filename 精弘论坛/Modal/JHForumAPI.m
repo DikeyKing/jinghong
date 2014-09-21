@@ -77,9 +77,7 @@
 
                             @"accessToken":[JHCommonConfigs sharedConfig].token,
                             @"accessSecret":[JHCommonConfigs sharedConfig].secretToken,
-
-
-                            
+   
                             @"page":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].page], //获取第几页
                             @"pageSize":[NSString stringWithFormat:@"%d",10], //每页多少个
                             
@@ -93,13 +91,30 @@
                             @"platType": JH_PLATTYPE
                             };
             break;
+            /*
+             @"r":@"forum/topiclist",
+             @"boardId":_boardID,
+             @"appName":JH_APPNAME,
+             @"forumKey":JH_FORUMKEY,
+             @"sdkVersion": JH_SDKVERSION,
+             @"accessToken":[JHUser sharedInstance].token,
+             @"forumType":JH_FORUMTYPE,
+             @"sdkType": JH_SDKTYPE,
+             @"accessSecret":[JHUser sharedInstance].secretToken,
+             @"forumId":JH_FORUMID,
+             @"packageName": JH_PACKAGENAME,
+             @"platType": JH_PLATTYPE,
+             @"page":[NSString stringWithFormat:@"%d",_page],
+             @"pageSize":[NSString stringWithFormat:@"%d",10]
+             */
+            
             
         case GET_TOPICS_DETAIL:
             parameterDic = @{
                              @"r":@"forum/topiclist",
-                             
+             
                              @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
-                             
+             
                              @"accessToken":[JHCommonConfigs sharedConfig].token,
                              @"accessSecret":[JHCommonConfigs sharedConfig].secretToken,
                              

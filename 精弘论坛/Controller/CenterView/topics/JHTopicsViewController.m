@@ -23,7 +23,8 @@
     _topicsTableView.delegate = self;
     _topicsTableView.dataSource = self;
     
-    _page = 1;
+    [JHCommonConfigs sharedConfig].page = 1;
+    
     
     [self getTopics];
     

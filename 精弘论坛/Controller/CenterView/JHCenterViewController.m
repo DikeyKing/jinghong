@@ -13,6 +13,8 @@
 #import "JHForumListCell.h"
 #import "JHTopicsViewController.h"
 
+#import "JHJsonToModel.h"
+
 @interface JHCenterViewController ()
 
 @end
@@ -43,7 +45,10 @@
             if (!_forumList) {
                 _forumList = [[NSArray alloc]init];
             }
-            _forumList = [dic objectForKey:@"list"];
+            _forumList = [JHJsonToModel getBoardItem:[dic objectForKey:@"list"]];
+            
+//            _forumList = [dic objectForKey:@"list"];
+    
             [_tableView reloadData];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -112,7 +117,7 @@
     NSLog(@"编号%@ 版块%@",[_boardList[indexPath.row] objectForKey:@"board_id"],[_boardList[indexPath.row] objectForKey:@"board_name"]);
     
     JHTopicsViewController *jHTopicsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicsViewController"];
-    jHTopicsVC.boardID = [_boardList[indexPath.row] objectForKey:@"board_id"];
+    [JHCommonConfigs sharedConfig].boardID = [[_boardList[indexPath.row] objectForKey:@"board_id"]intValue];
     
     [self.navigationController pushViewController:jHTopicsVC animated:YES];
     

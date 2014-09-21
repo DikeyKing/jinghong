@@ -40,7 +40,8 @@
 -(void)startLoginProgress
 {
     [SVProgressHUD showWithStatus:@"登录中"];
-
+    _regeister.enabled = NO;
+    
     NSString *urlString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
@@ -58,6 +59,7 @@
     [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *dic = responseObject;
         if ([[dic objectForKey:@"rs"] boolValue] == 1) {
+            _regeister.enabled =YES;
             [SVProgressHUD showSuccessWithStatus:@"登录成功"];
             [JHCommonConfigs sharedConfig].loginState= YES ;
             

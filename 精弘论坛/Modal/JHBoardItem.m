@@ -8,23 +8,33 @@
 
 #import "JHBoardItem.h"
 
-@implementation JHBoardItem
 
--(instancetype)initWithBoardId:(int )boardID
-                     boardName:(NSString *)boardName
-                 postsTotalNum:(int )topicTotalNum
-                 tdPostsNum:(int )postsTotalNum
-                 lastPostsDate:(int )tdPostsNum
-                 forumRedirect:(int )lastPostsDate
-                 topicTotalNum:(int )forumRedirect
+@implementation JHBoardItem
++(instancetype)init
 {
-    static JHBoardItem *sharedBoardItem =nil;
-    static dispatch_once_t oneceToken;
-    dispatch_once(&oneceToken,^{
-        sharedBoardItem = [[JHBoardItem alloc]init];
+    static JHBoardItem *jHBoardItem = nil;
+    static dispatch_once_t *onceToken ;
+    dispatch_once(onceToken,^{
+        jHBoardItem = [JHBoardItem new];
     });
-    return sharedBoardItem;
+    return jHBoardItem;
 }
+
+//-(instancetype)initWithBoardId:(int )boardID
+//                     boardName:(NSString *)boardName
+//                 postsTotalNum:(int )topicTotalNum
+//                 tdPostsNum:(int )postsTotalNum
+//                 lastPostsDate:(int )tdPostsNum
+//                 forumRedirect:(int )lastPostsDate
+//                 topicTotalNum:(int )forumRedirect
+//{
+//    static JHBoardItem *sharedBoardItem =nil;
+//    static dispatch_once_t oneceToken;
+//    dispatch_once(&oneceToken,^{
+//        sharedBoardItem = [[JHBoardItem alloc]init];
+//    });
+//    return sharedBoardItem;
+//}
 
 @end
 

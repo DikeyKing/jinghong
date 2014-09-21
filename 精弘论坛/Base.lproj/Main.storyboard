@@ -84,6 +84,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="4Iz-pL-xMe"/>
                     <connections>
+                        <outlet property="regeister" destination="OeH-fw-wo8" id="Ypq-q4-OXW"/>
                         <outlet property="userName" destination="JuO-aV-Xun" id="iZP-4j-wxI"/>
                         <outlet property="userPassword" destination="ejx-Hx-3dY" id="Ook-PN-9A1"/>
                     </connections>

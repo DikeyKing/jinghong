@@ -13,10 +13,10 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *topicsTableView;
 
-@property (copy,nonatomic) NSString *boardID;
+//@property (copy,nonatomic) NSString *boardID;
 
-@property (assign,nonatomic) int page;
-@property (assign,nonatomic) int topicID;
+//@property (assign,nonatomic) int page;
+//@property (assign,nonatomic) int topicID;
 
 @property (strong, nonatomic) NSArray *topicsList;
 

@@ -22,17 +22,22 @@
  "forumRedirect": ""
  */
 
-@property (assign,nonatomic) int boardId;
-@property (copy,nonatomic) NSString* boardName;
-@property (assign,nonatomic) NSString* boardChild;
-@property (assign,nonatomic) int topicTotalNum;
-@property (assign,nonatomic) int postsTotalNum;
-@property (assign,nonatomic) int tdPostsNum;
-@property (copy,nonatomic) NSString *lastPostsDate;
-@property (assign,nonatomic) int boardcontent;
-@property (copy,nonatomic) NSString *forumRedirect;
+@property (assign, nonatomic) int boardId;
+@property (copy, nonatomic) NSString *boardName;
+@property (assign, nonatomic) int boardChild;
+@property (copy, nonatomic) NSString *boardImg;
+
+@property (assign, nonatomic) int topicTotalNum;
+@property (assign, nonatomic) int postsTotalNum;
+
+@property (assign, nonatomic) int tdPostsNum;
+@property (copy, nonatomic) NSString *lastPostsDate;
+
+@property (assign, nonatomic) int boardcontent;
+@property (copy, nonatomic) NSString *forumRedirect;
 
 @end
+
 
 /*    "board_category_id" = 478;
  "board_category_name" = "\U767d\U9a79\U8fc7\U9699";
