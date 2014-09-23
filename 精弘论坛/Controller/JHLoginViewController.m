@@ -180,7 +180,6 @@
             //      NSLog(@"%@",array);
             
             
-            
             [self dismissViewControllerAnimated:YES completion:nil];
              }else{
             
