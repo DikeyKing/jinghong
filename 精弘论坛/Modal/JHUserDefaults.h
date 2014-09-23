@@ -11,13 +11,15 @@
 @interface JHUserDefaults : NSObject
 
 + (void)saveUserName:(NSString *)userName;
-+ (void)savePassword:(NSString *)ID;
++ (void)savePassword:(NSString *)password;
 + (void)saveToken:(NSString *)token;
 + (void)saveSecretToken:(NSString *)token;
++ (void)saveLoginState:(NSString *)loginState;
 
 + (NSString *)getUserName;
 + (NSString *)getPassword;
 + (NSString *)getToken;
 + (NSString *)getSecretToken;
++ (NSString *)getLoginState;
 
 @end

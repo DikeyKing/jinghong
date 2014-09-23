@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>publicAPI</key>
+	<dict>
+		<key>forumType</key>
+		<string>7</string>
+		<key>forumKey</key>
+		<string>CIuLQ1lkdPtOlhNuV4</string>
+		<key>sdkType</key>
+		<string>1</string>
+		<key>packageName</key>
+		<string>com.mobcent.newforum.app82036</string>
+		<key>platType</key>
+		<string>5</string>
+		<key>appName</key>
+		<string>精弘论坛</string>
+		<key>sdkVersion</key>
+		<string>2.0.0</string>
+	</dict>
+	<key>login</key>
+	<dict>
+		<key>email</key>
+		<string></string>
+		<key>password</key>
+		<string></string>
+	</dict>
+	<key>login3</key>
+	<dict>
+		<key>forumKey</key>
+		<string>CIuLQ1lkdPtOlhNuV4</string>
+		<key>sdkType</key>
+		<string>1</string>
+		<key>packageName</key>
+		<string>com.mobcent.newforum.app82036</string>
+		<key>platType</key>
+		<string>5</string>
+		<key>appName</key>
+		<string>精弘论坛</string>
+		<key>email</key>
+		<string></string>
+		<key>sdkVersion</key>
+		<string>2.0.0</string>
+		<key>password</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

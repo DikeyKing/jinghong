@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JHDataModel.h"
 
-@interface JHUser : NSObject
+@interface JHUser : JHDataModel
+
 +(instancetype)sharedInstance;
 
 @property(nonatomic, copy) NSString *userID; //ID

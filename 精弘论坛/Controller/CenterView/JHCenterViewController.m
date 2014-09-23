@@ -13,7 +13,6 @@
 #import "JHForumListCell.h"
 #import "JHTopicsViewController.h"
 
-#import "JHJsonToModel.h"
 
 @interface JHCenterViewController ()
 
@@ -27,13 +26,13 @@
     _tableView.delegate =self;
     _tableView.dataSource = self;
     
-    [self getBoardList];
+   // [self getBoardList];
 }
 
 #warning 这里还需要加入判定，可能板块中还有板块(会闪退)
 -(void)getBoardList
 {
-    NSString *urlString =JH_BASE_URL;
+    NSString *urlString =nil;
     NSDictionary *parameters = [JHForumAPI getParameterDic:GET_BOARD_LIST];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -45,7 +44,7 @@
             if (!_forumList) {
                 _forumList = [[NSArray alloc]init];
             }
-            _forumList = [JHJsonToModel getBoardItem:[dic objectForKey:@"list"]];
+           // _forumList = [JHJsonToModel getBoardItem:[dic objectForKey:@"list"]];
             
 //            _forumList = [dic objectForKey:@"list"];
     

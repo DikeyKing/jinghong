@@ -34,6 +34,13 @@
     [defaults setObject:secretToken forKey:@"secretToken"];
 }
 
++ (void)saveLoginState:(NSString *)loginState
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:loginState forKey:@"loginState"];
+    
+}
+
 + (NSString *)getUserName
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -57,5 +64,14 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return (NSString *)[defaults objectForKey:@"secretToken"];
 }
+
+
+
++ (NSString *)getLoginState
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return (NSString *)[defaults objectForKey:@"loginState"];
+}
+
 
 @end

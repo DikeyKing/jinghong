@@ -8,8 +8,8 @@
 
 #import "JHTopicsViewController.h"
 #import "JHTopicsCell.h"
-#import "JHJsonToModel.h"
 #import "AFNetworking.h"
+#import "JHForumAPI.h"
 
 @interface JHTopicsViewController ()
 
@@ -23,10 +23,10 @@
     _topicsTableView.delegate = self;
     _topicsTableView.dataSource = self;
     
-    [JHCommonConfigs sharedConfig].page = 1;
+   // [JHCommonConfigs sharedConfig].page = 1;
     
     
-    [self getTopics];
+//    [self getTopics];
     
 }
 
@@ -39,7 +39,7 @@
 
 -(void)getTopics
 {
-    NSString *urlString = JH_BASE_URL;
+    NSString *urlString = nil;
     NSDictionary *parameters = [JHForumAPI getParameterDic:GET_TOPICS_LIST];
 
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

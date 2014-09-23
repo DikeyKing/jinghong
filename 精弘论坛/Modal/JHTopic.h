@@ -7,23 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JHDataModel.h"
 
-@interface JHTopic : NSObject
+@interface JHTopic :JHDataModel
 
-@property (assign,nonatomic) int boardID;
+
+@property (copy, nonatomic) NSString *boardID;
 @property (copy, nonatomic) NSString *boardName;
-@property (assign,nonatomic) int topicID;
+@property (copy, nonatomic) NSString *topicID;
 @property (copy, nonatomic) NSString *type;
 @property (copy, nonatomic) NSString *title;
-@property (assign, nonatomic) int userID;
+@property (copy, nonatomic) NSString *userID;
 @property (copy, nonatomic) NSString *userNickName;
 @property (copy, nonatomic) NSString *lastReplyDate;
-@property (assign, nonatomic) int *vote;
-@property (assign, nonatomic) int hot;
-@property (assign, nonatomic) int hit;
-@property (assign, nonatomic) int replies;
-@property (assign, nonatomic) int essence;
-@property (assign, nonatomic) int top;
+@property (copy, nonatomic) NSString *vote;
+@property (copy, nonatomic) NSString *hot;
+@property (copy, nonatomic) NSString *hit;
+@property (copy, nonatomic) NSString *replies;
+@property (copy, nonatomic) NSString *essence;
+@property (copy, nonatomic) NSString *top;
 @property (copy, nonatomic) NSString *subject;
 @property (copy, nonatomic) NSString *pic_path;
 

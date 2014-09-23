@@ -5,132 +5,71 @@
 //  Created by Dikey on 9/17/14.
 //  Copyright (c) 2014 dikey. All rights reserved.
 //
-
-
-// ??可以考虑设置一个全局变量 _boardID?
-
 #import "JHForumAPI.h"
-#import "JHUser.h"
+#import "JHUserDefaults.h"
+
+#define JH_FORUMTYPE @"7"
+#define JH_FORUMKEY @"CIuLQ1lkdPtOlhNuV4"
+#define JH_SDKTYPE @"1"
+#define JH_PACKAGENAME @"com.mobcent.newforum.app82036"
+#define JH_PLATTYPE @"5"
+#define JH_APPNAME @"精弘论坛"
+#define JH_SDKVERSION @"2.0.0"
+#define JH_BAIKETYPE @"1"
+#define JH_FORUMID @"1"
 
 @implementation JHForumAPI
 
-+(NSString *)getBaseURLString:(int)getParameter //好像baseURL都是一样的-_-
-{
-    NSString *baseURLString = [NSString new];
-    switch (getParameter) {
-        case GET_BOARD_LIST:
-            baseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
-            break;
-            
-        case GET_TOPICS_LIST:
-            baseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
-            break;
-            
-        case GET_TOPICS_DETAIL:
-            baseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
-            break;
-            
-        
-        case GET_RECENT_TOPICS:
-            baseURLString = @"";
-            break;
-       
-        case GET_PERSONAL_INFO:
-            baseURLString = @" http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
-            break;
-            
-            
-        default:
-            break;
-    }
-    return baseURLString;
-}
 
 +(NSDictionary *)getParameterDic:(int)getParameter
 {
-    NSDictionary *parameterDic = [NSDictionary new];
+    NSDictionary *publicParameter = @{
+                                @"appName":JH_APPNAME,
+                                @"forumKey":JH_FORUMKEY,
+                                @"sdkVersion": JH_SDKVERSION,
+                                @"forumType":JH_FORUMTYPE,
+                                @"sdkType": JH_SDKTYPE,
+                                @"forumId":JH_FORUMID,
+                                @"packageName": JH_PACKAGENAME,
+                                @"platType": JH_PLATTYPE
+                                };
+    
+    NSDictionary *privateParameter = [NSDictionary new];
     
     switch (getParameter) {
+            
         case GET_BOARD_LIST:
-            parameterDic = @{
+            privateParameter = @{
                              @"r":@"forum/forumlist",
                              @"baikeType":@"1", //这个参数什么意思？
-                
-                             @"accessToken":[JHCommonConfigs sharedConfig].token,
-                             @"accessSecret":[JHCommonConfigs sharedConfig].secretToken,
-
-                             @"appName":JH_APPNAME,
-                             @"forumKey":JH_FORUMKEY,
-                             @"sdkVersion": JH_SDKVERSION,
-                             @"forumType":JH_FORUMTYPE,
-                             @"sdkType": JH_SDKTYPE,
-                             @"forumId":JH_FORUMID,
-                             @"packageName": JH_PACKAGENAME,
-                             @"platType": JH_PLATTYPE
+                             @"accessToken":[JHUserDefaults getToken],
+                             @"accessSecret":[JHUserDefaults getSecretToken]
                              };
             break;
             
         case GET_TOPICS_LIST:
-            parameterDic = @{
+            privateParameter = @{
                             @"r":@"forum/topiclist",
                             @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID],
-
-                            @"accessToken":[JHCommonConfigs sharedConfig].token,
-                            @"accessSecret":[JHCommonConfigs sharedConfig].secretToken,
-   
+                            @"accessToken":[JHUserDefaults getToken],
+                            @"accessSecret":[JHUserDefaults getSecretToken],
                             @"page":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].page], //获取第几页
                             @"pageSize":[NSString stringWithFormat:@"%d",10], //每页多少个
-                            
-                            @"appName":JH_APPNAME,
-                            @"forumKey":JH_FORUMKEY,
-                            @"sdkVersion": JH_SDKVERSION,
-                            @"forumType":JH_FORUMTYPE,
-                            @"sdkType": JH_SDKTYPE,
-                            @"forumId":JH_FORUMID,
-                            @"packageName": JH_PACKAGENAME,
-                            @"platType": JH_PLATTYPE
                             };
             break;
-            /*
-             @"r":@"forum/topiclist",
-             @"boardId":_boardID,
-             @"appName":JH_APPNAME,
-             @"forumKey":JH_FORUMKEY,
-             @"sdkVersion": JH_SDKVERSION,
-             @"accessToken":[JHUser sharedInstance].token,
-             @"forumType":JH_FORUMTYPE,
-             @"sdkType": JH_SDKTYPE,
-             @"accessSecret":[JHUser sharedInstance].secretToken,
-             @"forumId":JH_FORUMID,
-             @"packageName": JH_PACKAGENAME,
-             @"platType": JH_PLATTYPE,
-             @"page":[NSString stringWithFormat:@"%d",_page],
-             @"pageSize":[NSString stringWithFormat:@"%d",10]
-             */
-            
             
         case GET_TOPICS_DETAIL:
-            parameterDic = @{
+            privateParameter = @{
                              @"r":@"forum/topiclist",
-             
                              @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
-             
-                             @"accessToken":[JHCommonConfigs sharedConfig].token,
-                             @"accessSecret":[JHCommonConfigs sharedConfig].secretToken,
-                             
-                             @"appName":JH_APPNAME,
-                             @"forumKey":JH_FORUMKEY,
-                             @"sdkVersion": JH_SDKVERSION,
-                             @"forumType":JH_FORUMTYPE,
-                             @"sdkType": JH_SDKTYPE,
-                             @"forumId":JH_FORUMID,
-                             @"packageName": JH_PACKAGENAME,
-                             @"platType": JH_PLATTYPE
-                             };            break;
+                             @"accessToken":[JHUserDefaults getToken],
+                             @"accessSecret":[JHUserDefaults getSecretToken]
+                             };
+            break;
            
             
         case GET_RECENT_TOPICS:
-            parameterDic = nil;
+            privateParameter = nil;
             break;
 
             
@@ -160,30 +99,31 @@
              */
             
         case GET_PERSONAL_INFO:
-            parameterDic = @{
+            privateParameter = @{
                 @"r":@"user/userinfo",
                 @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
+                @"accessToken":[NSString stringWithFormat:@"%@",[JHUserDefaults getToken]],
+                @"accessSecret":[NSString stringWithFormat:@"%@",[JHUserDefaults getSecretToken]]
                 
-                @"accessToken":[JHCommonConfigs sharedConfig].token,
-                @"accessSecret":[JHCommonConfigs sharedConfig].secretToken,
-                
-                @"appName":JH_APPNAME,
-                @"forumKey":JH_FORUMKEY,
-                @"sdkVersion": JH_SDKVERSION,
-                @"forumType":JH_FORUMTYPE,
-                @"sdkType": JH_SDKTYPE,
-                @"forumId":JH_FORUMID,
-                @"packageName": JH_PACKAGENAME,
-                @"platType": JH_PLATTYPE
             };
             break;
       
+        case GET_LOGIN:
+            privateParameter = @{
+                                 @"r":@"user/userinfo",
+                                 @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
+                                 @"email":[JHUserDefaults getUserName],
+                                 @"password":[JHUserDefaults getPassword]
+                                 };
+            break;
+
         default:
             break;
     }
     
-    
-    return parameterDic;
+    NSMutableDictionary *urlParameter = [[NSMutableDictionary alloc]initWithDictionary:publicParameter];
+    [urlParameter addEntriesFromDictionary:privateParameter];
+    return urlParameter;
 }
 
 
