@@ -116,6 +116,7 @@
     NSLog(@"编号%@ 版块%@",[_boardList[indexPath.row] objectForKey:@"board_id"],[_boardList[indexPath.row] objectForKey:@"board_name"]);
     
     JHTopicsViewController *jHTopicsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicsViewController"];
+    
     [JHCommonConfigs sharedConfig].boardID = [[_boardList[indexPath.row] objectForKey:@"board_id"]intValue];
     
     [self.navigationController pushViewController:jHTopicsVC animated:YES];

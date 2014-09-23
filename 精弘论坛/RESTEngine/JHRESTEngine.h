@@ -16,9 +16,11 @@ typedef void (^ErrorBlock)(NSError* engineError);
 
 //+(instancetype)sharedJHRESTManager;
 
--(id) loginWithName:(NSString*) loginName
-           password:(NSString*) password
-        onSucceeded:(VoidBlock) succeededBlock
-            onError:(ErrorBlock) errorBlock;
+-(id)loginWithCompletion:(void(^)(NSError *err))block;
+
+
+
+
+
 
 @end

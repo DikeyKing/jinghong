@@ -49,17 +49,26 @@
     
 //控制器不关心过程，只关心结果
     JHRESTEngine *engine = [JHRESTEngine new];
+    [engine loginWithCompletion:^(NSError *err) {
+        //code
+        if (!err) {
+           // statements
+        }
+    }];
     
     
-    [engine loginWithName:_userName.text password:_userPassword.text onSucceeded:^{
-        //succeeded block
+    
+    
+    
+    
+    //succeeded block
         //如果成功，返回对象
         //self dismissVC
-        [self dismissViewControllerAnimated:YES completion:nil];
-        
-    } onError:^(NSError *engineError) {
-        //Error block
-    }];
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//        
+//    } onError:^(NSError *engineError) {
+//        //Error block
+//    }];
     
     
     
@@ -144,6 +153,7 @@
     NSString *urlString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
+    
     NSDictionary *parameters = @{
                                  @"r":@"forum/forumlist",
                                  @"baikeType":@"1",
@@ -171,9 +181,8 @@
             
             
             
-            [self dismissViewControllerAnimated:YES completion:^{
-            }];
-        }else{
+            [self dismissViewControllerAnimated:YES completion:nil];
+             }else{
             
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
