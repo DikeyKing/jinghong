@@ -9,4 +9,6 @@
 #import <Foundation/Foundation.h>
 @interface JHDataModel : NSObject
 
+-(id)initWithDictionary :(NSDictionary *)jsonDic;
+
 @end

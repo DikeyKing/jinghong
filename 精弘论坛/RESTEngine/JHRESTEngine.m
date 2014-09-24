@@ -8,7 +8,6 @@
 
 #import "JHRESTEngine.h"
 #import "JHForumAPI.h"
-#import "SVProgressHUD.h" 
 #import "JHUserDefaults.h"
 
 static NSString * const kJHBaseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
@@ -16,84 +15,106 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
 
 @implementation JHRESTEngine
 
-//+(instancetype)sharedJHRESTManager
-//{
-////    static JHRESTEngine *sharedEngine = nil;
-////    static dispatch_once_t *onceToken ;
-////    dispatch_once(onceToken,^{
-////        sharedEngine = [[JHRESTEngine manager]init];
-////    });
-////    return sharedEngine;
-//
-//}
--(id)loginWithCompletion:(void (^)(NSError *))block
+//static HPHttpClient *_sharedClient = nil;
+//static dispatch_once_t onceToken;
+//dispatch_once(&onceToken, ^{
+//    _sharedClient = [[HPHttpClient alloc] initWithBaseURL:[NSURL URLWithString:kHPClientBaseURLString]];
+//});
+
++(instancetype)sharedJHRESTManager
 {
-    JHRESTEngine *engineManager = [[JHRESTEngine alloc]init];
-    [engineManager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-    [engineManager POST:kJHLoginURLString parameters:[JHForumAPI getParameterDic:GET_LOGIN] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    static JHRESTEngine *sharedEngine = nil;
+    static dispatch_once_t onceToken ;
+    dispatch_once(&onceToken,^{
+        sharedEngine = [[JHRESTEngine alloc]init];
+        [sharedEngine.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
+    });
+    return sharedEngine;
+} //这里为什么不行？
+
+-(id)loginWithCompletion:(void (^)(NSError *))block{
+    [self POST:kJHLoginURLString parameters:[JHForumAPI getParameterDic:GET_LOGIN] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *dic = responseObject;
+        if ([[dic objectForKey:@"rs"]  isEqual: @1]) {
+            [JHUserDefaults saveLoginState:@"YES"];
+            [JHUserDefaults saveToken:[dic objectForKey:@"token"]];
+            [JHUserDefaults saveSecretToken:[dic objectForKey:@"secret"]];
+            [JHUserDefaults saveUid:[dic objectForKey:@"uid"]];
+            //登录成功
+            block(nil);
+        }else{//登录失败
+            [JHUserDefaults saveLoginState:@"NO"];
+            block(nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        block(error);//出错了
+    }];
+    return self;
+}
+
+-(id)getBoardListOnSucceeded:(ArrayBlock)succeededBlock
+                     onError:(ErrorBlock)errorBlock
+{
+    [self POST:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_BOARD_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *objectDic = responseObject;
+       
+        if ([objectDic objectForKey:@"rs"] != 0) {
+            //把dic 中list 解析为boardItem，传回array
+            //将array传回block
+            //然后block中刷新tableView
+             NSArray *forumArray = [objectDic objectForKey:@"list"];
+            NSMutableArray *forumNameArray = [NSMutableArray new];
+
+            for (int i = 0; i< [forumArray count]; i++) {
+                forumNameArray[i] = [forumArray[i] objectForKey:@"list"];
+                
+            }
+            
+            /*
+             forumArray [0] [1]
+             forumArray [i] objectForKey[board_category_name] 是标题
+             [forumItemArray objectForKey [board_category_name]]; 获得所有标题
+             boardArray = [forumArray[0] objectForKey board_list]
+             boardItem = boardArray[i]
+             [boardItemArray addObject BoardItem];
+             
+             list =     (
+             {
+             "board_category_id" = 478;
+             "board_category_name" = "\U767d\U9a79\U8fc7\U9699";
+             "board_category_type" = 2;
+             "board_list" =             (
+             {
+             "board_child" = 1;
+             "board_content" = 1;
+             "board_id" = 299;
+             "board_img" = "";
+             "board_name" = "\U300e \U65b0\U751f\U62a5\U5230 \U300f";
+             
+             */
+
+            
+            
+            NSLog(@"成功了%@",objectDic);
+            
+        }else{
+            //返回错误
+            //block中显示 
+        }
+        
+
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-
+        NSLog(@"失败了%@",error);
         
     }];
     
-    return engineManager;
+    
+    return self;
 }
-
--(id) loginWithName:(NSString*) loginName
-           password:(NSString*) password
-{
-    JHRESTEngine *engineManager = [[JHRESTEngine alloc]init];
-    [engineManager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-    
-    [engineManager POST:kJHLoginURLString parameters:[JHForumAPI getParameterDic:GET_LOGIN] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        //dictionary = responseObject
-        //succededBlock( operation, dictionary)
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //
-        //
-    }];
-    
-    
-//    [engineManager POST:kJHLoginURLString parameters:[JHForumAPI getParameterDic:GET_LOGIN]
-// success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//     
-//     NSLog(@"%@",operation);
-//     
-//     /*
-//      Printing description of responseObject:
-//      {
-//      avatar = "http://center.zjut.com/images/noavatar_middle.gif";
-//      counts = "<null>";
-//      fid = 1;
-//      rs = 1;
-//      secret = 2a113ad6cfadce314a60a79d33cb7;
-//      token = 8a7e56597e8b55881c67b1cb28b1b;
-//      uid = 273684;
-//      }      
-//      */
-//     
-//     NSDictionary *dic = responseObject;
-//        //成功后的回调，把resopnseobject返回给loginVC；
-//     
-//        if ([[dic objectForKey:@"rs"] boolValue] == 1) {
-//            [JHUserDefaults saveToken:[dic objectForKey:@"token"]];
-//            [JHUserDefaults saveToken:[dic objectForKey:@"secret"]];
-//            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-//            [JHCommonConfigs sharedConfig].loginState= YES ;
-//        }else{
-//            [SVProgressHUD showErrorWithStatus:@"用户名或密码错误"];
-//        }
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        [SVProgressHUD showErrorWithStatus:@"发生错误"];
-//        
-//        //这里处理失败消息
-//        
-//    }];
-    return nil;
-}
-
+     
+     
+     
 @end
+
+

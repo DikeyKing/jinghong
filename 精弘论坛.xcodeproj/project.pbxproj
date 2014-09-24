@@ -13,6 +13,7 @@
 		A948296319C816DF00C51243 /* JHHTMLParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A948296219C816DF00C51243 /* JHHTMLParse.m */; };
 		A948296619C81A8C00C51243 /* JHNewPosts.m in Sources */ = {isa = PBXBuildFile; fileRef = A948296519C81A8C00C51243 /* JHNewPosts.m */; };
 		A9482A8619CBCF7500453DD5 /* JHForumListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9482A8519CBCF7500453DD5 /* JHForumListCell.m */; };
+		A9B3E91419D26D38008BC363 /* JHFourmItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B3E91319D26D38008BC363 /* JHFourmItem.m */; };
 		A9BCA1FD19CC16230025EA2D /* JHBoardItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA1FC19CC16230025EA2D /* JHBoardItem.m */; };
 		A9BCA20119CC25FF0025EA2D /* JHTopicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA20019CC25FF0025EA2D /* JHTopicsViewController.m */; };
 		A9BCA20419CC26210025EA2D /* JHTopicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA20319CC26210025EA2D /* JHTopicsCell.m */; };
@@ -69,6 +70,8 @@
 		A9482A8419CBCF7500453DD5 /* JHForumListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHForumListCell.h; path = Controller/LeftView/JHForumListCell.h; sourceTree = "<group>"; };
 		A9482A8519CBCF7500453DD5 /* JHForumListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHForumListCell.m; path = Controller/LeftView/JHForumListCell.m; sourceTree = "<group>"; };
 		A94C1DD719BBF79500CC08B8 /* unused.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = unused.h; path = Storeage/unused.h; sourceTree = "<group>"; };
+		A9B3E91219D26D38008BC363 /* JHFourmItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHFourmItem.h; path = Modal/JHFourmItem.h; sourceTree = "<group>"; };
+		A9B3E91319D26D38008BC363 /* JHFourmItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHFourmItem.m; path = Modal/JHFourmItem.m; sourceTree = "<group>"; };
 		A9BCA1FB19CC16230025EA2D /* JHBoardItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHBoardItem.h; path = Modal/JHBoardItem.h; sourceTree = "<group>"; };
 		A9BCA1FC19CC16230025EA2D /* JHBoardItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHBoardItem.m; path = Modal/JHBoardItem.m; sourceTree = "<group>"; };
 		A9BCA1FF19CC25FF0025EA2D /* JHTopicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHTopicsViewController.h; path = Controller/CenterView/topics/JHTopicsViewController.h; sourceTree = "<group>"; };
@@ -164,6 +167,17 @@
 			children = (
 			);
 			name = Storage;
+			sourceTree = "<group>";
+		};
+		A9B3E91119D26D15008BC363 /* 论坛列表 */ = {
+			isa = PBXGroup;
+			children = (
+				A9B3E91219D26D38008BC363 /* JHFourmItem.h */,
+				A9B3E91319D26D38008BC363 /* JHFourmItem.m */,
+				A9BCA1FB19CC16230025EA2D /* JHBoardItem.h */,
+				A9BCA1FC19CC16230025EA2D /* JHBoardItem.m */,
+			);
+			name = "论坛列表";
 			sourceTree = "<group>";
 		};
 		A9BCA1FE19CC25BB0025EA2D /* Topics */ = {
@@ -343,14 +357,13 @@
 		A9F2B24019ADC20A0067B6A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A9B3E91119D26D15008BC363 /* 论坛列表 */,
 				A9BCA21B19D024E00025EA2D /* JHDataModel.h */,
 				A9BCA21C19D024E00025EA2D /* JHDataModel.m */,
 				A912A63C19C97AF400F8F471 /* JHUser.h */,
 				A912A63D19C97AF400F8F471 /* JHUser.m */,
 				A9BCA20C19CD1C9E0025EA2D /* JHTopic.h */,
 				A9BCA20D19CD1C9E0025EA2D /* JHTopic.m */,
-				A9BCA1FB19CC16230025EA2D /* JHBoardItem.h */,
-				A9BCA1FC19CC16230025EA2D /* JHBoardItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -515,6 +528,7 @@
 				A9F2B21C19ADC1E90067B6A4 /* JHAppDelegate.m in Sources */,
 				A948296319C816DF00C51243 /* JHHTMLParse.m in Sources */,
 				A9BCA20119CC25FF0025EA2D /* JHTopicsViewController.m in Sources */,
+				A9B3E91419D26D38008BC363 /* JHFourmItem.m in Sources */,
 				A912A63E19C97AF400F8F471 /* JHUser.m in Sources */,
 				A9F2B21819ADC1E90067B6A4 /* main.m in Sources */,
 				A9CE8AD319C5176B00B3117A /* JHRegisterViewController.m in Sources */,

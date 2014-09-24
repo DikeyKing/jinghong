@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JHDataModel.h"
 
-@interface JHBoardItem : NSObject
+@interface JHBoardItem : JHDataModel
 /*
  "board_id": 455,
  "board_name": "『同乡情谊』",
@@ -22,20 +23,28 @@
  "forumRedirect": ""
  */
 
-@property (assign, nonatomic) int boardId;
-@property (copy, nonatomic) NSString *boardName;
-@property (assign, nonatomic) int boardChild;
-@property (copy, nonatomic) NSString *boardImg;
-
-@property (assign, nonatomic) int topicTotalNum;
-@property (assign, nonatomic) int postsTotalNum;
-
-@property (assign, nonatomic) int tdPostsNum;
-@property (copy, nonatomic) NSString *lastPostsDate;
-
-@property (assign, nonatomic) int boardcontent;
+@property (copy, nonatomic) NSString *board_id;
+@property (copy, nonatomic) NSString *board_name;
+@property (copy, nonatomic) NSString *board_child;
+@property (copy, nonatomic) NSString *board_img;
+@property (copy, nonatomic) NSString *topic_total_num;
+@property (copy, nonatomic) NSString *posts_total_num;
+@property (copy, nonatomic) NSString *td_posts_num;
+@property (copy, nonatomic) NSString *last_posts_date;
+@property (copy, nonatomic) NSString *board_content;
 @property (copy, nonatomic) NSString *forumRedirect;
 
+
+@property (copy, nonatomic) NSString *boardId;
+@property (copy, nonatomic) NSString *boardName;
+@property (copy, nonatomic) NSString *boardChild;
+@property (copy, nonatomic) NSString *boardImg;
+@property (copy, nonatomic) NSString *topicTotalNum;
+@property (copy, nonatomic) NSString *postsTotalNum;
+@property (copy, nonatomic) NSString *tdPostsNum;
+@property (copy, nonatomic) NSString *lastPostsDate;
+@property (copy, nonatomic) NSString *boardcontent;
+//@property (copy, nonatomic) NSString *forumRedirect;
 @end
 
 

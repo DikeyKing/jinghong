@@ -10,6 +10,7 @@
 
 @implementation JHUserDefaults
 
+
 + (void)saveUserName:(NSString *)userName
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -65,12 +66,23 @@
     return (NSString *)[defaults objectForKey:@"secretToken"];
 }
 
-
-
 + (NSString *)getLoginState
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return (NSString *)[defaults objectForKey:@"loginState"];
+}
+
+
+
++ (void)saveUid:(NSString *)uid
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:uid forKey:@"uid"];
+}
++ (NSString *)getUid
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return (NSString *)[defaults objectForKey:@"uid"];
 }
 
 

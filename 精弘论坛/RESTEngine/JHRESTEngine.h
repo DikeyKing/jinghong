@@ -11,16 +11,25 @@
 
 typedef void (^VoidBlock)(void);
 typedef void (^ErrorBlock)(NSError* engineError);
+typedef void (^ArrayBlock)(NSMutableArray *modelObjects);
 
 @interface JHRESTEngine : AFHTTPRequestOperationManager
 
-//+(instancetype)sharedJHRESTManager;
++(instancetype)sharedJHRESTManager;
 
 -(id)loginWithCompletion:(void(^)(NSError *err))block;
 
+-(id)getBoardListOnSucceeded:(ArrayBlock)succeededBlock
+                     onError:(ErrorBlock)errorBlock;
 
 
-
+//typedef void (^VoidBlock)(void);
+//typedef void (^ModelBlock)(JSONModel* aModelBaseObject);
+//typedef void (^ArrayBlock)(NSMutableArray* listOfModelBaseObjects);
+//typedef void (^ErrorBlock)(NSError* engineError);
+//                                
+//OnSucceeded:(ArrayBlock) succeededBlock
+//onError:(ErrorBlock) errorBlock;
 
 
 @end

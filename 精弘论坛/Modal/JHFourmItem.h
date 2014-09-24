@@ -1,60 +1,26 @@
 //
-//  JHBoardItem.m
+//  JHFourmItem.h
 //  精弘论坛
 //
-//  Created by Dikey on 9/19/14.
+//  Created by Dikey on 9/24/14.
 //  Copyright (c) 2014 dikey. All rights reserved.
 //
+// 需要返回一个 forumItemArray
+#import <Foundation/Foundation.h>
+#import "JHDataModel.h"
 
-#import "JHBoardItem.h"
+@interface JHFourmItem : JHDataModel
 
+@property (copy,nonatomic) NSString *board_category_id;
+@property (copy,nonatomic) NSString *board_category_name;
+@property (copy,nonatomic) NSString *board_category_type;
+@property (copy,nonatomic) NSMutableArray *board_list;
 
-@implementation JHBoardItem
-//+(instancetype)init
-//{
-//    static JHBoardItem *jHBoardItem = nil;
-//    static dispatch_once_t *onceToken ;
-//    dispatch_once(onceToken,^{
-//        jHBoardItem = [JHBoardItem new];
-//    });
-//    return jHBoardItem;
-//}
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
 
 
 
 /*
- forumArray [0] [1]
- forumArray [i] objectForKey[board_category_name] 是标题
- [forumItemArray objectForKey [board_category_name]]; 获得所有标题
- boardArray = [forumArray[0] objectForKey board_list]
- boardItem = boardArray[i]
- [boardItemArray addObject BoardItem];
- */
-
-
-/*
- Printing description of dic:
- {
- body =     {
- externInfo = "<null>";
- };
- errcode = "";
- head =     {
- alert = 0;
- errCode = 00000000;
- errInfo = "\U8c03\U7528\U6210\U529f,\U6ca1\U6709\U4efb\U4f55\U9519\U8bef";
- version = "2.1.0.1";
- };
+ 
  list =     (
  {
  "board_category_id" = 478;
@@ -342,14 +308,6 @@
  "topic_total_num" = 4723;
  }
  );
- }
- );
- "online_user_num" = 0;
- rs = 1;
- "td_visitors" = 0;
- }
-
  */
-
 
 @end

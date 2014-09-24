@@ -15,11 +15,13 @@
 + (void)saveToken:(NSString *)token;
 + (void)saveSecretToken:(NSString *)token;
 + (void)saveLoginState:(NSString *)loginState;
++ (void)saveUid:(NSString *)uid;
 
 + (NSString *)getUserName;
 + (NSString *)getPassword;
 + (NSString *)getToken;
 + (NSString *)getSecretToken;
 + (NSString *)getLoginState;
++ (NSString *)getUid;
 
 @end

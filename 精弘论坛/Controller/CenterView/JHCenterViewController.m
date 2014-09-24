@@ -13,6 +13,7 @@
 #import "JHForumListCell.h"
 #import "JHTopicsViewController.h"
 
+#import "JHRESTEngine.h"
 
 @interface JHCenterViewController ()
 
@@ -25,8 +26,22 @@
     [super viewDidLoad];
     _tableView.delegate =self;
     _tableView.dataSource = self;
-    
-   // [self getBoardList];
+    [self getBoardListttt];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+
+}
+
+-(void)getBoardListttt
+{
+    [[JHRESTEngine sharedJHRESTManager]getBoardListOnSucceeded:^(NSMutableArray *modelObjects) {
+        
+    } onError:^(NSError *engineError) {
+        
+    }];    
 }
 
 #warning 这里还需要加入判定，可能板块中还有板块(会闪退)

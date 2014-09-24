@@ -31,7 +31,9 @@
                                 @"sdkType": JH_SDKTYPE,
                                 @"forumId":JH_FORUMID,
                                 @"packageName": JH_PACKAGENAME,
-                                @"platType": JH_PLATTYPE
+                                @"platType": JH_PLATTYPE,
+                                @"accessToken":[JHUserDefaults getToken],
+                                @"accessSecret":[JHUserDefaults getSecretToken]
                                 };
     
     NSDictionary *privateParameter = [NSDictionary new];
@@ -41,9 +43,8 @@
         case GET_BOARD_LIST:
             privateParameter = @{
                              @"r":@"forum/forumlist",
-                             @"baikeType":@"1", //这个参数什么意思？
-                             @"accessToken":[JHUserDefaults getToken],
-                             @"accessSecret":[JHUserDefaults getSecretToken]
+                             @"baikeType":@"1" //这个参数什么意思？
+
                              };
             break;
             
@@ -51,19 +52,17 @@
             privateParameter = @{
                             @"r":@"forum/topiclist",
                             @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID],
-                            @"accessToken":[JHUserDefaults getToken],
-                            @"accessSecret":[JHUserDefaults getSecretToken],
+
                             @"page":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].page], //获取第几页
-                            @"pageSize":[NSString stringWithFormat:@"%d",10], //每页多少个
+                            @"pageSize":[NSString stringWithFormat:@"%d",10] //每页多少个
                             };
             break;
             
         case GET_TOPICS_DETAIL:
             privateParameter = @{
                              @"r":@"forum/topiclist",
-                             @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
-                             @"accessToken":[JHUserDefaults getToken],
-                             @"accessSecret":[JHUserDefaults getSecretToken]
+                             @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid]
+
                              };
             break;
            
@@ -102,8 +101,7 @@
             privateParameter = @{
                 @"r":@"user/userinfo",
                 @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
-                @"accessToken":[NSString stringWithFormat:@"%@",[JHUserDefaults getToken]],
-                @"accessSecret":[NSString stringWithFormat:@"%@",[JHUserDefaults getSecretToken]]
+
                 
             };
             break;
@@ -116,7 +114,7 @@
                                  @"password":[JHUserDefaults getPassword]
                                  };
             break;
-
+            
         default:
             break;
     }

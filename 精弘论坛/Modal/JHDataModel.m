@@ -10,4 +10,12 @@
 
 @implementation JHDataModel
 
+-(id)initWithDictionary :(NSDictionary *)jsonDic
+{
+    if(self = [super init]){
+    [self setValuesForKeysWithDictionary:jsonDic];
+    }
+    return self;
+}
+
 @end
