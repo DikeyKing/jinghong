@@ -51,8 +51,9 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
                      onError:(ErrorBlock)errorBlock
 {
     [self POST:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_BOARD_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *objectDic = responseObject;
        
+        NSDictionary *objectDic = responseObject;
+        
         if ([objectDic objectForKey:@"rs"] != 0) {
             //声明forumArray
             //声明forumItemArray
@@ -61,17 +62,17 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
             //不要关心细节，细节是模型类的事情
             NSArray *forumArray = [objectDic objectForKey:@"list"];
             NSMutableArray *forumItemArray = [NSMutableArray new];
-            for (int i=0 ; i<forumArray.count; i++) {
-                JHFourmItem *forumItem = [[JHFourmItem alloc]initWithDictionary:(NSMutableDictionary *)forumArray[i]];
-                [forumItemArray addObject: forumItem];
+            
+            for (NSMutableDictionary *forumDic in forumArray) {
+                [forumItemArray addObject:[[JHFourmItem alloc]initWithDictionary:forumDic]];
             }
+            succeededBlock(forumItemArray);
+            
             //forumItemArray 包含了服务器返回的所有版块名
         }else{
             NSLog(@"获取首页失败了,参数错误");
         }
-        
-
-        
+          
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"获取首页失败了%@",error);
     }];

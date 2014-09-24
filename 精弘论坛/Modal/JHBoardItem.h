@@ -22,6 +22,7 @@
  "board_content": 1,
  "forumRedirect": ""
  */
+//
 
 @property (copy, nonatomic) NSString *board_id;
 @property (copy, nonatomic) NSString *board_name;

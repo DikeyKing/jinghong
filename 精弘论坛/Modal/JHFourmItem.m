@@ -32,11 +32,15 @@
         
         NSArray *boardArray = (NSArray *)value;
         
-        for (int i =0; i< boardArray.count; i++) {
-            JHBoardItem *boardItem = [[JHBoardItem alloc]initWithDictionary:(NSDictionary*)boardArray[i]];
-            
-            [_board_list addObject:boardItem];
+        for (NSMutableDictionary *boardDic in boardArray) {
+            [_board_list addObject:[[JHBoardItem alloc]initWithDictionary:boardDic]];
         }
+        
+//        for (int i =0; i< boardArray.count; i++) {
+//            JHBoardItem *boardItem = [[JHBoardItem alloc]initWithDictionary:(NSDictionary*)boardArray[i]];
+//            
+//            [_board_list addObject:boardItem];
+//        }
         
     }
     else
