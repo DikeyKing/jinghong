@@ -35,15 +35,16 @@
 @property (copy, nonatomic) NSString *forumRedirect;
 
 
-@property (copy, nonatomic) NSString *boardId;
-@property (copy, nonatomic) NSString *boardName;
-@property (copy, nonatomic) NSString *boardChild;
-@property (copy, nonatomic) NSString *boardImg;
-@property (copy, nonatomic) NSString *topicTotalNum;
-@property (copy, nonatomic) NSString *postsTotalNum;
-@property (copy, nonatomic) NSString *tdPostsNum;
-@property (copy, nonatomic) NSString *lastPostsDate;
-@property (copy, nonatomic) NSString *boardcontent;
+//@property (copy, nonatomic) NSString *boardId;
+//@property (copy, nonatomic) NSString *boardName;
+//@property (copy, nonatomic) NSString *boardChild;
+//@property (copy, nonatomic) NSString *boardImg;
+//@property (copy, nonatomic) NSString *topicTotalNum;
+//@property (copy, nonatomic) NSString *postsTotalNum;
+//@property (copy, nonatomic) NSString *tdPostsNum;
+//@property (copy, nonatomic) NSString *lastPostsDate;
+//@property (copy, nonatomic) NSString *boardcontent;
+
 //@property (copy, nonatomic) NSString *forumRedirect;
 @end
 

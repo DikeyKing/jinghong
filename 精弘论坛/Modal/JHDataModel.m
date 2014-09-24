@@ -15,6 +15,8 @@
     if(self = [super init]){
     [self setValuesForKeysWithDictionary:jsonDic];
     }
+    
+    
     return self;
 }
 

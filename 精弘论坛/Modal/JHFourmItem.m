@@ -10,6 +10,7 @@
 #import "JHBoardItem.h"
 
 @implementation JHFourmItem
+
 - (instancetype)init
 {
     self = [super init];
@@ -22,14 +23,21 @@
 
 -(void) setValue:(id)value forKey:(NSString *)key
 {
+    
     if([key isEqualToString:@"board_list"])
     {
-        for(NSMutableDictionary *boardItemArray in value)
-        {
-            JHBoardItem *boardItem = [JHBoardItem alloc]initWithDictionary:<#(NSDictionary *)#>
-            Review *thisReview = [[Review alloc] initWithDictionary:reviewArrayDict];
+        if (!_board_list) {
+            _board_list = [NSMutableArray new];
+        }
+        
+        NSArray *boardArray = (NSArray *)value;
+        
+        for (int i =0; i< boardArray.count; i++) {
+            JHBoardItem *boardItem = [[JHBoardItem alloc]initWithDictionary:(NSDictionary*)boardArray[i]];
+            
             [_board_list addObject:boardItem];
         }
+        
     }
     else
         [super setValue:value forKey:key];

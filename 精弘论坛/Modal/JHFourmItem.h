@@ -16,11 +16,7 @@
 @property (copy,nonatomic) NSString *board_category_type;
 @property (copy,nonatomic) NSMutableArray *board_list;
 
-
-
-
 /*
- 
  list =     (
  {
  "board_category_id" = 478;
