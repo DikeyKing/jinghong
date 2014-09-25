@@ -20,12 +20,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     _userName.delegate =self;
     _userPassword.delegate =self;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+
+    
+    
     _userName.text = @"iosapp";
     _userPassword.text = @"appletest";
 }
@@ -40,6 +44,7 @@
 
     [JHUserDefaults saveUserName:_userName.text];
     [JHUserDefaults savePassword:_userPassword.text];
+    
     [SVProgressHUD showWithStatus:@"登录中"];
     _regeister.enabled = NO;   
     

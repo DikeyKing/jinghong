@@ -10,7 +10,6 @@
 
 @implementation JHUserDefaults
 
-
 + (void)saveUserName:(NSString *)userName
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

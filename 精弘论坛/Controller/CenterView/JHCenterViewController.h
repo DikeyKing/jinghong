@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (copy, nonatomic) NSArray *forumList;
+@property (copy, nonatomic) NSArray *forumItemList;
 @property (copy, nonatomic) NSArray *boardList;
 @property (copy, nonatomic) NSMutableArray *boardID;
 

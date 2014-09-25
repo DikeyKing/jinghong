@@ -8,8 +8,7 @@
 
 #import "JHTopicsViewController.h"
 #import "JHTopicsCell.h"
-#import "AFNetworking.h"
-#import "JHForumAPI.h"
+#import "JHRESTEngine.h"
 
 @interface JHTopicsViewController ()
 
@@ -26,7 +25,7 @@
    // [JHCommonConfigs sharedConfig].page = 1;
     
     
-//    [self getTopics];
+    [self getTopics];
     
 }
 
@@ -39,21 +38,12 @@
 
 -(void)getTopics
 {
-    NSString *urlString = nil;
-    NSDictionary *parameters = [JHForumAPI getParameterDic:GET_TOPICS_LIST];
-
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-    
-    [manager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *dic = responseObject;
-        if ([[dic objectForKey:@"rs"] boolValue] == 1) {
-            _topicsList = [dic objectForKey:@"list"];
-            [_topicsTableView reloadData];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+    [[JHRESTEngine sharedJHRESTManager]getTopicsListOnSucceeded:^(NSMutableArray *modelObjects) {
+        //
+    } onError:^(NSError *engineError) {
+        //
     }];
+    
 }
 
 

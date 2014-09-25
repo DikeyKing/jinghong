@@ -7,7 +7,9 @@
 //
 
 #import "JHMasterViewController.h"
-#import "JHCommonConfigs.h"
+//#import "JHCommonConfigs.h"
+
+#import "JHUserDefaults.h"
 #import "JHLoginViewController.h"
 
 #import "MMDrawerController.h"
@@ -38,7 +40,7 @@ static const CGFloat kPublicRightMenuWidth = 240.0f;
 
 -(void)login
 {
-    if ([JHCommonConfigs sharedConfig].loginState == 0) {
+    if ([[JHUserDefaults getLoginState]boolValue] == NO) {
         JHLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHLoginViewController"];
         [self presentViewController:loginVC animated:NO completion:^{
         }];

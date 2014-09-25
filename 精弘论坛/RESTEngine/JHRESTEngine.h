@@ -17,11 +17,13 @@ typedef void (^ArrayBlock)(NSMutableArray *modelObjects);
 
 +(instancetype)sharedJHRESTManager;
 
--(id)loginWithCompletion:(void(^)(NSError *err))block;
+-(instancetype)loginWithCompletion:(void(^)(NSError *err))block;
 
--(id)getBoardListOnSucceeded:(ArrayBlock)succeededBlock
+-(instancetype)getBoardListOnSucceeded:(ArrayBlock)succeededBlock
                      onError:(ErrorBlock)errorBlock;
 
+-(instancetype)getTopicsListOnSucceeded:(ArrayBlock)succeededBlock
+                                onError:(ErrorBlock)errorBlock;
 
 //typedef void (^VoidBlock)(void);
 //typedef void (^ModelBlock)(JSONModel* aModelBaseObject);

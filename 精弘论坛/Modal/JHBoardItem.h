@@ -10,19 +10,6 @@
 #import "JHDataModel.h"
 
 @interface JHBoardItem : JHDataModel
-/*
- "board_id": 455,
- "board_name": "『同乡情谊』",
- "board_child": 0,
- "board_img": "",
- "topic_total_num": 915,
- "posts_total_num": 526718,
- "td_posts_num": 9,
- "last_posts_date": "1411111560000",
- "board_content": 1,
- "forumRedirect": ""
- */
-//
 
 @property (copy, nonatomic) NSString *board_id;
 @property (copy, nonatomic) NSString *board_name;
@@ -35,26 +22,9 @@
 @property (copy, nonatomic) NSString *board_content;
 @property (copy, nonatomic) NSString *forumRedirect;
 
-
-//@property (copy, nonatomic) NSString *boardId;
-//@property (copy, nonatomic) NSString *boardName;
-//@property (copy, nonatomic) NSString *boardChild;
-//@property (copy, nonatomic) NSString *boardImg;
-//@property (copy, nonatomic) NSString *topicTotalNum;
-//@property (copy, nonatomic) NSString *postsTotalNum;
-//@property (copy, nonatomic) NSString *tdPostsNum;
-//@property (copy, nonatomic) NSString *lastPostsDate;
-//@property (copy, nonatomic) NSString *boardcontent;
-
-//@property (copy, nonatomic) NSString *forumRedirect;
 @end
 
-
-/*    "board_category_id" = 478;
- "board_category_name" = "\U767d\U9a79\U8fc7\U9699";
- "board_category_type" = 2;
- "board_list" =     (
- {
+/*
  "board_child" = 1;
  "board_content" = 1;
  "board_id" = 299;
@@ -65,5 +35,5 @@
  "posts_total_num" = 4236;
  "td_posts_num" = 3;
  "topic_total_num" = 245;
- }*/
+ */
 
