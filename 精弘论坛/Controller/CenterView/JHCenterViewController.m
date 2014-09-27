@@ -41,6 +41,11 @@
 
 }
 
+-(void)getRecentTopTenTopics
+{
+
+}
+
 -(void)getBoardList
 {
     [[JHRESTEngine sharedJHRESTManager]getBoardListOnSucceeded:^(NSMutableArray *modelObjects) {
@@ -121,13 +126,22 @@
     switch ([sender selectedSegmentIndex]) {
         case 0:
             NSLog(@"最新帖子");
+            
+            
+            //切换标题，重新赋予数据源，最新帖子
+            //[_tableView reloadData];
+            
             _tableView.hidden = YES;
             
             break;
         case 1:
             NSLog(@"论坛列表");
-            _tableView.hidden =NO;
             
+            
+            //论坛状态
+            //[_tableView reloadData];
+
+            _tableView.hidden =NO;
             break;
         default:
             break;

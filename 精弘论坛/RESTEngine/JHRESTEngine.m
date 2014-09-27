@@ -99,12 +99,84 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
     
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
+        
+        if ([objectDic objectForKey:@"rs"]!= 0) {
+            NSArray *topicsArray = [objectDic objectForKey:@"list"];
+            NSMutableArray *topicsItemArray = [NSMutableArray new];
+            
+            for (NSMutableDictionary *topicsDic in topicsArray) {
+                // 这步将topicsArray 中的JSON  转换成 topicsItem 添加至Array
+                // 然后返回 topicsItemArray
+                
+                [topicsItemArray addObject:<#(id)#>];
+                succeededBlock(topicsItemArray);
+                
+                
+            }
+            
+        }
         NSLog(@"获取的List 是%@",objectDic);
 
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
     
+    
+    return self;
+    
+    /*
+     list =     (
+     {
+     "board_id" = 455;
+     "board_name" = "\U300e\U540c\U4e61\U60c5\U8c0a\U300f";
+     essence = 0;
+     hits = 40;
+     hot = 0;
+     "last_reply_date" = 1411714867000;
+     "pic_path" = "";
+     replies = 5;
+     subject = "\U4f5c\U4e3a\U4e00\U540d\U5728\U5de5\U59274\U5e74\U7684\U8001\U4eba\Uff0c\U5176\U5b9e\U4e00\U76f4\U6000\U5ff5\U5c71\U4e1c\U7684\U5927\U9992\U5934\Uff0c\U7c73\U996d\U5403\U4e0d\U4e60\U60ef\Uff0c\U8fc7\U8282\U601d\U5ff5\U5bb6\U4eba\Uff0c";
+     title = "[\U5730\U533a]2014\U5e74\U65b0\U5efa\U5c71\U4e1c\U8001\U4e61\U4f1a\U7fa4\Uff1a280739409";
+     top = 0;
+     "topic_id" = 1626191;
+     type = normal;
+     "user_id" = 202508;
+     "user_nick_name" = yixianjuke;
+     vote = 0;
+     },
+     {
+     "board_id" = 455;
+     "board_name" = "\U300e\U540c\U4e61\U60c5\U8c0a\U300f";
+     essence = 0;
+     hits = 37;
+     hot = 0;
+     "last_reply_date" = 1411655917000;
+     "pic_path" = "";
+     replies = 7;
+     subject = "\U6c42\U805a\U4f1a\Uff0c\U6c42\U9a9a\U6270\Uff0c\U521a\U6765\U5b66\U6821\U597d\U65e0\U804a\U7684\U8bf4\Uff0c\U627e\U4e2a\U8001\U4e61\U4e0d\U5bb9\U6613\U554a\Uff01\U770b\U4e86\U597d\U591a\U5e16\U5b50\U53d1\U73b0\U90fd\U662f\U516d\U5b89\U4eba";
+     title = "[\U5730\U533a]\U5bfb\U627e14\U7ea7\U5b89\U5fbd\U7684\U8001\U4e61\Uff01";
+     top = 0;
+     "topic_id" = 1627022;
+     type = normal;
+     "user_id" = 273723;
+     "user_nick_name" = "may\U7ae5\U90ed\U51ef";
+     vote = 0;
+     },
+
+     */
+    
+}
+
+
+-(instancetype)getRecentTopicsOnSucceeded:(ArrayBlock)succeededBlock
+                                  onError:(ErrorBlock)errorBlock
+{
+    [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_RECENT_TOPICS] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *objectDic = responseObject;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
     
     return self;
 }

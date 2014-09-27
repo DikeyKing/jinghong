@@ -68,23 +68,31 @@
            
             
         case GET_RECENT_TOPICS:
-            privateParameter = nil;
+            privateParameter = @{
+                                 @"r":@"forum/topiclist",
+                                 @"pageSize": [NSString stringWithFormat:@"%d",10],
+                                 @"page":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].page],
+                                 @"sortby":@"publish"
+                                 
+                                 };
             break;
 
             
             /*  recent 10 topics
-             http://bbs.zjut.edu.cn/mobcent/app/web/index.php?
-             
+             pageSize	10
+             sortby	publish
+             page	1
              r=forum/topiclist
+
+
+
+             http://bbs.zjut.edu.cn/mobcent/app/web/index.php?
              
              appName	精弘论坛
              sdkVersion	2.0.0
              forumKey	CIuLQ1lkdPtOlhNuV4
-             pageSize	10
              accessToken	8a7e56597e8b55881c67b1cb28b1b
              forumType	7
-             sortby	publish
-             page	1
              sdkType	1
              accessSecret	2a113ad6cfadce314a60a79d33cb7
              forumId	1
@@ -199,13 +207,11 @@
  http://bbs.zjut.edu.cn/mobcent/app/web/index.php
  
  r=forum/topiclist
- imsi	FD33C5E7-D99D-4166-9A7F-80DC5EED184B
  appName	精弘论坛
  sdkVersion	2.0.0
  forumKey	CIuLQ1lkdPtOlhNuV4
  pageSize	10
  accessToken	8a7e56597e8b55881c67b1cb28b1b
- imei	FD33C5E7-D99D-4166-9A7F-80DC5EED184B
  forumType	7
  sortby	publish
  page	1

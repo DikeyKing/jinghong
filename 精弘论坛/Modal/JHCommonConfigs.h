@@ -25,6 +25,16 @@
 @property(nonatomic, assign) int topicID;     //当前用户正在访问的主题
 @property(nonatomic, assign) int page;        //正在访问第几页....
 
+
+@property(nonatomic, copy) NSString *userID; //ID
+@property(nonatomic, copy) NSString *name;
+
+//@property(nonatomic, copy) NSString *token;
+//@property(nonatomic, copy) NSString *secretToken;
+
+//@property(nonatomic, assign) BOOL loginState;
+
+
 /*
  "uid": 273684,
  "avatar": "http:\/\/center.zjut.com\/images\/noavatar_middle.gif",

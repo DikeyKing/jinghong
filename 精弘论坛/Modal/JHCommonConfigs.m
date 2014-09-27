@@ -18,6 +18,8 @@
         sharedJHConfigs.secretToken = @"";
         sharedJHConfigs.token = @"";
         sharedJHConfigs.boardID = 0;
+        sharedJHConfigs.page = 1;
+        
     });
     return sharedJHConfigs;
 }

@@ -14,10 +14,10 @@
 		A948296619C81A8C00C51243 /* JHNewPosts.m in Sources */ = {isa = PBXBuildFile; fileRef = A948296519C81A8C00C51243 /* JHNewPosts.m */; };
 		A9482A8619CBCF7500453DD5 /* JHForumListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9482A8519CBCF7500453DD5 /* JHForumListCell.m */; };
 		A9B3E91419D26D38008BC363 /* JHFourmItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B3E91319D26D38008BC363 /* JHFourmItem.m */; };
+		A9B3E91719D3C0AD008BC363 /* JHTopicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B3E91619D3C0AD008BC363 /* JHTopicItem.m */; };
 		A9BCA1FD19CC16230025EA2D /* JHBoardItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA1FC19CC16230025EA2D /* JHBoardItem.m */; };
 		A9BCA20119CC25FF0025EA2D /* JHTopicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA20019CC25FF0025EA2D /* JHTopicsViewController.m */; };
 		A9BCA20419CC26210025EA2D /* JHTopicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA20319CC26210025EA2D /* JHTopicsCell.m */; };
-		A9BCA20E19CD1C9E0025EA2D /* JHTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA20D19CD1C9E0025EA2D /* JHTopic.m */; };
 		A9BCA21119CE4EDD0025EA2D /* JHCommonConfigs.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA21019CE4EDD0025EA2D /* JHCommonConfigs.m */; };
 		A9BCA21619CFFB8F0025EA2D /* JHRESTEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA21519CFFB8F0025EA2D /* JHRESTEngine.m */; };
 		A9BCA21A19D011150025EA2D /* PublicAPI.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9BCA21919D011150025EA2D /* PublicAPI.plist */; };
@@ -72,14 +72,14 @@
 		A94C1DD719BBF79500CC08B8 /* unused.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = unused.h; path = Storeage/unused.h; sourceTree = "<group>"; };
 		A9B3E91219D26D38008BC363 /* JHFourmItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHFourmItem.h; path = Modal/JHFourmItem.h; sourceTree = "<group>"; };
 		A9B3E91319D26D38008BC363 /* JHFourmItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHFourmItem.m; path = Modal/JHFourmItem.m; sourceTree = "<group>"; };
+		A9B3E91519D3C0AD008BC363 /* JHTopicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHTopicItem.h; path = Modal/JHTopicItem.h; sourceTree = "<group>"; };
+		A9B3E91619D3C0AD008BC363 /* JHTopicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHTopicItem.m; path = Modal/JHTopicItem.m; sourceTree = "<group>"; };
 		A9BCA1FB19CC16230025EA2D /* JHBoardItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHBoardItem.h; path = Modal/JHBoardItem.h; sourceTree = "<group>"; };
 		A9BCA1FC19CC16230025EA2D /* JHBoardItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHBoardItem.m; path = Modal/JHBoardItem.m; sourceTree = "<group>"; };
 		A9BCA1FF19CC25FF0025EA2D /* JHTopicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHTopicsViewController.h; path = Controller/CenterView/topics/JHTopicsViewController.h; sourceTree = "<group>"; };
 		A9BCA20019CC25FF0025EA2D /* JHTopicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHTopicsViewController.m; path = Controller/CenterView/topics/JHTopicsViewController.m; sourceTree = "<group>"; };
 		A9BCA20219CC26210025EA2D /* JHTopicsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHTopicsCell.h; path = Controller/CenterView/topics/JHTopicsCell.h; sourceTree = "<group>"; };
 		A9BCA20319CC26210025EA2D /* JHTopicsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHTopicsCell.m; path = Controller/CenterView/topics/JHTopicsCell.m; sourceTree = "<group>"; };
-		A9BCA20C19CD1C9E0025EA2D /* JHTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHTopic.h; path = Modal/JHTopic.h; sourceTree = "<group>"; };
-		A9BCA20D19CD1C9E0025EA2D /* JHTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHTopic.m; path = Modal/JHTopic.m; sourceTree = "<group>"; };
 		A9BCA20F19CE4EDD0025EA2D /* JHCommonConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHCommonConfigs.h; path = Modal/JHCommonConfigs.h; sourceTree = "<group>"; };
 		A9BCA21019CE4EDD0025EA2D /* JHCommonConfigs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHCommonConfigs.m; path = Modal/JHCommonConfigs.m; sourceTree = "<group>"; };
 		A9BCA21419CFFB8F0025EA2D /* JHRESTEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHRESTEngine.h; path = RESTEngine/JHRESTEngine.h; sourceTree = "<group>"; };
@@ -152,6 +152,8 @@
 		A912A63819C9743100F8F471 /* unused */ = {
 			isa = PBXGroup;
 			children = (
+				A912A63C19C97AF400F8F471 /* JHUser.h */,
+				A912A63D19C97AF400F8F471 /* JHUser.m */,
 				A9BCA21919D011150025EA2D /* PublicAPI.plist */,
 				A94C1DD719BBF79500CC08B8 /* unused.h */,
 				A948296119C816DF00C51243 /* JHHTMLParse.h */,
@@ -160,13 +162,6 @@
 				A948296519C81A8C00C51243 /* JHNewPosts.m */,
 			);
 			name = unused;
-			sourceTree = "<group>";
-		};
-		A94C1DD819BBF7BA00CC08B8 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Storage;
 			sourceTree = "<group>";
 		};
 		A9B3E91119D26D15008BC363 /* 论坛列表 */ = {
@@ -204,18 +199,11 @@
 			name = RESTEngine;
 			sourceTree = "<group>";
 		};
-		A9BCA21319CFA9C10025EA2D /* temp */ = {
-			isa = PBXGroup;
-			children = (
-				A9BCA20F19CE4EDD0025EA2D /* JHCommonConfigs.h */,
-				A9BCA21019CE4EDD0025EA2D /* JHCommonConfigs.m */,
-			);
-			name = temp;
-			sourceTree = "<group>";
-		};
 		A9CE8AD419C520B200B3117A /* MasterVC */ = {
 			isa = PBXGroup;
 			children = (
+				A9CE8AD519C5211600B3117A /* JHMasterViewController.h */,
+				A9CE8AD619C5211600B3117A /* JHMasterViewController.m */,
 				A9CE8AE019C524B800B3117A /* Center VIew */,
 				A9CE8AD919C523F700B3117A /* Left View */,
 				A9CE8AD819C523F400B3117A /* Right View */,
@@ -312,13 +300,9 @@
 				A9F2B21D19ADC1E90067B6A4 /* Main.storyboard */,
 				A9F2B21A19ADC1E90067B6A4 /* JHAppDelegate.h */,
 				A9F2B21B19ADC1E90067B6A4 /* JHAppDelegate.m */,
-				A9CE8AD519C5211600B3117A /* JHMasterViewController.h */,
-				A9CE8AD619C5211600B3117A /* JHMasterViewController.m */,
 				A9BCA21219CFA9910025EA2D /* RESTEngine */,
-				A9BCA21319CFA9C10025EA2D /* temp */,
 				A9F2B24019ADC20A0067B6A4 /* Model */,
 				A9F2B24119ADC2130067B6A4 /* Controller */,
-				A94C1DD819BBF7BA00CC08B8 /* Storage */,
 				A9F2B22319ADC1E90067B6A4 /* Images.xcassets */,
 				A9F2B21219ADC1E90067B6A4 /* Supporting Files */,
 			);
@@ -359,11 +343,11 @@
 			children = (
 				A9BCA21B19D024E00025EA2D /* JHDataModel.h */,
 				A9BCA21C19D024E00025EA2D /* JHDataModel.m */,
+				A9BCA20F19CE4EDD0025EA2D /* JHCommonConfigs.h */,
+				A9BCA21019CE4EDD0025EA2D /* JHCommonConfigs.m */,
 				A9B3E91119D26D15008BC363 /* 论坛列表 */,
-				A912A63C19C97AF400F8F471 /* JHUser.h */,
-				A912A63D19C97AF400F8F471 /* JHUser.m */,
-				A9BCA20C19CD1C9E0025EA2D /* JHTopic.h */,
-				A9BCA20D19CD1C9E0025EA2D /* JHTopic.m */,
+				A9B3E91519D3C0AD008BC363 /* JHTopicItem.h */,
+				A9B3E91619D3C0AD008BC363 /* JHTopicItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -531,10 +515,10 @@
 				A9B3E91419D26D38008BC363 /* JHFourmItem.m in Sources */,
 				A912A63E19C97AF400F8F471 /* JHUser.m in Sources */,
 				A9F2B21819ADC1E90067B6A4 /* main.m in Sources */,
+				A9B3E91719D3C0AD008BC363 /* JHTopicItem.m in Sources */,
 				A9CE8AD319C5176B00B3117A /* JHRegisterViewController.m in Sources */,
 				A912A63B19C9772D00F8F471 /* JHForumAPI.m in Sources */,
 				A9CE8AE319C524ED00B3117A /* JHCenterViewController.m in Sources */,
-				A9BCA20E19CD1C9E0025EA2D /* JHTopic.m in Sources */,
 				A9CE8AD719C5211600B3117A /* JHMasterViewController.m in Sources */,
 				A948296619C81A8C00C51243 /* JHNewPosts.m in Sources */,
 				A9CE8ADC19C5243900B3117A /* JHLeftViewController.m in Sources */,
