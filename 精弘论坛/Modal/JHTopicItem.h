@@ -11,24 +11,62 @@
 
 @interface JHTopicItem : JHDataModel
 
+@property (assign, nonatomic) int board_id;
+@property (copy, nonatomic) NSMutableString *board_name;
+@property (assign, nonatomic) int essence;
+@property (assign, nonatomic) int hits;
+@property (assign, nonatomic) int hot;
+@property (copy, nonatomic) NSMutableString *last_reply_date;
+@property (copy, nonatomic) NSMutableString *pic_path;
+@property (assign, nonatomic) int replies;
+@property (copy, nonatomic) NSMutableString *subject;
+@property (copy, nonatomic) NSMutableString *title;
+@property (assign, nonatomic) int top;
+@property (assign, nonatomic) int topic_id;
+@property (copy, nonatomic) NSMutableString *type;
+@property (assign, nonatomic) int user_id;
+@property (copy, nonatomic) NSMutableString *user_nick_name;
+@property (assign, nonatomic) int vote;
 
-@property (copy, nonatomic) NSString *boardID;
-@property (copy, nonatomic) NSString *boardName;
-@property (copy, nonatomic) NSString *topicID;
-@property (copy, nonatomic) NSString *type;
-@property (copy, nonatomic) NSString *title;
-@property (copy, nonatomic) NSString *userID;
-@property (copy, nonatomic) NSString *userNickName;
-@property (copy, nonatomic) NSString *lastReplyDate;
-@property (copy, nonatomic) NSString *vote;
-@property (copy, nonatomic) NSString *hot;
-@property (copy, nonatomic) NSString *hit;
-@property (copy, nonatomic) NSString *replies;
-@property (copy, nonatomic) NSString *essence;
-@property (copy, nonatomic) NSString *top;
-@property (copy, nonatomic) NSString *subject;
-@property (copy, nonatomic) NSString *pic_path;
+/*
+ 
+ _board_id	NSString *	(long)455	0x156aeb80
+ _board_name	NSString *	(null)	0x1562ef30
+ _essence	NSString *	(int)0	0x15633cc0
+ _hits	NSString *	(long)4452	0x15628cd0
+ _hot	NSString *	(int)0	0x15633cc0
+ _last_reply_date	NSString *	(null)	0x15680f00
+ _pic_path	NSString *	(null)	0x3bc672f0
+ _replies	NSString *	(long)343	0x15628c40
+ _subject	NSString *	(null)	0x156f1700
+ _title	NSString *	(null)	0x156ead10
+ _top	NSString *	(int)0	0x15633cc0
+ _topic_id	NSString *	(long)873818	0x1565bcf0
+ _type	NSString *	(null)	0x15692890
+ _user_id	NSString *	(long)111704	0x1567c6f0
+ _user_nick_name	NSString *	(null)	0x156fbbc0
+ _vote	NSString *	(int)0	0x15633cc0
+ 
+ */
 
+/*
+ "board_id" = 455;
+ "board_name" = "\U300e\U540c\U4e61\U60c5\U8c0a\U300f";
+ essence = 0;
+ hits = 123175;
+ hot = 0;
+ "last_reply_date" = 1411896347000;
+ "pic_path" = "";
+ replies = 33753;
+ subject = "      2014\U5e74\U7684\U8001\U4e61\U4f1a\U641e\U8d77\U6765\U554a\U4eb2\U4eec\Uff01  \U6ca1\U7559\U4e0b\U8fc7\U8054\U7cfb\U65b9\U5f0f\U7684\Uff0c\U8bf7\U8ddf\U5e16\U7559\U4e0b\U8054";
+ title = "\U2605\U798f\U5efa\U2605  \U5982\U679c\U6709\U94b1\U4e5f\U662f\U4e00\U79cd\U9519\Uff0c\U6211\U5b81\U613f\U4e00\U9519\U518d\U9519\Uff01";
+ top = 0;
+ "topic_id" = 1228901;
+ type = normal;
+ "user_id" = 171229;
+ "user_nick_name" = "\U559c\U7f8a\U7f8a";
+ vote = 0;
+ */
 
 /*
  {
