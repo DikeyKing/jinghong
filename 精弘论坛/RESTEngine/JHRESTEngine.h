@@ -28,6 +28,8 @@ typedef void (^ArrayBlock)(NSMutableArray *modelObjects);
 -(instancetype)getRecentTopicsOnSucceeded:(ArrayBlock)succeededBlock
                                 onError:(ErrorBlock)errorBlock;
 
+-(instancetype)getTopicDetailsOnSucceeded:(ArrayBlock)succeededBlock
+                                  onError:(ErrorBlock)errorBlock;
 //typedef void (^VoidBlock)(void);
 //typedef void (^ModelBlock)(JSONModel* aModelBaseObject);
 //typedef void (^ArrayBlock)(NSMutableArray* listOfModelBaseObjects);

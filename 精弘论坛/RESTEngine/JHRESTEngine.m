@@ -132,6 +132,30 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
     
     return self;
 }
+
+
+-(instancetype)getTopicDetailsOnSucceeded:(ArrayBlock)succeededBlock
+                                  onError:(ErrorBlock)errorBlock
+{
+    [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_DETAIL] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *objectDic = responseObject;
+        if ([objectDic objectForKey:@"rs"]!= 0) {
+            NSArray *topicsDetailArray = [objectDic objectForKey:@"list"];
+//            NSMutableArray *topicsItemArray = [NSMutableArray new];
+//            
+//            for (NSMutableDictionary *topicsDic in topicsArray) {
+//                [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
+//            }
+//            //
+            succeededBlock(topicsDetailArray);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
+    return self;
+}
 @end
 
 

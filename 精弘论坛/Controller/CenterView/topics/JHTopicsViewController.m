@@ -7,9 +7,12 @@
 //
 
 #import "JHTopicsViewController.h"
+#import "JHTopicDetailsViewController.h"
+
 #import "JHTopicsCell.h"
 #import "JHRESTEngine.h"
 #import "JHTopicItem.h"
+#import "JHCommonConfigs.h"
 
 @interface JHTopicsViewController ()
 @property (strong,nonatomic) JHTopicItem* jhTopicItem;
@@ -111,11 +114,6 @@
         
         [jHTopicsCell displayValues:(JHTopicItem *)_topicsItemList[indexPath.row]];
         
-       // _jhTopicItem = _topicsItemList[indexPath.row];
-
-//        jHTopicsCell.topicTitle.text = [_jhTopicItem.title copy];
-//        jHTopicsCell.authorName.text = [_jhTopicItem.user_nick_name copy];
-   
         /*
          _jhTopicItem	JHTopicItem *	0x14f58fe0	0x14f58fe0
          JHDataModel	JHDataModel
@@ -142,6 +140,18 @@
 }
 
 
+#pragma UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _jhTopicItem =  (JHTopicItem* )_topicsItemList[indexPath.row];
+    [JHCommonConfigs sharedConfig].boardID = _jhTopicItem.board_id;
+    [JHCommonConfigs sharedConfig].topicID = _jhTopicItem.topic_id;
+    [JHCommonConfigs sharedConfig].uid = _jhTopicItem.user_id;
+    
+    JHTopicDetailsViewController *topicDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicDetailsViewController"];
+    [self.navigationController pushViewController:topicDetailVC animated:YES];
+}
 
 
 

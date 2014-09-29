@@ -62,10 +62,31 @@ static int pageSize=20 ;
             
         case GET_TOPICS_DETAIL:
             privateParameter = @{
-                             @"r":@"forum/topiclist",
+                             @"r":@"forum/postlist",
+                             @"topicId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].topicID],
+                             @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID],
                              @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid]
-
                              };
+            
+            
+            /*
+             r	forum/postlist
+             boardId	303
+             appName	Á≤æÂºòËÆ∫Âùõ
+             sdkVersion	2.0.0
+             forumKey	CIuLQ1lkdPtOlhNuV4
+             pageSize	10
+             accessToken	8a7e56597e8b55881c67b1cb28b1b
+             imei	FD33C5E7-D99D-4166-9A7F-80DC5EED184B
+             forumType	7
+             page	1
+             sdkType	1
+             topicId	1626836
+             accessSecret	2a113ad6cfadce314a60a79d33cb7
+             forumId	1
+             packageName	com.mobcent.newforum.app82036
+             platType	5
+             */
             break;
            
             
@@ -135,14 +156,98 @@ static int pageSize=20 ;
 }
 
 
-+(NSArray *)backArrayDate:(int)getList
-{
-//    @property (copy, nonatomic) NSString *baseURL;
-//    @property (copy, nonatomic) NSMutableDictionary *parametersDic;
- 
-    return nil;
-}
 @end
+
+/*帖子详情
+ 
+ {
+	"body": {
+ "externInfo": null
+	},
+	"errcode": "",
+	"forumName": "『 池塘边 』",
+	"forumTopicUrl": "http://bbs.zjut.edu.cn/forum.php?mod=viewthread&tid=1626836",
+	"has_next": 0,
+	"head": {
+ "alert": 0,
+ "errCode": "00000000",
+ "errInfo": "调用成功,没有任何错误",
+ "version": "2.1.0.1"
+	},
+	"icon_url": "",
+	"img_url": "",
+	"list": [
+ {
+ "icon": "http://center.zjut.com/avatar.php?uid=273602&size=middle",
+ "is_quote": 0,
+ "level": 0,
+ "location": "",
+ "managePanel": [
+ ],
+ "position": 2,
+ "posts_date": "1410948800000",
+ "quote_content": "",
+ "quote_pid": 0,
+ "quote_user_name": "",
+ "reply_content": [
+ {
+ "infor": "ios",
+ "type": 0
+ }
+ ],
+ "reply_id": 273602,
+ "reply_name": "傅逗逗",
+ "reply_posts_id": 14052802,
+ "reply_status": 1,
+ "reply_type": "normal",
+ "role_num": 1,
+ "status": 1,
+ "title": "",
+ "userTitle": "注册会员"
+ }
+	],
+	"page": 1,
+	"rs": 1,
+	"topic": {
+ "activityInfo": null,
+ "content": [
+ {
+ "infor": "测试内容[酷]",
+ "type": 0
+ }
+ ],
+ "create_date": "1410948638000",
+ "essence": 0,
+ "flag": 0,
+ "gender": 1,
+ "hits": 5,
+ "hot": 0,
+ "icon": "http://center.zjut.com/avatar.php?uid=273684&size=middle",
+ "is_favor": 0,
+ "level": 0,
+ "location": "",
+ "managePanel": [
+ ],
+ "poll_info": null,
+ "replies": 1,
+ "reply_posts_id": 0,
+ "reply_status": 1,
+ "sortId": 0,
+ "status": 1,
+ "title": "[闲聊灌水]测试标题",
+ "top": 0,
+ "topic_id": 1626836,
+ "type": "normal",
+ "user_id": 273684,
+ "user_nick_name": "iOSApp",
+ "userTitle": "注册会员",
+ "vote": 0
+	},
+	"total_num": 1
+ }
+
+ 
+*/
 
 
 
