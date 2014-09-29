@@ -17,13 +17,12 @@
 
 @property (copy,nonatomic) NSMutableString *managePanel;
 
-@property (copy,nonatomic) NSMutableString *position;
+@property (assign,nonatomic) int position;
 @property (copy,nonatomic) NSMutableString *posts_date;
 
 @property (copy,nonatomic) NSMutableString *quote_content;
 @property (copy,nonatomic) NSMutableString *quote_pid;
 @property (copy,nonatomic) NSMutableString *quote_user_name;
-
 
 //@property (copy,nonatomic) NSString *reply_content;
 
@@ -34,6 +33,12 @@
 @property (copy,nonatomic) NSMutableString *reply_name;
 @property (assign,nonatomic) long reply_posts_id;
 
+@property (assign,nonatomic) int reply_status;
+@property (copy,nonatomic) NSMutableString *reply_type;
+@property (assign,nonatomic) int role_num;
+@property (assign,nonatomic) int status;
+@property (copy,nonatomic) NSMutableString *title;
+@property (copy,nonatomic) NSMutableString *userTitle;
 
 /*
  
@@ -80,12 +85,7 @@
 // "infor": "你知道的太多了",
 
 
-@property (assign,nonatomic) int reply_status;
-@property (copy,nonatomic) NSString *reply_type;
-@property (assign,nonatomic) int role_num;
-@property (assign,nonatomic) int status;
-@property (copy,nonatomic) NSString *title;
-@property (copy,nonatomic) NSString *userTitle;
+
 
 /*
  {

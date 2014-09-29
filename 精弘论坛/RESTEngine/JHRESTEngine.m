@@ -142,11 +142,20 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
         NSDictionary *objectDic = responseObject;
         if ([objectDic objectForKey:@"rs"]!= 0) {
             NSArray *topicsDetailArray = [objectDic objectForKey:@"list"];
-            NSMutableArray *topicsDetailItemArray = [NSMutableArray new];
-            
+            NSMutableArray *topicsDetailItemArray = [[NSMutableArray alloc]initWithCapacity:topicsDetailArray.count];
             for (NSMutableDictionary *topicsDic in topicsDetailArray) {
-                [topicsDetailItemArray addObject:[[JHTopicDetailItem alloc]initWithDictionary:topicsDic]];
+
+                 [topicsDetailItemArray addObject:[[JHTopicDetailItem alloc]initWithDictionary:topicsDic]];
+                
             }
+            
+//            JHTopicDetailItem *item = [[JHTopicDetailItem alloc]initWithDictionary:topicsDic];
+//            int rank = item.position;
+//            [topicsDetailItemArray[rank] addObject:item];
+            // NSMutableArray 怎么排序
+//            [topicsDetailItemArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+//                
+//            }];
             
             succeededBlock(topicsDetailItemArray);
         }

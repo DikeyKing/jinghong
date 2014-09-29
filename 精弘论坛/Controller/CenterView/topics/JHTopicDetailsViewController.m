@@ -5,7 +5,7 @@
 //  Created by Dikey on 9/29/14.
 //  Copyright (c) 2014 dikey. All rights reserved.
 //
-// 
+//
 
 #import "JHTopicDetailsViewController.h"
 #import "JHRESTEngine.h"
@@ -38,7 +38,6 @@
     }];
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -49,7 +48,6 @@
 {
     return 0;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
