@@ -24,7 +24,5 @@ enum{
 //返回parameter参数
 +(NSDictionary *)getParameterDic:(int)getParameter;
 
-+(NSArray *)backArrayDate:(int)getList;
-
 
 @end

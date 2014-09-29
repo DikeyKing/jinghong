@@ -5,11 +5,14 @@
 //  Created by Dikey on 9/29/14.
 //  Copyright (c) 2014 dikey. All rights reserved.
 //
+// 
 
 #import "JHTopicDetailsViewController.h"
 #import "JHRESTEngine.h"
 
 @interface JHTopicDetailsViewController ()
+
+@property (strong ,nonatomic) NSArray *topicsDetailsItems;
 
 @end
 
@@ -23,6 +26,12 @@
 -(void)getTopicDetails
 {
     [[JHRESTEngine sharedJHRESTManager]getTopicDetailsOnSucceeded:^(NSMutableArray *modelObjects) {
+        if (!_topicsDetailsItems) {
+            _topicsDetailsItems = [NSArray new];
+        }
+        if (modelObjects!=nil) {
+            _topicsDetailsItems = [modelObjects copy];
+        }
         
     } onError:^(NSError *engineError) {
         

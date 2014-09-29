@@ -10,6 +10,7 @@
 #import "JHForumAPI.h"
 #import "JHFourmItem.h"
 #import "JHTopicItem.h"
+#import "JHTopicDetailItem.h"
 
 #import "JHUserDefaults.h"
 
@@ -141,13 +142,13 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
         NSDictionary *objectDic = responseObject;
         if ([objectDic objectForKey:@"rs"]!= 0) {
             NSArray *topicsDetailArray = [objectDic objectForKey:@"list"];
-//            NSMutableArray *topicsItemArray = [NSMutableArray new];
-//            
-//            for (NSMutableDictionary *topicsDic in topicsArray) {
-//                [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
-//            }
-//            //
-            succeededBlock(topicsDetailArray);
+            NSMutableArray *topicsDetailItemArray = [NSMutableArray new];
+            
+            for (NSMutableDictionary *topicsDic in topicsDetailArray) {
+                [topicsDetailItemArray addObject:[[JHTopicDetailItem alloc]initWithDictionary:topicsDic]];
+            }
+            
+            succeededBlock(topicsDetailItemArray);
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -10,31 +10,80 @@
 
 @interface JHTopicDetailItem : JHDataModel
 
-@property (copy,nonatomic) NSString *icon;
-@property (copy,nonatomic) NSString *is_quote;
-@property (copy,nonatomic) NSString *level;
-@property (copy,nonatomic) NSString *location;
+@property (copy,nonatomic) NSMutableString *icon;
+@property (copy,nonatomic) NSMutableString *is_quote;
+@property (copy,nonatomic) NSMutableString *level;
+@property (copy,nonatomic) NSMutableString *location;
 
-@property (copy,nonatomic) NSString *managePanel;
+@property (copy,nonatomic) NSMutableString *managePanel;
 
-@property (copy,nonatomic) NSString *position;
-@property (copy,nonatomic) NSString *posts_date;
+@property (copy,nonatomic) NSMutableString *position;
+@property (copy,nonatomic) NSMutableString *posts_date;
 
-@property (copy,nonatomic) NSString *quote_content;
-@property (copy,nonatomic) NSString *quote_pid;
-@property (copy,nonatomic) NSString *quote_user_name;
+@property (copy,nonatomic) NSMutableString *quote_content;
+@property (copy,nonatomic) NSMutableString *quote_pid;
+@property (copy,nonatomic) NSMutableString *quote_user_name;
 
-@property (copy,nonatomic) NSString *infor;
-@property (copy,nonatomic) NSString *type;
 
-@property (copy,nonatomic) NSString *reply_id;
-@property (copy,nonatomic) NSString *reply_name;
-@property (copy,nonatomic) NSString *reply_posts_id;
+//@property (copy,nonatomic) NSString *reply_content;
 
-@property (copy,nonatomic) NSString *reply_status;
+@property (copy,nonatomic) NSMutableString *infor;
+@property (assign,nonatomic) int type;
+
+@property (assign,nonatomic) long reply_id;
+@property (copy,nonatomic) NSMutableString *reply_name;
+@property (assign,nonatomic) long reply_posts_id;
+
+
+/*
+ 
+ _icon	NSString *	(null)	0x17616cd0
+ _is_quote	NSString *	(int)0	0x17625140
+ _level	NSString *	(int)0	0x17625140
+ _location	NSString *	(null)	0x3bc672f0
+ _managePanel	NSString *	(null)	0x1752d450
+ _position	NSString *	(int)2	0x176253a0
+ _posts_date	NSString *	(null)	0x18831c40
+ _quote_content	NSString *	(null)	0x3bc672f0
+ _quote_pid	NSString *	(int)0	0x17625140
+ _quote_user_name	NSString *	(null)	0x3bc672f0
+ _reply_content	NSString *	nil	0x00000000
+ _infor	NSMutableString *	@"zjhyy8182115@qq.com………话说，最近装了黑苹果"	0x1753e220
+ NSString	NSString
+ NSObject	NSObject
+ isa	Class	__NSCFString	0x3bb49908
+ _type	int	0	0
+ _reply_id	long	254661	254661
+ _reply_name	NSString *	(null)	0x188427b0
+ _reply_posts_id	long	14061166	14061166
+ _reply_status	int	1	1
+ _reply_type	NSString *	(null)	0x1761ca50
+ _role_num	int	1	1
+ _status	int	1	1
+ _title	NSString *	(null)	0x3bc672f0
+ _userTitle	NSString *	(null)	0x1883c800
+ 
+ */
+
+ 
+/*
+ "reply_id": 273602,
+ "reply_name": "傅逗逗",
+ "reply_posts_id": 14052802,
+ "reply_status": 1,
+ "reply_type": "normal",
+ "role_num": 1,
+ "status": 1,
+ */
+
+
+// "infor": "你知道的太多了",
+
+
+@property (assign,nonatomic) int reply_status;
 @property (copy,nonatomic) NSString *reply_type;
-@property (copy,nonatomic) NSString *role_num;
-@property (copy,nonatomic) NSString *status;
+@property (assign,nonatomic) int role_num;
+@property (assign,nonatomic) int status;
 @property (copy,nonatomic) NSString *title;
 @property (copy,nonatomic) NSString *userTitle;
 

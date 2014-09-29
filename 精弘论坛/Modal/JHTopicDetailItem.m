@@ -25,6 +25,10 @@
     if([key isEqualToString:@"reply_content"])
     {
         
+        NSDictionary *dic = (NSDictionary*)value[0];
+        
+        _infor = [dic objectForKey:@"infor"];
+        _type = [[dic objectForKey:@"type"]intValue];
     }
     else
         [super setValue:value forKey:key];

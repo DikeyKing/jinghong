@@ -16,7 +16,6 @@
     [self setValuesForKeysWithDictionary:jsonDic];
     }
     
-    
     return self;
 }
 
