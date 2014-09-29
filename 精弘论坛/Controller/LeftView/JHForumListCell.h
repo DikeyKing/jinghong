@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class JHBoardItem;
+
 @interface JHForumListCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *boardName;
 @property (weak, nonatomic) IBOutlet UILabel *tdPostCount;
 
+-(void)displayValues:(JHBoardItem *)boardItem;
 @end

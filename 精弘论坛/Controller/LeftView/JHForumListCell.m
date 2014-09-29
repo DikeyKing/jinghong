@@ -7,28 +7,24 @@
 //
 
 #import "JHForumListCell.h"
+#import "JHBoardItem.h"
 
 @implementation JHForumListCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+-(instancetype)init
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super init];
     if (self) {
-        // Initialization code
+        
     }
     return self;
 }
 
-- (void)awakeFromNib
+-(void)displayValues:(JHBoardItem *)boardItem
 {
-    // Initialization code
+    if (boardItem != nil) {
+        _boardName.text = boardItem.board_name;
+        _tdPostCount.text = [NSString stringWithFormat:@"%@",boardItem.td_posts_num];
+    }
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 @end

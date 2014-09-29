@@ -18,10 +18,18 @@
 #import "JHBoardItem.h"
 #import "JHFourmItem.h"
 
+#import "JHRecentTopicsCell.h"
+
 @interface JHCenterViewController ()
+
+@property (copy, nonatomic) NSArray *forumItemList;
+@property (copy, nonatomic) NSArray *boardList;
+@property (copy, nonatomic) NSMutableArray *boardID;
+@property (copy, nonatomic) NSArray *recentTopcicList;
 
 @property (strong, nonatomic) JHFourmItem *jHForumItem;
 @property (strong, nonatomic) JHBoardItem *jHBoardItem;
+@property (strong, nonatomic) JHTopicItem *jHRecentTopicItem;
 
 @end
 
@@ -32,8 +40,13 @@
     [super viewDidLoad];
     _tableView.delegate =self;
     _tableView.dataSource = self;
+    _recentTopicsTV.delegate = self;
+    _recentTopicsTV.dataSource =self;
+    
     [self getBoardList];
-
+    [self getRecentTopTenTopics];
+    
+    _tableView.hidden= YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -43,6 +56,19 @@
 
 -(void)getRecentTopTenTopics
 {
+    [[JHRESTEngine sharedJHRESTManager]getRecentTopicsOnSucceeded:^(NSMutableArray *modelObjects) {
+        if (!_recentTopcicList) {
+            _recentTopcicList = [NSArray new];
+        }
+        if (modelObjects!=nil) {
+            _recentTopcicList = [modelObjects copy];
+            [_recentTopicsTV reloadData];
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"没有返回列表"];
+        }
+    } onError:^(NSError *engineError) {
+        
+    }];
 
 }
 
@@ -59,7 +85,6 @@
             [SVProgressHUD showErrorWithStatus:@"没有返回列表"];
         }
     } onError:^(NSError *engineError) {
-        
     }];    
 }
 
@@ -71,18 +96,35 @@
 #pragma UITableViewDataSoucce
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [_forumItemList count];
+    if (tableView == _tableView) {
+        if (_forumItemList != nil) {
+            return [_forumItemList count];
+        }
+    }
+    if (tableView == _recentTopicsTV) {
+//        if (_recentTopcicList != nil) {
+//            return [_recentTopcicList count];
+//        }
+        return 1;
+    }
+    return 0;
 }
-
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (_forumItemList!=nil) {
-//        return [[_forumItemList[section]objectForKey:@"board_list"] count];
-        _jHForumItem = _forumItemList[section];
-        return [_jHForumItem.board_list count];
+    if (tableView == _tableView) {
+        if (_forumItemList!=nil) {
+            _jHForumItem = _forumItemList[section];
+            return [_jHForumItem.board_list count];
+        }
     }
+    
+    if (tableView == _recentTopicsTV) {
+        if (_recentTopcicList!=nil) {
+            return [_recentTopcicList count];
+        }
+    }
+
     return 0;
 }
 
@@ -90,35 +132,61 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     JHForumListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JHForumListCell"];
-    if (_forumItemList) {
-        _jHForumItem = _forumItemList[indexPath.section];
-        _jHBoardItem = _jHForumItem.board_list[indexPath.row];
-        
-        cell.boardName.text = _jHBoardItem.board_name;
-        cell.tdPostCount.text = [NSString stringWithFormat:@"%@",_jHBoardItem.td_posts_num];
+    JHRecentTopicsCell *recentTopicsCell = [tableView dequeueReusableCellWithIdentifier:@"JHRecentTopicsCell"];
+
+    if (tableView == _tableView) {
+        if (_forumItemList!=nil) {
+            _jHForumItem = _forumItemList[indexPath.section];
+            _jHBoardItem = _jHForumItem.board_list[indexPath.row];
+            [cell displayValues:_jHBoardItem];
+            
+            return cell;
+//            cell.boardName.text = _jHBoardItem.board_name;
+//            cell.tdPostCount.text = [NSString stringWithFormat:@"%@",_jHBoardItem.td_posts_num];
+        }
     }
-    return cell;
+    
+    if (tableView == _recentTopicsTV) {
+        if (_recentTopcicList!= nil) {
+            _jHRecentTopicItem = _recentTopcicList[indexPath.row];
+            [recentTopicsCell displayValues:_jHRecentTopicItem];
+        }
+        return recentTopicsCell;
+    }
+    
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     JHTopicsViewController *jHTopicsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicsViewController"];
     
-    if (_forumItemList) {
-        _jHForumItem = _forumItemList[indexPath.section];
-        _jHBoardItem = _jHForumItem.board_list[indexPath.row];
-        
-        [JHCommonConfigs sharedConfig].boardID = [_jHBoardItem.board_id intValue];
-        [self.navigationController pushViewController:jHTopicsVC animated:YES];
-     }
-    //todo:根据推送至下一个界面，下一个界面根据board_id来获取页面内容
+    if (tableView == _tableView) {
+        if (_forumItemList) {
+            _jHForumItem = _forumItemList[indexPath.section];
+            _jHBoardItem = _jHForumItem.board_list[indexPath.row];
+            
+            [JHCommonConfigs sharedConfig].boardID = [_jHBoardItem.board_id intValue];
+            [self.navigationController pushViewController:jHTopicsVC animated:YES];
+        }
+    }
+    if (tableView == _recentTopicsTV) {
+#warning todo:push
+    }
+
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView == _tableView) {
+        return 81;
+    }
+    if (tableView == _recentTopicsTV) {
+        return 88;
+    }
+    return 44;
     
 }
-
 #pragma sementControll
 
 - (IBAction)selectedSegment:(id)sender
@@ -127,21 +195,20 @@
         case 0:
             NSLog(@"最新帖子");
             
-            
             //切换标题，重新赋予数据源，最新帖子
             //[_tableView reloadData];
             
             _tableView.hidden = YES;
+            _recentTopicsTV.hidden = NO;
             
             break;
         case 1:
             NSLog(@"论坛列表");
-            
-            
-            //论坛状态
             //[_tableView reloadData];
 
             _tableView.hidden =NO;
+            _recentTopicsTV.hidden = YES;
+            
             break;
         default:
             break;

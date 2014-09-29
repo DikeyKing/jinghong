@@ -18,7 +18,7 @@
 @property (assign, nonatomic) int hot;
 @property (copy, nonatomic) NSMutableString *last_reply_date;
 @property (copy, nonatomic) NSMutableString *pic_path;
-@property (assign, nonatomic) int replies;
+@property (assign, nonatomic) long replies;
 @property (copy, nonatomic) NSMutableString *subject;
 @property (copy, nonatomic) NSMutableString *title;
 @property (assign, nonatomic) int top;

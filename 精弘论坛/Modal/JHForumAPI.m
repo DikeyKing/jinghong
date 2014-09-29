@@ -18,6 +18,8 @@
 #define JH_BAIKETYPE @"1"
 #define JH_FORUMID @"1"
 
+static int pageSize=20 ;
+
 @implementation JHForumAPI
 
 
@@ -54,7 +56,7 @@
                             @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID],
 
                             @"page":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].page], //获取第几页
-                            @"pageSize":[NSString stringWithFormat:@"%d",10] //每页多少个
+                            @"pageSize":[NSString stringWithFormat:@"%d",pageSize] //每页多少个
                             };
             break;
             
@@ -70,8 +72,8 @@
         case GET_RECENT_TOPICS:
             privateParameter = @{
                                  @"r":@"forum/topiclist",
-                                 @"pageSize": [NSString stringWithFormat:@"%d",10],
-                                 @"page":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].page],
+                                 @"pageSize": [NSString stringWithFormat:@"%d",pageSize],
+                                 @"page":[NSString stringWithFormat:@"%d",pageSize],
                                  @"sortby":@"publish"
                                  
                                  };

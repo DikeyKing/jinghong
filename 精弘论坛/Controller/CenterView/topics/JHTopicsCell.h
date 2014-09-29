@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class JHTopicItem;
+
 @interface JHTopicsCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *topicTitle;
 @property (weak, nonatomic) IBOutlet UILabel *authorName;
+
+-(void)displayValues:(JHTopicItem *)topicItem;
 
 @end

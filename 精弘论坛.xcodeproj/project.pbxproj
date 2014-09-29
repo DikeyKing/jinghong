@@ -30,6 +30,7 @@
 		A9DA88C519C99F8C00FEB6B2 /* JHUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DA88C419C99F8C00FEB6B2 /* JHUserDefaults.m */; };
 		A9DA88CC19C9BAF800FEB6B2 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A9DA88C919C9BAF800FEB6B2 /* SVProgressHUD.bundle */; };
 		A9DA88CD19C9BAF800FEB6B2 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DA88CB19C9BAF800FEB6B2 /* SVProgressHUD.m */; };
+		A9E121B419D8C4CB009CE109 /* JHRecentTopicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E121B319D8C4CB009CE109 /* JHRecentTopicsCell.m */; };
 		A9F2B20C19ADC1E90067B6A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B20B19ADC1E90067B6A4 /* Foundation.framework */; };
 		A9F2B20E19ADC1E90067B6A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B20D19ADC1E90067B6A4 /* CoreGraphics.framework */; };
 		A9F2B21019ADC1E90067B6A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F2B20F19ADC1E90067B6A4 /* UIKit.framework */; };
@@ -103,6 +104,8 @@
 		A9DA88C919C9BAF800FEB6B2 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		A9DA88CA19C9BAF800FEB6B2 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		A9DA88CB19C9BAF800FEB6B2 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		A9E121B219D8C4CB009CE109 /* JHRecentTopicsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHRecentTopicsCell.h; path = Controller/CenterView/JHRecentTopicsCell.h; sourceTree = "<group>"; };
+		A9E121B319D8C4CB009CE109 /* JHRecentTopicsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHRecentTopicsCell.m; path = Controller/CenterView/JHRecentTopicsCell.m; sourceTree = "<group>"; };
 		A9F2B20819ADC1E90067B6A4 /* 精弘论坛.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "精弘论坛.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F2B20B19ADC1E90067B6A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A9F2B20D19ADC1E90067B6A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -236,6 +239,8 @@
 				A9CE8AE219C524ED00B3117A /* JHCenterViewController.m */,
 				A9482A8419CBCF7500453DD5 /* JHForumListCell.h */,
 				A9482A8519CBCF7500453DD5 /* JHForumListCell.m */,
+				A9E121B219D8C4CB009CE109 /* JHRecentTopicsCell.h */,
+				A9E121B319D8C4CB009CE109 /* JHRecentTopicsCell.m */,
 				A9BCA1FE19CC25BB0025EA2D /* Topics */,
 			);
 			name = "Center VIew";
@@ -511,6 +516,7 @@
 				A9BCA21619CFFB8F0025EA2D /* JHRESTEngine.m in Sources */,
 				A9F2B21C19ADC1E90067B6A4 /* JHAppDelegate.m in Sources */,
 				A948296319C816DF00C51243 /* JHHTMLParse.m in Sources */,
+				A9E121B419D8C4CB009CE109 /* JHRecentTopicsCell.m in Sources */,
 				A9BCA20119CC25FF0025EA2D /* JHTopicsViewController.m in Sources */,
 				A9B3E91419D26D38008BC363 /* JHFourmItem.m in Sources */,
 				A912A63E19C97AF400F8F471 /* JHUser.m in Sources */,

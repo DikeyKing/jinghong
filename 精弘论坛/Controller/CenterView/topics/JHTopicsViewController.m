@@ -9,8 +9,11 @@
 #import "JHTopicsViewController.h"
 #import "JHTopicsCell.h"
 #import "JHRESTEngine.h"
+#import "JHTopicItem.h"
 
 @interface JHTopicsViewController ()
+@property (strong,nonatomic) JHTopicItem* jhTopicItem;
+
 
 @end
 
@@ -23,10 +26,8 @@
     _topicsTableView.dataSource = self;
     
    // [JHCommonConfigs sharedConfig].page = 1;
-    
-    
+
     [self getTopics];
-    
 }
 
 
@@ -39,13 +40,16 @@
 -(void)getTopics
 {
     [[JHRESTEngine sharedJHRESTManager]getTopicsListOnSucceeded:^(NSMutableArray *modelObjects) {
-        //
+        
+        _topicsItemList = [modelObjects copy];
+        
+        [_topicsTableView reloadData];
+        
     } onError:^(NSError *engineError) {
         //
     }];
     
 }
-
 
 
 /*
@@ -93,23 +97,46 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    if (_topicsItemList!=nil&&_topicsItemList.count!=0 ) {
+        return [_topicsItemList count];
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     JHTopicsCell *jHTopicsCell = [tableView dequeueReusableCellWithIdentifier:@"JHTopicsCell"];
     
-    
-    if (_topicsList!=nil) {
-        NSDictionary *topicDic = _topicsList[indexPath.row];
-        jHTopicsCell.topicTitle.text = [topicDic objectForKey:@"title"];
-        jHTopicsCell.authorName.text = [topicDic objectForKey:@"user_nick_name"];
-
+    if (_topicsItemList!=nil) {
         
-    }
+        [jHTopicsCell displayValues:(JHTopicItem *)_topicsItemList[indexPath.row]];
+        
+       // _jhTopicItem = _topicsItemList[indexPath.row];
 
-    
+//        jHTopicsCell.topicTitle.text = [_jhTopicItem.title copy];
+//        jHTopicsCell.authorName.text = [_jhTopicItem.user_nick_name copy];
+   
+        /*
+         _jhTopicItem	JHTopicItem *	0x14f58fe0	0x14f58fe0
+         JHDataModel	JHDataModel
+         _board_id	int	455	455
+         _board_name	NSMutableString *	@"『同乡情谊』"	0x14f755b0
+         _essence	int	0	0
+         _hits	int	4452	4452
+         _hot	int	0	0
+         _last_reply_date	NSMutableString *	@"1411915369000"	0x14f7c880
+         _pic_path	NSMutableString *	@""	0x3bc672f0
+         _replies	long	343	343
+         _subject	NSMutableString *	@"          又是一年毕业时，该走的终究要走， 因为去实习了这学期，把楼荒"	0x14f6c480
+         _title	NSMutableString *	@"★北仑★ 东方大港—宁波北仑（挖起大楼找个新楼主）"	0x14f6ff20
+         _top	int	0	0
+         _topic_id	int	873818	873818
+         _type	NSMutableString *	@"normal"	0x14e51770
+         _user_id	int	111704	111704
+         _user_nick_name	NSMutableString *	@"小噶"	0x14e2e840
+         _vote	int	0	0
+         */
+    }
     
     return jHTopicsCell;
 }

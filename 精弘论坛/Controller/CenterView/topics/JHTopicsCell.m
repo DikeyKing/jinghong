@@ -7,28 +7,20 @@
 //
 
 #import "JHTopicsCell.h"
+#import "JHTopicItem.h"
 
 @implementation JHTopicsCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+-(instancetype)init
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
+    self = [super init];
     return self;
 }
 
-- (void)awakeFromNib
+-(void)displayValues:(JHTopicItem *)topicItem
 {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    _authorName.text = topicItem.user_nick_name;
+    _topicTitle.text = topicItem.title;
 }
 
 @end

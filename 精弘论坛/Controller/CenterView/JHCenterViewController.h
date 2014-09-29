@@ -12,10 +12,7 @@
 @interface JHCenterViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@property (copy, nonatomic) NSArray *forumItemList;
-@property (copy, nonatomic) NSArray *boardList;
-@property (copy, nonatomic) NSMutableArray *boardID;
+@property (weak, nonatomic) IBOutlet UITableView *recentTopicsTV;
 
 
 @end

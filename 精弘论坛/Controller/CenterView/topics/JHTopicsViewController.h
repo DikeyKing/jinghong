@@ -18,7 +18,7 @@
 //@property (assign,nonatomic) int page;
 //@property (assign,nonatomic) int topicID;
 
-@property (strong, nonatomic) NSArray *topicsList;
+@property (strong, nonatomic) NSArray *topicsItemList;
 
 
 
