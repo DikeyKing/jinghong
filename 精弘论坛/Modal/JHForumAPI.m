@@ -64,8 +64,9 @@ static int pageSize=20 ;
             privateParameter = @{
                              @"r":@"forum/postlist",
                              @"topicId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].topicID],
-                             @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID],
-                             @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid]
+                             @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID]
+//                             ,
+//                             @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid]
                              };
             
             
@@ -132,8 +133,6 @@ static int pageSize=20 ;
             privateParameter = @{
                 @"r":@"user/userinfo",
                 @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
-
-                
             };
             break;
       
@@ -145,6 +144,22 @@ static int pageSize=20 ;
                                  @"password":[JHUserDefaults getPassword]
                                  };
             break;
+        
+        case POST_NEW_TOPIC:
+            privateParameter = @{
+#warning 发表帖子的API还没写
+                                 
+                                 };
+            break;
+          
+        case POST_NEW_REPLY:
+            privateParameter = @{
+#warning 回复帖子的API还没写
+                                 
+                                 };
+            break;
+            
+            
             
         default:
             break;

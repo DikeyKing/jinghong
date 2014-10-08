@@ -76,11 +76,14 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
             succeededBlock(forumItemArray);
             
         }else{
+            
             NSLog(@"获取首页失败了,参数错误");
         }
           
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"获取首页失败了%@",error);
+        errorBlock(error);
+
     }];
     return self;
 }
@@ -103,7 +106,8 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
             succeededBlock(topicsItemArray);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        errorBlock(error);
+
     }];
     
     
@@ -123,12 +127,11 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
                 // 这步将topicsArray 中的JSON  转换成 topicsItem 添加至Array
                 // 然后返回 topicsItemArray
                 [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
-            }
-//            
+            }            
             succeededBlock(topicsItemArray);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        errorBlock(error);
     }];
     
     return self;
@@ -141,6 +144,7 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_DETAIL] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
         if ([objectDic objectForKey:@"rs"]!= 0) {
+            
             NSArray *topicsDetailArray = [objectDic objectForKey:@"list"];
             NSMutableArray *topicsDetailItemArray = [[NSMutableArray alloc]initWithCapacity:topicsDetailArray.count];
             for (NSMutableDictionary *topicsDic in topicsDetailArray) {
@@ -161,10 +165,47 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        errorBlock(error);
     }];
     
     return self;
+}
+
+
+
+
+
+
+
+
+
+
+
+-(instancetype)postNewTopicOnSucceeded:(ArrayBlock)succdedBlock
+                               onerror:(ErrorBlock)errorBlock
+{
+    [self POST:kJHBaseURLString parameters:[JHForumAPI getParameterDic:POST_NEW_TOPIC] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+#warning 发表帖子成功
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+#warning 发表帖子失败
+    }];
+    
+    return self;
+    
+}
+
+
+-(instancetype)postNewReplyOnSucceeded:(ArrayBlock)succdedBlock
+                               onerror:(ErrorBlock)errorBlock
+{
+    [self POST:kJHBaseURLString parameters:[JHForumAPI getParameterDic:POST_NEW_REPLY] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+#warning 回复帖子成功
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+#warning 回复帖子失败
+    }];
+    
+    return self;
+    
 }
 @end
 

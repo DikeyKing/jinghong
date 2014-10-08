@@ -21,7 +21,12 @@
 
 -(void)displayValues:(JHTopicDetailItem *)topicDetailItem
 {
+    
     _detailText.text = topicDetailItem.infor;
+    _reply_name.text = topicDetailItem.reply_name;
+    _posts_date.text = topicDetailItem.posts_date;
+    _userTitle.text = topicDetailItem.userTitle;
+    _position.text = [NSString stringWithFormat:@"%d",topicDetailItem.position]; 
     
 }
 

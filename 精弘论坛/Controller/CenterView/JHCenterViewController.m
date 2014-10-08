@@ -12,13 +12,22 @@
 #import "JHForumAPI.h"
 #import "JHForumListCell.h"
 #import "JHTopicsViewController.h"
+
+#import "JHTopicDetailsViewController.h"
+
 #import "SVProgressHUD.h"
 #import "JHRESTEngine.h"
+
 
 #import "JHBoardItem.h"
 #import "JHFourmItem.h"
 
 #import "JHRecentTopicsCell.h"
+
+
+#import "JHTopicItem.h"
+
+
 
 @interface JHCenterViewController ()
 
@@ -71,7 +80,7 @@
             [SVProgressHUD showErrorWithStatus:@"没有返回列表"];
         }
     } onError:^(NSError *engineError) {
-        
+        [SVProgressHUD showErrorWithStatus:@"请求超时"];
     }];
 
 }
@@ -93,7 +102,9 @@
             [SVProgressHUD showErrorWithStatus:@"没有返回列表"];
         }
     } onError:^(NSError *engineError) {
-    }];    
+        [SVProgressHUD showErrorWithStatus:@"请求超时"];
+
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -166,9 +177,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     JHTopicsViewController *jHTopicsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicsViewController"];
+    JHTopicDetailsViewController *jHTopicsDetailsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicDetailsViewController"];
+
     
     if (tableView == _tableView) {
-        if (_forumItemList) {
+        if (_forumItemList!=nil&&_forumItemList.count!=0) {
             _jHForumItem = _forumItemList[indexPath.section];
             _jHBoardItem = _jHForumItem.board_list[indexPath.row];
             
@@ -177,6 +190,16 @@
         }
     }
     if (tableView == _recentTopicsTV) {
+        //jHRecentTopicItem
+        if (_recentTopcicList!=nil&&_recentTopcicList.count!=0) {
+            _jHRecentTopicItem = _recentTopcicList[indexPath.row];
+            
+            [JHCommonConfigs sharedConfig].boardID = _jHRecentTopicItem.board_id;
+            [JHCommonConfigs sharedConfig].topicID = _jHRecentTopicItem.topic_id;
+            
+            [self.navigationController pushViewController:jHTopicsDetailsVC animated:YES];
+        }
+        
 #warning todo:push
     }
 

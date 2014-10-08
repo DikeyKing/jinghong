@@ -43,7 +43,7 @@
         }
         
     } onError:^(NSError *engineError) {
-        
+    
     }];
 }
 
@@ -74,8 +74,6 @@
     if (_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0) {
         [topicDetailCell displayValues:(JHTopicDetailItem *)_topicsDetailsItems[indexPath.row]];
     }
-    
-    
     
     return topicDetailCell;
 }

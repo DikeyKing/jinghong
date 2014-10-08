@@ -10,8 +10,18 @@
 @class JHTopicDetailItem;
 
 @interface JHTopicDetailsCell : UITableViewCell
+//icon
+//posts_date
+//reply_name
+@property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UILabel *reply_name;
+@property (weak, nonatomic) IBOutlet UILabel *userTitle; //
+@property (weak, nonatomic) IBOutlet UILabel *position; //楼层
+@property (weak, nonatomic) IBOutlet UILabel *posts_date;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailText;
+
+
 
 -(void)displayValues:(JHTopicDetailItem *)topicDetailItem;
 

@@ -18,7 +18,9 @@ enum{
     GET_TOPICS_DETAIL = 2,
     GET_RECENT_TOPICS = 3,
     GET_PERSONAL_INFO = 4,
-    GET_LOGIN
+    GET_LOGIN = 5,
+    POST_NEW_TOPIC = 6,
+    POST_NEW_REPLY
 };
 
 //返回parameter参数
