@@ -37,10 +37,15 @@
 @property (copy,nonatomic) NSMutableString *reply_type;
 @property (assign,nonatomic) int role_num;
 @property (assign,nonatomic) int status;
+
 @property (copy,nonatomic) NSMutableString *title;
 @property (copy,nonatomic) NSMutableString *userTitle;
 
 /*
+ 
+ 
+ 
+ 
  
  _icon	NSString *	(null)	0x17616cd0
  _is_quote	NSString *	(int)0	0x17625140

@@ -13,6 +13,7 @@
 		A948296319C816DF00C51243 /* JHHTMLParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A948296219C816DF00C51243 /* JHHTMLParse.m */; };
 		A948296619C81A8C00C51243 /* JHNewPosts.m in Sources */ = {isa = PBXBuildFile; fileRef = A948296519C81A8C00C51243 /* JHNewPosts.m */; };
 		A9482A8619CBCF7500453DD5 /* JHForumListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9482A8519CBCF7500453DD5 /* JHForumListCell.m */; };
+		A96D269B19E51D78003D6D78 /* JHTopicAuthorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A96D269A19E51D78003D6D78 /* JHTopicAuthorItem.m */; };
 		A9B3E91419D26D38008BC363 /* JHFourmItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B3E91319D26D38008BC363 /* JHFourmItem.m */; };
 		A9B3E91719D3C0AD008BC363 /* JHTopicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B3E91619D3C0AD008BC363 /* JHTopicItem.m */; };
 		A9BCA1FD19CC16230025EA2D /* JHBoardItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BCA1FC19CC16230025EA2D /* JHBoardItem.m */; };
@@ -74,6 +75,8 @@
 		A9482A8419CBCF7500453DD5 /* JHForumListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHForumListCell.h; path = Controller/LeftView/JHForumListCell.h; sourceTree = "<group>"; };
 		A9482A8519CBCF7500453DD5 /* JHForumListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHForumListCell.m; path = Controller/LeftView/JHForumListCell.m; sourceTree = "<group>"; };
 		A94C1DD719BBF79500CC08B8 /* unused.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = unused.h; path = Storeage/unused.h; sourceTree = "<group>"; };
+		A96D269919E51D78003D6D78 /* JHTopicAuthorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHTopicAuthorItem.h; path = Modal/JHTopicAuthorItem.h; sourceTree = "<group>"; };
+		A96D269A19E51D78003D6D78 /* JHTopicAuthorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHTopicAuthorItem.m; path = Modal/JHTopicAuthorItem.m; sourceTree = "<group>"; };
 		A9B3E91219D26D38008BC363 /* JHFourmItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHFourmItem.h; path = Modal/JHFourmItem.h; sourceTree = "<group>"; };
 		A9B3E91319D26D38008BC363 /* JHFourmItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHFourmItem.m; path = Modal/JHFourmItem.m; sourceTree = "<group>"; };
 		A9B3E91519D3C0AD008BC363 /* JHTopicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHTopicItem.h; path = Modal/JHTopicItem.h; sourceTree = "<group>"; };
@@ -301,6 +304,8 @@
 				A9B3E91619D3C0AD008BC363 /* JHTopicItem.m */,
 				A9E121B519D8F55C009CE109 /* JHTopicDetailItem.h */,
 				A9E121B619D8F55C009CE109 /* JHTopicDetailItem.m */,
+				A96D269919E51D78003D6D78 /* JHTopicAuthorItem.h */,
+				A96D269A19E51D78003D6D78 /* JHTopicAuthorItem.m */,
 			);
 			name = "主题列表";
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				A912A63B19C9772D00F8F471 /* JHForumAPI.m in Sources */,
 				A9CE8AE319C524ED00B3117A /* JHCenterViewController.m in Sources */,
 				A9CE8AD719C5211600B3117A /* JHMasterViewController.m in Sources */,
+				A96D269B19E51D78003D6D78 /* JHTopicAuthorItem.m in Sources */,
 				A948296619C81A8C00C51243 /* JHNewPosts.m in Sources */,
 				A9CE8ADC19C5243900B3117A /* JHLeftViewController.m in Sources */,
 			);

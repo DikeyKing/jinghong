@@ -11,6 +11,7 @@
 #import "JHFourmItem.h"
 #import "JHTopicItem.h"
 #import "JHTopicDetailItem.h"
+#import "JHTopicAuthorItem.h"
 
 #import "JHUserDefaults.h"
 
@@ -144,13 +145,15 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_DETAIL] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
         if ([objectDic objectForKey:@"rs"]!= 0) {
+            NSDictionary *topicsAuthorDic = [objectDic objectForKey:@"topic"];
             
+            JHTopicAuthorItem *tempAuthorItem = [[JHTopicAuthorItem alloc]initWithDictionary:topicsAuthorDic];
+#warning 得到楼主的发帖信息了，然后怎么加入呢？
+
             NSArray *topicsDetailArray = [objectDic objectForKey:@"list"];
             NSMutableArray *topicsDetailItemArray = [[NSMutableArray alloc]initWithCapacity:topicsDetailArray.count];
             for (NSMutableDictionary *topicsDic in topicsDetailArray) {
-
                  [topicsDetailItemArray addObject:[[JHTopicDetailItem alloc]initWithDictionary:topicsDic]];
-                
             }
             
 //            JHTopicDetailItem *item = [[JHTopicDetailItem alloc]initWithDictionary:topicsDic];
