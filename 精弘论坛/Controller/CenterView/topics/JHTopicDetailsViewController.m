@@ -8,11 +8,15 @@
 //
 
 #import "JHTopicDetailsViewController.h"
+#import "JHTopicDetailsCell.h"
+
+//#import "JHTopicDetailItem.h"
+
 #import "JHRESTEngine.h"
 
 @interface JHTopicDetailsViewController ()
 
-@property (strong ,nonatomic) NSArray *topicsDetailsItems;
+@property (strong ,nonatomic) NSArray *topicsDetailsItems; //这个array包含所以帖子信息数据
 
 @end
 
@@ -20,6 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _topicDetailTV.delegate = self;
+    _topicDetailTV.dataSource =self;
+    
     [self getTopicDetails];
 }
 
@@ -31,6 +38,8 @@
         }
         if (modelObjects!=nil) {
             _topicsDetailsItems = [modelObjects copy];
+            [_topicDetailTV reloadData];
+            
         }
         
     } onError:^(NSError *engineError) {
@@ -46,12 +55,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (nil!=_topicsDetailsItems && _topicsDetailsItems.count!=0) {
+        return _topicsDetailsItems.count;
+    }
     return 0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return nil;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    JHTopicDetailsCell *topicDetailCell = [tableView dequeueReusableCellWithIdentifier:@"JHTopicDetailsCell"];
+    
+    if (_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0) {
+        [topicDetailCell displayValues:(JHTopicDetailItem *)_topicsDetailsItems[indexPath.row]];
+    }
+    
+    
+    
+    return topicDetailCell;
 }
 
 #pragma UITableViewDelegate

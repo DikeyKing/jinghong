@@ -246,7 +246,7 @@
 			children = (
 				A9CE8AE119C524ED00B3117A /* JHCenterViewController.h */,
 				A9CE8AE219C524ED00B3117A /* JHCenterViewController.m */,
-				A9E121B919D8F61F009CE109 /* 版块列表 */,
+				A9E121B919D8F61F009CE109 /* 最新帖子/论坛列表 */,
 				A9BCA1FE19CC25BB0025EA2D /* 帖子列表 */,
 				A9E121B819D8F5EF009CE109 /* 帖子内容 */,
 			);
@@ -283,7 +283,7 @@
 			name = "帖子内容";
 			sourceTree = "<group>";
 		};
-		A9E121B919D8F61F009CE109 /* 版块列表 */ = {
+		A9E121B919D8F61F009CE109 /* 最新帖子/论坛列表 */ = {
 			isa = PBXGroup;
 			children = (
 				A9482A8419CBCF7500453DD5 /* JHForumListCell.h */,
@@ -291,7 +291,7 @@
 				A9E121B219D8C4CB009CE109 /* JHRecentTopicsCell.h */,
 				A9E121B319D8C4CB009CE109 /* JHRecentTopicsCell.m */,
 			);
-			name = "版块列表";
+			name = "最新帖子/论坛列表";
 			sourceTree = "<group>";
 		};
 		A9E121C019D8F82F009CE109 /* 主题列表 */ = {

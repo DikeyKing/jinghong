@@ -4,7 +4,8 @@
 //
 //  Created by Dikey on 9/19/14.
 //  Copyright (c) 2014 dikey. All rights reserved.
-//
+//  主题列表
+
 
 #import "JHTopicsViewController.h"
 #import "JHTopicDetailsViewController.h"

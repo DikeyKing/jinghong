@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class JHTopicDetailItem;
 
 @interface JHTopicDetailsCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *detailText;
+
+-(void)displayValues:(JHTopicDetailItem *)topicDetailItem;
 
 @end

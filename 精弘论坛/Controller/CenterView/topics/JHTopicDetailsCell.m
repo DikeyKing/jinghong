@@ -7,8 +7,25 @@
 //
 
 #import "JHTopicDetailsCell.h"
+#import "JHTopicDetailItem.h"
 
 @implementation JHTopicDetailsCell
+-(instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+-(void)displayValues:(JHTopicDetailItem *)topicDetailItem
+{
+    _detailText.text = topicDetailItem.infor;
+    
+}
+
+
 
 - (void)awakeFromNib {
     // Initialization code

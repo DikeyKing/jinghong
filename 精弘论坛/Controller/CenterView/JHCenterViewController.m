@@ -56,7 +56,11 @@
 
 -(void)getRecentTopTenTopics
 {
+    [SVProgressHUD showProgress:SVProgressHUDMaskTypeNone status:@"载入中"];
+    
     [[JHRESTEngine sharedJHRESTManager]getRecentTopicsOnSucceeded:^(NSMutableArray *modelObjects) {
+        [SVProgressHUD dismiss];
+        
         if (!_recentTopcicList) {
             _recentTopcicList = [NSArray new];
         }
@@ -74,7 +78,11 @@
 
 -(void)getBoardList
 {
+    [SVProgressHUD showProgress:SVProgressHUDMaskTypeNone status:@"载入中"];
+
     [[JHRESTEngine sharedJHRESTManager]getBoardListOnSucceeded:^(NSMutableArray *modelObjects) {
+        [SVProgressHUD dismiss];
+        
         if (!_forumItemList) {
             _forumItemList = [[NSArray alloc]init];
         }
@@ -141,8 +149,6 @@
             [cell displayValues:_jHBoardItem];
             
             return cell;
-//            cell.boardName.text = _jHBoardItem.board_name;
-//            cell.tdPostCount.text = [NSString stringWithFormat:@"%@",_jHBoardItem.td_posts_num];
         }
     }
     
@@ -194,6 +200,7 @@
     switch ([sender selectedSegmentIndex]) {
         case 0:
             NSLog(@"最新帖子");
+            [self getRecentTopTenTopics];
             
             //切换标题，重新赋予数据源，最新帖子
             //[_tableView reloadData];
@@ -205,7 +212,9 @@
         case 1:
             NSLog(@"论坛列表");
             //[_tableView reloadData];
-
+            [self getBoardList];
+            
+            
             _tableView.hidden =NO;
             _recentTopicsTV.hidden = YES;
             
