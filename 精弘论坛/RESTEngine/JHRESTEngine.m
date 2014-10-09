@@ -12,7 +12,6 @@
 #import "JHTopicItem.h"
 #import "JHTopicDetailItem.h"
 #import "JHTopicAuthorItem.h"
-
 #import "JHUserDefaults.h"
 
 static NSString * const kJHBaseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
@@ -148,13 +147,22 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
             NSDictionary *topicsAuthorDic = [objectDic objectForKey:@"topic"];
             
             JHTopicAuthorItem *tempAuthorItem = [[JHTopicAuthorItem alloc]initWithDictionary:topicsAuthorDic];
-#warning 得到楼主的发帖信息了，然后怎么加入呢？
+#warning 得到楼主的发帖信息了，然后怎么加入呢？直接加入好像不行，因为类型不一样
+            
 
             NSArray *topicsDetailArray = [objectDic objectForKey:@"list"];
-            NSMutableArray *topicsDetailItemArray = [[NSMutableArray alloc]initWithCapacity:topicsDetailArray.count];
+            
+            
+            NSMutableArray *topicsDetailItemArray = [[NSMutableArray alloc]initWithCapacity:topicsDetailArray.count+1];
+            
+            
+            [topicsDetailItemArray addObject:tempAuthorItem];
+            
             for (NSMutableDictionary *topicsDic in topicsDetailArray) {
                  [topicsDetailItemArray addObject:[[JHTopicDetailItem alloc]initWithDictionary:topicsDic]];
             }
+            
+
             
 //            JHTopicDetailItem *item = [[JHTopicDetailItem alloc]initWithDictionary:topicsDic];
 //            int rank = item.position;

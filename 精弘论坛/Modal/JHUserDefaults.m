@@ -78,11 +78,53 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:uid forKey:@"uid"];
 }
+
 + (NSString *)getUid
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return (NSString *)[defaults objectForKey:@"uid"];
+    return (NSString * )[defaults objectForKey:@"uid"];
 }
+
+
++ (void)saveBoardID:(NSString*)boardID
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:(id)boardID forKey:@"boardID"];
+    
+}
++ (NSString * )getBoardID
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return (NSString * )[defaults objectForKey:@"boardID"];
+}
+
++ (void)saveTopicID:(NSString *)TopicID
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:TopicID forKey:@"TopicID"];
+    
+}
++ (NSString * )getTopicID
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return (NSString * )[defaults objectForKey:@"TopicID"];
+}
+
+
++ (void)savePage:(NSString *)page
+{
+    NSUserDefaults *defaults= [NSUserDefaults standardUserDefaults];
+    [defaults setObject:page forKey:@"page"];
+}
++ (NSString * )getPage
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"page"]==nil) {
+        return @"1";
+    }else
+        return (NSString *)[defaults objectForKey:@"page"];
+}
+
 
 
 @end

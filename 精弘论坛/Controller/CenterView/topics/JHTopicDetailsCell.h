@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class JHTopicDetailItem;
+@class JHTopicAuthorItem;
 
 @interface JHTopicDetailsCell : UITableViewCell
 //icon
@@ -18,11 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *userTitle; //
 @property (weak, nonatomic) IBOutlet UILabel *position; //楼层
 @property (weak, nonatomic) IBOutlet UILabel *posts_date;
-
 @property (weak, nonatomic) IBOutlet UILabel *detailText;
 
-
-
+-(void)displayValuesOfAuthor:(JHTopicAuthorItem *)topicAuthorItem;
 -(void)displayValues:(JHTopicDetailItem *)topicDetailItem;
 
 @end

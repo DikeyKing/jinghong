@@ -8,6 +8,7 @@
 
 #import "JHTopicDetailsCell.h"
 #import "JHTopicDetailItem.h"
+#import "JHTopicAuthorItem.h"
 
 @implementation JHTopicDetailsCell
 -(instancetype)init
@@ -19,15 +20,26 @@
     return self;
 }
 
+
+
+-(void)displayValuesOfAuthor:(JHTopicAuthorItem *)topicAuthorItem
+{
+    _position.text = @"楼主";
+    _detailText.text = topicAuthorItem.contenttypeInfor;
+    _reply_name.text = topicAuthorItem.user_nick_name;
+    _userTitle.text = topicAuthorItem.userTitle;
+    _posts_date.text = topicAuthorItem.create_date;
+    
+}
+
+
 -(void)displayValues:(JHTopicDetailItem *)topicDetailItem
 {
-    
     _detailText.text = topicDetailItem.infor;
     _reply_name.text = topicDetailItem.reply_name;
     _posts_date.text = topicDetailItem.posts_date;
     _userTitle.text = topicDetailItem.userTitle;
-    _position.text = [NSString stringWithFormat:@"%d",topicDetailItem.position]; 
-    
+    _position.text = [NSString stringWithFormat:@"%d",topicDetailItem.position];
 }
 
 

@@ -27,6 +27,7 @@
 
 #import "JHTopicItem.h"
 
+#import "JHUserDefaults.h"
 
 
 @interface JHCenterViewController ()
@@ -185,7 +186,12 @@
             _jHForumItem = _forumItemList[indexPath.section];
             _jHBoardItem = _jHForumItem.board_list[indexPath.row];
             
-            [JHCommonConfigs sharedConfig].boardID = [_jHBoardItem.board_id intValue];
+            
+            [JHUserDefaults saveBoardID:[NSString stringWithFormat:@"%@",_jHBoardItem.board_id]];
+
+//            [JHCommonConfigs sharedConfig].boardID = [_jHBoardItem.board_id intValue];
+            
+            
             [self.navigationController pushViewController:jHTopicsVC animated:YES];
         }
     }
@@ -194,13 +200,15 @@
         if (_recentTopcicList!=nil&&_recentTopcicList.count!=0) {
             _jHRecentTopicItem = _recentTopcicList[indexPath.row];
             
-            [JHCommonConfigs sharedConfig].boardID = _jHRecentTopicItem.board_id;
-            [JHCommonConfigs sharedConfig].topicID = _jHRecentTopicItem.topic_id;
+            [JHUserDefaults saveBoardID:[NSString stringWithFormat:@"%d",_jHRecentTopicItem.board_id]];
+            [JHUserDefaults saveTopicID:[NSString stringWithFormat:@"%d",_jHRecentTopicItem.topic_id]];
+            
+            
+//            [JHCommonConfigs sharedConfig].boardID = _jHRecentTopicItem.board_id;
+//            [JHCommonConfigs sharedConfig].topicID = _jHRecentTopicItem.topic_id;
             
             [self.navigationController pushViewController:jHTopicsDetailsVC animated:YES];
         }
-        
-#warning todo:push
     }
 
 }

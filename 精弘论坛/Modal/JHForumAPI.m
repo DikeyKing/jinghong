@@ -53,18 +53,29 @@ static int pageSize=20 ;
         case GET_TOPICS_LIST:
             privateParameter = @{
                             @"r":@"forum/topiclist",
-                            @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID],
+                            @"boardId":[JHUserDefaults getBoardID],
+                            @"page":[JHUserDefaults  getPage], //获取第几页
 
-                            @"page":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].page], //获取第几页
+                            
+//                            @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID],
+//                            @"page":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].page], //获取第几页
+                            
                             @"pageSize":[NSString stringWithFormat:@"%d",pageSize] //每页多少个
+                            
                             };
             break;
             
         case GET_TOPICS_DETAIL:
             privateParameter = @{
                              @"r":@"forum/postlist",
-                             @"topicId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].topicID],
-                             @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID]
+                             
+                             @"topicId":[JHUserDefaults getTopicID],
+                             @"boardId":[JHUserDefaults getBoardID]
+
+                             
+//                             
+//                             @"topicId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].topicID],
+//                             @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID]
 //                             ,
 //                             @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid]
                              };
@@ -132,14 +143,21 @@ static int pageSize=20 ;
         case GET_PERSONAL_INFO:
             privateParameter = @{
                 @"r":@"user/userinfo",
-                @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
+                @"userId": [JHUserDefaults getUid],
+
+                
+//                @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
             };
             break;
       
         case GET_LOGIN:
             privateParameter = @{
                                  @"r":@"user/userinfo",
-                                 @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
+                                 @"userId": [JHUserDefaults getUid],
+
+                                
+//                                 @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
+                                 
                                  @"email":[JHUserDefaults getUserName],
                                  @"password":[JHUserDefaults getPassword]
                                  };

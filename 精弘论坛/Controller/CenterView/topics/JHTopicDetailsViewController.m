@@ -9,10 +9,10 @@
 
 #import "JHTopicDetailsViewController.h"
 #import "JHTopicDetailsCell.h"
-
-//#import "JHTopicDetailItem.h"
-
 #import "JHRESTEngine.h"
+#import "SVProgressHUD.h"
+#import "JHTopicDetailItem.h"
+#import "JHTopicAuthorItem.h"
 
 @interface JHTopicDetailsViewController ()
 
@@ -32,7 +32,11 @@
 
 -(void)getTopicDetails
 {
+    [SVProgressHUD showProgress:SVProgressHUDMaskTypeNone];
+    
     [[JHRESTEngine sharedJHRESTManager]getTopicDetailsOnSucceeded:^(NSMutableArray *modelObjects) {
+        [SVProgressHUD dismiss];
+        
         if (!_topicsDetailsItems) {
             _topicsDetailsItems = [NSArray new];
         }
@@ -43,7 +47,7 @@
         }
         
     } onError:^(NSError *engineError) {
-    
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
 }
 
@@ -71,10 +75,12 @@
 {
     JHTopicDetailsCell *topicDetailCell = [tableView dequeueReusableCellWithIdentifier:@"JHTopicDetailsCell"];
     
-    if (_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0) {
+    
+    if (indexPath.row==0&&_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0 ) {
+        [topicDetailCell displayValuesOfAuthor:(JHTopicAuthorItem *)_topicsDetailsItems[0]];
+    }else if (_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0) {
         [topicDetailCell displayValues:(JHTopicDetailItem *)_topicsDetailsItems[indexPath.row]];
     }
-    
     return topicDetailCell;
 }
 

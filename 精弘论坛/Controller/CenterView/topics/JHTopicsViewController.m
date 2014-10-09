@@ -15,6 +15,9 @@
 #import "JHTopicItem.h"
 #import "JHCommonConfigs.h"
 
+#import "JHUserDefaults.h"
+#import "SVProgressHUD.h"
+
 @interface JHTopicsViewController ()
 @property (strong,nonatomic) JHTopicItem* jhTopicItem;
 
@@ -43,14 +46,19 @@
 
 -(void)getTopics
 {
+    [SVProgressHUD showProgress:SVProgressHUDMaskTypeNone status:@"载入中"];
+    
+    
     [[JHRESTEngine sharedJHRESTManager]getTopicsListOnSucceeded:^(NSMutableArray *modelObjects) {
+        [SVProgressHUD dismiss];
         
         _topicsItemList = [modelObjects copy];
         
         [_topicsTableView reloadData];
         
     } onError:^(NSError *engineError) {
-        //
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        
     }];
     
 }
@@ -146,9 +154,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _jhTopicItem =  (JHTopicItem* )_topicsItemList[indexPath.row];
-    [JHCommonConfigs sharedConfig].boardID = _jhTopicItem.board_id;
-    [JHCommonConfigs sharedConfig].topicID = _jhTopicItem.topic_id;
-    [JHCommonConfigs sharedConfig].uid = _jhTopicItem.user_id;
+    
+    
+    [JHUserDefaults saveBoardID:[NSString stringWithFormat:@"%d",_jhTopicItem.board_id]];
+    [JHUserDefaults saveTopicID:[NSString stringWithFormat:@"%d",_jhTopicItem.topic_id]];
+    [JHUserDefaults saveUid:[NSString stringWithFormat:@"%d",_jhTopicItem.user_id]];
+
+//    [JHCommonConfigs sharedConfig].boardID = _jhTopicItem.board_id;
+//    [JHCommonConfigs sharedConfig].topicID = _jhTopicItem.topic_id;
+//    [JHCommonConfigs sharedConfig].uid = _jhTopicItem.user_id;
     
     JHTopicDetailsViewController *topicDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicDetailsViewController"];
     [self.navigationController pushViewController:topicDetailVC animated:YES];
