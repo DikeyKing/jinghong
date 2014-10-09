@@ -131,15 +131,23 @@ static int pageSize=20 ;
         
         case POST_NEW_TOPIC:
             privateParameter = @{
-#warning 发表帖子的API还没写
+                                 @"act":@"new"
+                                 //json 怎么加进去？
+/*
+ json	%7B%22body%22%3A%7B%22json%22%3A%7B%22isQuote%22%3A%220%22%2C%22title%22%3A%22%25E6%25B5%258B%25E8%25AF%2595%25E6%25A0%2587%25E9%25A2%2598%22%2C%22fid%22%3A%22303%22%2C%22content%22%3A%22%255B%257B%2522infor%2522%253A%2522%25E6%25B5%258B%25E8%25AF%2595%25E5%2586%2585%25E5%25AE%25B9%255B%25E9%2585%25B7%255D%2522%252C%2522type%2522%253A%25220%2522%257D%255D%22%2C%22aid%22%3A%22%22%2C%22typeId%22%3A434%7D%7D%7D
+
+  这一套乱七八糟的什么啊...
+ */
+                                 
+                                 
+                                 
                                  
                                  };
             break;
           
         case POST_NEW_REPLY:
             privateParameter = @{
-#warning 回复帖子的API还没写
-                                 
+                                 @"act":@"reply"
                                  };
             break;
             
