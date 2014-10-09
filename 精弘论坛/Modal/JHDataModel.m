@@ -25,7 +25,7 @@
 }
 
 
-#warning 动态显示还是有一些问题,label 显示不全
+#warning 动态显示还是有一些问题,label
 -(CGFloat)calculateCellHeight:(NSString *)sizeString
 {
     
