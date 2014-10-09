@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="btm-mW-XKN">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -334,7 +335,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="79Y-Ft-Czh" id="blR-1g-LJ1">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1O-t3-TNR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1O-t3-TNR">
                                                     <rect key="frame" x="8" y="60" width="304" height="79"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -368,6 +369,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="P1O-t3-TNR" firstAttribute="top" secondItem="blR-1g-LJ1" secondAttribute="topMargin" constant="52" id="00Z-EU-cqM"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="P1O-t3-TNR" secondAttribute="bottom" constant="4.5" id="BBu-OO-UEi"/>
+                                                <constraint firstItem="P1O-t3-TNR" firstAttribute="trailing" secondItem="blR-1g-LJ1" secondAttribute="trailingMargin" id="YsE-Hn-xIk"/>
+                                                <constraint firstItem="P1O-t3-TNR" firstAttribute="leading" secondItem="blR-1g-LJ1" secondAttribute="leadingMargin" id="aUR-bI-jxm"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="detailText" destination="P1O-t3-TNR" id="lQu-Tu-Jv1"/>

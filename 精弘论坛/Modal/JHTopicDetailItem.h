@@ -41,6 +41,8 @@
 @property (copy,nonatomic) NSMutableString *title;
 @property (copy,nonatomic) NSMutableString *userTitle;
 
+@property (assign,nonatomic,readonly) CGFloat cellHeight; //根据infor 计算出cell高度
+
 
 
 

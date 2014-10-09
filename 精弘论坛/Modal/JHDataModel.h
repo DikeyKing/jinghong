@@ -11,4 +11,6 @@
 
 -(id)initWithDictionary :(NSDictionary *)jsonDic;
 
+-(CGFloat)calculateCellHeight:(NSString *)sizeString;
+
 @end

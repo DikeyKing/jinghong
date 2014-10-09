@@ -8,6 +8,13 @@
 
 #import "JHTopicAuthorItem.h"
 
+#define FONT_SIZE 14.0f
+
+#define CELL_CONTENT_MARGIN 10.0f
+
+#define CELL_CONTENT_ORIGINHEIGHT 50.0f
+
+
 @implementation JHTopicAuthorItem
 -(instancetype)init
 {
@@ -27,15 +34,17 @@
     //假如这里是一个Array...含有子板块，我们需要特殊处理
     if([key isEqualToString:@"content"])
     {
-        
-        NSDictionary *dic = (NSDictionary*) value[0];
-        _contenttypeInfor = [dic objectForKey:@"infor"];
-        _contentType = [[dic objectForKey:@"type"]intValue];
+        NSArray *array =  (NSArray *)value;
+        if (array!=nil && array.count!= 0) {
+            NSDictionary *dic = array[0];
+            _contenttypeInfor = [dic objectForKey:@"infor"];
+            _contentType = [[dic objectForKey:@"type"]intValue];
+            _cellHeight = [self calculateCellHeight:_contenttypeInfor];
+        }
     }
     else
         [super setValue:value forKey:key];
 }
-
 
 /*
  

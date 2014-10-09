@@ -123,7 +123,6 @@ static int pageSize=20 ;
         case GET_LOGIN:
             privateParameter = @{
                                  @"r":@"user/userinfo",
-                                 @"userId": [JHUserDefaults getUid],
                                  @"email":[JHUserDefaults getUserName],
                                  @"password":[JHUserDefaults getPassword]
                                  };

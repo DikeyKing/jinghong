@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *topicTitle;
 @property (weak, nonatomic) IBOutlet UILabel *authorName;
 @property (assign,nonatomic,readonly) CGFloat *cellHeight;
+-(void)displayValues:(JHTopicItem *)topicItem;
+
 
 
 @end

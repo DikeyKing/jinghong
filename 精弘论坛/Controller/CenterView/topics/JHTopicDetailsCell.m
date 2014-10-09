@@ -10,6 +10,7 @@
 #import "JHTopicDetailItem.h"
 #import "JHTopicAuthorItem.h"
 
+
 @implementation JHTopicDetailsCell
 -(instancetype)init
 {
@@ -29,32 +30,8 @@
     _userTitle.text = topicAuthorItem.userTitle;
     _posts_date.text = topicAuthorItem.create_date;
     
-    _cellHeight = [self calculateCellHeight:topicAuthorItem.contenttypeInfor];
-    
 }
 
--(CGFloat)calculateCellHeight:(NSString *)stringSize
-{
-    /*
-     CGSize contentSize= [_message.content boundingRectWithSize:CGSizeMake(kContentW, CGFLOAT_MAX)
-     options:NSStringDrawingUsesLineFragmentOrigin
-     attributes:@{NSFontAttributeName:kContentFont} //内容字体
-     context:nil].size;
-     */
-    
-    //如何动态计算cell高度？
-    //（文本计算高度）+（默认高度）
-    
-    //感觉这方法不是最佳的，回去再看看文档
-    CGSize contentSize = [stringSize boundingRectWithSize:CGSizeMake(10.0, 10.0)
-                                                   options:NSStringDrawingUsesLineFragmentOrigin
-                                                attributes:@{NSFontAttributeName:@16.0}
-                                                   context:nil].size;
-    
-    
-    return 0.0;
-    
-}
 
 -(void)displayValues:(JHTopicDetailItem *)topicDetailItem
 {
@@ -63,6 +40,7 @@
     _posts_date.text = topicDetailItem.posts_date;
     _userTitle.text = topicDetailItem.userTitle;
     _position.text = [NSString stringWithFormat:@"%d",topicDetailItem.position];
+
 }
 
 

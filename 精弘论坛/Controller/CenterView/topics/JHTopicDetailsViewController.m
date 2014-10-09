@@ -14,6 +14,7 @@
 #import "JHTopicDetailItem.h"
 #import "JHTopicAuthorItem.h"
 
+#define ORIGIN_CELL_HEIGHT 300.0f
 @interface JHTopicDetailsViewController ()
 
 @property (strong ,nonatomic) NSArray *topicsDetailsItems; //这个array包含所以帖子信息数据
@@ -80,14 +81,21 @@
     }else if (_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0) {
         [topicDetailCell displayValues:(JHTopicDetailItem *)_topicsDetailsItems[indexPath.row]];
     }
+    
     return topicDetailCell;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 0.0;
-    
+    if (indexPath.row==0&&_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0 ){
+        JHTopicAuthorItem *itemAuthor = (JHTopicAuthorItem *)_topicsDetailsItems[0];
+        return itemAuthor.cellHeight;
+    }else if (_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0) {
+        JHTopicDetailItem *itemDetail = (JHTopicDetailItem *)_topicsDetailsItems[indexPath.row];
+        return itemDetail.cellHeight;
+    }else
+        return ORIGIN_CELL_HEIGHT;
 }
 
 #pragma UITableViewDelegate

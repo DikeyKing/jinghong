@@ -56,13 +56,19 @@
 + (NSString *)getToken
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return (NSString *)[defaults objectForKey:@"token"];
+    if ([[defaults objectForKey:@"token"]length]==0 ) {
+        return @"";
+    }else
+        return (NSString *)[defaults objectForKey:@"token"];
 }
 
 + (NSString *)getSecretToken
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return (NSString *)[defaults objectForKey:@"secretToken"];
+    if ([[defaults objectForKey:@"token"]length]==0 ) {
+        return @"";
+    }else
+        return (NSString *)[defaults objectForKey:@"secretToken"];
 }
 
 + (NSString *)getLoginState
