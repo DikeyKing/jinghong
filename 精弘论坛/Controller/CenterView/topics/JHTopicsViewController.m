@@ -9,18 +9,14 @@
 
 #import "JHTopicsViewController.h"
 #import "JHTopicDetailsViewController.h"
-
 #import "JHTopicsCell.h"
 #import "JHRESTEngine.h"
 #import "JHTopicItem.h"
-#import "JHCommonConfigs.h"
-
 #import "JHUserDefaults.h"
 #import "SVProgressHUD.h"
 
 @interface JHTopicsViewController ()
 @property (strong,nonatomic) JHTopicItem* jhTopicItem;
-
 
 @end
 
@@ -32,8 +28,6 @@
     _topicsTableView.delegate = self;
     _topicsTableView.dataSource = self;
     
-   // [JHCommonConfigs sharedConfig].page = 1;
-
     [self getTopics];
 }
 
@@ -160,16 +154,8 @@
     [JHUserDefaults saveTopicID:[NSString stringWithFormat:@"%d",_jhTopicItem.topic_id]];
     [JHUserDefaults saveUid:[NSString stringWithFormat:@"%d",_jhTopicItem.user_id]];
 
-//    [JHCommonConfigs sharedConfig].boardID = _jhTopicItem.board_id;
-//    [JHCommonConfigs sharedConfig].topicID = _jhTopicItem.topic_id;
-//    [JHCommonConfigs sharedConfig].uid = _jhTopicItem.user_id;
-    
     JHTopicDetailsViewController *topicDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicDetailsViewController"];
     [self.navigationController pushViewController:topicDetailVC animated:YES];
 }
-
-
-
-
 
 @end

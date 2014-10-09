@@ -188,9 +188,6 @@
             
             
             [JHUserDefaults saveBoardID:[NSString stringWithFormat:@"%@",_jHBoardItem.board_id]];
-
-//            [JHCommonConfigs sharedConfig].boardID = [_jHBoardItem.board_id intValue];
-            
             
             [self.navigationController pushViewController:jHTopicsVC animated:YES];
         }
@@ -202,10 +199,6 @@
             
             [JHUserDefaults saveBoardID:[NSString stringWithFormat:@"%d",_jHRecentTopicItem.board_id]];
             [JHUserDefaults saveTopicID:[NSString stringWithFormat:@"%d",_jHRecentTopicItem.topic_id]];
-            
-            
-//            [JHCommonConfigs sharedConfig].boardID = _jHRecentTopicItem.board_id;
-//            [JHCommonConfigs sharedConfig].topicID = _jHRecentTopicItem.topic_id;
             
             [self.navigationController pushViewController:jHTopicsDetailsVC animated:YES];
         }

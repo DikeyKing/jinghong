@@ -56,10 +56,7 @@ static int pageSize=20 ;
                             @"boardId":[JHUserDefaults getBoardID],
                             @"page":[JHUserDefaults  getPage], //获取第几页
 
-                            
-//                            @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID],
-//                            @"page":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].page], //获取第几页
-                            
+            
                             @"pageSize":[NSString stringWithFormat:@"%d",pageSize] //每页多少个
                             
                             };
@@ -72,33 +69,9 @@ static int pageSize=20 ;
                              @"topicId":[JHUserDefaults getTopicID],
                              @"boardId":[JHUserDefaults getBoardID]
 
-                             
-//                             
-//                             @"topicId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].topicID],
-//                             @"boardId":[NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].boardID]
-//                             ,
-//                             @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid]
                              };
             
-            
-            /*
-             r	forum/postlist
-             boardId	303
-             appName	Á≤æÂºòËÆ∫Âùõ
-             sdkVersion	2.0.0
-             forumKey	CIuLQ1lkdPtOlhNuV4
-             pageSize	10
-             accessToken	8a7e56597e8b55881c67b1cb28b1b
-             imei	FD33C5E7-D99D-4166-9A7F-80DC5EED184B
-             forumType	7
-             page	1
-             sdkType	1
-             topicId	1626836
-             accessSecret	2a113ad6cfadce314a60a79d33cb7
-             forumId	1
-             packageName	com.mobcent.newforum.app82036
-             platType	5
-             */
+        
             break;
            
             
@@ -144,20 +117,13 @@ static int pageSize=20 ;
             privateParameter = @{
                 @"r":@"user/userinfo",
                 @"userId": [JHUserDefaults getUid],
-
-                
-//                @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
-            };
+                };
             break;
       
         case GET_LOGIN:
             privateParameter = @{
                                  @"r":@"user/userinfo",
                                  @"userId": [JHUserDefaults getUid],
-
-                                
-//                                 @"userId": [NSString stringWithFormat:@"%d",[JHCommonConfigs sharedConfig].uid],
-                                 
                                  @"email":[JHUserDefaults getUserName],
                                  @"password":[JHUserDefaults getPassword]
                                  };

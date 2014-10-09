@@ -7,11 +7,8 @@
 //
 
 #import "JHMasterViewController.h"
-//#import "JHCommonConfigs.h"
-
 #import "JHUserDefaults.h"
 #import "JHLoginViewController.h"
-
 #import "MMDrawerController.h"
 #import "MMDrawerVisualState.h"
 #import "JHLeftViewController.h"

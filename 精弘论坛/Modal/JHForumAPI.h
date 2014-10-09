@@ -8,7 +8,6 @@
 // 返回Base URLString 和http request parameters 参数地址
 
 #import <Foundation/Foundation.h>
-#import "JHCommonConfigs.h"
 
 @interface JHForumAPI : NSObject
 

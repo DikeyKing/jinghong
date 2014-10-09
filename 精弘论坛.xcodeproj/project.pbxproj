@@ -167,6 +167,8 @@
 		A912A63819C9743100F8F471 /* unused */ = {
 			isa = PBXGroup;
 			children = (
+				A9BCA20F19CE4EDD0025EA2D /* JHCommonConfigs.h */,
+				A9BCA21019CE4EDD0025EA2D /* JHCommonConfigs.m */,
 				A912A63C19C97AF400F8F471 /* JHUser.h */,
 				A912A63D19C97AF400F8F471 /* JHUser.m */,
 				A9BCA21919D011150025EA2D /* PublicAPI.plist */,
@@ -393,8 +395,6 @@
 			children = (
 				A9BCA21B19D024E00025EA2D /* JHDataModel.h */,
 				A9BCA21C19D024E00025EA2D /* JHDataModel.m */,
-				A9BCA20F19CE4EDD0025EA2D /* JHCommonConfigs.h */,
-				A9BCA21019CE4EDD0025EA2D /* JHCommonConfigs.m */,
 				A9B3E91119D26D15008BC363 /* 版块列表 */,
 				A9E121C019D8F82F009CE109 /* 主题列表 */,
 			);
