@@ -31,9 +31,7 @@
         NSDictionary *dic = (NSDictionary*) value[0];
         _contenttypeInfor = [dic objectForKey:@"infor"];
         _contentType = [[dic objectForKey:@"type"]intValue];
-        
     }
-    
     else
         [super setValue:value forKey:key];
 }

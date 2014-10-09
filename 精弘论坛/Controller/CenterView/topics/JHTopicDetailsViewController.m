@@ -75,7 +75,6 @@
 {
     JHTopicDetailsCell *topicDetailCell = [tableView dequeueReusableCellWithIdentifier:@"JHTopicDetailsCell"];
     
-    
     if (indexPath.row==0&&_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0 ) {
         [topicDetailCell displayValuesOfAuthor:(JHTopicAuthorItem *)_topicsDetailsItems[0]];
     }else if (_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0) {
@@ -84,10 +83,18 @@
     return topicDetailCell;
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 0.0;
+    
+}
+
 #pragma UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
 }
+
 @end

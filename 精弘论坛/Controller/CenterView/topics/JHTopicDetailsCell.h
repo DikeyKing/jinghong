@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *posts_date;
 @property (weak, nonatomic) IBOutlet UILabel *detailText;
 
+@property (assign,nonatomic,readonly) CGFloat cellHeight; //根据infor 计算出cell高度
+
 -(void)displayValuesOfAuthor:(JHTopicAuthorItem *)topicAuthorItem;
 -(void)displayValues:(JHTopicDetailItem *)topicDetailItem;
 

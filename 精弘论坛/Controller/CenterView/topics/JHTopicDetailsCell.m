@@ -21,7 +21,6 @@
 }
 
 
-
 -(void)displayValuesOfAuthor:(JHTopicAuthorItem *)topicAuthorItem
 {
     _position.text = @"楼主";
@@ -30,8 +29,32 @@
     _userTitle.text = topicAuthorItem.userTitle;
     _posts_date.text = topicAuthorItem.create_date;
     
+    _cellHeight = [self calculateCellHeight:topicAuthorItem.contenttypeInfor];
+    
 }
 
+-(CGFloat)calculateCellHeight:(NSString *)stringSize
+{
+    /*
+     CGSize contentSize= [_message.content boundingRectWithSize:CGSizeMake(kContentW, CGFLOAT_MAX)
+     options:NSStringDrawingUsesLineFragmentOrigin
+     attributes:@{NSFontAttributeName:kContentFont} //内容字体
+     context:nil].size;
+     */
+    
+    //如何动态计算cell高度？
+    //（文本计算高度）+（默认高度）
+    
+    //感觉这方法不是最佳的，回去再看看文档
+    CGSize contentSize = [stringSize boundingRectWithSize:CGSizeMake(10.0, 10.0)
+                                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                                attributes:@{NSFontAttributeName:@16.0}
+                                                   context:nil].size;
+    
+    
+    return 0.0;
+    
+}
 
 -(void)displayValues:(JHTopicDetailItem *)topicDetailItem
 {
@@ -44,6 +67,13 @@
 
 
 
+//cell height 需要计算
+//cell height 有最小值
+
+
+
+
+
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -53,6 +83,21 @@
 
     // Configure the view for the selected state
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
  {
