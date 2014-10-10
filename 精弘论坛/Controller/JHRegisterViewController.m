@@ -7,7 +7,6 @@
 //
 
 #import "JHRegisterViewController.h"
-#import "MBProgressHUD.h"
 
 @interface JHRegisterViewController ()
 

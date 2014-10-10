@@ -10,6 +10,7 @@
 		6B71C43F4FB54BCCA33B72C5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F8721D29574767BE45EA8D /* libPods.a */; };
 		A912A63B19C9772D00F8F471 /* JHForumAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A912A63A19C9772D00F8F471 /* JHForumAPI.m */; };
 		A912A63E19C97AF400F8F471 /* JHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A912A63D19C97AF400F8F471 /* JHUser.m */; };
+		A928A24319E784B90007DB96 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A928A24219E784B90007DB96 /* Podfile */; };
 		A948296319C816DF00C51243 /* JHHTMLParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A948296219C816DF00C51243 /* JHHTMLParse.m */; };
 		A948296619C81A8C00C51243 /* JHNewPosts.m in Sources */ = {isa = PBXBuildFile; fileRef = A948296519C81A8C00C51243 /* JHNewPosts.m */; };
 		A9482A8619CBCF7500453DD5 /* JHForumListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9482A8519CBCF7500453DD5 /* JHForumListCell.m */; };
@@ -68,6 +69,7 @@
 		A912A63A19C9772D00F8F471 /* JHForumAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHForumAPI.m; path = Modal/JHForumAPI.m; sourceTree = "<group>"; };
 		A912A63C19C97AF400F8F471 /* JHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHUser.h; path = Modal/JHUser.h; sourceTree = "<group>"; };
 		A912A63D19C97AF400F8F471 /* JHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHUser.m; path = Modal/JHUser.m; sourceTree = "<group>"; };
+		A928A24219E784B90007DB96 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		A948296119C816DF00C51243 /* JHHTMLParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHHTMLParse.h; path = Modal/JHHTMLParse.h; sourceTree = "<group>"; };
 		A948296219C816DF00C51243 /* JHHTMLParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHHTMLParse.m; path = Modal/JHHTMLParse.m; sourceTree = "<group>"; };
 		A948296419C81A8C00C51243 /* JHNewPosts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHNewPosts.h; path = Modal/JHNewPosts.h; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 		A9F2B1FF19ADC1E90067B6A4 = {
 			isa = PBXGroup;
 			children = (
+				A928A24219E784B90007DB96 /* Podfile */,
 				A9F2B21119ADC1E90067B6A4 /* 精弘论坛 */,
 				A9F2B23019ADC1E90067B6A4 /* 精弘论坛Tests */,
 				A9F2B20A19ADC1E90067B6A4 /* Frameworks */,
@@ -492,6 +495,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A928A24319E784B90007DB96 /* Podfile in Resources */,
 				A9F2B22419ADC1E90067B6A4 /* Images.xcassets in Resources */,
 				A9BCA21A19D011150025EA2D /* PublicAPI.plist in Resources */,
 				A9F2B21619ADC1E90067B6A4 /* InfoPlist.strings in Resources */,
