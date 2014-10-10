@@ -9,7 +9,7 @@
 #import "JHTopicDetailsCell.h"
 #import "JHTopicDetailItem.h"
 #import "JHTopicAuthorItem.h"
-
+#import "UIImageView+WebCache.h"
 
 @implementation JHTopicDetailsCell
 -(instancetype)init
@@ -21,7 +21,6 @@
     return self;
 }
 
-
 -(void)displayValuesOfAuthor:(JHTopicAuthorItem *)topicAuthorItem
 {
     _position.text = @"楼主";
@@ -29,6 +28,13 @@
     _reply_name.text = topicAuthorItem.user_nick_name;
     _userTitle.text = topicAuthorItem.userTitle;
     _posts_date.text = topicAuthorItem.create_date;
+    
+    _icon.contentMode = UIViewContentModeScaleAspectFit;
+    [_icon sd_setImageWithURL:[NSURL URLWithString:topicAuthorItem.icon]
+             placeholderImage:nil
+                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                        _icon.image = image;
+    }];
     
 }
 
@@ -40,17 +46,14 @@
     _posts_date.text = topicDetailItem.posts_date;
     _userTitle.text = topicDetailItem.userTitle;
     _position.text = [NSString stringWithFormat:@"%d",topicDetailItem.position];
-
+    
+    _icon.contentMode = UIViewContentModeScaleAspectFit;
+    [_icon sd_setImageWithURL:[NSURL URLWithString:topicDetailItem.icon]
+             placeholderImage:nil
+                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                        _icon.image = image;
+                    }];
 }
-
-
-
-//cell height 需要计算
-//cell height 有最小值
-
-
-
-
 
 - (void)awakeFromNib {
     // Initialization code
@@ -58,8 +61,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 

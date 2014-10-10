@@ -9,7 +9,7 @@
 #import "JHDataModel.h"
 #define FONT_SIZE 17.0f
 #define CELL_CONTENT_MARGIN 10.0f
-#define CELL_CONTENT_ORIGINHEIGHT 70.0f
+#define CELL_CONTENT_ORIGINHEIGHT 130.0f
 
 
 
