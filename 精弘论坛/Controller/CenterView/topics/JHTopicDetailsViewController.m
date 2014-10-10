@@ -13,6 +13,8 @@
 #import "SVProgressHUD.h"
 #import "JHTopicDetailItem.h"
 #import "JHTopicAuthorItem.h"
+#import "MJRefresh.h"
+
 
 #define ORIGIN_CELL_HEIGHT 300.0f
 @interface JHTopicDetailsViewController ()
@@ -27,6 +29,10 @@
     [super viewDidLoad];
     _topicDetailTV.delegate = self;
     _topicDetailTV.dataSource =self;
+    
+    [_topicDetailTV addHeaderWithCallback:^{
+        NSLog(@"测试");
+    }];
     
     [self getTopicDetails];
 }

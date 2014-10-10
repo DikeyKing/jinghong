@@ -11,8 +11,6 @@
 #define CELL_CONTENT_MARGIN 10.0f
 #define CELL_CONTENT_ORIGINHEIGHT 130.0f
 
-
-
 @implementation JHDataModel
 
 -(id)initWithDictionary :(NSDictionary *)jsonDic
@@ -24,8 +22,6 @@
     return self;
 }
 
-
-#warning 动态显示还是有一些问题,label
 -(CGFloat)calculateCellHeight:(NSString *)sizeString
 {
     

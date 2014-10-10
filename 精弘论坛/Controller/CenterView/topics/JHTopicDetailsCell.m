@@ -38,7 +38,6 @@
     
 }
 
-
 -(void)displayValues:(JHTopicDetailItem *)topicDetailItem
 {
     _detailText.text = topicDetailItem.infor;
