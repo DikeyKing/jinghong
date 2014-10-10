@@ -27,10 +27,18 @@
     _detailText.text = topicAuthorItem.contenttypeInfor;
     _reply_name.text = topicAuthorItem.user_nick_name;
     _userTitle.text = topicAuthorItem.userTitle;
-    _posts_date.text = topicAuthorItem.create_date;
     
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[topicAuthorItem.create_date doubleValue]/1000.0f];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    _posts_date.text = dateString;
+
     _icon.contentMode = UIViewContentModeScaleAspectFit;
+    
     [_icon sd_setImageWithURL:[NSURL URLWithString:topicAuthorItem.icon]
+#warning 占位头像放这里~
+     
              placeholderImage:nil
                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                         _icon.image = image;
@@ -45,6 +53,12 @@
     _posts_date.text = topicDetailItem.posts_date;
     _userTitle.text = topicDetailItem.userTitle;
     _position.text = [NSString stringWithFormat:@"%d",topicDetailItem.position];
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[topicDetailItem.posts_date doubleValue]/1000];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    _posts_date.text = dateString;
     
     _icon.contentMode = UIViewContentModeScaleAspectFit;
     [_icon sd_setImageWithURL:[NSURL URLWithString:topicDetailItem.icon]

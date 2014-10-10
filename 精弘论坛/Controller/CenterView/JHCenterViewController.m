@@ -64,6 +64,11 @@
 
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [SVProgressHUD dismiss];
+}
+
 -(void)getRecentTopTenTopics
 {
     [SVProgressHUD showProgress:SVProgressHUDMaskTypeNone status:@"载入中"];

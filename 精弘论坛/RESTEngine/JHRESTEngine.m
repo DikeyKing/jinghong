@@ -182,16 +182,6 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
     return self;
 }
 
-
-
-
-
-
-
-
-
-
-
 -(instancetype)postNewTopicOnSucceeded:(ArrayBlock)succdedBlock
                                onerror:(ErrorBlock)errorBlock
 {
@@ -205,7 +195,6 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
     
 }
 
-
 -(instancetype)postNewReplyOnSucceeded:(ArrayBlock)succdedBlock
                                onerror:(ErrorBlock)errorBlock
 {
@@ -216,8 +205,8 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
     }];
     
     return self;
-    
 }
+
 @end
 
 

@@ -26,11 +26,13 @@
     //假如这里是一个Array...含有子板块，我们需要特殊处理
     if([key isEqualToString:@"reply_content"])
     {
-        NSDictionary *dic = (NSDictionary*)value[0];
-        _infor = [dic objectForKey:@"infor"];
-        _type = [[dic objectForKey:@"type"]intValue];
-        _cellHeight = [self calculateCellHeight:_infor];
-        
+        NSArray *tempArray = (NSArray *)value;
+        if (tempArray!=nil && tempArray.count!=0) {
+            NSDictionary *dic = tempArray[0];
+            _infor = [dic objectForKey:@"infor"];
+            _type = [[dic objectForKey:@"type"]intValue];
+            _cellHeight = [self calculateCellHeight:_infor];
+        }
     }
     else
         [super setValue:value forKey:key];

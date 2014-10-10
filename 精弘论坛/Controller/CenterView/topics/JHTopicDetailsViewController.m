@@ -27,14 +27,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getTopicDetails];
+    [self setTableViewHeaderAndFoot]; //与tableView相关的操作
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [SVProgressHUD dismiss];
+}
+
+-(void)setTableViewHeaderAndFoot
+{
     _topicDetailTV.delegate = self;
     _topicDetailTV.dataSource =self;
     
     [_topicDetailTV addHeaderWithCallback:^{
-        NSLog(@"测试");
+        _topicDetailTV.headerRefreshingText = @"测试加载环境~";
+        [_topicDetailTV headerEndRefreshing];
     }];
     
-    [self getTopicDetails];
+    [_topicDetailTV addFooterWithCallback:^{
+        _topicDetailTV.footerRefreshingText = @"测试上拉刷新";
+        [_topicDetailTV footerEndRefreshing];
+#warning todo：获取下一页的所有帖子然后加载（会不会下一页和第一页重复了？）
+        
+    }];
+    
 }
 
 -(void)getTopicDetails
