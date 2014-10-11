@@ -39,7 +39,7 @@
     [_icon sd_setImageWithURL:[NSURL URLWithString:topicAuthorItem.icon]
 #warning 占位头像放这里~
      
-             placeholderImage:nil
+             placeholderImage:[UIImage imageNamed:@"noavatar_middle.gif"]
                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                         _icon.image = image;
     }];

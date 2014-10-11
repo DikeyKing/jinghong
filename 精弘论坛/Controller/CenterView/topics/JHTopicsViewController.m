@@ -40,7 +40,8 @@
 
 -(void)getTopics
 {
-    [SVProgressHUD showProgress:SVProgressHUDMaskTypeNone status:@"载入中"];
+
+    [SVProgressHUD showWithStatus:@"正在加载帖子列表" maskType:SVProgressHUDMaskTypeBlack];
     
     
     [[JHRESTEngine sharedJHRESTManager]getTopicsListOnSucceeded:^(NSMutableArray *modelObjects) {
