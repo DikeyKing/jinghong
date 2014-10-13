@@ -12,6 +12,7 @@
 #import "UIImageView+WebCache.h"
 
 @implementation JHTopicDetailsCell
+
 -(instancetype)init
 {
     self = [super init];
@@ -33,12 +34,9 @@
     [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:date];
     _posts_date.text = dateString;
-
     _icon.contentMode = UIViewContentModeScaleAspectFit;
     
     [_icon sd_setImageWithURL:[NSURL URLWithString:topicAuthorItem.icon]
-#warning 占位头像放这里~
-     
              placeholderImage:[UIImage imageNamed:@"noavatar_middle.gif"]
                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                         _icon.image = image;

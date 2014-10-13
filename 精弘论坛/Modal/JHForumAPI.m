@@ -79,7 +79,7 @@ static int pageSize=20 ;
             privateParameter = @{
                                  @"r":@"forum/topiclist",
                                  @"pageSize": [NSString stringWithFormat:@"%d",pageSize],
-                                 @"page":[NSString stringWithFormat:@"%d",pageSize],
+                                 @"page":[JHUserDefaults getPage],
                                  @"sortby":@"publish"
                                  
                                  };

@@ -42,9 +42,7 @@
     _topicDetailTV.dataSource =self;
     
     [_topicDetailTV addHeaderWithCallback:^{
-        _topicDetailTV.headerRefreshingText = @"测试加载环境~";
-#warning todo:上拉刷新操作在这里
-        
+        _topicDetailTV.headerRefreshingText = @"测试下拉刷新环境~";
         [self getTopicDetails];
         
         [_topicDetailTV headerEndRefreshing];
@@ -52,9 +50,9 @@
     
     [_topicDetailTV addFooterWithCallback:^{
         _topicDetailTV.footerRefreshingText = @"测试上拉刷新";
+        
         [_topicDetailTV footerEndRefreshing];
 #warning todo：获取下一页的所有帖子然后加载（会不会下一页和第一页重复了？）
-        
     }];
     
 }

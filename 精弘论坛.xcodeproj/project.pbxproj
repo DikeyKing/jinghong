@@ -385,6 +385,7 @@
 		A9BCA21219CFA9910025EA2D /* RESTEngine */ = {
 			isa = PBXGroup;
 			children = (
+				A94A970019E8C8BD003BE243 /* JHCache.swift */,
 				A9BCA21419CFFB8F0025EA2D /* JHRESTEngine.h */,
 				A9BCA21519CFFB8F0025EA2D /* JHRESTEngine.m */,
 				A912A63919C9772D00F8F471 /* JHForumAPI.h */,
@@ -579,7 +580,6 @@
 		A9F2B24019ADC20A0067B6A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A94A970019E8C8BD003BE243 /* JHCache.swift */,
 				A94A96FF19E8C8BD003BE243 /* 精弘论坛-Bridging-Header.h */,
 				A9BCA21B19D024E00025EA2D /* JHDataModel.h */,
 				A9BCA21C19D024E00025EA2D /* JHDataModel.m */,
@@ -861,6 +861,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -899,6 +900,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -921,6 +923,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: guodong wang (NG47A28ZQB)";
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "精弘论坛/精弘论坛-Prefix.pch";
 				INFOPLIST_FILE = "精弘论坛/精弘论坛-Info.plist";
@@ -942,6 +945,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: guodong wang (NG47A28ZQB)";
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "精弘论坛/精弘论坛-Prefix.pch";
 				INFOPLIST_FILE = "精弘论坛/精弘论坛-Info.plist";

@@ -11,9 +11,6 @@
 @class JHTopicAuthorItem;
 
 @interface JHTopicDetailsCell : UITableViewCell
-//icon
-//posts_date
-//reply_name
 
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UILabel *reply_name;

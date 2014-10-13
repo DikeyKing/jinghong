@@ -5,6 +5,7 @@
 //  Created by Dikey on 9/22/14.
 //  Copyright (c) 2014 dikey. All rights reserved.
 //
+// 在REST中获取数据之后缓存一份
 
 #import "JHRESTEngine.h"
 #import "JHForumAPI.h"
@@ -14,10 +15,15 @@
 #import "JHTopicAuthorItem.h"
 #import "JHUserDefaults.h"
 
+#import <精弘论坛-Swift.h>
+
+#warning 加入缓存啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊！
+
 static NSString * const kJHBaseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
 static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
 
 @implementation JHRESTEngine
+
 
 +(instancetype)sharedJHRESTManager
 {
@@ -143,34 +149,21 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
 {
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_DETAIL] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
-        if ([objectDic objectForKey:@"rs"]!= 0) {
+        if ([objectDic objectForKey:@"rs"]!=nil &&[objectDic objectForKey:@"rs"]!= 0) {
+            
             NSDictionary *topicsAuthorDic = [objectDic objectForKey:@"topic"];
-            
             JHTopicAuthorItem *tempAuthorItem = [[JHTopicAuthorItem alloc]initWithDictionary:topicsAuthorDic];
-#warning 得到楼主的发帖信息了，然后怎么加入呢？直接加入好像不行，因为类型不一样
-            
-
             NSArray *topicsDetailArray = [objectDic objectForKey:@"list"];
-            
-            
             NSMutableArray *topicsDetailItemArray = [[NSMutableArray alloc]initWithCapacity:topicsDetailArray.count+1];
-            
-            
             [topicsDetailItemArray addObject:tempAuthorItem];
-            
             for (NSMutableDictionary *topicsDic in topicsDetailArray) {
                  [topicsDetailItemArray addObject:[[JHTopicDetailItem alloc]initWithDictionary:topicsDic]];
             }
             
-
+#warning 这里进行缓存
+//[NSKeyedArchiver archiveRootObject:topicsDetailItemArray toFile:topicsDetailArchiver];
             
-//            JHTopicDetailItem *item = [[JHTopicDetailItem alloc]initWithDictionary:topicsDic];
-//            int rank = item.position;
-//            [topicsDetailItemArray[rank] addObject:item];
-            // NSMutableArray 怎么排序
-//            [topicsDetailItemArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-//                
-//            }];
+            [NSKeyedArchiver archivedDataWithRootObject:topicsDetailItemArray];
             
             succeededBlock(topicsDetailItemArray);
         }

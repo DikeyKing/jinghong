@@ -38,4 +38,31 @@
         [super setValue:value forKey:key];
 }
 
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:_board_category_id forKey:@"board_category_id"];
+    [aCoder encodeObject:_board_category_name forKey:@"board_category_name"];
+    [aCoder encodeObject:_board_category_type forKey:@"board_category_type"];
+    [aCoder encodeObject:_board_list forKey:@"board_list"];
+    
+    NSLog(@"encode object successfully");
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self) {
+        _board_category_id =[aDecoder decodeObjectForKey:@"board_category_id"] ;
+        _board_category_name =[aDecoder decodeObjectForKey:@"board_category_name"] ;
+        _board_category_type = [aDecoder decodeObjectForKey:@"board_category_type"];
+        _board_list = [aDecoder decodeObjectForKey:@"board_list"];
+    }
+    return self;
+    
+    NSLog(@"decode object successfully");
+
+}
+
+
+
 @end

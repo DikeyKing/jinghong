@@ -14,9 +14,12 @@
 #import "JHTopicItem.h"
 #import "JHUserDefaults.h"
 #import "SVProgressHUD.h"
+#import "MJRefresh.h"
 
 @interface JHTopicsViewController ()
+
 @property (strong,nonatomic) JHTopicItem* jhTopicItem;
+@property (assign,nonatomic) __block int pageNumber;
 
 @end
 
@@ -25,12 +28,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    _pageNumber = 1;
+    
+    [self getTopics];
+    [self setTableViewHeaderAndFoot];
+}
+
+-(void)setTableViewHeaderAndFoot
+{
     _topicsTableView.delegate = self;
     _topicsTableView.dataSource = self;
     
-    [self getTopics];
+    //下拉刷新
+    [_topicsTableView addHeaderWithCallback:^{
+        [self getTopics];
+    }];
+    
+    //上拉刷新
+    [_topicsTableView addFooterWithCallback:^{
+        _pageNumber ++;
+        [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_pageNumber]];
+        [self getTopics];
+    }];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -40,15 +61,13 @@
 
 -(void)getTopics
 {
-
     [SVProgressHUD showWithStatus:@"正在加载帖子列表" maskType:SVProgressHUDMaskTypeBlack];
     
-    
+    //获取数据
     [[JHRESTEngine sharedJHRESTManager]getTopicsListOnSucceeded:^(NSMutableArray *modelObjects) {
         [SVProgressHUD dismiss];
         
         _topicsItemList = [modelObjects copy];
-        
         [_topicsTableView reloadData];
         
     } onError:^(NSError *engineError) {

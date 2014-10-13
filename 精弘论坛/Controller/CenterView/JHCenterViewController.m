@@ -7,28 +7,19 @@
 //
 
 #import "JHCenterViewController.h"
-
 #import "AFNetworking.h"
 #import "JHForumAPI.h"
 #import "JHForumListCell.h"
 #import "JHTopicsViewController.h"
-
 #import "JHTopicDetailsViewController.h"
-
 #import "SVProgressHUD.h"
 #import "JHRESTEngine.h"
-
-
 #import "JHBoardItem.h"
 #import "JHFourmItem.h"
-
 #import "JHRecentTopicsCell.h"
-
-
 #import "JHTopicItem.h"
-
 #import "JHUserDefaults.h"
-
+#import "MJRefresh.h"
 
 @interface JHCenterViewController ()
 
@@ -48,15 +39,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self getBoardList];
+    [self getRecentTopTenTopics];
+    
+    [self setTableViewHeaderAndFoot];
+}
+
+-(void)setTableViewHeaderAndFoot
+{
+    _tableView.hidden= YES;
     _tableView.delegate =self;
     _tableView.dataSource = self;
     _recentTopicsTV.delegate = self;
     _recentTopicsTV.dataSource =self;
     
-    [self getBoardList];
-    [self getRecentTopTenTopics];
-    
-    _tableView.hidden= YES;
+    [_tableView addHeaderWithCallback:^{
+        _tableView.headerRefreshingText=@"刷新中";
+        if (_segment.selectedSegmentIndex == 0) {
+            [self recentTopicsTV];
+        }else if(_segment.selectedSegmentIndex ==1){
+            [self getBoardList];
+        }
+        
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -127,9 +133,6 @@
         }
     }
     if (tableView == _recentTopicsTV) {
-//        if (_recentTopcicList != nil) {
-//            return [_recentTopcicList count];
-//        }
         return 1;
     }
     return 0;
@@ -222,7 +225,6 @@
     return 44;
     
 }
-#pragma sementControll
 
 - (IBAction)selectedSegment:(id)sender
 {
@@ -230,7 +232,6 @@
         case 0:
             NSLog(@"最新帖子");
             [self getRecentTopTenTopics];
-            
             //切换标题，重新赋予数据源，最新帖子
             //[_tableView reloadData];
             
@@ -242,7 +243,6 @@
             NSLog(@"论坛列表");
             //[_tableView reloadData];
             [self getBoardList];
-            
             
             _tableView.hidden =NO;
             _recentTopicsTV.hidden = YES;

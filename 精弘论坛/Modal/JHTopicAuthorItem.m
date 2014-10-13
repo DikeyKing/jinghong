@@ -28,9 +28,6 @@
 
 -(void) setValue:(id)value forKey:(NSString *)key
 {
-    
-    NSLog(@"%@",value);
-    
     //假如这里是一个Array...含有子板块，我们需要特殊处理
     if([key isEqualToString:@"content"])
     {

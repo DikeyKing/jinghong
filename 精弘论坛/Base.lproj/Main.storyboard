@@ -236,6 +236,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="recentTopicsTV" destination="kSx-b1-wBd" id="VSZ-PP-Swk"/>
+                        <outlet property="segment" destination="Fn2-Jx-lop" id="DWO-oj-Ty9"/>
                         <outlet property="tableView" destination="nT8-nX-lIQ" id="rtb-8g-gtI"/>
                     </connections>
                 </viewController>
