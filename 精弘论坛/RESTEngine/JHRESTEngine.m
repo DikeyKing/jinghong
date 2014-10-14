@@ -141,10 +141,10 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
             succeededBlock(topicsItemArray);
             
             JHCache *cache = [JHCache init];
-            [cache saveDataToMemory:topicsItemArray];
+            NSData *archivedData = [cache saveDataToMemory:topicsItemArray];
+            //初始化一个cache类，将topicsItem全部固化成NSDate
             
-            
-#warning SaveCache
+#warning 正在做：缓存
 
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
