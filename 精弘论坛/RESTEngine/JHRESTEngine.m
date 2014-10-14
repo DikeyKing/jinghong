@@ -59,18 +59,14 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
 -(instancetype)getBoardListOnSucceeded:(ArrayBlock)succeededBlock
                      onError:(ErrorBlock)errorBlock
 {
+    //发起连接，得到所有列表的JSON数据并模型化，加入缓存
+
     [self POST:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_BOARD_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
        
         NSDictionary *objectDic = responseObject;
         
         if ([objectDic objectForKey:@"rs"] != 0) {
-            
-            //声明forumArray
-            //声明forumItemArray
-            //转换forumArray
-            //得到forumItemArray
-            //不要关心细节，细节是模型类的事情
-            
+
             NSArray *forumArray = [objectDic objectForKey:@"list"];
             NSMutableArray *forumItemArray = [NSMutableArray new];
             
@@ -78,9 +74,9 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
                 [forumItemArray addObject:[[JHFourmItem alloc]initWithDictionary:forumDic]];
             }
             
-            //forumItemArray 包含了服务器返回的所有版块名，回调指CenterView 更新视图~
+            //回调CenterView 更新视图~
             succeededBlock(forumItemArray);
-            
+#warning SaveCache
         }else{
             
             NSLog(@"获取首页失败了,参数错误");
@@ -110,6 +106,13 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
             }
             
             succeededBlock(topicsItemArray);
+#warning SaveCache
+                
+            
+            JHCache *cache = [JHCache init];
+            [cache saveDataToMemory:topicsItemArray];
+        
+
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         errorBlock(error);
@@ -133,8 +136,16 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
                 // 这步将topicsArray 中的JSON  转换成 topicsItem 添加至Array
                 // 然后返回 topicsItemArray
                 [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
-            }            
+            }
+            
             succeededBlock(topicsItemArray);
+            
+            JHCache *cache = [JHCache init];
+            [cache saveDataToMemory:topicsItemArray];
+            
+            
+#warning SaveCache
+
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         errorBlock(error);
@@ -160,7 +171,7 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
                  [topicsDetailItemArray addObject:[[JHTopicDetailItem alloc]initWithDictionary:topicsDic]];
             }
             
-#warning 这里进行缓存
+#warning SaveCache
 //[NSKeyedArchiver archiveRootObject:topicsDetailItemArray toFile:topicsDetailArchiver];
             
             [NSKeyedArchiver archivedDataWithRootObject:topicsDetailItemArray];

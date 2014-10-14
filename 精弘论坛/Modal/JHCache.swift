@@ -8,29 +8,44 @@
 
 import Foundation
 
-class JHCache : NSObject {
+
+@objc class JHCache  {
+    
+    var filePath:String?
+    
+    init() {
+        
+        self.filePath = self.cacheDirectory()
+        
+    }
     
     func cacheDirectory()->String{
         let documentsPath :AnyObject = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
+        
         let destinationPath:String =  documentsPath.stringByAppendingString("/test.db")
         
         return destinationPath
     }
     
-    func clearAllCache(){
+    func saveDataToMemory (dataObject: AnyObject){
         
+        NSKeyedArchiver.archivedDataWithRootObject(dataObject)
     }
     
-    func saveMemoryCacheToDisk(){
-        
-    }
-    
-    func cacheDateToFile( date:NSData , fileName:String){
-        
+    func saveMemoryCacheToDisk( data:NSData , fileName:String){
+        // 保存缓存到文件
+        let fileName = self.cacheDirectory()
+        NSKeyedArchiver.archiveRootObject(data, toFile: fileName)
     }
     
     func getCachedItems()->AnyObject{
+        //返回缓存的文件
         let object: AnyObject? =  NSKeyedUnarchiver.unarchiveObjectWithFile(self.cacheDirectory())
+        
         return object!
+    }
+    
+    func clearAllCache(){
+        
     }
 }
