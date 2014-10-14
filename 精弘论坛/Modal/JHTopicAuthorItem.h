@@ -8,7 +8,7 @@
 
 #import "JHDataModel.h"
 
-@interface JHTopicAuthorItem : JHDataModel
+@interface JHTopicAuthorItem : JHDataModel<NSCoding>
 
 @property (copy,nonatomic) NSMutableString *activityInfo;
 @property (copy,nonatomic) NSMutableString *contenttypeInfor;

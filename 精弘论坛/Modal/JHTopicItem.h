@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JHDataModel.h"
 
-@interface JHTopicItem : JHDataModel
+@interface JHTopicItem : JHDataModel<NSCoding>
 
 @property (assign, nonatomic) int board_id;
 @property (copy, nonatomic) NSMutableString *board_name;

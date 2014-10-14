@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@interface JHDataModel : NSObject<NSCoding>
+@interface JHDataModel : NSObject
 
 -(id)initWithDictionary :(NSDictionary *)jsonDic;
 

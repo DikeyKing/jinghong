@@ -8,7 +8,7 @@
 
 #import "JHDataModel.h"
 
-@interface JHTopicDetailItem : JHDataModel
+@interface JHTopicDetailItem : JHDataModel<NSCoding>
 
 @property (copy,nonatomic) NSMutableString *icon;
 @property (copy,nonatomic) NSMutableString *is_quote;
