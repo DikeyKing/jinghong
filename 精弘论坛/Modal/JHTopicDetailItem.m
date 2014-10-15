@@ -9,7 +9,6 @@
 #import "JHTopicDetailItem.h"
 
 
-
 @implementation JHTopicDetailItem
 
 -(instancetype)init
@@ -37,6 +36,7 @@
     else
         [super setValue:value forKey:key];
 }
+
 
 
 

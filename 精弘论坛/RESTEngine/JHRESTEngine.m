@@ -17,7 +17,12 @@
 
 #import <精弘论坛-Swift.h>
 
-#warning 加入缓存啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊！
+//typedef enum CacheType{
+//    RecentTopics = 1,
+//    BoardList,
+//    TopicDetails,
+//    ForumList
+//}CacheType;
 
 static NSString * const kJHBaseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
 static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
@@ -59,6 +64,8 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
 -(instancetype)getBoardListOnSucceeded:(ArrayBlock)succeededBlock
                      onError:(ErrorBlock)errorBlock
 {
+    JHCache *swift =[[JHCache alloc]init];
+    
     //发起连接，得到所有列表的JSON数据并模型化，加入缓存
 
     [self POST:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_BOARD_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -76,7 +83,6 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
             
             //回调CenterView 更新视图~
             succeededBlock(forumItemArray);
-#warning SaveCache
         }else{
             
             NSLog(@"获取首页失败了,参数错误");
@@ -93,6 +99,13 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
 -(instancetype)getTopicsListOnSucceeded:(ArrayBlock)succeededBlock
                                 onError:(ErrorBlock)errorBlock
 {
+    JHCache *cache = [JHCache new];
+    
+    NSData *data = [cache getDataForFile:@"fileName"];
+    if (data!=nil) {
+        
+    }
+    
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
             if ([objectDic objectForKey:@"rs"]!= 0) {
@@ -104,19 +117,12 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
                 // 然后返回 topicsItemArray
                 [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
             }
-            
             succeededBlock(topicsItemArray);
-#warning SaveCache
-                
-            
-            JHCache *cache = [JHCache init];
-            [cache saveDataToMemory:topicsItemArray];
+                //[cache saveDataToMemory:topicsItemArray];
+            }
         
-
-        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         errorBlock(error);
-
     }];
     
     
@@ -126,6 +132,7 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
 -(instancetype)getRecentTopicsOnSucceeded:(ArrayBlock)succeededBlock
                                   onError:(ErrorBlock)errorBlock
 {
+
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_RECENT_TOPICS] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
         if ([objectDic objectForKey:@"rs"]!= 0) {
@@ -140,12 +147,14 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
             
             succeededBlock(topicsItemArray);
             
+            
             JHCache *cache = [JHCache init];
-            NSData *archivedData = [cache saveDataToMemory:topicsItemArray];
+//            NSData *archivedData = [cache saveDataToMemory:topicsItemArray];
+            
+            
             //初始化一个cache类，将topicsItem全部固化成NSDate
             
 #warning 正在做：缓存
-
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         errorBlock(error);
