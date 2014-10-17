@@ -17,18 +17,21 @@
 
 #import <精弘论坛-Swift.h>
 
-//typedef enum CacheType{
-//    RecentTopics = 1,
-//    BoardList,
-//    TopicDetails,
-//    ForumList
-//}CacheType;
 
-static NSString * const kJHBaseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
-static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
+static NSString* const kJHBaseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
+static  NSString* const  kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
+
+
+//缓存文件名
+static NSString* const kCachedRecentTopics = @"RecentTopicsCache";
+static NSString* const kCachedBoardList = @"BoardListCache";
+static NSString* const kCachedTopicDetails = @"TopicDetailsCache";
+static NSString* const kCachedForumList = @"ForumList";
+
+
+
 
 @implementation JHRESTEngine
-
 
 +(instancetype)sharedJHRESTManager
 {
@@ -64,35 +67,32 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
 -(instancetype)getBoardListOnSucceeded:(ArrayBlock)succeededBlock
                      onError:(ErrorBlock)errorBlock
 {
-    JHCache *swift =[[JHCache alloc]init];
+    JHCache *cache =[[JHCache alloc]init];
+    succeededBlock([cache getCachedItem:kCachedBoardList]) ;
     
     //发起连接，得到所有列表的JSON数据并模型化，加入缓存
-
     [self POST:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_BOARD_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-       
         NSDictionary *objectDic = responseObject;
-        
         if ([objectDic objectForKey:@"rs"] != 0) {
-
             NSArray *forumArray = [objectDic objectForKey:@"list"];
             NSMutableArray *forumItemArray = [NSMutableArray new];
-            
+
             for (NSMutableDictionary *forumDic in forumArray) {
                 [forumItemArray addObject:[[JHFourmItem alloc]initWithDictionary:forumDic]];
             }
-            
             //回调CenterView 更新视图~
             succeededBlock(forumItemArray);
-        }else{
+            [cache cacheDataToFile:forumItemArray fileName:kCachedBoardList];
+            //这行保存有点问题
             
+        }else{
             NSLog(@"获取首页失败了,参数错误");
         }
-          
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"获取首页失败了%@",error);
         errorBlock(error);
-
     }];
+    
     return self;
 }
 
@@ -101,10 +101,10 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
 {
     JHCache *cache = [JHCache new];
     
-    NSData *data = [cache getDataForFile:@"fileName"];
-    if (data!=nil) {
-        
-    }
+    //NSData *data = [cache getDataForFile:@"fileName"];
+//    if (data!=nil) {
+//        
+//    }
     
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
@@ -212,6 +212,7 @@ static NSString * const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/log
                                onerror:(ErrorBlock)errorBlock
 {
     [self POST:kJHBaseURLString parameters:[JHForumAPI getParameterDic:POST_NEW_REPLY] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
 #warning 回复帖子成功
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 #warning 回复帖子失败

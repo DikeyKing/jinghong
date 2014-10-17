@@ -60,6 +60,7 @@
 		A9CE8ADC19C5243900B3117A /* JHLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8ADB19C5243900B3117A /* JHLeftViewController.m */; };
 		A9CE8ADF19C5244D00B3117A /* JHRightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8ADE19C5244D00B3117A /* JHRightViewController.m */; };
 		A9CE8AE319C524ED00B3117A /* JHCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CE8AE219C524ED00B3117A /* JHCenterViewController.m */; };
+		A9D7F0FE19F0B05C009BCAAA /* JHLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D7F0FD19F0B05C009BCAAA /* JHLeftViewController.swift */; };
 		A9DA88C519C99F8C00FEB6B2 /* JHUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DA88C419C99F8C00FEB6B2 /* JHUserDefaults.m */; };
 		A9DA88CC19C9BAF800FEB6B2 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A9DA88C919C9BAF800FEB6B2 /* SVProgressHUD.bundle */; };
 		A9DA88CD19C9BAF800FEB6B2 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DA88CB19C9BAF800FEB6B2 /* SVProgressHUD.m */; };
@@ -198,6 +199,7 @@
 		A9CE8ADE19C5244D00B3117A /* JHRightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHRightViewController.m; path = Controller/RightView/JHRightViewController.m; sourceTree = "<group>"; };
 		A9CE8AE119C524ED00B3117A /* JHCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHCenterViewController.h; path = Controller/CenterView/JHCenterViewController.h; sourceTree = "<group>"; };
 		A9CE8AE219C524ED00B3117A /* JHCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHCenterViewController.m; path = Controller/CenterView/JHCenterViewController.m; sourceTree = "<group>"; };
+		A9D7F0FD19F0B05C009BCAAA /* JHLeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JHLeftViewController.swift; path = Controller/LeftView/JHLeftViewController.swift; sourceTree = "<group>"; };
 		A9DA88C319C99F8C00FEB6B2 /* JHUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JHUserDefaults.h; path = Modal/JHUserDefaults.h; sourceTree = "<group>"; };
 		A9DA88C419C99F8C00FEB6B2 /* JHUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JHUserDefaults.m; path = Modal/JHUserDefaults.m; sourceTree = "<group>"; };
 		A9DA88C819C9BAF800FEB6B2 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -223,7 +225,7 @@
 		A9F2B21A19ADC1E90067B6A4 /* JHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHAppDelegate.h; sourceTree = "<group>"; };
 		A9F2B21B19ADC1E90067B6A4 /* JHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHAppDelegate.m; sourceTree = "<group>"; };
 		A9F2B21E19ADC1E90067B6A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A9F2B22319ADC1E90067B6A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A9F2B22319ADC1E90067B6A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "精弘论坛/Images.xcassets"; sourceTree = "<group>"; };
 		A9F2B22919ADC1E90067B6A4 /* 精弘论坛Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "精弘论坛Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F2B22A19ADC1E90067B6A4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A9F2B23219ADC1E90067B6A4 /* 精弘论坛Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "精弘论坛Tests-Info.plist"; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 			children = (
 				A9CE8ADA19C5243900B3117A /* JHLeftViewController.h */,
 				A9CE8ADB19C5243900B3117A /* JHLeftViewController.m */,
+				A9D7F0FD19F0B05C009BCAAA /* JHLeftViewController.swift */,
 			);
 			name = "Left VC";
 			sourceTree = "<group>";
@@ -508,8 +511,9 @@
 		A9F2B1FF19ADC1E90067B6A4 = {
 			isa = PBXGroup;
 			children = (
-				A94A96EC19E8AD39003BE243 /* images */,
+				A9F2B22319ADC1E90067B6A4 /* Images.xcassets */,
 				A928A24219E784B90007DB96 /* Podfile */,
+				A94A96EC19E8AD39003BE243 /* images */,
 				A9F2B21119ADC1E90067B6A4 /* 精弘论坛 */,
 				A9F2B23019ADC1E90067B6A4 /* 精弘论坛Tests */,
 				A9F2B20A19ADC1E90067B6A4 /* Frameworks */,
@@ -552,7 +556,6 @@
 				A9BCA21219CFA9910025EA2D /* RESTEngine */,
 				A9F2B24019ADC20A0067B6A4 /* Model */,
 				A9F2B24119ADC2130067B6A4 /* Controller */,
-				A9F2B22319ADC1E90067B6A4 /* Images.xcassets */,
 				A9F2B21219ADC1E90067B6A4 /* Supporting Files */,
 			);
 			path = "精弘论坛";
@@ -766,6 +769,7 @@
 				A9DA88CD19C9BAF800FEB6B2 /* SVProgressHUD.m in Sources */,
 				A92FCC7419E7ADAB007263B0 /* UIImageView+HighlightedWebCache.m in Sources */,
 				A92FCC6F19E7ADAB007263B0 /* SDWebImagePrefetcher.m in Sources */,
+				A9D7F0FE19F0B05C009BCAAA /* JHLeftViewController.swift in Sources */,
 				A92FCC6D19E7ADAB007263B0 /* SDWebImageDownloaderOperation.m in Sources */,
 				A9BCA21619CFFB8F0025EA2D /* JHRESTEngine.m in Sources */,
 				A92FCC6C19E7ADAB007263B0 /* SDWebImageDownloader.m in Sources */,

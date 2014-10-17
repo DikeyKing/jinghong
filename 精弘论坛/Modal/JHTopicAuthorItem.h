@@ -19,6 +19,7 @@
 @property (assign,nonatomic) int gender;
 @property (assign,nonatomic) int hits;
 @property (assign,nonatomic) int hot;
+
 @property (copy,nonatomic) NSMutableString *icon;
 @property (assign,nonatomic) int is_favor;
 @property (assign,nonatomic) int level;
@@ -32,6 +33,7 @@
 @property (assign,nonatomic) int status;
 @property (copy,nonatomic) NSMutableString *title;
 @property (assign,nonatomic) int top;
+
 @property (assign,nonatomic) int topic_id;
 @property (copy,nonatomic) NSMutableString *type;
 @property (copy,nonatomic) NSMutableString *user_nick_name;

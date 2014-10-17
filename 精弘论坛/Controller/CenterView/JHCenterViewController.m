@@ -79,7 +79,7 @@
 {
     [SVProgressHUD showProgress:SVProgressHUDMaskTypeNone status:@"载入中"];
     
-    [[JHRESTEngine sharedJHRESTManager]getRecentTopicsOnSucceeded:^(NSMutableArray *modelObjects) {
+    [[JHRESTEngine sharedJHRESTManager]getRecentTopicsOnSucceeded:^(NSArray *modelObjects) {
         [SVProgressHUD dismiss];
         
         if (!_recentTopcicList) {
@@ -101,7 +101,7 @@
 {
     [SVProgressHUD showProgress:SVProgressHUDMaskTypeNone status:@"载入中"];
 
-    [[JHRESTEngine sharedJHRESTManager]getBoardListOnSucceeded:^(NSMutableArray *modelObjects) {
+    [[JHRESTEngine sharedJHRESTManager]getBoardListOnSucceeded:^(NSArray *modelObjects) {
         [SVProgressHUD dismiss];
         
         if (!_forumItemList) {

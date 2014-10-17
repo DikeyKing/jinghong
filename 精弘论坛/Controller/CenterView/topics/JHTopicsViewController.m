@@ -64,7 +64,7 @@
     [SVProgressHUD showWithStatus:@"正在加载帖子列表" maskType:SVProgressHUDMaskTypeBlack];
     
     //获取数据
-    [[JHRESTEngine sharedJHRESTManager]getTopicsListOnSucceeded:^(NSMutableArray *modelObjects) {
+    [[JHRESTEngine sharedJHRESTManager]getTopicsListOnSucceeded:^(NSArray *modelObjects) {
         [SVProgressHUD dismiss];
         
         _topicsItemList = [modelObjects copy];
@@ -127,12 +127,13 @@
 {
     _jhTopicItem =  (JHTopicItem* )_topicsItemList[indexPath.row];
     
-    
     [JHUserDefaults saveBoardID:[NSString stringWithFormat:@"%d",_jhTopicItem.board_id]];
     [JHUserDefaults saveTopicID:[NSString stringWithFormat:@"%d",_jhTopicItem.topic_id]];
     [JHUserDefaults saveUid:[NSString stringWithFormat:@"%d",_jhTopicItem.user_id]];
 
     JHTopicDetailsViewController *topicDetailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicDetailsViewController"];
+    
+    topicDetailVC.titleLabel.text = [_jhTopicItem.title copy];
     [self.navigationController pushViewController:topicDetailVC animated:YES];
 }
 

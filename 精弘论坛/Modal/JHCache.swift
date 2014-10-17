@@ -60,7 +60,6 @@ import Foundation
         
         //假如内存中有数据，从内存缓存中返回
         if var dataFormCache: AnyObject = self.memoryCache?.objectForKey(fileName){
-            
         unarchivedData = NSKeyedUnarchiver.unarchiveObjectWithData(dataFormCache as NSData)
             return unarchivedData as NSArray
         }

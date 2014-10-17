@@ -11,7 +11,7 @@
 
 typedef void (^VoidBlock)(void);
 typedef void (^ErrorBlock)(NSError* engineError);
-typedef void (^ArrayBlock)(NSMutableArray *modelObjects);
+typedef void (^ArrayBlock)(NSArray *modelObjects);
 
 @interface JHRESTEngine : AFHTTPRequestOperationManager
 

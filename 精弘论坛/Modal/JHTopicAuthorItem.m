@@ -16,6 +16,7 @@
 
 
 @implementation JHTopicAuthorItem
+
 -(instancetype)init
 {
     self = [super init];
@@ -42,6 +43,132 @@
     else
         [super setValue:value forKey:key];
 }
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    //实际上用不到这么多参数的
+    
+    [aCoder encodeObject:_activityInfo forKey:@"activityInfo"];
+    [aCoder encodeObject:_contenttypeInfor forKey:@"contenttypeInfor"];
+    [aCoder encodeInt:_contentType forKey:@"contentType"];
+    [aCoder encodeObject:_create_date forKey:@"create_date"];
+    
+    [aCoder encodeInt:_essence forKey:@"essence"];
+    [aCoder encodeInt:_flag forKey:@"flag"];
+    [aCoder encodeInt:_gender forKey:@"gender"];
+    [aCoder encodeInt:_hits forKey:@"hits"];
+    [aCoder encodeInt:_hot forKey:@"hot"];
+
+    [aCoder encodeObject:_icon forKey:@"icon"];
+    [aCoder encodeInt:_is_favor forKey:@"is_favor"];
+    [aCoder encodeInt:_level forKey:@"level"];
+    [aCoder encodeInt:_hot forKey:@"hot"];
+    
+    [aCoder encodeObject:_managePanel forKey:@"managePanel"];
+    [aCoder encodeObject:_poll_info forKey:@"poll_info"];
+    [aCoder encodeInt:_replies forKey:@"replies"];
+    [aCoder encodeInt:_reply_posts_id forKey:@"reply_posts_id"];
+    [aCoder encodeInt:_reply_status forKey:@"reply_status"];
+    [aCoder encodeInt:_sortId forKey:@"sortId"];
+    [aCoder encodeInt:_status forKey:@"status"];
+    [aCoder encodeObject:_title forKey:@"title"];
+    [aCoder encodeInt:_top forKey:@"top"];
+
+    [aCoder encodeInt:_topic_id forKey:@"topic_id"];
+    [aCoder encodeObject:_type forKey:@"type"];
+    [aCoder encodeObject:_user_nick_name forKey:@"user_nick_name"];
+    [aCoder encodeObject:_userTitle forKey:@"userTitle"];
+    [aCoder encodeInt:_vote forKey:@"vote"];
+    [aCoder encodeInt:_user_id forKey:@"user_id"];
+    
+    [aCoder encodeFloat:_cellHeight forKey:@"cellHeight"];
+    [aCoder encodeInt:_top forKey:@"top"];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if (self) {
+      _activityInfo= [aDecoder decodeObjectForKey:@"activityInfo"];
+        
+        [ aDecoder decodeObjectForKey:@"contenttypeInfor"];
+        [ aDecoder decodeObjectForKey:@"contentType"];
+        [ aDecoder decodeObjectForKey:@"create_date"];
+        
+        [ aDecoder decodeObjectForKey:@"essence"];
+        [ aDecoder decodeObjectForKey:@"flag"];
+        [ aDecoder decodeObjectForKey:@"gender"];
+        [aDecoder decodeObjectForKey:@"hits"];
+        [aDecoder decodeObjectForKey:@"hot"];
+        
+        [aDecoder decodeObjectForKey:@"icon"];
+        [aDecoder decodeObjectForKey:@"is_favor"];
+        [aDecoder decodeObjectForKey:@"level"];
+        [aDecoder decodeObjectForKey:@"hot"];
+        
+        [aDecoder decodeObjectForKey:@"managePanel"];
+        [aDecoder decodeObjectForKey:@"poll_info"];
+        [aDecoder decodeIntForKey:@"replies"];
+        [aDecoder decodeIntForKey:@"reply_posts_id"];
+        [aDecoder decodeIntForKey:@"reply_status"];
+        [aDecoder decodeIntForKey:@"sortId"];
+        [aDecoder decodeIntForKey:@"status"];
+        [aDecoder decodeObjectForKey:@"title"];
+        [aDecoder decodeIntForKey:@"top"];
+        
+        [aDecoder decodeIntForKey:@"topic_id"];
+        [aDecoder decodeObjectForKey:@"type"];
+        [aDecoder decodeObjectForKey:@"user_nick_name"];
+        [aDecoder decodeObjectForKey:@"userTitle"];
+        [aDecoder decodeIntForKey:@"vote"];
+        [aDecoder decodeIntForKey:@"user_id"];
+        
+        [aDecoder decodeFloatForKey:@"cellHeight"];
+        [aDecoder encodeInt:_top forKey:@"top"];
+        
+    }
+    
+    return self;
+}
+
+/*
+ 
+ @property (assign,nonatomic) int hot;
+
+ @property (assign,nonatomic) int topic_id;
+ @property (copy,nonatomic) NSMutableString *type;
+ @property (copy,nonatomic) NSMutableString *user_nick_name;
+ @property (copy,nonatomic) NSMutableString *userTitle;
+ @property (assign,nonatomic) int vote;
+ @property (assign,nonatomic) int user_id;
+ @property (assign,nonatomic,readonly) CGFloat cellHeight; //根据infor 计算出cell高度
+ 
+ 
+ @property (copy,nonatomic) NSMutableString *activityInfo;
+ @property (copy,nonatomic) NSMutableString *contenttypeInfor;
+ @property (assign,nonatomic) int contentType;
+ @property (copy,nonatomic) NSMutableString *create_date;
+ @property (assign,nonatomic) int essence;
+ @property (assign,nonatomic) int flag;
+ @property (assign,nonatomic) int gender;
+ @property (assign,nonatomic) int hits;
+
+ @property (copy,nonatomic) NSMutableString *icon;
+ @property (assign,nonatomic) int is_favor;
+ @property (assign,nonatomic) int level;
+ @property (assign,nonatomic) int location;
+ @property (copy,nonatomic) NSMutableString *managePanel;
+ @property (copy,nonatomic) NSMutableString *poll_info;
+ @property (assign,nonatomic) int replies;
+ @property (assign,nonatomic) int reply_posts_id;
+ @property (assign,nonatomic) int reply_status;
+ @property (assign,nonatomic) int sortId;
+ @property (assign,nonatomic) int status;
+ @property (copy,nonatomic) NSMutableString *title;
+ @property (assign,nonatomic) int top;
+ 
+ 
+ */
+
 
 /*
  

@@ -11,6 +11,6 @@
 @interface JHTopicDetailsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,weak) IBOutlet UITableView *topicDetailTV;
-
+@property (nonatomic,weak) IBOutlet UILabel *titleLabel;
 
 @end

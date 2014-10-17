@@ -24,8 +24,11 @@
 @end
 
 @implementation JHTopicDetailsViewController
-
+ 
 - (void)viewDidLoad {
+    
+    NSLog(@"JHTopicDetailsViewController :titile%@",self.titleLabel.text);
+    
     [super viewDidLoad];
     [self getTopicDetails];
     [self setTableViewHeaderAndFoot]; //与tableView相关的操作
@@ -61,7 +64,7 @@
 {
     [SVProgressHUD showProgress:SVProgressHUDMaskTypeNone];
     
-    [[JHRESTEngine sharedJHRESTManager]getTopicDetailsOnSucceeded:^(NSMutableArray *modelObjects) {
+    [[JHRESTEngine sharedJHRESTManager]getTopicDetailsOnSucceeded:^(NSArray *modelObjects) {
         [SVProgressHUD dismiss];
         
         if (!_topicsDetailsItems) {

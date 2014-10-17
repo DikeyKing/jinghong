@@ -8,8 +8,6 @@
 
 #import "JHLeftViewController.h"
 
-
-
 @interface JHLeftViewController ()
 @end
 @implementation JHLeftViewController
