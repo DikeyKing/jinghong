@@ -53,31 +53,31 @@ import Foundation
     }
     
     
-    func  getCachedItem(fileName:String)->NSArray{
+    func  getCachedItem(fileName:String)->AnyObject{
         
-        var dataFormCache:AnyObject?
-        var unarchivedData: AnyObject?
+        var cachedItemArray:NSArray = NSArray()
         
         //假如内存中有数据，从内存缓存中返回
-        if var dataFormCache: AnyObject = self.memoryCache?.objectForKey(fileName){
-        unarchivedData = NSKeyedUnarchiver.unarchiveObjectWithData(dataFormCache as NSData)
-            return unarchivedData as NSArray
+        if let memoryCache: AnyObject = self.memoryCache?.objectForKey(fileName){ //NSData
+        let unarchivedData: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithData(memoryCache as NSData)!
+            cachedItemArray = unarchivedData as NSArray
         }
         
         //假如内存中没有数据，从闪存中读取
         let path = self.cacheDirectory(fileName)
-        if var dataFormCache:AnyObject = NSData.dataWithContentsOfFile(path, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: nil){
-            
-            unarchivedData = NSKeyedUnarchiver.unarchiveObjectWithData(dataFormCache as NSData)
+        if let dataFormCache:AnyObject = NSData.dataWithContentsOfFile(path, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: nil){
+            let unarchivedData: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithData(dataFormCache as NSData)!
+            cachedItemArray = unarchivedData as NSArray
             self.saveDataToMemory(dataFormCache)
+            return unarchivedData as NSArray
         }
 
-        return dataFormCache as NSArray
+        return cachedItemArray
     }
     
+    //MARK: mark markmark
     
     //私有方法，实现方法
-    
     private func receivedMemoryWarningAndSaveDataToDisk(notification: NSNotification){
         
         println("收到了内存警告")

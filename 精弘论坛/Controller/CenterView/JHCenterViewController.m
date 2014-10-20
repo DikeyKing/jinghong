@@ -128,7 +128,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView == _tableView) {
-        if (_forumItemList != nil) {
+        if (_forumItemList != nil && _forumItemList.count!=0) {
             return [_forumItemList count];
         }
     }
