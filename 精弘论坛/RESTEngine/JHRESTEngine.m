@@ -82,6 +82,7 @@ static NSString* const kCachedForumList = @"ForumList";
             }
             //回调CenterView 更新视图~
             succeededBlock(forumItemArray);
+            
             [cache cacheDataToFile:forumItemArray fileName:kCachedBoardList];
             //这行保存有点问题
             

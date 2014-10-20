@@ -29,9 +29,9 @@ import Foundation
     func cacheDataToFile (data:NSArray, fileName:String){
         
         //假如已经存在，替换
-        let archiverData = NSKeyedArchiver.archivedDataWithRootObject(data)
-        self.memoryCache?.setObject(archiverData, forKey: fileName)
-
+        let archiverData = NSKeyedArchiver.archivedDataWithRootObject(data) //NSArray->NSData
+        self.memoryCache?.setObject(archiverData, forKey:fileName)
+        
         if((self.recentlyAccessedKeys?.containsObject(fileName)) != nil){
             [self.recentlyAccessedKeys?.removeObject(fileName)];
         }
@@ -41,7 +41,7 @@ import Foundation
         if(self.recentlyAccessedKeys?.count > kCacheMemoryLimit){
             
             if let lastObject:AnyObject? = self.recentlyAccessedKeys?.lastObject{
-                let lastObjectData: NSData! = self.memoryCache!.objectForKey(lastObject!) as NSData
+                let lastObjectData: NSData! = self.memoryCache?.objectForKey(lastObject!) as NSData
                 let path = self.cacheDirectory(fileName)
                 lastObjectData.writeToFile(path, atomically:true)
 
@@ -51,7 +51,6 @@ import Foundation
         }
         
     }
-    
     
     func  getCachedItem(fileName:String)->AnyObject{
         
@@ -75,11 +74,21 @@ import Foundation
         return cachedItemArray
     }
     
-    //MARK: mark markmark
+    
+    func clearCache(){
+        self.memoryCache?.removeAllObjects()
+    }
     
     //私有方法，实现方法
     private func receivedMemoryWarningAndSaveDataToDisk(notification: NSNotification){
         
+        self.memoryCache?.removeAllObjects()
+        //将所有数据缓存到Disk,并且清空缓存
+        //遍历 self.memoryCache 中allKeys ，保存
+
+        for (key, value) in self.memoryCache! {
+            self.saveMemoryCacheToDisk(value as NSData, fileName: key as String)
+        }
         println("收到了内存警告")
     }
     
@@ -100,22 +109,11 @@ import Foundation
         let archivedData = NSKeyedArchiver.archivedDataWithRootObject(dataObject)
         
         //?那么如何重用这个data呢？
-        
     }
     
-   private func saveMemoryCacheToDisk( data:NSData , fileName:String){
+   private func saveMemoryCacheToDisk(data:NSData ,fileName:String){
         // 保存缓存到文件
-        let path = self.cacheDirectory(fileName)
-        NSKeyedArchiver.archiveRootObject(data, toFile: path)
+    let path = self.cacheDirectory(fileName)
+    NSKeyedArchiver.archiveRootObject(data, toFile: path)
     }
-    
-//
-//   private func getCachedItems(fileName:String)->AnyObject{
-//        //返回缓存的文件
-//        let object: AnyObject? =  NSKeyedUnarchiver.unarchiveObjectWithFile(self.cacheDirectory(fileName))
-//        
-//        return object!
-//    }
-    
-
 }
