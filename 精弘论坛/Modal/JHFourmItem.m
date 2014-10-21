@@ -44,8 +44,6 @@
     [aCoder encodeObject:_board_category_name forKey:@"board_category_name"];
     [aCoder encodeObject:_board_category_type forKey:@"board_category_type"];
     [aCoder encodeObject:_board_list forKey:@"board_list"];
-    
-    NSLog(@"encode object successfully");
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder

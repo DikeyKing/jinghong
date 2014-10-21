@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc class JHCache :NSObject {
+@objc class JHCache :NSObject{
     
     var memoryCache:NSMutableDictionary?
     var recentlyAccessedKeys:NSMutableArray?
@@ -19,11 +19,11 @@ import Foundation
         
         super.init()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
-    
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
+
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationWillTerminateNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationWillTerminateNotification, object: nil)
     }
     
     func cacheDataToFile (data:NSArray, fileName:String){
@@ -80,7 +80,7 @@ import Foundation
     }
     
     //私有方法，实现方法
-    private func receivedMemoryWarningAndSaveDataToDisk(notification: NSNotification){
+    func receivedMemoryWarningAndSaveDataToDisk(notification: NSNotification){
         
         self.memoryCache?.removeAllObjects()
         //将所有数据缓存到Disk,并且清空缓存

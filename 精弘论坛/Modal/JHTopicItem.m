@@ -20,7 +20,72 @@
     return self;
 }
 
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeInt:_board_id forKey:@"board_id"];
+
+    
+    [aCoder encodeObject:_board_name forKey:@"board_name"];
+    [aCoder encodeObject:_last_reply_date forKey:@"last_reply_date"];
+
+    [aCoder encodeInt:_essence forKey:@"essence"];
+    [aCoder encodeInt:_hits forKey:@"hits"];
+    [aCoder encodeInt:_hot forKey:@"hot"];
+
+    
+    [aCoder encodeObject:_pic_path forKey:@"pic_path"];
+    
+    [aCoder encodeFloat:_replies forKey:@"replies"];
+
+    [aCoder encodeObject:_subject forKey:@"subject"];
+
+    [aCoder encodeObject:_title forKey:@"title"];
+
+    [aCoder encodeInt:_top forKey:@"top"];
+    [aCoder encodeInt:_topic_id forKey:@"topic_id"];
+
+    
+    [aCoder encodeObject:_type forKey:@"type"];
+    [aCoder encodeInt:_user_id forKey:@"user_id"];
+
+    [aCoder encodeObject:_user_nick_name forKey:@"user_nick_name"];
+    [aCoder encodeInt:_vote forKey:@"vote"];
+}
+
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self){
+        self.board_id = [aDecoder decodeIntForKey:@"board_id"];
+        self.board_name = [aDecoder decodeObjectForKey:@"board_name"];
+        self.essence = [aDecoder decodeIntForKey:@"essence"];
+        self.hits = [aDecoder decodeIntForKey:@"hits"];
+        self.hot = [aDecoder decodeIntForKey:@"hot"];
+        self.last_reply_date = [aDecoder decodeObjectForKey:@"last_reply_date"];
+        self.pic_path = [aDecoder decodeObjectForKey:@"pic_path"];
+        self.replies = [aDecoder decodeFloatForKey:@"replies"];
+        self.subject = [aDecoder decodeObjectForKey:@"subject"];
+        self.title = [aDecoder decodeObjectForKey:@"title"];
+        self.top = [aDecoder decodeFloatForKey:@"top"];
+        self.topic_id = [aDecoder decodeFloatForKey:@"topic_id"];
+        self.type = [aDecoder decodeObjectForKey:@"type"];
+        self.user_id = [aDecoder decodeFloatForKey:@"user_id"];
+        self.user_nick_name = [aDecoder decodeObjectForKey:@"user_nick_name"];
+        self.vote = [aDecoder decodeFloatForKey:@"vote"];
+
+        
+        
+    }
+    
+    return self;
+}
+
+
+
+
 @end
+
 
 
 /*

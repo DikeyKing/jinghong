@@ -54,15 +54,22 @@
     _recentTopicsTV.delegate = self;
     _recentTopicsTV.dataSource =self;
     
+    
+    
     [_tableView addHeaderWithCallback:^{
-        _tableView.headerRefreshingText=@"刷新中";
-        if (_segment.selectedSegmentIndex == 0) {
-            [self recentTopicsTV];
-        }else if(_segment.selectedSegmentIndex ==1){
+            _tableView.HeaderReleaseToRefreshText = @"你没事情刷新这个干什么...";
             [self getBoardList];
-        }
-        
+        [_tableView headerEndRefreshing];
     }];
+    
+    [_recentTopicsTV addHeaderWithCallback:^{
+        [self getRecentTopTenTopics];
+        _tableView.HeaderReleaseToRefreshText = @"刷新它...";
+        [_recentTopicsTV headerEndRefreshing];
+    }];
+
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -231,7 +238,7 @@
     switch ([sender selectedSegmentIndex]) {
         case 0:
             NSLog(@"最新帖子");
-            [self getRecentTopTenTopics];
+            //[self getRecentTopTenTopics];
             //切换标题，重新赋予数据源，最新帖子
             //[_tableView reloadData];
             
@@ -242,7 +249,7 @@
         case 1:
             NSLog(@"论坛列表");
             //[_tableView reloadData];
-            [self getBoardList];
+            //[self getBoardList];
             
             _tableView.hidden =NO;
             _recentTopicsTV.hidden = YES;

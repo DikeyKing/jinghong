@@ -19,17 +19,14 @@
 
 
 static NSString* const kJHBaseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
-static  NSString* const  kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
-
+static NSString* const  kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
 
 //缓存文件名
 static NSString* const kCachedRecentTopics = @"RecentTopicsCache";
 static NSString* const kCachedBoardList = @"BoardListCache";
 static NSString* const kCachedTopicDetails = @"TopicDetailsCache";
-static NSString* const kCachedForumList = @"ForumList";
-
-
-
+static NSString* const kCachedForumList = @"ForumListCache";
+static NSString* const kCachedTopicsList = @"TopicsListCache";
 
 @implementation JHRESTEngine
 
@@ -100,13 +97,9 @@ static NSString* const kCachedForumList = @"ForumList";
 -(instancetype)getTopicsListOnSucceeded:(ArrayBlock)succeededBlock
                                 onError:(ErrorBlock)errorBlock
 {
-    JHCache *cache = [JHCache new];
-    
-    //NSData *data = [cache getDataForFile:@"fileName"];
-//    if (data!=nil) {
-//        
-//    }
-    
+    JHCache *cache =[[JHCache alloc]init];
+    succeededBlock([cache getCachedItem:kCachedTopicsList]) ;
+
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
             if ([objectDic objectForKey:@"rs"]!= 0) {
@@ -119,21 +112,21 @@ static NSString* const kCachedForumList = @"ForumList";
                 [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
             }
             succeededBlock(topicsItemArray);
-                //[cache saveDataToMemory:topicsItemArray];
+            [cache cacheDataToFile:topicsItemArray fileName:kCachedTopicsList];
             }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         errorBlock(error);
     }];
-    
-    
     return self;
 }
 
 -(instancetype)getRecentTopicsOnSucceeded:(ArrayBlock)succeededBlock
                                   onError:(ErrorBlock)errorBlock
 {
-
+    JHCache *cache = [[JHCache alloc]init];
+    succeededBlock([cache getCachedItem:kCachedRecentTopics]);
+    
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_RECENT_TOPICS] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
         if ([objectDic objectForKey:@"rs"]!= 0) {
@@ -147,15 +140,7 @@ static NSString* const kCachedForumList = @"ForumList";
             }
             
             succeededBlock(topicsItemArray);
-            
-            
-            JHCache *cache = [JHCache init];
-//            NSData *archivedData = [cache saveDataToMemory:topicsItemArray];
-            
-            
-            //初始化一个cache类，将topicsItem全部固化成NSDate
-            
-#warning 正在做：缓存
+            [cache cacheDataToFile:topicsItemArray fileName:kCachedRecentTopics];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         errorBlock(error);
@@ -168,6 +153,9 @@ static NSString* const kCachedForumList = @"ForumList";
 -(instancetype)getTopicDetailsOnSucceeded:(ArrayBlock)succeededBlock
                                   onError:(ErrorBlock)errorBlock
 {
+    JHCache *cache = [[JHCache alloc]init];
+    succeededBlock([cache getCachedItem:kCachedTopicDetails]);
+    
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_DETAIL] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
         if ([objectDic objectForKey:@"rs"]!=nil &&[objectDic objectForKey:@"rs"]!= 0) {
@@ -181,12 +169,9 @@ static NSString* const kCachedForumList = @"ForumList";
                  [topicsDetailItemArray addObject:[[JHTopicDetailItem alloc]initWithDictionary:topicsDic]];
             }
             
-#warning SaveCache
-//[NSKeyedArchiver archiveRootObject:topicsDetailItemArray toFile:topicsDetailArchiver];
-            
-            [NSKeyedArchiver archivedDataWithRootObject:topicsDetailItemArray];
-            
             succeededBlock(topicsDetailItemArray);
+            [cache cacheDataToFile:topicsDetailItemArray fileName:kCachedTopicDetails];
+
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

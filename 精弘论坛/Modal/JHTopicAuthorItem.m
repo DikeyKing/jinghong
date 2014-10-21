@@ -62,7 +62,7 @@
     [aCoder encodeObject:_icon forKey:@"icon"];
     [aCoder encodeInt:_is_favor forKey:@"is_favor"];
     [aCoder encodeInt:_level forKey:@"level"];
-    [aCoder encodeInt:_hot forKey:@"hot"];
+    [aCoder encodeInt:_location forKey:@"location"];
     
     [aCoder encodeObject:_managePanel forKey:@"managePanel"];
     [aCoder encodeObject:_poll_info forKey:@"poll_info"];
@@ -82,7 +82,6 @@
     [aCoder encodeInt:_user_id forKey:@"user_id"];
     
     [aCoder encodeFloat:_cellHeight forKey:@"cellHeight"];
-    [aCoder encodeInt:_top forKey:@"top"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -103,7 +102,7 @@
         [aDecoder decodeObjectForKey:@"icon"];
         [aDecoder decodeObjectForKey:@"is_favor"];
         [aDecoder decodeObjectForKey:@"level"];
-        [aDecoder decodeObjectForKey:@"hot"];
+        [aDecoder decodeObjectForKey:@"location"];
         
         [aDecoder decodeObjectForKey:@"managePanel"];
         [aDecoder decodeObjectForKey:@"poll_info"];

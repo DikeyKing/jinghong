@@ -24,7 +24,6 @@
 
 -(CGFloat)calculateCellHeight:(NSString *)sizeString
 {
-    
     CGFloat currentDeviceWidth = [UIScreen mainScreen].bounds.size.width;
     CGSize constrain = CGSizeMake((currentDeviceWidth - 2*CELL_CONTENT_MARGIN), 9999);
     
@@ -36,8 +35,6 @@
                                                       options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
                                                       context:nil];
     
-   // NSLog(@"contentSize %f %f",contentRect.size.width,contentRect.size.height);
-
     if ((contentRect.size.height + CELL_CONTENT_ORIGINHEIGHT)<160.0f) {
         return 160.0f;
     }else

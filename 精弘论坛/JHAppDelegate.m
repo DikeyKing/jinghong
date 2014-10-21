@@ -8,6 +8,8 @@
 
 #import "JHAppDelegate.h"
 
+#import <精弘论坛-Swift.h>
+
 @implementation JHAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -22,6 +24,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+
 
 }
 
