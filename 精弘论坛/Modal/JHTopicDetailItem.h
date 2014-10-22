@@ -14,7 +14,6 @@
 @property (copy,nonatomic) NSMutableString *is_quote;
 @property (copy,nonatomic) NSMutableString *level;
 @property (copy,nonatomic) NSMutableString *location;
-@property (copy,nonatomic) NSMutableString *managePanel;
 @property (assign,nonatomic) int position;
 
 @property (copy,nonatomic) NSMutableString *posts_date;
@@ -35,11 +34,15 @@
 @property (assign,nonatomic) int status;
 @property (copy,nonatomic) NSMutableString *title;
 @property (copy,nonatomic) NSMutableString *userTitle;
-@property (assign,nonatomic) CGFloat cellHeight; //根据infor 计算出cell高度
+
+@property (assign,nonatomic,readwrite) CGFloat cellHeight; //根据infor 计算出cell高度
+
+@property (copy,nonatomic) NSMutableString *managePanel;
+
 /*
  
  
- 
+
  
  
  _icon	NSString *	(null)	0x17616cd0

@@ -87,42 +87,39 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-      _activityInfo= [aDecoder decodeObjectForKey:@"activityInfo"];
+      self.activityInfo= [aDecoder decodeObjectForKey:@"activityInfo"];
+      self.contenttypeInfor = [ aDecoder decodeObjectForKey:@"contenttypeInfor"];
+      self.contentType =[ aDecoder decodeIntForKey:@"contentType"];
+     self.create_date =   [ aDecoder decodeObjectForKey:@"create_date"];
         
-        [ aDecoder decodeObjectForKey:@"contenttypeInfor"];
-        [ aDecoder decodeObjectForKey:@"contentType"];
-        [ aDecoder decodeObjectForKey:@"create_date"];
+     self.essence =   [ aDecoder decodeIntForKey:@"essence"];
+    self.flag =    [ aDecoder decodeIntForKey:@"flag"];
+    self.gender =    [ aDecoder decodeIntForKey:@"gender"];
+    self.hits =    [aDecoder decodeIntForKey:@"hits"];
+    self.hot =    [aDecoder decodeIntForKey:@"hot"];
         
-        [ aDecoder decodeObjectForKey:@"essence"];
-        [ aDecoder decodeObjectForKey:@"flag"];
-        [ aDecoder decodeObjectForKey:@"gender"];
-        [aDecoder decodeObjectForKey:@"hits"];
-        [aDecoder decodeObjectForKey:@"hot"];
+    self.icon =    [aDecoder decodeObjectForKey:@"icon"];
+    self.is_favor =    [aDecoder decodeIntForKey:@"is_favor"];
+    self.level =    [aDecoder decodeIntForKey:@"level"];
+    self.location =    [aDecoder decodeIntForKey:@"location"];
         
-        [aDecoder decodeObjectForKey:@"icon"];
-        [aDecoder decodeObjectForKey:@"is_favor"];
-        [aDecoder decodeObjectForKey:@"level"];
-        [aDecoder decodeObjectForKey:@"location"];
+    self.managePanel =    [aDecoder decodeObjectForKey:@"managePanel"];
+    self.poll_info =    [aDecoder decodeObjectForKey:@"poll_info"];
+    self.replies =    [aDecoder decodeIntForKey:@"replies"];
+     self.reply_posts_id =   [aDecoder decodeIntForKey:@"reply_posts_id"];
+     self.reply_status =   [aDecoder decodeIntForKey:@"reply_status"];
+     self.sortId =   [aDecoder decodeIntForKey:@"sortId"];
+     self.status =   [aDecoder decodeIntForKey:@"status"];
+     self.title =   [aDecoder decodeObjectForKey:@"title"];
+     self.top =   [aDecoder decodeIntForKey:@"top"];
         
-        [aDecoder decodeObjectForKey:@"managePanel"];
-        [aDecoder decodeObjectForKey:@"poll_info"];
-        [aDecoder decodeIntForKey:@"replies"];
-        [aDecoder decodeIntForKey:@"reply_posts_id"];
-        [aDecoder decodeIntForKey:@"reply_status"];
-        [aDecoder decodeIntForKey:@"sortId"];
-        [aDecoder decodeIntForKey:@"status"];
-        [aDecoder decodeObjectForKey:@"title"];
-        [aDecoder decodeIntForKey:@"top"];
-        
-        [aDecoder decodeIntForKey:@"topic_id"];
-        [aDecoder decodeObjectForKey:@"type"];
-        [aDecoder decodeObjectForKey:@"user_nick_name"];
-        [aDecoder decodeObjectForKey:@"userTitle"];
-        [aDecoder decodeIntForKey:@"vote"];
-        [aDecoder decodeIntForKey:@"user_id"];
-        
-        [aDecoder decodeFloatForKey:@"cellHeight"];
-        [aDecoder encodeInt:_top forKey:@"top"];
+    self.topic_id =    [aDecoder decodeIntForKey:@"topic_id"];
+    self.type =    [aDecoder decodeObjectForKey:@"type"];
+    self.user_nick_name =    [aDecoder decodeObjectForKey:@"user_nick_name"];
+    self.userTitle =    [aDecoder decodeObjectForKey:@"userTitle"];
+    self.vote =    [aDecoder decodeIntForKey:@"vote"];
+    self.user_id =     [aDecoder decodeIntForKey:@"user_id"];
+    _cellHeight = [aDecoder decodeFloatForKey:@"cellHeight"];
         
     }
     

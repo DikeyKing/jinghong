@@ -54,8 +54,6 @@
     _recentTopicsTV.delegate = self;
     _recentTopicsTV.dataSource =self;
     
-    
-    
     [_tableView addHeaderWithCallback:^{
             _tableView.HeaderReleaseToRefreshText = @"你没事情刷新这个干什么...";
             [self getBoardList];
@@ -67,19 +65,24 @@
         _tableView.HeaderReleaseToRefreshText = @"刷新它...";
         [_recentTopicsTV headerEndRefreshing];
     }];
-
-    
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-
+    animated = NO;
+    
+    _boardList = [[JHRESTEngine sharedJHRESTManager]getBoardListCache];
+    if (!_boardList || _boardList.count!=0) {
+        [_tableView reloadData];
+    }
+    NSLog(@"tableView reloaded with boardListCache");
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [SVProgressHUD dismiss];
+    
 }
 
 -(void)getRecentTopTenTopics

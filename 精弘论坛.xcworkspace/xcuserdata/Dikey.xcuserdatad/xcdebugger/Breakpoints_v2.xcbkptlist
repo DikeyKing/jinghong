@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Controller/CenterView/JHCenterViewController.m"
-            timestampString = "435550302.744282"
+            timestampString = "435630681.694897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
@@ -66,11 +66,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/RESTEngine/JHRESTEngine.m"
-            timestampString = "435543630.223632"
+            timestampString = "435640142.799226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "-getBoardListOnSucceeded:onError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -82,11 +82,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/RESTEngine/JHRESTEngine.m"
-            timestampString = "435543630.223632"
+            timestampString = "435640142.799226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "-getBoardListOnSucceeded:onError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -98,11 +98,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/RESTEngine/JHRESTEngine.m"
-            timestampString = "435543630.223632"
+            timestampString = "435640142.799226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-getBoardListOnSucceeded:onError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -114,28 +114,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Controller/CenterView/JHCenterViewController.m"
-            timestampString = "435550302.744282"
+            timestampString = "435630681.694897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
-            landmarkName = "-getRecentTopTenTopics"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
-            timestampString = "435551498.079705"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "init()"
+            landmarkName = "-viewWillDisappear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -158,16 +142,332 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
-            timestampString = "435551516.963232"
+            timestampString = "435637592.085764"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "receivedMemoryWarningAndSaveDataToDisk(_:)"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "JHCache"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
+            timestampString = "435637592.085764"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "getCachedItem(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache.getCachedItem (&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache)(Swift.String) -&gt; Swift.AnyObject"
+                  moduleName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;"
+                  urlString = "file:///Users/Dikey/developer/%E7%B2%BE%E5%BC%98iOS/%E7%B2%BE%E5%BC%98%E8%AE%BA%E5%9D%9B/Modal/JHCache.swift"
+                  timestampString = "435630694.439229"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "1913">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache.getCachedItem (&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache)(Swift.String) -&gt; Swift.AnyObject"
+                  moduleName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;"
+                  urlString = "file:///Users/Dikey/developer/%E7%B2%BE%E5%BC%98iOS/%E7%B2%BE%E5%BC%98%E8%AE%BA%E5%9D%9B/Modal/JHCache.swift"
+                  timestampString = "435630694.439396"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "2051">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/RESTEngine/JHRESTEngine.m"
+            timestampString = "435640142.799226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "-getRecentTopicsOnSucceeded:onError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/RESTEngine/JHRESTEngine.m"
+            timestampString = "435640142.799226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "-getTopicDetailsOnSucceeded:onError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/RESTEngine/JHRESTEngine.m"
+            timestampString = "435640142.799226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "-getTopicDetailsOnSucceeded:onError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/RESTEngine/JHRESTEngine.m"
+            timestampString = "435640142.799226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "-getTopicDetailsOnSucceeded:onError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/RESTEngine/JHRESTEngine.m"
+            timestampString = "435640142.799226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "-getTopicDetailsOnSucceeded:onError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHTopicAuthorItem.m"
+            timestampString = "435638035.45078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-encodeWithCoder:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
+            timestampString = "435638596.323712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "getCachedItem(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache.getCachedItem (&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache)(Swift.String) -&gt; Swift.AnyObject"
+                  moduleName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;"
+                  urlString = "file:///Users/Dikey/developer/%E7%B2%BE%E5%BC%98iOS/%E7%B2%BE%E5%BC%98%E8%AE%BA%E5%9D%9B/Modal/JHCache.swift"
+                  timestampString = "435638871.520029"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "1560">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache.getCachedItem (&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache)(Swift.String) -&gt; Swift.AnyObject"
+                  moduleName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;"
+                  urlString = "file:///Users/Dikey/developer/%E7%B2%BE%E5%BC%98iOS/%E7%B2%BE%E5%BC%98%E8%AE%BA%E5%9D%9B/Modal/JHCache.swift"
+                  timestampString = "435638871.520893"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "1656">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/RESTEngine/JHRESTEngine.m"
+            timestampString = "435640142.799226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "-getTopicDetailsOnSucceeded:onError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Controller/CenterView/topics/JHTopicsViewController.m"
+            timestampString = "435640142.799226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHTopicItem.m"
+            timestampString = "435638970.565603"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "-encodeWithCoder:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHTopicItem.m"
+            timestampString = "435638971.431655"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-initWithCoder:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/RESTEngine/JHRESTEngine.m"
+            timestampString = "435640142.799226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "-getTopicsListOnSucceeded:onError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/RESTEngine/JHRESTEngine.m"
+            timestampString = "435640142.799226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-getTopicsListOnSucceeded:onError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHTopicItem.m"
+            timestampString = "435639077.807034"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "-encodeWithCoder:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHTopicItem.m"
+            timestampString = "435639081.921662"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-initWithCoder:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

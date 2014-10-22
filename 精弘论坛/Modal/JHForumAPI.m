@@ -56,7 +56,6 @@ static int pageSize=20 ;
                             @"boardId":[JHUserDefaults getBoardID],
                             @"page":[JHUserDefaults  getPage], //获取第几页
 
-            
                             @"pageSize":[NSString stringWithFormat:@"%d",pageSize] //每页多少个
                             
                             };

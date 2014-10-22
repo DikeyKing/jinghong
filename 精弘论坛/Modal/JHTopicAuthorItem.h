@@ -40,7 +40,7 @@
 @property (copy,nonatomic) NSMutableString *userTitle;
 @property (assign,nonatomic) int vote;
 @property (assign,nonatomic) int user_id;
-@property (assign,nonatomic,readonly) CGFloat cellHeight; //根据infor 计算出cell高度
+@property (assign,nonatomic) CGFloat cellHeight; //根据infor 计算出cell高度
 
 
 

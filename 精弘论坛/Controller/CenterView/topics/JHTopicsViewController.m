@@ -43,6 +43,7 @@
     //下拉刷新
     [_topicsTableView addHeaderWithCallback:^{
         [self getTopics];
+        [_topicsTableView headerEndRefreshing];
     }];
     
     //上拉刷新
@@ -91,7 +92,7 @@
 {
     JHTopicsCell *jHTopicsCell = [tableView dequeueReusableCellWithIdentifier:@"JHTopicsCell"];
     
-    if (_topicsItemList!=nil) {
+    if (_topicsItemList!=nil&&_topicsItemList.count!=0) {
         
         [jHTopicsCell displayValues:(JHTopicItem *)_topicsItemList[indexPath.row]];
         

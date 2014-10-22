@@ -34,6 +34,8 @@ typedef void (^ArrayBlock)(NSArray *modelObjects);
 -(instancetype)postNewTopicOnSucceeded:(ArrayBlock)succdedBlock
                                onerror:(ErrorBlock)errorBlock;
 
+-(NSArray *)getBoardListCache;
+
 
 //typedef void (^VoidBlock)(void);
 //typedef void (^ModelBlock)(JSONModel* aModelBaseObject);
