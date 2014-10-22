@@ -4,11 +4,20 @@
 //
 //  Created by Dikey on 9/14/14.
 //  Copyright (c) 2014 dikey. All rights reserved.
-//
+
+// 开始，先从缓存中获取
+// 获取成功->检查是否过期->网络操作->更新缓存->更新UI
+//          不是->更新UI
+
+//下拉刷新->网络操作->更新UI
+//上拉刷新->(修改页面参数)->加载下一页
+
 
 #import "JHCenterViewController.h"
 #import "AFNetworking.h"
-#import "JHForumAPI.h"
+
+//#import "JHForumAPI.h"
+
 #import "JHForumListCell.h"
 #import "JHTopicsViewController.h"
 #import "JHTopicDetailsViewController.h"
@@ -39,9 +48,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    [self getBoardList];
-    [self getRecentTopTenTopics];
+    
+    _recentTopcicList = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_RecentTopics];
+    if (_recentTopcicList!=nil && _recentTopcicList.count!=0) {
+        [_recentTopicsTV reloadData];
+        //从缓存中读取
+    }
+    
+    _boardList = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_BoardList];
+    if (_boardList!=nil && _boardList.count!=0) {
+        [_tableView reloadData];
+        //从缓存中读取
+    }
     
     [self setTableViewHeaderAndFoot];
 }
@@ -69,13 +87,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    animated = NO;
-    
-    _boardList = [[JHRESTEngine sharedJHRESTManager]getBoardListCache];
     if (!_boardList || _boardList.count!=0) {
         [_tableView reloadData];
     }
-    NSLog(@"tableView reloaded with boardListCache");
     
 }
 

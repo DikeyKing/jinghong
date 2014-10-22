@@ -26,11 +26,16 @@
 @implementation JHTopicDetailsViewController
  
 - (void)viewDidLoad {
-    
-    NSLog(@"JHTopicDetailsViewController :titile%@",self.titleLabel.text);
-    
     [super viewDidLoad];
-    [self getTopicDetails];
+//    [self getTopicDetails];
+    
+    _topicsDetailsItems=[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsDetails];
+    if (_topicsDetailsItems!=nil && _topicsDetailsItems.count!=0) {
+        [_topicDetailTV reloadData];
+        NSLog(@"_topicsDetailsItems 缓存中读取");
+    }
+    
+    
     [self setTableViewHeaderAndFoot]; //与tableView相关的操作
 }
 
