@@ -31,8 +31,16 @@
 
     _pageNumber = 1;
     
-    [self getTopics];
+//    [self getTopics];
+    _topicsItemList=[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsList];
+    if (_topicsItemList!=nil && _topicsItemList.count!=0) {
+        [_topicsTableView reloadData];
+        NSLog(@"_topicsItemList 缓存中读取");
+        
+    }
+    
     [self setTableViewHeaderAndFoot];
+    
 }
 
 -(void)setTableViewHeaderAndFoot

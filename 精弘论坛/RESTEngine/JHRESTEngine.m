@@ -19,21 +19,58 @@
 static NSString* const kJHBaseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
 static NSString* const  kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
 
-//缓存文件名
 static NSString* const kCachedRecentTopics = @"RecentTopicsCache";
 static NSString* const kCachedBoardList = @"BoardListCache";
 static NSString* const kCachedTopicDetails = @"TopicDetailsCache";
-
 static NSString* const kCachedForumList = @"ForumListCache";
 static NSString* const kCachedTopicsList = @"TopicsListCache";
 
+//缓存文件名
+
 @interface JHRESTEngine()
-
-@property JHCache *jhCache ;
-
 @end
 
 @implementation JHRESTEngine
+
+-(NSArray *)getCachedArray:(int )cacheType
+{
+    NSArray *cachedArray = [NSArray new];
+    
+    switch (cacheType) {
+        case CacheType_RecentTopics:{
+            cachedArray = [[JHCache sharedInstance]getCachedItem:kCachedRecentTopics];
+        }break;
+
+        case CacheType_BoardList:{
+            cachedArray = [[JHCache sharedInstance]getCachedItem:kCachedBoardList];
+        }
+            break;
+            
+        case CacheType_TopicsDetails:{
+            NSString *currentTopicsID = [JHUserDefaults getTopicID];
+            NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:currentTopicsID];
+            cachedArray = [[JHCache sharedInstance]getCachedItem:cacheTopicDetail];
+        }
+            break;
+            
+        case CacheType_ForumList:{
+            cachedArray = [[JHCache sharedInstance]getCachedItem:kCachedForumList];
+        }
+            break;
+            
+        case CacheType_TopicsList:{
+            NSString *currentBoard = [JHUserDefaults getBoardID];
+            NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:currentBoard];
+            cachedArray = [[JHCache sharedInstance]getCachedItem:cacheFileNameString];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return cachedArray;
+}
 
 +(instancetype)sharedJHRESTManager
 {
@@ -69,12 +106,6 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
 -(instancetype)getBoardListOnSucceeded:(ArrayBlock)succeededBlock
                      onError:(ErrorBlock)errorBlock
 {
-    if (!_jhCache) {
-        _jhCache = [ JHCache new];
-    }
-    
-    succeededBlock([_jhCache getCachedItem:kCachedBoardList]) ;
-    
     //发起连接，得到所有列表的JSON数据并模型化，加入缓存
     [self POST:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_BOARD_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
@@ -88,7 +119,7 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
             //回调CenterView 更新视图~
             succeededBlock(forumItemArray);
             
-            [_jhCache cacheDataToFile:forumItemArray fileName:kCachedBoardList];
+            [[JHCache sharedInstance] cacheDataToFile:forumItemArray fileName:kCachedBoardList];
             //这行保存有点问题
             
         }else{
@@ -105,27 +136,6 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
 -(instancetype)getTopicsListOnSucceeded:(ArrayBlock)succeededBlock
                                 onError:(ErrorBlock)errorBlock
 {
-//    JHCache *cache =[[JHCache alloc]init];
-// 根据boardID 来保存列表
-// 一个boardID 一个列表
-    
-    
-    if (!_jhCache) {
-        _jhCache = [ JHCache new];
-    }
-    
-    NSString *currentBoard = [JHUserDefaults getBoardID];
-    NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:currentBoard];
-    
-    //文件名看起来会是
-    NSArray *array = [_jhCache getCachedItem:cacheFileNameString];
-    
-//    succeededBlock([_jhCache getCachedItem:cacheFileNameString]) ;
- 
-    
-    succeededBlock(array) ;
-
-    
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
             if ([objectDic objectForKey:@"rs"]!= 0) {
@@ -139,12 +149,11 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
             }
             succeededBlock(topicsItemArray);
                 
-//                NSString *currentBoard = [JHUserDefaults getBoardID];
-//                NSString *cacheFileNameString = [kCachedBoardList stringByAppendingString:currentBoard];
-                //文件名看起来会是 BoardListCache303 BoardListCache402
-                
-            [_jhCache cacheDataToFile:topicsItemArray fileName:cacheFileNameString];
-            
+            NSString *currentBoard = [JHUserDefaults getBoardID];
+            NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:currentBoard];
+        
+            [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cacheFileNameString];
+            //文件名看起来会是 BoardListCache303 BoardListCache402
             }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -156,21 +165,10 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
 -(instancetype)getRecentTopicsOnSucceeded:(ArrayBlock)succeededBlock
                                   onError:(ErrorBlock)errorBlock
 {
-//recentTopicsList单独保存缓存
-    if (!_jhCache) {
-        _jhCache = [ JHCache new];
-    }
-    
     //先从缓存中读取
     //读取成功，更新视图，（然后发起网络请求，感觉是错误的，不需要每次刷新）
     //读取不成功,发起网络请求
-    
-    NSArray *cachedArray = [[NSArray alloc]initWithArray:[_jhCache getCachedItem:kCachedRecentTopics]];
-    
-        succeededBlock(cachedArray);
-        //    succeededBlock([_jhCache getCachedItem:kCachedRecentTopics]);
-        
-        [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_RECENT_TOPICS] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_RECENT_TOPICS] success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *objectDic = responseObject;
             if ([objectDic objectForKey:@"rs"]!= 0) {
                 NSArray *topicsArray = [objectDic objectForKey:@"list"];
@@ -183,8 +181,10 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
                 }
                 
                 succeededBlock(topicsItemArray);
-                [_jhCache cacheDataToFile:topicsItemArray fileName:kCachedRecentTopics];
-                NSLog(@"the number coun is %lu",(unsigned long)_jhCache.memoryCache.count);
+                
+                [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:kCachedRecentTopics];
+                
+                NSLog(@"the number coun is %lu",(unsigned long)[JHCache sharedInstance].memoryCache.count);
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             errorBlock(error);
@@ -193,34 +193,14 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
     return self;
 }
 
-
 -(instancetype)getTopicDetailsOnSucceeded:(ArrayBlock)succeededBlock
                                   onError:(ErrorBlock)errorBlock
 {
 //topicDetail 根据URL缓存...
 //一个topic 一个url，一个缓存...
     
-    if (!_jhCache) {
-        _jhCache = [ JHCache new];
-    }
-    
-    NSString *currentTopicsID = [JHUserDefaults getTopicID];
-//    NSString *cacheFileNameAuthorString = [kCachedTopicDetailsAuthor stringByAppendingString:currentTopicsID];
-    NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:currentTopicsID];
 
-//    NSArray *tempArray =[_jhCache getCachedItem:cacheFileNameString];
-    
-//    NSArray *tempAuthorArray =[_jhCache getCachedItem:cacheFileNameAuthorString];
-//    NSMutableArray *cachedArray = [[NSMutableArray alloc]initWithCapacity:tempArray.count+1];
-//    [cachedArray addObjectsFromArray:tempAuthorArray];
-//    [cachedArray addObjectsFromArray:tempArray];
-    
-    
-    succeededBlock([_jhCache getCachedItem:cacheTopicDetail]) ;
-//    succeededBlock(cachedArray);
-    
-
-
+//    succeededBlock([[JHCache sharedInstance] getCachedItem:cacheTopicDetail]) ;
     
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_DETAIL] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
@@ -231,22 +211,24 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
             JHTopicAuthorItem *tempAuthorItem = [[JHTopicAuthorItem alloc]initWithDictionary:topicsAuthorDic];
             
 //            NSArray *authorArray = [[NSArray alloc]initWithObjects:tempAuthorItem, nil];
-//            [_jhCache cacheDataToFile:authorArray fileName:cacheFileNameAuthorString];
+//            [[JHCache sharedInstance] cacheDataToFile:authorArray fileName:cacheFileNameAuthorString];
             
             NSArray *topicsDetailArray = [objectDic objectForKey:@"list"];
             NSMutableArray *topicsDetailItemArray = [[NSMutableArray alloc]initWithCapacity:topicsDetailArray.count+1];
             
             [topicsDetailItemArray addObject:tempAuthorItem];
 
-            
             for (NSMutableDictionary *topicsDic in topicsDetailArray) {
                  [topicsDetailItemArray addObject:[[JHTopicDetailItem alloc]initWithDictionary:topicsDic]];
             }
 
-            
             succeededBlock(topicsDetailItemArray);
           
-            [_jhCache cacheDataToFile:topicsDetailItemArray fileName:cacheTopicDetail];
+            NSString *currentTopicsID = [JHUserDefaults getTopicID];
+            NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:currentTopicsID];
+    
+            
+            [[JHCache sharedInstance] cacheDataToFile:topicsDetailItemArray fileName:cacheTopicDetail];
 
             //将两个array都保存起来
         }

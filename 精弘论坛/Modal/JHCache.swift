@@ -9,7 +9,15 @@
 import Foundation
 
 @objc class JHCache :NSObject{
-
+    //缓存文件名
+    
+    class var sharedInstance : JHCache {
+        struct Static {
+            static let instance : JHCache = JHCache()
+        }
+        return Static.instance
+    }
+    
     var memoryCache  = NSMutableDictionary()
     var recentlyAccessedKeys = NSMutableArray()
     let kCacheMemoryLimit = 20
@@ -17,15 +25,15 @@ import Foundation
     override init() {
         super.init()
         
-//        let memoryCache:NSMutableDictionary = NSMutableDictionary()
-//        let recentlyAccessedKeys:NSMutableArray = NSMutableArray()
-//        let kCacheMemoryLimit = 10
+        let memoryCache:NSMutableDictionary = NSMutableDictionary()
+        let recentlyAccessedKeys:NSMutableArray = NSMutableArray()
+        let kCacheMemoryLimit = 10
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
 
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationWillTerminateNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationWillTerminateNotification, object: nil)
     }
     
     func cacheDataToFile (data:AnyObject, fileName:String){

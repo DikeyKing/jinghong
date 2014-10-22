@@ -35,13 +35,14 @@ static const CGFloat kPublicRightMenuWidth = 240.0f;
 -(void)viewWillAppear:(BOOL)animated
 {
     [self login];
+    [super viewWillAppear:NO];
 }
 
 -(void)login
 {
     if ([[JHUserDefaults getLoginState]boolValue] == NO) {
         JHLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHLoginViewController"];
-        [self presentViewController:loginVC animated:YES completion:^{
+        [self presentViewController:loginVC animated:NO completion:^{
         }];
     }
 }
