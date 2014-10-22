@@ -32,12 +32,24 @@
     _pageNumber = 1;
     
 //    [self getTopics];
-    _topicsItemList=[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsList];
-    if (_topicsItemList!=nil && _topicsItemList.count!=0) {
-        [_topicsTableView reloadData];
-        NSLog(@"_topicsItemList 缓存中读取");
+    
+    NSData *data = (NSData*)[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_RecentTopics];
+    NSArray *cachedItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    if (!_topicsItemList) {
+        _topicsItemList = [[NSArray alloc]initWithArray:cachedItems];
+        NSLog(@"%@",_topicsItemList);
         
+        if (_topicsItemList!=nil && _topicsItemList.count!=0) {
+            [_topicsTableView reloadData];
+        }
     }
+    
+//    _topicsItemList=[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsList];
+//    if (_topicsItemList!=nil && _topicsItemList.count!=0) {
+//        [_topicsTableView reloadData];
+//        NSLog(@"_topicsItemList 缓存中读取");
+//    }
     
     [self setTableViewHeaderAndFoot];
     

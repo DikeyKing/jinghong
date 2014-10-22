@@ -49,17 +49,35 @@
 {
     [super viewDidLoad];
     
-    _recentTopcicList = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_RecentTopics];
-    if (_recentTopcicList!=nil && _recentTopcicList.count!=0) {
-        [_recentTopicsTV reloadData];
-        //从缓存中读取
+    NSData *data = (NSData*)[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_RecentTopics];
+    NSArray *cachedItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    if (!_recentTopcicList) {
+        _recentTopcicList = [[NSArray alloc]initWithArray:cachedItems];
+        NSLog(@"%@",_recentTopcicList);
+
+        if (_recentTopcicList!=nil && _recentTopcicList.count!=0) {
+            [_recentTopicsTV reloadData];
+        }
     }
     
-    _boardList = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_BoardList];
-    if (_boardList!=nil && _boardList.count!=0) {
-        [_tableView reloadData];
-        //从缓存中读取
+    data = (NSData*)[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_BoardList];
+    NSArray *cachedBoardItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+
+    if (!_forumItemList) {
+        _forumItemList = [[NSArray alloc]initWithArray:cachedBoardItems];
+        NSLog(@"%@",_forumItemList);
+
+        if (_forumItemList!=nil && _forumItemList.count!=0) {
+            [_tableView reloadData];
+        }
     }
+    
+//    _boardList = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_BoardList];
+//    if (_boardList!=nil && _boardList.count!=0) {
+//        [_tableView reloadData];
+//        //从缓存中读取
+//    }
     
     [self setTableViewHeaderAndFoot];
 }

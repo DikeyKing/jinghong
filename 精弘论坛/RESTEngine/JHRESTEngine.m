@@ -32,36 +32,36 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
 
 @implementation JHRESTEngine
 
--(NSArray *)getCachedArray:(int )cacheType
+-(id )getCachedArray:(int )cacheType
 {
-    NSArray *cachedArray = [NSArray new];
+    NSArray *cachedData = [NSArray new];
     
     switch (cacheType) {
         case CacheType_RecentTopics:{
-            cachedArray = [[JHCache sharedInstance]getCachedItem:kCachedRecentTopics];
+            cachedData = [[JHCache sharedInstance]getCachedItem:kCachedRecentTopics];
         }break;
 
         case CacheType_BoardList:{
-            cachedArray = [[JHCache sharedInstance]getCachedItem:kCachedBoardList];
+            cachedData = [[JHCache sharedInstance]getCachedItem:kCachedBoardList];
         }
             break;
             
         case CacheType_TopicsDetails:{
             NSString *currentTopicsID = [JHUserDefaults getTopicID];
             NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:currentTopicsID];
-            cachedArray = [[JHCache sharedInstance]getCachedItem:cacheTopicDetail];
+            cachedData = [[JHCache sharedInstance]getCachedItem:cacheTopicDetail];
         }
             break;
             
         case CacheType_ForumList:{
-            cachedArray = [[JHCache sharedInstance]getCachedItem:kCachedForumList];
+            cachedData = [[JHCache sharedInstance]getCachedItem:kCachedForumList];
         }
             break;
             
         case CacheType_TopicsList:{
             NSString *currentBoard = [JHUserDefaults getBoardID];
             NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:currentBoard];
-            cachedArray = [[JHCache sharedInstance]getCachedItem:cacheFileNameString];
+            cachedData = [[JHCache sharedInstance]getCachedItem:cacheFileNameString];
         }
             break;
             
@@ -69,7 +69,7 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
             break;
     }
     
-    return cachedArray;
+    return cachedData;
 }
 
 +(instancetype)sharedJHRESTManager

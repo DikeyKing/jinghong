@@ -67,7 +67,7 @@ import Foundation
     
     func  getCachedItem(fileName:String)->AnyObject{
         
-        var cachedItemArray:NSArray = NSArray()
+        var cachedItemArray:AnyObject? = NSData()
         
         //假如内存中有数据，从内存缓存中返回
         if let memoryCache: AnyObject = self.memoryCache.objectForKey(fileName){ //NSData
@@ -76,18 +76,17 @@ import Foundation
         }
         
         //假如内存中没有数据，从闪存中读取
+        //path	String	"/var/mobile/Containers/Data/Application/6494B6BE-4C4C-4F3B-8BD5-6759DB8DAA9B/Library/CachesTopicAuthorCache1628780"
         let path = self.cacheDirectory(fileName)
+        if let unarchivedData: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithFile(path){
+            cachedItemArray = unarchivedData
+            
+            //self.saveDataToMemory(dataFormCache!)
 
-        //path	String	"/var/mobile/Containers/Data/Application/6494B6BE-4C4C-4F3B-8BD5-6759DB8DAA9B/Library/CachesTopicAuthorCache1628780"	
-        
-        if let dataFormCache:AnyObject = NSData(contentsOfFile: path, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: nil){
-            let unarchivedData: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithData(dataFormCache as NSData)!
-//            cachedItemArray = unarchivedData as NSArray
-//            self.saveDataToMemory(dataFormCache)
-//            return unarchivedData as NSArray
+            return cachedItemArray!
         }
 
-        return cachedItemArray
+        return cachedItemArray!
     }
     
     
@@ -107,7 +106,6 @@ import Foundation
         
         self.memoryCache.removeAllObjects()
 
-        
         println("收到了内存警告")
     }
     
@@ -133,10 +131,10 @@ import Foundation
     }
     
     private func saveDataToMemory (dataObject: AnyObject){
-                
+    
         //传入的object 固化成NSDate
         let archivedData = NSKeyedArchiver.archivedDataWithRootObject(dataObject)
-        
+
         //?那么如何重用这个data呢？
     }
     
