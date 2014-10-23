@@ -45,17 +45,15 @@
 {
     NSArray *data = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsDetails];
     if (data) {
-//        NSArray *cachedItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        
         if (!_topicsDetailsItems) {
             _topicsDetailsItems = [[NSArray alloc]initWithArray:data];
-            NSLog(@"%@",_topicsDetailsItems);
             if (_topicsDetailsItems!=nil && _topicsDetailsItems.count!=0) {
                 [_topicDetailTV reloadData];
+                [self getTopicDetails];
+            }else{
+                [self getTopicDetails];
             }
         }
-    }else{
-        [self getTopicDetails];
     }
 }
 

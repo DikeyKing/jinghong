@@ -53,6 +53,7 @@
         _last_posts_date =[aDecoder decodeObjectForKey:@"last_posts_date"];
         _board_content =[aDecoder decodeObjectForKey:@"board_content"];
         _forumRedirect =[aDecoder decodeObjectForKey:@"forumRedirect"];
+        _td_posts_num =[aDecoder decodeObjectForKey:@"td_posts_num"];
     }
     return self;
 }

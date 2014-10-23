@@ -31,20 +31,24 @@
 
     _pageNumber = 1;
     
-//    [self getTopics];
+    [self getTopicsListCache];
+    [self setTableViewHeaderAndFoot];
+}
+
+-(void)getTopicsListCache
+{
     NSArray *data =[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsList];
-    if (data!=nil && data.count !=0) {
+    if (data) {
         if (!_topicsItemList) {
             _topicsItemList = [[NSArray alloc]initWithArray:data];
-//            NSLog(@"%@",_topicsItemList);
             if (_topicsItemList!=nil && _topicsItemList.count!=0) {
                 [_topicsTableView reloadData];
+                [self getTopics];
+            }else{
+                [self getTopics];
             }
         }
     }
-    
-    [self setTableViewHeaderAndFoot];
-    
 }
 
 -(void)setTableViewHeaderAndFoot

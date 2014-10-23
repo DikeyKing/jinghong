@@ -210,11 +210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Controller/CenterView/topics/JHTopicsViewController.m"
-            timestampString = "435726225.08203"
+            timestampString = "435743358.429999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -322,11 +322,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
-            timestampString = "435726808.487196"
+            timestampString = "435743092.97719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "receivedMemoryWarningAndSaveDataToDisk(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -338,11 +338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
-            timestampString = "435718486.697134"
+            timestampString = "435743092.97719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "cacheDataToFile(_:fileName:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -354,11 +354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
-            timestampString = "435718757.095913"
+            timestampString = "435743092.97719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "cacheDataToFile(_:fileName:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -402,58 +402,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
-            timestampString = "435726808.487196"
+            timestampString = "435743092.97719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "getCachedItem(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache.getCachedItem (&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache)(Swift.String) -&gt; Swift.AnyObject"
-                  moduleName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;"
-                  urlString = "file:///Users/Dikey/developer/%E7%B2%BE%E5%BC%98iOS/%E7%B2%BE%E5%BC%98%E8%AE%BA%E5%9D%9B/Modal/JHCache.swift"
-                  timestampString = "435720024.125734"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "1172">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache.getCachedItem (&#x7cbe;&#x5f18;&#x8bba;&#x575b;.JHCache)(Swift.String) -&gt; Swift.AnyObject"
-                  moduleName = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;"
-                  urlString = "file:///Users/Dikey/developer/%E7%B2%BE%E5%BC%98iOS/%E7%B2%BE%E5%BC%98%E8%AE%BA%E5%9D%9B/Modal/JHCache.swift"
-                  timestampString = "435720024.125913"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "1300">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Controller/CenterView/topics/JHTopicDetailsViewController.m"
-            timestampString = "435721307.679783"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "-getTopicDetailsCache"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -463,77 +417,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
-            timestampString = "435724204.493448"
+            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Controller/CenterView/topics/JHTopicDetailsCell.m"
+            timestampString = "435743613.539937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "getCachedItem(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
-            timestampString = "435726808.487196"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "getCachedItem(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
-            timestampString = "435726808.487196"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "saveMemoryCacheToDisk(_:fileName:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Modal/JHCache.swift"
-            timestampString = "435726808.487196"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "saveMemoryCacheToDisk(_:fileName:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x7cbe;&#x5f18;&#x8bba;&#x575b;/Controller/CenterView/JHCenterViewController.m"
-            timestampString = "435726914.287205"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "-viewWillAppear:"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-displayValues:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -80,32 +80,23 @@
         self.level = [aDecoder decodeObjectForKey:@"level"];
         self.location = [aDecoder decodeObjectForKey:@"location"];
         self.managePanel = [aDecoder decodeObjectForKey:@"managePanel"];
-        
         self.position = [aDecoder decodeIntForKey:@"position"];
-
         self.posts_date = [aDecoder decodeObjectForKey:@"posts_date"];
         self.quote_content = [aDecoder decodeObjectForKey:@"quote_content"];
         self.quote_pid = [aDecoder decodeObjectForKey:@"quote_pid"];
         self.quote_user_name = [aDecoder decodeObjectForKey:@"quote_user_name"];
         self.infor = [aDecoder decodeObjectForKey:@"infor"];
-        
         self.type = [aDecoder decodeIntForKey:@"type"];
         self.reply_id = [aDecoder decodeFloatForKey:@"reply_id"];
-
         self.reply_name = [aDecoder decodeObjectForKey:@"reply_name"];
         self.reply_posts_id = [aDecoder decodeFloatForKey:@"reply_posts_id"];
-
         self.reply_status = [aDecoder decodeIntForKey:@"reply_status"];
-
         self.reply_type = [aDecoder decodeObjectForKey:@"reply_type"];
-        
         self.role_num = [aDecoder decodeIntForKey:@"role_num"];
         self.status = [aDecoder decodeIntForKey:@"status"];
-
-        self.title = [aDecoder decodeObjectForKey:@"reply_name"];
-        self.userTitle = [aDecoder decodeObjectForKey:@"reply_name"];
+        self.title = [aDecoder decodeObjectForKey:@"title"];
+        self.userTitle = [aDecoder decodeObjectForKey:@"userTitle"];
         self.cellHeight = [aDecoder decodeFloatForKey:@"cellHeight"];
-
     }
     return self;
 }
