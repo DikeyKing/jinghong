@@ -47,12 +47,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self setTableViewHeaderAndFoot];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self setTableViewHeaderAndFoot];
 
     [self loadBoardListAndRecentTopicsCache];
 }
@@ -62,38 +62,30 @@
     NSArray *data = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_RecentTopics];
         
     if (data.count!=0) {
-
-//        NSArray *cachedItems = [NSKeyedUnarchiver unarchiveObjectWithData: data];
-
         if (!_recentTopcicList) {
             _recentTopcicList = [[NSArray alloc]initWithArray:data];
-                    NSLog(@"%@",_recentTopcicList);
+//                    NSLog(@"%@",_recentTopcicList);
             if (_recentTopcicList!=nil && _recentTopcicList.count!=0) {
                 [_recentTopicsTV reloadData];
             }
         }
-        
     }else{
         [self getRecentTopTenTopics];
     }
-//
-//    
-//    data = (NSData*)[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_BoardList];
-//    if (data) {
-//        NSArray *cachedBoardItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-//        
-//        if (!_forumItemList) {
-//            _forumItemList = [[NSArray alloc]initWithArray:cachedBoardItems];
-//            //        NSLog(@"%@",_forumItemList);
-//            
-//            if (_forumItemList!=nil && _forumItemList.count!=0) {
-//                [_tableView reloadData];
-//            }
-//        }
-//    }else{
-//        [self getRecentTopTenTopics];
-//    }
-
+    
+    data = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_BoardList];
+    
+    if (data.count!=0) {
+        if (!_forumItemList) {
+            _forumItemList = [[NSArray alloc]initWithArray:data];
+//            NSLog(@"%@",_recentTopcicList);
+            if (_forumItemList!=nil && _forumItemList.count!=0) {
+                [_tableView reloadData];
+            }
+        }
+    }else{
+        [self getBoardList];
+    }
 }
 
 -(void)setTableViewHeaderAndFoot
@@ -235,7 +227,6 @@
 {    
     JHTopicsViewController *jHTopicsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicsViewController"];
     JHTopicDetailsViewController *jHTopicsDetailsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"JHTopicDetailsViewController"];
-
     
     if (tableView == _tableView) {
         if (_forumItemList!=nil&&_forumItemList.count!=0) {

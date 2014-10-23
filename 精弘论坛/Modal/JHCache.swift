@@ -19,8 +19,8 @@ import Foundation
         return Static.instance
     }
     
-    var memoryCache  = NSMutableDictionary()
-    var recentlyAccessedKeys = NSMutableArray()
+    var memoryCache  = NSMutableDictionary() //一个Key对应一个NSData对象
+    var recentlyAccessedKeys = NSMutableArray() //保存最近使用的Keys
     let kCacheMemoryLimit = 20
     
     override init() {
@@ -61,8 +61,7 @@ import Foundation
             }
         }
         
-//        self.saveAllMemoryCacheToDisk();
-        
+        self.saveAllMemoryCacheToDisk();
         
         for (key, value) in self.memoryCache {
             println("key is \(key)")
@@ -87,13 +86,27 @@ import Foundation
         //path	String	"/var/mobile/Containers/Data/Application/6494B6BE-4C4C-4F3B-8BD5-6759DB8DAA9B/Library/CachesTopicAuthorCache1628780"
         
         let path = self.cacheDirectory(fileName)
-        if let diskCache: NSArray = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? NSArray{
-            
-            cachedItemArray = diskCache
-            //self.saveDataToMemory(dataFormCache!)
-            return cachedItemArray
-        }
+        println("\(path)")
+///var/mobile/Containers/Data/Application/FD3D9932-019F-4E31-85E0-54216DF389DB/Library/CachesTopicDetailsCache1628930
 
+///var/mobile/Containers/Data/Application/FD3D9932-019F-4E31-85E0-54216DF389DB/Library/CachesTopicDetailsCache1628930
+
+        var maybeError: NSError?
+        if let diskCacheFromFile = NSFileManager.defaultManager()
+            .contentsOfDirectoryAtPath(path, error: &maybeError) {
+                println("\(diskCacheFromFile)")
+        } else if let error = maybeError {
+            println("\(maybeError)")
+            println("读取失败")
+            //), NSUnderlyingError=0x170254790 "The operation couldn’t be completed. Not a directory"})
+        }
+        
+//        if let diskCache = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? NSArray{
+//            self.saveDataToMemory(diskCache) //顺便保存到内存一份
+//            cachedItemArray = diskCache
+//            return cachedItemArray
+//        }
+        
         return cachedItemArray
     }
     
@@ -149,6 +162,17 @@ import Foundation
    private func saveMemoryCacheToDisk(data:NSData ,fileName:String){
         // 保存缓存到文件
     let path = self.cacheDirectory(fileName)
-    NSKeyedArchiver.archiveRootObject(data, toFile: path)
+    
+    println("\(path)")
+    
+    let isSucceeded = data.writeToFile(path, atomically: true)
+    if isSucceeded == true{
+        println("写入成功")
+    }else{
+        println("写入失败")
+    }
+
+
+//    NSKeyedArchiver.archiveRootObject(data, toFile: path)
     }
 }
