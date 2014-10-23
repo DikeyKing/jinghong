@@ -5,6 +5,7 @@
 //  Created by Dikey on 10/11/14.
 //  Copyright (c) 2014 dikey. All rights reserved.
 //
+//todo ：需要把写缓存放到后台进行
 
 import Foundation
 
@@ -36,7 +37,7 @@ import Foundation
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMemoryWarningAndSaveDataToDisk:", name: UIApplicationWillTerminateNotification, object: nil)
     }
     
-    func cacheDataToFile (data:AnyObject, fileName:String){
+    func cacheDataToFile (data:NSArray, fileName:String){
         
         //假如已经存在，替换
         let archiverData = NSKeyedArchiver.archivedDataWithRootObject(data) //NSArray->NSData
@@ -62,31 +63,38 @@ import Foundation
         
 //        self.saveAllMemoryCacheToDisk();
         
-        print("JHMemorycache.count is \(self.memoryCache.count)")
+        
+        for (key, value) in self.memoryCache {
+            println("key is \(key)")
+        }
+        
     }
     
-    func  getCachedItem(fileName:String)->AnyObject{
+    func  getCachedItem(fileName:String)->NSArray{
         
-        var cachedItemArray:AnyObject? = NSData()
+        var cachedItemArray = NSArray()
         
         //假如内存中有数据，从内存缓存中返回
-        if let memoryCache: AnyObject = self.memoryCache.objectForKey(fileName){ //NSData
-        let unarchivedData: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithData(memoryCache as NSData)!
-            cachedItemArray = unarchivedData as NSArray
+        //取到的数据是NSData，最后返回的应该是解析成NSArray的数据
+        
+        if let memoryCache: NSData = self.memoryCache.objectForKey(fileName) as? NSData{
+            //假如存在 NSData
+            cachedItemArray = NSKeyedUnarchiver.unarchiveObjectWithData(memoryCache as NSData)! as NSArray
+            return cachedItemArray
         }
         
-        //假如内存中没有数据，从闪存中读取
+        //假如内存中没有数据，从硬盘缓存中读取
         //path	String	"/var/mobile/Containers/Data/Application/6494B6BE-4C4C-4F3B-8BD5-6759DB8DAA9B/Library/CachesTopicAuthorCache1628780"
+        
         let path = self.cacheDirectory(fileName)
-        if let unarchivedData: AnyObject = NSKeyedUnarchiver.unarchiveObjectWithFile(path){
-            cachedItemArray = unarchivedData
+        if let diskCache: NSArray = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? NSArray{
             
+            cachedItemArray = diskCache
             //self.saveDataToMemory(dataFormCache!)
-
-            return cachedItemArray!
+            return cachedItemArray
         }
 
-        return cachedItemArray!
+        return cachedItemArray
     }
     
     

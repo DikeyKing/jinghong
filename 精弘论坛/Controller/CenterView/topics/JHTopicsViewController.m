@@ -33,17 +33,21 @@
     
 //    [self getTopics];
     
-    NSData *data = (NSData*)[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_RecentTopics];
-    NSArray *cachedItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
-    if (!_topicsItemList) {
-        _topicsItemList = [[NSArray alloc]initWithArray:cachedItems];
-        NSLog(@"%@",_topicsItemList);
+    NSData *data = (NSData*)[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsList];
+    if (data.length>0) {
+        NSArray *cachedItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         
-        if (_topicsItemList!=nil && _topicsItemList.count!=0) {
-            [_topicsTableView reloadData];
+        if (!_topicsItemList) {
+            _topicsItemList = [[NSArray alloc]initWithArray:cachedItems];
+            NSLog(@"%@",_topicsItemList);
+            
+            if (_topicsItemList!=nil && _topicsItemList.count!=0) {
+                [_topicsTableView reloadData];
+            }
         }
     }
+    
+
     
 //    _topicsItemList=[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsList];
 //    if (_topicsItemList!=nil && _topicsItemList.count!=0) {

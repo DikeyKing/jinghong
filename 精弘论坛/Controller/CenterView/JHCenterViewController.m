@@ -12,7 +12,6 @@
 //下拉刷新->网络操作->更新UI
 //上拉刷新->(修改页面参数)->加载下一页
 
-
 #import "JHCenterViewController.h"
 #import "AFNetworking.h"
 
@@ -49,37 +48,52 @@
 {
     [super viewDidLoad];
     
-    NSData *data = (NSData*)[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_RecentTopics];
-    NSArray *cachedItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
-    if (!_recentTopcicList) {
-        _recentTopcicList = [[NSArray alloc]initWithArray:cachedItems];
-        NSLog(@"%@",_recentTopcicList);
+}
 
-        if (_recentTopcicList!=nil && _recentTopcicList.count!=0) {
-            [_recentTopicsTV reloadData];
-        }
-    }
-    
-    data = (NSData*)[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_BoardList];
-    NSArray *cachedBoardItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-
-    if (!_forumItemList) {
-        _forumItemList = [[NSArray alloc]initWithArray:cachedBoardItems];
-        NSLog(@"%@",_forumItemList);
-
-        if (_forumItemList!=nil && _forumItemList.count!=0) {
-            [_tableView reloadData];
-        }
-    }
-    
-//    _boardList = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_BoardList];
-//    if (_boardList!=nil && _boardList.count!=0) {
-//        [_tableView reloadData];
-//        //从缓存中读取
-//    }
-    
+-(void)viewWillAppear:(BOOL)animated
+{
     [self setTableViewHeaderAndFoot];
+
+    [self loadBoardListAndRecentTopicsCache];
+}
+
+-(void)loadBoardListAndRecentTopicsCache
+{
+    NSArray *data = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_RecentTopics];
+        
+    if (data.count!=0) {
+
+//        NSArray *cachedItems = [NSKeyedUnarchiver unarchiveObjectWithData: data];
+
+        if (!_recentTopcicList) {
+            _recentTopcicList = [[NSArray alloc]initWithArray:data];
+                    NSLog(@"%@",_recentTopcicList);
+            if (_recentTopcicList!=nil && _recentTopcicList.count!=0) {
+                [_recentTopicsTV reloadData];
+            }
+        }
+        
+    }else{
+        [self getRecentTopTenTopics];
+    }
+//
+//    
+//    data = (NSData*)[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_BoardList];
+//    if (data) {
+//        NSArray *cachedBoardItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+//        
+//        if (!_forumItemList) {
+//            _forumItemList = [[NSArray alloc]initWithArray:cachedBoardItems];
+//            //        NSLog(@"%@",_forumItemList);
+//            
+//            if (_forumItemList!=nil && _forumItemList.count!=0) {
+//                [_tableView reloadData];
+//            }
+//        }
+//    }else{
+//        [self getRecentTopTenTopics];
+//    }
+
 }
 
 -(void)setTableViewHeaderAndFoot
@@ -91,8 +105,8 @@
     _recentTopicsTV.dataSource =self;
     
     [_tableView addHeaderWithCallback:^{
-            _tableView.HeaderReleaseToRefreshText = @"你没事情刷新这个干什么...";
-            [self getBoardList];
+        _tableView.HeaderReleaseToRefreshText = @"你没事情刷新这个干什么...";
+        [self getBoardList];
         [_tableView headerEndRefreshing];
     }];
     
@@ -101,14 +115,6 @@
         _tableView.HeaderReleaseToRefreshText = @"刷新它...";
         [_recentTopicsTV headerEndRefreshing];
     }];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    if (!_boardList || _boardList.count!=0) {
-        [_tableView reloadData];
-    }
-    
 }
 
 -(void)viewWillDisappear:(BOOL)animated

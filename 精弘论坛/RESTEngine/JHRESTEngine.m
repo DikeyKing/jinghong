@@ -32,7 +32,7 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
 
 @implementation JHRESTEngine
 
--(id )getCachedArray:(int )cacheType
+-(NSArray* )getCachedArray:(int )cacheType
 {
     NSArray *cachedData = [NSArray new];
     
@@ -151,7 +151,7 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
                 
             NSString *currentBoard = [JHUserDefaults getBoardID];
             NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:currentBoard];
-        
+
             [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cacheFileNameString];
             //文件名看起来会是 BoardListCache303 BoardListCache402
             }
@@ -184,7 +184,7 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
                 
                 [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:kCachedRecentTopics];
                 
-                NSLog(@"the number coun is %lu",(unsigned long)[JHCache sharedInstance].memoryCache.count);
+//                NSLog(@"the number coun is %lu",(unsigned long)[JHCache sharedInstance].memoryCache.count);
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             errorBlock(error);
@@ -198,10 +198,6 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
 {
 //topicDetail 根据URL缓存...
 //一个topic 一个url，一个缓存...
-    
-
-//    succeededBlock([[JHCache sharedInstance] getCachedItem:cacheTopicDetail]) ;
-    
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_DETAIL] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *objectDic = responseObject;
         if ([objectDic objectForKey:@"rs"]!=nil &&[objectDic objectForKey:@"rs"]!= 0) {
@@ -209,9 +205,6 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
             //坑...author 和 回帖人是分开的
             NSDictionary *topicsAuthorDic = [objectDic objectForKey:@"topic"];
             JHTopicAuthorItem *tempAuthorItem = [[JHTopicAuthorItem alloc]initWithDictionary:topicsAuthorDic];
-            
-//            NSArray *authorArray = [[NSArray alloc]initWithObjects:tempAuthorItem, nil];
-//            [[JHCache sharedInstance] cacheDataToFile:authorArray fileName:cacheFileNameAuthorString];
             
             NSArray *topicsDetailArray = [objectDic objectForKey:@"list"];
             NSMutableArray *topicsDetailItemArray = [[NSMutableArray alloc]initWithCapacity:topicsDetailArray.count+1];
@@ -226,11 +219,8 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
           
             NSString *currentTopicsID = [JHUserDefaults getTopicID];
             NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:currentTopicsID];
-    
             
             [[JHCache sharedInstance] cacheDataToFile:topicsDetailItemArray fileName:cacheTopicDetail];
-
-            //将两个array都保存起来
         }
     
 

@@ -27,34 +27,36 @@
  
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self getTopicDetails];
     
-    
-    NSData *data = (NSData*)[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsDetails];
-    NSArray *cachedItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
-    if (!_topicsDetailsItems) {
-        _topicsDetailsItems = [[NSArray alloc]initWithArray:cachedItems];
-        NSLog(@"%@",_topicsDetailsItems);
-        
-        if (_topicsDetailsItems!=nil && _topicsDetailsItems.count!=0) {
-            [_topicDetailTV reloadData];
-        }
-    }
-    
-//    _topicsDetailsItems=[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsDetails];
-//    if (_topicsDetailsItems!=nil && _topicsDetailsItems.count!=0) {
-//        [_topicDetailTV reloadData];
-//        NSLog(@"_topicsDetailsItems 缓存中读取");
-//    }
-    
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
     [self setTableViewHeaderAndFoot]; //与tableView相关的操作
+    [self getTopicDetailsCache];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [SVProgressHUD dismiss];
+}
+
+-(void)getTopicDetailsCache
+{
+    NSArray *data = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsDetails];
+    if (data) {
+//        NSArray *cachedItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        
+        if (!_topicsDetailsItems) {
+            _topicsDetailsItems = [[NSArray alloc]initWithArray:data];
+            NSLog(@"%@",_topicsDetailsItems);
+            if (_topicsDetailsItems!=nil && _topicsDetailsItems.count!=0) {
+                [_topicDetailTV reloadData];
+            }
+        }
+    }else{
+        [self getTopicDetails];
+    }
 }
 
 -(void)setTableViewHeaderAndFoot
@@ -71,8 +73,8 @@
     
     [_topicDetailTV addFooterWithCallback:^{
         _topicDetailTV.footerRefreshingText = @"测试上拉刷新";
-        
         [_topicDetailTV footerEndRefreshing];
+        
 #warning todo：获取下一页的所有帖子然后加载（会不会下一页和第一页重复了？）
     }];
     
