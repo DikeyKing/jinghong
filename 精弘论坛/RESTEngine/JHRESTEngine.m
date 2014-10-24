@@ -19,11 +19,11 @@
 static NSString* const kJHBaseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
 static NSString* const  kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
 
-static NSString* const kCachedRecentTopics = @"RecentTopicsCache";
+static NSString* const kCachedRecentTopics = @"RecentTopics";
 static NSString* const kCachedBoardList = @"BoardListCache";
-static NSString* const kCachedTopicDetails = @"TopicDetailsCache";
-static NSString* const kCachedForumList = @"ForumListCache";
-static NSString* const kCachedTopicsList = @"TopicsListCache";
+static NSString* const kCachedTopicDetails = @"TopicDetails";
+static NSString* const kCachedForumList = @"ForumList";
+static NSString* const kCachedTopicsList = @"TopicsList";
 
 //缓存文件名
 
@@ -48,6 +48,7 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
             
         case CacheType_TopicsDetails:{
             NSString *currentTopicsID = [JHUserDefaults getTopicID];
+            
             NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:currentTopicsID];
             cachedData = [[JHCache sharedInstance]getCachedItem:cacheTopicDetail];
         }
@@ -181,11 +182,8 @@ static NSString* const kCachedTopicsList = @"TopicsListCache";
                 }
                 
                 succeededBlock(topicsItemArray);
-                
                 [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:kCachedRecentTopics];
-                
-//                NSLog(@"the number coun is %lu",(unsigned long)[JHCache sharedInstance].memoryCache.count);
-            }
+                }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             errorBlock(error);
         }];
