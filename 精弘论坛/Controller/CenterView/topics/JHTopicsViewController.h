@@ -15,6 +15,7 @@
 
 
 @property (strong, nonatomic) NSArray *topicsItemList;
+@property (weak,nonatomic) IBOutlet UILabel *pageNumberLabel;
 
 
 

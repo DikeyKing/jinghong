@@ -116,12 +116,12 @@
     return (NSString * )[defaults objectForKey:@"TopicID"];
 }
 
-
 + (void)savePage:(NSString *)page
 {
     NSUserDefaults *defaults= [NSUserDefaults standardUserDefaults];
     [defaults setObject:page forKey:@"page"];
 }
+
 + (NSString * )getPage
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

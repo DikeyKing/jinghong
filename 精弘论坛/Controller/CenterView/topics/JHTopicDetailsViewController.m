@@ -14,6 +14,7 @@
 #import "JHTopicDetailItem.h"
 #import "JHTopicAuthorItem.h"
 #import "MJRefresh.h"
+#import "JHUserDefaults.h"
 
 #define ORIGIN_CELL_HEIGHT 300.0f
 
@@ -27,12 +28,12 @@
  
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setTableViewHeaderAndFoot]; //与tableView相关的操作
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self setTableViewHeaderAndFoot]; //与tableView相关的操作
     [self getTopicDetailsCache];
 }
 
@@ -71,9 +72,12 @@
     
     [_topicDetailTV addFooterWithCallback:^{
         _topicDetailTV.footerRefreshingText = @"测试上拉刷新";
+#warning todo：获取下一页的所有帖子然后加载（会不会下一页和第一页重复了？）
+//        int page = [[JHUserDefaults getPage]intValue]+1;
+//        [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",page]];
+        
         [_topicDetailTV footerEndRefreshing];
         
-#warning todo：获取下一页的所有帖子然后加载（会不会下一页和第一页重复了？）
     }];
     
 }

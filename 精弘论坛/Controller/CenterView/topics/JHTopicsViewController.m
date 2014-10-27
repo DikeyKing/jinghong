@@ -5,6 +5,8 @@
 //  Created by Dikey on 9/19/14.
 //  Copyright (c) 2014 dikey. All rights reserved.
 //  主题列表
+//再加入一个页数显示吧
+
 
 
 #import "JHTopicsViewController.h"
@@ -28,8 +30,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     _pageNumber = 1;
+    _pageNumberLabel.text = @"第1页";
+    
+    [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_pageNumber]];
     
     [self getTopicsListCache];
     [self setTableViewHeaderAndFoot];
@@ -38,17 +42,19 @@
 -(void)getTopicsListCache
 {
     NSArray *data =[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsList];
-    if (data) {
+    
+    if (!data||data.count==0) {
+        [self getTopics];
+    }else{
         if (!_topicsItemList) {
             _topicsItemList = [[NSArray alloc]initWithArray:data];
-            if (_topicsItemList!=nil && _topicsItemList.count!=0) {
-                [_topicsTableView reloadData];
-                [self getTopics];
-            }else{
-                [self getTopics];
-            }
+            [_topicsTableView reloadData];
+         }else{
+            _topicsItemList = data;
+             [_topicsTableView reloadData];
         }
     }
+    
 }
 
 -(void)setTableViewHeaderAndFoot
@@ -58,15 +64,33 @@
     
     //下拉刷新
     [_topicsTableView addHeaderWithCallback:^{
-        [self getTopics];
+        //假如是第一页，那下拉刷新，假如不是第一页，那上拉显示上一页的数据
+        if (_pageNumber==1) {
+            [self getTopics];
+            _pageNumberLabel.text = @"第1页";
+        }else{
+            
+            _pageNumber-=2;
+            _pageNumberLabel.text = [NSString stringWithFormat:@"第%d页",(_pageNumber+1)/2];
+            NSLog(@"第%d页",(_pageNumber+1)/2);
+
+            [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_pageNumber]];
+            [self getTopicsListCache];
+        }
+        
+        
         [_topicsTableView headerEndRefreshing];
     }];
     
     //上拉刷新
     [_topicsTableView addFooterWithCallback:^{
-        _pageNumber ++;
+        _pageNumber +=2 ; //因为原本是十帖子每页，我设置成了默认获取二十个帖子，所以要获取第三页开始
         [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_pageNumber]];
-        [self getTopics];
+        _pageNumberLabel.text = [NSString stringWithFormat:@"第%d页",(_pageNumber+1)/2];
+        NSLog(@"第%d页",(_pageNumber+1)/2);
+        
+        [self getTopicsListCache];
+        [_topicsTableView footerEndRefreshing];
     }];
 }
 

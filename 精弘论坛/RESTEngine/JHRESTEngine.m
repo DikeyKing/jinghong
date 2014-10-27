@@ -60,8 +60,8 @@ static NSString* const kCachedTopicsList = @"TopicsList";
             break;
             
         case CacheType_TopicsList:{
-            NSString *currentBoard = [JHUserDefaults getBoardID];
-            NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:currentBoard];
+            NSString *parameterName = [[JHUserDefaults getBoardID]stringByAppendingString:[JHUserDefaults getPage]];
+            NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:parameterName];
             cachedData = [[JHCache sharedInstance]getCachedItem:cacheFileNameString];
         }
             break;
@@ -150,11 +150,12 @@ static NSString* const kCachedTopicsList = @"TopicsList";
             }
             succeededBlock(topicsItemArray);
                 
-            NSString *currentBoard = [JHUserDefaults getBoardID];
-            NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:currentBoard];
-
+//            NSString *currentBoard = [JHUserDefaults getBoardID];
+//                NSString *currentPage= [JHUserDefaults getPage];
+    
+            NSString *parameterName = [[JHUserDefaults getBoardID]stringByAppendingString:[JHUserDefaults getPage]];
+            NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:parameterName];
             [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cacheFileNameString];
-            //文件名看起来会是 BoardListCache303 BoardListCache402
             }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

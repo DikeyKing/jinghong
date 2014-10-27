@@ -6,15 +6,19 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>13062C92-BDB3-4F9A-AF51-F75066FEB423</string>
+	<key>IDESourceControlProjectName</key>
+	<string>精弘论坛</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7E73ADE83CEC8DEEA9048B84AC302007CAD5C3AD</key>
 		<string>https://github.com/DikeyKing/jinghong.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>精弘论坛.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7E73ADE83CEC8DEEA9048B84AC302007CAD5C3AD</key>
-		<string>%E7%B2%BE%E5%BC%98iOS/</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/DikeyKing/jinghong.git</string>

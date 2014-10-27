@@ -257,7 +257,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="seu-KI-fo7">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JHTopicsCell" rowHeight="88" id="s1m-ny-NMR" customClass="JHTopicsCell">
@@ -291,13 +291,23 @@
                                     <outlet property="delegate" destination="L4Q-7x-0GL" id="ANF-MM-V7S"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0P-dg-fzV">
+                                <rect key="frame" x="209" y="526" width="95" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="H0P-dg-fzV" firstAttribute="top" secondItem="seu-KI-fo7" secondAttribute="bottom" constant="8" id="38s-fE-Fgx"/>
                             <constraint firstItem="seu-KI-fo7" firstAttribute="leading" secondItem="fYI-0E-yGD" secondAttribute="leading" id="Eco-La-T2g"/>
                             <constraint firstItem="seu-KI-fo7" firstAttribute="top" secondItem="fYI-0E-yGD" secondAttribute="top" id="JXB-vp-xHO"/>
-                            <constraint firstAttribute="bottom" secondItem="seu-KI-fo7" secondAttribute="bottom" id="dWN-Qa-2z8"/>
+                            <constraint firstItem="H0P-dg-fzV" firstAttribute="leading" secondItem="fYI-0E-yGD" secondAttribute="leadingMargin" constant="193" id="Miu-JB-n2I"/>
+                            <constraint firstAttribute="bottom" secondItem="seu-KI-fo7" secondAttribute="bottom" constant="50" id="dWN-Qa-2z8"/>
                             <constraint firstAttribute="trailing" secondItem="seu-KI-fo7" secondAttribute="trailing" id="kPQ-M3-oXC"/>
+                            <constraint firstItem="A05-TC-vtb" firstAttribute="top" secondItem="H0P-dg-fzV" secondAttribute="bottom" constant="20" id="tbP-Ch-Yek"/>
+                            <constraint firstItem="H0P-dg-fzV" firstAttribute="trailing" secondItem="fYI-0E-yGD" secondAttribute="trailingMargin" id="yEc-e3-tp2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="9v0-Vs-UpW">
@@ -307,6 +317,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
+                        <outlet property="pageNumberLabel" destination="H0P-dg-fzV" id="ahv-LB-jhb"/>
                         <outlet property="topicsTableView" destination="seu-KI-fo7" id="5NE-Wa-Rbv"/>
                     </connections>
                 </viewController>

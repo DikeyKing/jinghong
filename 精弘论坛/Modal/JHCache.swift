@@ -25,7 +25,8 @@ import Foundation
     let kCacheMemoryLimit = 20
     let fileManager = NSFileManager()
     let kCACHE_VERSION = "CACHE_VERSION"
-    
+    let kExpire_Time = "CACHE_VERSION"
+
     override init() {
         
         super.init()
@@ -156,10 +157,16 @@ import Foundation
         
         if !fileManager.fileExistsAtPath(cachePathString){
             fileManager.createDirectoryAtPath(cachePathString, withIntermediateDirectories: true, attributes: nil, error: nil)
+            println("目录不存在")
         }else{
-            let stalenessLevel:NSDictionary = fileManager.attributesOfItemAtPath(cachePathString, error: nil)!
-            let createdData: AnyObject? = stalenessLevel.objectForKey("NSFileCreationDate")
-            //
+//            let stalenessLevel:NSDictionary = fileManager.attributesOfItemAtPath(cachePathString, error: nil)!
+//            var createdDate: AnyObject! = stalenessLevel.objectForKey("NSFileModificationDate")!.timeIntervalSinceNow
+//            println("目录间隔时间\(createdDate)")
+//
+//            createdDate = stalenessLevel.objectForKey("NSFileModificationDate")!
+//            println("目录创建时间\(createdDate)")
+            
+//todo...过期数据删除，还没完成
         }
         
     }
