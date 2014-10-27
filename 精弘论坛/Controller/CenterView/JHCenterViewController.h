@@ -10,7 +10,7 @@
 
 @interface JHCenterViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView; //论坛列表tableView
 @property (weak, nonatomic) IBOutlet UITableView *recentTopicsTV;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 

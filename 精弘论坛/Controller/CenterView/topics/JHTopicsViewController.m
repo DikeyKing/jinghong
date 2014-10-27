@@ -54,7 +54,6 @@
              [_topicsTableView reloadData];
         }
     }
-    
 }
 
 -(void)setTableViewHeaderAndFoot
@@ -69,7 +68,6 @@
             [self getTopics];
             _pageNumberLabel.text = @"第1页";
         }else{
-            
             _pageNumber-=2;
             _pageNumberLabel.text = [NSString stringWithFormat:@"第%d页",(_pageNumber+1)/2];
             NSLog(@"第%d页",(_pageNumber+1)/2);
@@ -86,7 +84,6 @@
         _pageNumber +=2 ; //因为原本是十帖子每页，我设置成了默认获取二十个帖子，所以要获取第三页开始
         [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_pageNumber]];
         _pageNumberLabel.text = [NSString stringWithFormat:@"第%d页",(_pageNumber+1)/2];
-        NSLog(@"第%d页",(_pageNumber+1)/2);
         
         [self getTopicsListCache];
         [_topicsTableView footerEndRefreshing];
@@ -135,26 +132,6 @@
         
         [jHTopicsCell displayValues:(JHTopicItem *)_topicsItemList[indexPath.row]];
         
-        /*
-         _jhTopicItem	JHTopicItem *	0x14f58fe0	0x14f58fe0
-         JHDataModel	JHDataModel
-         _board_id	int	455	455
-         _board_name	NSMutableString *	@"『同乡情谊』"	0x14f755b0
-         _essence	int	0	0
-         _hits	int	4452	4452
-         _hot	int	0	0
-         _last_reply_date	NSMutableString *	@"1411915369000"	0x14f7c880
-         _pic_path	NSMutableString *	@""	0x3bc672f0
-         _replies	long	343	343
-         _subject	NSMutableString *	@"          又是一年毕业时，该走的终究要走， 因为去实习了这学期，把楼荒"	0x14f6c480
-         _title	NSMutableString *	@"★北仑★ 东方大港—宁波北仑（挖起大楼找个新楼主）"	0x14f6ff20
-         _top	int	0	0
-         _topic_id	int	873818	873818
-         _type	NSMutableString *	@"normal"	0x14e51770
-         _user_id	int	111704	111704
-         _user_nick_name	NSMutableString *	@"小噶"	0x14e2e840
-         _vote	int	0	0
-         */
     }
     
     return jHTopicsCell;

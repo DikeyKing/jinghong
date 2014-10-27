@@ -63,10 +63,8 @@ static int pageSize=20 ;
         case GET_TOPICS_DETAIL:
             privateParameter = @{
                              @"r":@"forum/postlist",
-                             
                              @"topicId":[JHUserDefaults getTopicID],
                              @"boardId":[JHUserDefaults getBoardID]
-
                              };
             
         

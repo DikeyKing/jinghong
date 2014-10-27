@@ -21,6 +21,7 @@
 @interface JHTopicDetailsViewController ()
 
 @property (strong ,nonatomic) NSArray *topicsDetailsItems; //这个array包含所以帖子信息数据
+@property (assign, nonatomic) int topicDetailPageNumber;
 
 @end
 
@@ -28,8 +29,8 @@
  
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _topicDetailPageNumber = 1;
     [self setTableViewHeaderAndFoot]; //与tableView相关的操作
-
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -66,13 +67,13 @@
     [_topicDetailTV addHeaderWithCallback:^{
         _topicDetailTV.headerRefreshingText = @"测试下拉刷新环境~";
         [self getTopicDetails];
-        
         [_topicDetailTV headerEndRefreshing];
     }];
     
     [_topicDetailTV addFooterWithCallback:^{
         _topicDetailTV.footerRefreshingText = @"测试上拉刷新";
 #warning todo：获取下一页的所有帖子然后加载（会不会下一页和第一页重复了？）
+        
 //        int page = [[JHUserDefaults getPage]intValue]+1;
 //        [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",page]];
         
@@ -95,7 +96,6 @@
         if (modelObjects!=nil) {
             _topicsDetailsItems = [modelObjects copy];
             [_topicDetailTV reloadData];
-            
         }
         
     } onError:^(NSError *engineError) {

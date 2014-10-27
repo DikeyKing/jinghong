@@ -17,7 +17,7 @@
 #import <精弘论坛-Swift.h>
 
 static NSString* const kJHBaseURLString = @"http://bbs.zjut.edu.cn/mobcent/app/web/index.php";
-static NSString* const  kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
+static NSString* const kJHLoginURLString = @"http://bbs.zjut.edu.cn/mobcent/login/login.php";
 
 static NSString* const kCachedRecentTopics = @"RecentTopics";
 static NSString* const kCachedBoardList = @"BoardListCache";
@@ -176,9 +176,6 @@ static NSString* const kCachedTopicsList = @"TopicsList";
      //获取第二页数据并缓存起来
     __block int pageNumber= [[JHUserDefaults getPage]intValue];
     pageNumber+= 2;
-    NSLog(@"Page is %d",pageNumber);
-    
-    
     [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",pageNumber]];
     
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -191,11 +188,9 @@ static NSString* const kCachedTopicsList = @"TopicsList";
                 [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
             }
             
-            int cachedPage = pageNumber;
-            NSString *parameterName = [[JHUserDefaults getBoardID]stringByAppendingString:[NSString stringWithFormat:@"%d",cachedPage]];
+            NSString *parameterName = [[JHUserDefaults getBoardID]stringByAppendingString:[NSString stringWithFormat:@"%d",pageNumber]];
             NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:parameterName];
             [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cacheFileNameString];
-            
             pageNumber -= 2;
             [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",pageNumber]];
         }
@@ -215,6 +210,10 @@ static NSString* const kCachedTopicsList = @"TopicsList";
     //先从缓存中读取
     //读取成功，更新视图，（然后发起网络请求，感觉是错误的，不需要每次刷新）
     //读取不成功,发起网络请求
+//    __block int pageNumber= [[JHUserDefaults getPage]intValue];
+//    pageNumber+= 2;
+//    [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",pageNumber]];
+   
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_RECENT_TOPICS] success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *objectDic = responseObject;
             if ([objectDic objectForKey:@"rs"]!= 0) {
@@ -236,6 +235,40 @@ static NSString* const kCachedTopicsList = @"TopicsList";
 
     return self;
 }
+
+-(instancetype)getNextRecentTopicsOnSucceeded
+{
+    //获取第二页数据并缓存起来
+    __block int pageNumber= [[JHUserDefaults getPage]intValue];
+    pageNumber+= 2;
+    [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",pageNumber]];
+    
+    [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_RECENT_TOPICS] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *objectDic = responseObject;
+        if ([objectDic objectForKey:@"rs"]!= 0) {
+            NSArray *topicsArray = [objectDic objectForKey:@"list"];
+            NSMutableArray *topicsItemArray = [NSMutableArray new];
+            
+            for (NSMutableDictionary *topicsDic in topicsArray) {
+                  [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
+            }
+            
+            [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:kCachedRecentTopics];
+            
+            NSString *parameterName = [[JHUserDefaults getBoardID]stringByAppendingString:[NSString stringWithFormat:@"%d",pageNumber]];
+            NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:parameterName];
+            [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cacheFileNameString];
+            pageNumber -= 2;
+            [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",pageNumber]];
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+    return self;
+}
+
+
+
 
 -(instancetype)getTopicDetailsOnSucceeded:(ArrayBlock)succeededBlock
                                   onError:(ErrorBlock)errorBlock

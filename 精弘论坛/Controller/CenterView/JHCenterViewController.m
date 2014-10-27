@@ -35,6 +35,7 @@
 @property (copy, nonatomic) NSArray *boardList;
 @property (copy, nonatomic) NSMutableArray *boardID;
 @property (copy, nonatomic) NSArray *recentTopcicList;
+@property (assign,nonatomic) int recentTopicsPageNumber;
 
 @property (strong, nonatomic) JHFourmItem *jHForumItem;
 @property (strong, nonatomic) JHBoardItem *jHBoardItem;
@@ -64,7 +65,6 @@
     if (data.count!=0) {
         if (!_recentTopcicList) {
             _recentTopcicList = [[NSArray alloc]initWithArray:data];
-//                    NSLog(@"%@",_recentTopcicList);
             if (_recentTopcicList!=nil && _recentTopcicList.count!=0) {
                 [_recentTopicsTV reloadData];
             }
@@ -74,11 +74,9 @@
     }
     
     data = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_BoardList];
-    
     if (data.count!=0) {
         if (!_forumItemList) {
             _forumItemList = [[NSArray alloc]initWithArray:data];
-//            NSLog(@"%@",_recentTopcicList);
             if (_forumItemList!=nil && _forumItemList.count!=0) {
                 [_tableView reloadData];
             }
@@ -101,12 +99,39 @@
         [self getBoardList];
         [_tableView headerEndRefreshing];
     }];
-    
+
     [_recentTopicsTV addHeaderWithCallback:^{
-        [self getRecentTopTenTopics];
         _tableView.HeaderReleaseToRefreshText = @"刷新它...";
+        [self getRecentTopTenTopics];
         [_recentTopicsTV headerEndRefreshing];
     }];
+    
+//    [_recentTopicsTV addFooterWithCallback:^{
+//        //上拉刷新加载第二页
+//        //加载下一页
+////        _recentTopicsPageNumber +=2 ; //因为原本是十帖子每页，我设置成了默认获取二十个帖子，所以要获取第三页开始
+//        [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_recentTopicsPageNumber]];
+////        [self getRecentTopicsListCache];
+//        [_recentTopicsTV footerEndRefreshing];
+//    }];
+}
+
+
+-(void)getRecentTopicsListCache
+{
+    NSArray *data =[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_RecentTopics];
+    
+    if (!data||data.count==0) {
+        [self getRecentTopTenTopics];
+    }else{
+        if (!_recentTopcicList) {
+            _recentTopcicList = [[NSArray alloc]initWithArray:data];
+            [_recentTopicsTV reloadData];
+        }else{
+            _recentTopcicList = data;
+            [_recentTopicsTV reloadData];
+        }
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -232,10 +257,7 @@
         if (_forumItemList!=nil&&_forumItemList.count!=0) {
             _jHForumItem = _forumItemList[indexPath.section];
             _jHBoardItem = _jHForumItem.board_list[indexPath.row];
-            
-            
             [JHUserDefaults saveBoardID:[NSString stringWithFormat:@"%@",_jHBoardItem.board_id]];
-            
             [self.navigationController pushViewController:jHTopicsVC animated:YES];
         }
     }
@@ -250,7 +272,6 @@
             [self.navigationController pushViewController:jHTopicsDetailsVC animated:YES];
         }
     }
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
