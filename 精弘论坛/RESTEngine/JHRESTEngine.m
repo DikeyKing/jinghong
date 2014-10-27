@@ -28,7 +28,10 @@ static NSString* const kCachedTopicsList = @"TopicsList";
 //缓存文件名
 
 @interface JHRESTEngine()
+
+
 @end
+
 
 @implementation JHRESTEngine
 
@@ -63,6 +66,9 @@ static NSString* const kCachedTopicsList = @"TopicsList";
             NSString *parameterName = [[JHUserDefaults getBoardID]stringByAppendingString:[JHUserDefaults getPage]];
             NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:parameterName];
             cachedData = [[JHCache sharedInstance]getCachedItem:cacheFileNameString];
+          
+            [self getNextPageTopicsListToCache];
+            
         }
             break;
             
@@ -144,26 +150,65 @@ static NSString* const kCachedTopicsList = @"TopicsList";
             NSMutableArray *topicsItemArray = [NSMutableArray new];
             
             for (NSMutableDictionary *topicsDic in topicsArray) {
-                // 这步将topicsArray 中的JSON  转换成 topicsItem 添加至Array
-                // 然后返回 topicsItemArray
+                // 这步将topicsArray 中的JSON  转换成 topicsItem 添加至Array,然后返回 topicsItemArray
                 [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
             }
             succeededBlock(topicsItemArray);
-                
-//            NSString *currentBoard = [JHUserDefaults getBoardID];
-//                NSString *currentPage= [JHUserDefaults getPage];
     
             NSString *parameterName = [[JHUserDefaults getBoardID]stringByAppendingString:[JHUserDefaults getPage]];
             NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:parameterName];
             [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cacheFileNameString];
-            }
+                
+            [self getNextPageTopicsListToCache];
         
+            }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         errorBlock(error);
     }];
+    
     return self;
 }
 
+     
+
+-(instancetype)getNextPageTopicsListToCache
+{
+     //获取第二页数据并缓存起来
+    __block int pageNumber= [[JHUserDefaults getPage]intValue];
+    pageNumber+= 2;
+    NSLog(@"Page is %d",pageNumber);
+    
+    
+    [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",pageNumber]];
+    
+    [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_LIST] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *objectDic = responseObject;
+        if ([objectDic objectForKey:@"rs"]!= 0) {
+            NSArray *topicsArray = [objectDic objectForKey:@"list"];
+            NSMutableArray *topicsItemArray = [NSMutableArray new];
+            
+            for (NSMutableDictionary *topicsDic in topicsArray) {
+                [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
+            }
+            
+            int cachedPage = pageNumber;
+            NSString *parameterName = [[JHUserDefaults getBoardID]stringByAppendingString:[NSString stringWithFormat:@"%d",cachedPage]];
+            NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:parameterName];
+            [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cacheFileNameString];
+            
+            pageNumber -= 2;
+            [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",pageNumber]];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+    }];
+    
+
+    return self;
+}
+
+     
 -(instancetype)getRecentTopicsOnSucceeded:(ArrayBlock)succeededBlock
                                   onError:(ErrorBlock)errorBlock
 {

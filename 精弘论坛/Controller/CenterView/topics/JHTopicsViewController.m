@@ -32,10 +32,10 @@
     [super viewDidLoad];
     _pageNumber = 1;
     _pageNumberLabel.text = @"第1页";
-    
     [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_pageNumber]];
     
-    [self getTopicsListCache];
+    [self getTopics];
+    
     [self setTableViewHeaderAndFoot];
 }
 
@@ -77,7 +77,6 @@
             [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_pageNumber]];
             [self getTopicsListCache];
         }
-        
         
         [_topicsTableView headerEndRefreshing];
     }];
