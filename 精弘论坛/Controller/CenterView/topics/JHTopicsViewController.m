@@ -35,7 +35,6 @@
     [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_pageNumber]];
     
     [self getTopics];
-    
     [self setTableViewHeaderAndFoot];
 }
 
@@ -51,7 +50,11 @@
             [_topicsTableView reloadData];
          }else{
             _topicsItemList = data;
-             [_topicsTableView reloadData];
+             if (_topicsItemList.count!=0) {
+                 [_topicsTableView reloadData];
+             }else{
+                 [SVProgressHUD showProgress:SVProgressHUDMaskTypeBlack status:@"已经是最后一页"];
+             }
         }
     }
 }
@@ -87,6 +90,7 @@
         
         [self getTopicsListCache];
         [_topicsTableView footerEndRefreshing];
+        [SVProgressHUD dismiss];
     }];
 }
 

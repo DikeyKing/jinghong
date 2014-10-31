@@ -18,8 +18,7 @@ import Foundation
         }
         return Static.instance
     }
-    
-    
+
     var memoryCache  = NSMutableDictionary() //一个Key对应一个NSData对象
     var recentlyAccessedKeys = NSMutableArray() //保存最近使用的Keys
     let kCacheMemoryLimit = 20

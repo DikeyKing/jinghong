@@ -22,7 +22,6 @@ static int pageSize=20 ;
 
 @implementation JHForumAPI
 
-
 +(NSDictionary *)getParameterDic:(int)getParameter
 {
     NSDictionary *publicParameter = @{
@@ -56,6 +55,7 @@ static int pageSize=20 ;
                             @"boardId":[JHUserDefaults getBoardID],
                             @"page":[JHUserDefaults  getPage], //获取第几页
                             @"pageSize":[NSString stringWithFormat:@"%d",pageSize] //每页多少个
+                            //默认每页十个...我设置为20，也就是每次是2页内容
                             
                             };
             break;
@@ -75,7 +75,7 @@ static int pageSize=20 ;
             privateParameter = @{
                                  @"r":@"forum/topiclist",
                                  @"pageSize": [NSString stringWithFormat:@"%d",pageSize],
-                                 @"page":[JHUserDefaults getPage],
+                                 @"page":[JHUserDefaults getRecentTopicPage],
                                  @"sortby":@"publish"
                                  
                                  };

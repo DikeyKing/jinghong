@@ -34,7 +34,7 @@
 @property (copy, nonatomic) NSArray *forumItemList;
 @property (copy, nonatomic) NSArray *boardList;
 @property (copy, nonatomic) NSMutableArray *boardID;
-@property (copy, nonatomic) NSArray *recentTopcicList;
+@property (copy, nonatomic) NSMutableArray *recentTopcicList;
 @property (assign,nonatomic) int recentTopicsPageNumber;
 
 @property (strong, nonatomic) JHFourmItem *jHForumItem;
@@ -48,13 +48,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _recentTopicsPageNumber= 1;
+    [JHUserDefaults saveRecentTopicPage:@"1"];
+
     [self setTableViewHeaderAndFoot];
 
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-
     [self loadBoardListAndRecentTopicsCache];
 }
 
@@ -64,7 +66,7 @@
         
     if (data.count!=0) {
         if (!_recentTopcicList) {
-            _recentTopcicList = [[NSArray alloc]initWithArray:data];
+            _recentTopcicList = [[NSMutableArray alloc]initWithArray:data];
             if (_recentTopcicList!=nil && _recentTopcicList.count!=0) {
                 [_recentTopicsTV reloadData];
             }
@@ -101,14 +103,35 @@
     }];
 
     [_recentTopicsTV addHeaderWithCallback:^{
+        NSLog(@"_recentTopicsPageNumber = %d",_recentTopicsPageNumber);
+        
         _tableView.HeaderReleaseToRefreshText = @"刷新它...";
-        [self getRecentTopTenTopics];
+        if (_recentTopicsPageNumber ==1) { //假如是第一页，刷新
+            [JHUserDefaults saveRecentTopicPage:@"1"];
+            [self getRecentTopTenTopics];
+        }else{
+            //假如不是第一页，那加载上一页内容
+            _recentTopicsPageNumber -=2;
+            [JHUserDefaults saveRecentTopicPage:[NSString stringWithFormat:@"%d",_recentTopicsPageNumber]];
+            NSLog(@"最近帖子列表第%d页",(_recentTopicsPageNumber+1)/2);
+            [self getRecentTopicsListCache];
+        }
         [_recentTopicsTV headerEndRefreshing];
     }];
     
+    [_recentTopicsTV addFooterWithCallback:^{
+        //上拉刷新加载第二页
+        //加载下一页
+        _recentTopicsPageNumber= [[JHUserDefaults getRecentTopicPage]intValue];;
+        _recentTopicsPageNumber +=2;
+        [JHUserDefaults saveRecentTopicPage:[NSString stringWithFormat:@"%d",_recentTopicsPageNumber]];
+        [self getRecentTopicsListCache]; //从缓存中找
+        [_recentTopicsTV footerEndRefreshing];
+    }];
+    
 //    [_recentTopicsTV addFooterWithCallback:^{
-//        //上拉刷新加载第二页
-//        //加载下一页
+        //上拉刷新加载第二页
+        //加载下一页
 ////        _recentTopicsPageNumber +=2 ; //因为原本是十帖子每页，我设置成了默认获取二十个帖子，所以要获取第三页开始
 //        [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_recentTopicsPageNumber]];
 ////        [self getRecentTopicsListCache];
@@ -125,10 +148,16 @@
         [self getRecentTopTenTopics];
     }else{
         if (!_recentTopcicList) {
-            _recentTopcicList = [[NSArray alloc]initWithArray:data];
+            _recentTopcicList = [[NSMutableArray alloc]initWithArray:data copyItems:YES];
             [_recentTopicsTV reloadData];
         }else{
-            _recentTopcicList = data;
+            for (JHTopicItem *item in data) {
+                if (![_recentTopcicList containsObject:item]) {
+                    [_recentTopcicList addObject:item];
+                }
+            }
+                        
+            //需要去重，名字一样的去掉？
             [_recentTopicsTV reloadData];
         }
     }
@@ -148,10 +177,15 @@
         [SVProgressHUD dismiss];
         
         if (!_recentTopcicList) {
-            _recentTopcicList = [NSArray new];
+            _recentTopcicList = [NSMutableArray new];
         }
         if (modelObjects!=nil) {
-            _recentTopcicList = [modelObjects copy];
+            for (JHTopicItem *item in modelObjects) {
+                if (![_recentTopcicList containsObject:item]) {
+                    [_recentTopcicList addObject:item];
+                }
+            }
+//            _recentTopcicList = [modelObjects copy];
             [_recentTopicsTV reloadData];
         }else{
             [SVProgressHUD showErrorWithStatus:@"没有返回列表"];

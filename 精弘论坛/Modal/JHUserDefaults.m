@@ -131,6 +131,34 @@
         return (NSString *)[defaults objectForKey:@"page"];
 }
 
++ (void)saveRecentTopicPage:(NSString *)page
+{
+    NSUserDefaults *defaults= [NSUserDefaults standardUserDefaults];
+    [defaults setObject:page forKey:@"recentTopicPage"];
+}
 
++ (NSString * )getRecentTopicPage
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"recentTopicPage"]==nil) {
+        return @"1";
+    }else
+        return (NSString *)[defaults objectForKey:@"recentTopicPage"];
+}
+
++ (void)saveTopicDetailPage:(NSString *)page
+{
+    NSUserDefaults *defaults= [NSUserDefaults standardUserDefaults];
+    [defaults setObject:page forKey:@"topicDetailPage"];
+}
+
++ (NSString * )getTopicDetailPage
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"topicDetailPage"]==nil) {
+        return @"1";
+    }else
+        return (NSString *)[defaults objectForKey:@"topicDetailPage"];
+}
 
 @end

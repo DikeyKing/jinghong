@@ -66,6 +66,9 @@
     
     [_topicDetailTV addHeaderWithCallback:^{
         _topicDetailTV.headerRefreshingText = @"测试下拉刷新环境~";
+        
+        //pull to refresh,first look for data at cache
+        
         [self getTopicDetails];
         [_topicDetailTV headerEndRefreshing];
     }];
@@ -80,6 +83,10 @@
         [_topicDetailTV footerEndRefreshing];
         
     }];
+    
+}
+-(void)getTopicDetailCache
+{
     
 }
 

@@ -35,13 +35,17 @@ static NSString* const kCachedTopicsList = @"TopicsList";
 
 @implementation JHRESTEngine
 
--(NSArray* )getCachedArray:(int )cacheType
+-(NSArray* )getCachedArray:(int)cacheType
 {
     NSArray *cachedData = [NSArray new];
     
     switch (cacheType) {
         case CacheType_RecentTopics:{
-            cachedData = [[JHCache sharedInstance]getCachedItem:kCachedRecentTopics];
+            NSString *recentTopicPage = [JHUserDefaults getRecentTopicPage];
+            NSString *cachedRecentTopicFileName = [kCachedRecentTopics stringByAppendingString:recentTopicPage];
+            cachedData = [[JHCache sharedInstance]getCachedItem:cachedRecentTopicFileName];
+            [self getNextPageRecentTopicsListToCache];
+
         }break;
 
         case CacheType_BoardList:{
@@ -51,8 +55,8 @@ static NSString* const kCachedTopicsList = @"TopicsList";
             
         case CacheType_TopicsDetails:{
             NSString *currentTopicsID = [JHUserDefaults getTopicID];
-            
             NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:currentTopicsID];
+            
             cachedData = [[JHCache sharedInstance]getCachedItem:cacheTopicDetail];
         }
             break;
@@ -66,9 +70,8 @@ static NSString* const kCachedTopicsList = @"TopicsList";
             NSString *parameterName = [[JHUserDefaults getBoardID]stringByAppendingString:[JHUserDefaults getPage]];
             NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:parameterName];
             cachedData = [[JHCache sharedInstance]getCachedItem:cacheFileNameString];
-          
+    
             [self getNextPageTopicsListToCache];
-            
         }
             break;
             
@@ -169,8 +172,6 @@ static NSString* const kCachedTopicsList = @"TopicsList";
     return self;
 }
 
-     
-
 -(instancetype)getNextPageTopicsListToCache
 {
      //获取第二页数据并缓存起来
@@ -227,12 +228,51 @@ static NSString* const kCachedTopicsList = @"TopicsList";
                 }
                 
                 succeededBlock(topicsItemArray);
-                [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:kCachedRecentTopics];
+                
+                NSString *recentTopicPage = [JHUserDefaults getRecentTopicPage];
+                NSString *cachedRecentTopicFileName = [kCachedRecentTopics stringByAppendingString:recentTopicPage];
+                
+                [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cachedRecentTopicFileName];
+                [self getNextPageRecentTopicsListToCache];
                 }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             errorBlock(error);
         }];
 
+    return self;
+}
+
+-(instancetype)getNextPageRecentTopicsListToCache
+{
+    //获取第二页数据并缓存起来
+    __block int pageNumber= [[JHUserDefaults getRecentTopicPage]intValue];
+    pageNumber+= 2;
+    [JHUserDefaults saveRecentTopicPage:[NSString stringWithFormat:@"%d",pageNumber]];
+    
+    [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_RECENT_TOPICS] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *objectDic = responseObject;
+        if ([objectDic objectForKey:@"rs"]!= 0) {
+            NSArray *topicsArray = [objectDic objectForKey:@"list"];
+            NSMutableArray *topicsItemArray = [NSMutableArray new];
+            
+            for (NSMutableDictionary *topicsDic in topicsArray) {
+                // 这步将topicsArray 中的JSON  转换成 topicsItem 添加至Array
+                // 然后返回 topicsItemArray
+                [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
+            }
+            
+            NSString *recentTopicPage = [JHUserDefaults getRecentTopicPage];
+            NSString *cachedRecentTopicFileName = [kCachedRecentTopics stringByAppendingString:recentTopicPage];
+            [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cachedRecentTopicFileName];
+            
+            pageNumber-= 2;
+            [JHUserDefaults saveRecentTopicPage:[NSString stringWithFormat:@"%d",pageNumber]];
+
+
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+    
     return self;
 }
 
@@ -253,11 +293,12 @@ static NSString* const kCachedTopicsList = @"TopicsList";
                   [topicsItemArray addObject:[[JHTopicItem alloc]initWithDictionary:topicsDic]];
             }
             
-            [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:kCachedRecentTopics];
+//            [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:kCachedRecentTopics];
             
             NSString *parameterName = [[JHUserDefaults getBoardID]stringByAppendingString:[NSString stringWithFormat:@"%d",pageNumber]];
             NSString *cacheFileNameString = [kCachedTopicsList stringByAppendingString:parameterName];
             [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cacheFileNameString];
+            
             pageNumber -= 2;
             [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",pageNumber]];
             
@@ -266,9 +307,6 @@ static NSString* const kCachedTopicsList = @"TopicsList";
     }];
     return self;
 }
-
-
-
 
 -(instancetype)getTopicDetailsOnSucceeded:(ArrayBlock)succeededBlock
                                   onError:(ErrorBlock)errorBlock

@@ -32,17 +32,32 @@ enum CacheType{
 -(instancetype)getBoardListOnSucceeded:(ArrayBlock)succeededBlock
                                onError:(ErrorBlock)errorBlock;
 
--(instancetype)getTopicsListOnSucceeded:(ArrayBlock)succeededBlock
+-(instancetype)getTopicsListOnSucceeded:(ArrayBlock)succeededBlock //Page没有考虑
                                 onError:(ErrorBlock)errorBlock;
 
--(instancetype)getRecentTopicsOnSucceeded:(ArrayBlock)succeededBlock
-                                onError:(ErrorBlock)errorBlock;
-
--(instancetype)getTopicDetailsOnSucceeded:(ArrayBlock)succeededBlock
+-(instancetype)getTopicDetailsOnSucceeded:(ArrayBlock)succeededBlock //Page 没有考虑
                                   onError:(ErrorBlock)errorBlock;
 
 -(instancetype)postNewTopicOnSucceeded:(ArrayBlock)succdedBlock
                                onerror:(ErrorBlock)errorBlock;
+
+-(instancetype)getRecentTopicsOnSucceeded:(ArrayBlock)succeededBlock //Page没有考虑
+                                  onError:(ErrorBlock)errorBlock;
+
+
+
+
+//-(instancetype)getTopicsListOnSucceeded:(ArrayBlock)succeededBlock
+//                                onError:(ErrorBlock)errorBlock
+//                                 onPage:(int)pageNumber;
+//
+//-(instancetype)getRecentTopicsOnSucceeded:(ArrayBlock)succeededBlock
+//                                  onError:(ErrorBlock)errorBlock
+//                                   onPage:(int)pageNumber;
+//
+//-(instancetype)getTopicDetailsOnSucceeded:(ArrayBlock)succeededBlock
+//                                  onError:(ErrorBlock)errorBlock
+//                                   onPage:(int)pageNumber;
 
 
 

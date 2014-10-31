@@ -32,8 +32,13 @@
 + (void)saveTopicID:(NSString * )TopicID;
 + (NSString * )getTopicID;
 
-+ (void)savePage:(NSString *)page;
++ (void)savePage:(NSString *)page; //当前帖子列表Page
 + (NSString * )getPage;
 
++ (void)saveRecentTopicPage:(NSString *)page; //最近帖子page
++ (NSString * )getRecentTopicPage;
+
++ (void)saveTopicDetailPage:(NSString *)page; //帖子详情page
++ (NSString * )getTopicDetailPage;
 
 @end
