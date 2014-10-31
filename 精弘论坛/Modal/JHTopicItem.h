@@ -27,6 +27,7 @@
 @property (assign, nonatomic) int user_id;
 @property (copy, nonatomic) NSMutableString *user_nick_name;
 @property (assign, nonatomic) int vote;
+@property (assign, nonatomic) int markAsRead;
 
 /*
  

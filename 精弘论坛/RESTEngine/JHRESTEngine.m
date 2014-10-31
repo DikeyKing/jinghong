@@ -246,7 +246,7 @@ static NSString* const kCachedTopicsList = @"TopicsList";
 {
     //获取第二页数据并缓存起来
     __block int pageNumber= [[JHUserDefaults getRecentTopicPage]intValue];
-    pageNumber+= 2;
+    pageNumber+= 1;
     [JHUserDefaults saveRecentTopicPage:[NSString stringWithFormat:@"%d",pageNumber]];
     
     [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_RECENT_TOPICS] success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -265,7 +265,7 @@ static NSString* const kCachedTopicsList = @"TopicsList";
             NSString *cachedRecentTopicFileName = [kCachedRecentTopics stringByAppendingString:recentTopicPage];
             [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cachedRecentTopicFileName];
             
-            pageNumber-= 2;
+            pageNumber-= 1;
             [JHUserDefaults saveRecentTopicPage:[NSString stringWithFormat:@"%d",pageNumber]];
 
 

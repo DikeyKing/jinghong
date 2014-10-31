@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         // Initialization code here.
+        self.markAsRead = 0;
     }
     
     return self;
@@ -38,6 +39,8 @@
     [aCoder encodeInt:_user_id forKey:@"user_id"];
     [aCoder encodeObject:_user_nick_name forKey:@"user_nick_name"];
     [aCoder encodeInt:_vote forKey:@"vote"];
+    [aCoder encodeInt:_markAsRead forKey: @"markAsRead"];
+    
 }
 
 
@@ -61,6 +64,7 @@
         self.user_id = [aDecoder decodeIntForKey:@"user_id"];
         self.user_nick_name = [aDecoder decodeObjectForKey:@"user_nick_name"];
         self.vote = [aDecoder decodeIntForKey:@"vote"];
+        self.markAsRead = [aDecoder decodeIntForKey:@"markAsRead"];
     }
     
     return self;

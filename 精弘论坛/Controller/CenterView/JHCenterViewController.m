@@ -51,13 +51,15 @@
     _recentTopicsPageNumber= 1;
     [JHUserDefaults saveRecentTopicPage:@"1"];
 
+    [self getRecentTopTenTopics];
+    [self getBoardList];
+    
     [self setTableViewHeaderAndFoot];
-
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self loadBoardListAndRecentTopicsCache];
+    [_recentTopicsTV reloadData];
 }
 
 -(void)loadBoardListAndRecentTopicsCache
@@ -106,16 +108,9 @@
         NSLog(@"_recentTopicsPageNumber = %d",_recentTopicsPageNumber);
         
         _tableView.HeaderReleaseToRefreshText = @"刷新它...";
-        if (_recentTopicsPageNumber ==1) { //假如是第一页，刷新
-            [JHUserDefaults saveRecentTopicPage:@"1"];
-            [self getRecentTopTenTopics];
-        }else{
-            //假如不是第一页，那加载上一页内容
-            _recentTopicsPageNumber -=2;
-            [JHUserDefaults saveRecentTopicPage:[NSString stringWithFormat:@"%d",_recentTopicsPageNumber]];
-            NSLog(@"最近帖子列表第%d页",(_recentTopicsPageNumber+1)/2);
-            [self getRecentTopicsListCache];
-        }
+        [JHUserDefaults saveRecentTopicPage:@"1"];
+        [_recentTopcicList removeAllObjects];
+        [self getRecentTopTenTopics];
         [_recentTopicsTV headerEndRefreshing];
     }];
     
@@ -123,22 +118,16 @@
         //上拉刷新加载第二页
         //加载下一页
         _recentTopicsPageNumber= [[JHUserDefaults getRecentTopicPage]intValue];;
-        _recentTopicsPageNumber +=2;
+        _recentTopicsPageNumber +=1;
         [JHUserDefaults saveRecentTopicPage:[NSString stringWithFormat:@"%d",_recentTopicsPageNumber]];
+        
+        NSLog(@"_recentTopicsPageNumber = %d",_recentTopicsPageNumber);
+
         [self getRecentTopicsListCache]; //从缓存中找
         [_recentTopicsTV footerEndRefreshing];
     }];
     
-//    [_recentTopicsTV addFooterWithCallback:^{
-        //上拉刷新加载第二页
-        //加载下一页
-////        _recentTopicsPageNumber +=2 ; //因为原本是十帖子每页，我设置成了默认获取二十个帖子，所以要获取第三页开始
-//        [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_recentTopicsPageNumber]];
-////        [self getRecentTopicsListCache];
-//        [_recentTopicsTV footerEndRefreshing];
-//    }];
 }
-
 
 -(void)getRecentTopicsListCache
 {
@@ -148,7 +137,12 @@
         [self getRecentTopTenTopics];
     }else{
         if (!_recentTopcicList) {
-            _recentTopcicList = [[NSMutableArray alloc]initWithArray:data copyItems:YES];
+            _recentTopcicList = [NSMutableArray new];
+            for (JHTopicItem *item in data) {
+                if (![_recentTopcicList containsObject:item]) {
+                    [_recentTopcicList addObject:item];
+                }
+            }
             [_recentTopicsTV reloadData];
         }else{
             for (JHTopicItem *item in data) {
@@ -156,8 +150,6 @@
                     [_recentTopcicList addObject:item];
                 }
             }
-                        
-            //需要去重，名字一样的去掉？
             [_recentTopicsTV reloadData];
         }
     }
@@ -272,7 +264,7 @@
     }
     
     if (tableView == _recentTopicsTV) {
-        if (_recentTopcicList!= nil) {
+        if (_recentTopcicList!= nil&&_recentTopcicList.count!=0) {
             _jHRecentTopicItem = _recentTopcicList[indexPath.row];
             [recentTopicsCell displayValues:_jHRecentTopicItem];
         }
@@ -298,7 +290,12 @@
     if (tableView == _recentTopicsTV) {
         //jHRecentTopicItem
         if (_recentTopcicList!=nil&&_recentTopcicList.count!=0) {
+            
             _jHRecentTopicItem = _recentTopcicList[indexPath.row];
+            NSLog(@"indexPath.row is %ld",indexPath.row);
+            
+            _jHRecentTopicItem.markAsRead = YES;
+            //_recentTopcicList[indexPath.row] = _jHRecentTopicItem;
             
             [JHUserDefaults saveBoardID:[NSString stringWithFormat:@"%d",_jHRecentTopicItem.board_id]];
             [JHUserDefaults saveTopicID:[NSString stringWithFormat:@"%d",_jHRecentTopicItem.topic_id]];

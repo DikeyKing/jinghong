@@ -23,8 +23,15 @@
     if (topicItem != nil) {
         _boardName.text = topicItem.board_name;
         _title.text = topicItem.title;
+        if (topicItem.markAsRead == YES) {
+            _title.textColor = [UIColor grayColor];
+        }else{
+            _title.textColor = [UIColor blackColor];
+        }
+        
         _userNickName.text = topicItem.user_nick_name;
     }
+
 }
 
 //- (void)getValues

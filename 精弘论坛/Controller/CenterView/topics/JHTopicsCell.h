@@ -17,6 +17,4 @@
 @property (assign,nonatomic,readonly) CGFloat *cellHeight;
 -(void)displayValues:(JHTopicItem *)topicItem;
 
-
-
 @end

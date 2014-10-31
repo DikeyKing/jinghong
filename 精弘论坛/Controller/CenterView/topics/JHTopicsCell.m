@@ -18,9 +18,7 @@
 }
 
 -(void)displayValues:(JHTopicItem *)topicItem
-{
-#warning 会出错
-    
+{    
         _authorName.text = topicItem.user_nick_name;
         _topicTitle.text = topicItem.title;
 }

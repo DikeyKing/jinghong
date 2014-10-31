@@ -74,7 +74,7 @@ static int pageSize=20 ;
         case GET_RECENT_TOPICS:
             privateParameter = @{
                                  @"r":@"forum/topiclist",
-                                 @"pageSize": [NSString stringWithFormat:@"%d",pageSize],
+                                 @"pageSize": [NSString stringWithFormat:@"%d",10],
                                  @"page":[JHUserDefaults getRecentTopicPage],
                                  @"sortby":@"publish"
                                  
