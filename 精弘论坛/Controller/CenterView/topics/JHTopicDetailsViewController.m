@@ -61,24 +61,19 @@ const static int firstPage =1;
         
     }else{
         if (!_topicsDetailsItems) {
-            _topicsDetailsItems = [NSMutableArray new];
-            for (id object in data) {
-                if (![_topicsDetailsItems containsObject:object]) {
-                    [_topicsDetailsItems addObject:object];
-                }
+            _topicsDetailsItems = [[NSMutableArray alloc]init];
+
+        }
+        for (id object in data) {
+            if (![_topicsDetailsItems containsObject:object]) {
+                [_topicsDetailsItems addObject:object];
             }
+        }
+        
+        if (_topicsDetailsItems.count!=0) {
             [_topicDetailTV reloadData];
         }else{
-            for (JHTopicDetailItem* object in data) {
-                if (![_topicsDetailsItems containsObject:object]) {
-                    [_topicsDetailsItems addObject:object];
-                }
-            }            
-            if (_topicsDetailsItems.count!=0) {
-                [_topicDetailTV reloadData];
-            }else{
-                [SVProgressHUD showProgress:SVProgressHUDMaskTypeBlack status:@"已经是最后一页"];
-            }
+            [SVProgressHUD showProgress:SVProgressHUDMaskTypeBlack status:@"已经是最后一页"];
         }
     }
 }
@@ -121,11 +116,17 @@ const static int firstPage =1;
         [SVProgressHUD dismiss];
         
         if (!_topicsDetailsItems) {
-            _topicsDetailsItems = [NSArray new];
+            _topicsDetailsItems = [NSMutableArray new];
         }
         if (modelObjects!=nil) {
-            _topicsDetailsItems = [modelObjects copy];
-            [_topicDetailTV reloadData];
+            for (id object in modelObjects) {
+                if (![_topicsDetailsItems containsObject:object]) {
+                    [_topicsDetailsItems addObject:object];
+                }
+            }
+            if (_topicsDetailsItems.count!=0) {
+                [_topicDetailTV reloadData];
+            }
         }
         
     } onError:^(NSError *engineError) {
@@ -157,11 +158,16 @@ const static int firstPage =1;
 {
     JHTopicDetailsCell *topicDetailCell = [tableView dequeueReusableCellWithIdentifier:@"JHTopicDetailsCell"];
     
-    
-    if (indexPath.row==0&&_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0 &&_topicDetailPageNumber==1 ) {
-        [topicDetailCell displayValuesOfAuthor:(JHTopicAuthorItem *)_topicsDetailsItems[0]];
-    }else if (_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0) {
-        [topicDetailCell displayValues:(JHTopicDetailItem *)_topicsDetailsItems[indexPath.row]];
+
+    if (indexPath.row==0&&_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0 ) {
+        if ([_topicsDetailsItems[0] isKindOfClass:[JHTopicAuthorItem class]]) {
+            [topicDetailCell displayValuesOfAuthor:(JHTopicAuthorItem *)_topicsDetailsItems[0]];
+        }
+    }else if ( _topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0) {
+        if ([_topicsDetailsItems[indexPath.row] isKindOfClass:[JHTopicDetailItem class]]) {
+//            JHTopicDetailItem *detailItem = (JHTopicDetailItem *)_topicsDetailsItems[indexPath.row];
+            [topicDetailCell displayValues:(JHTopicDetailItem *)_topicsDetailsItems[indexPath.row]];
+        }
     }
     
     return topicDetailCell;
