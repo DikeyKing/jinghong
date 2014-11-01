@@ -64,6 +64,7 @@ static int pageSize=20 ;
             privateParameter = @{
                              @"r":@"forum/postlist",
                              @"topicId":[JHUserDefaults getTopicID],
+                             @"page":[JHUserDefaults  getTopicDetailPage], //获取第几页
                              @"boardId":[JHUserDefaults getBoardID]
                              };
             
@@ -141,9 +142,6 @@ static int pageSize=20 ;
                                  @"act":@"reply"
                                  };
             break;
-            
-            
-            
         default:
             break;
     }

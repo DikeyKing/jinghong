@@ -18,9 +18,13 @@
 
 #define ORIGIN_CELL_HEIGHT 300.0f
 
+const static int addPage =1;
+const static int minPage = 1;
+const static int firstPage =1;
+
 @interface JHTopicDetailsViewController ()
 
-@property (strong ,nonatomic) NSArray *topicsDetailsItems; //这个array包含所以帖子信息数据
+@property (copy ,nonatomic) NSMutableArray *topicsDetailsItems; //这个array包含所以帖子信息数据
 @property (assign, nonatomic) int topicDetailPageNumber;
 
 @end
@@ -29,13 +33,16 @@
  
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _topicDetailPageNumber = 1;
+    _topicDetailPageNumber = firstPage;
+    [JHUserDefaults saveTopicDetailPage:@"1"];
+    
     [self setTableViewHeaderAndFoot]; //与tableView相关的操作
+    [self getTopicDetails];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self getTopicDetailsCache];
+//    [self getTopicDetailsCache];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -46,14 +53,31 @@
 -(void)getTopicDetailsCache
 {
     NSArray *data = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsDetails];
-    if (data) {
+    
+    if (!data && data.count==0) {
+//        [self getTopicDetails];
+        [SVProgressHUD showProgress:SVProgressHUDMaskTypeGradient status:@"已经是最后一页"];
+        [SVProgressHUD dismiss];
+        
+    }else{
         if (!_topicsDetailsItems) {
-            _topicsDetailsItems = [[NSArray alloc]initWithArray:data];
-            if (_topicsDetailsItems!=nil && _topicsDetailsItems.count!=0) {
+            _topicsDetailsItems = [NSMutableArray new];
+            for (id object in data) {
+                if (![_topicsDetailsItems containsObject:object]) {
+                    [_topicsDetailsItems addObject:object];
+                }
+            }
+            [_topicDetailTV reloadData];
+        }else{
+            for (JHTopicDetailItem* object in data) {
+                if (![_topicsDetailsItems containsObject:object]) {
+                    [_topicsDetailsItems addObject:object];
+                }
+            }            
+            if (_topicsDetailsItems.count!=0) {
                 [_topicDetailTV reloadData];
-                [self getTopicDetails];
             }else{
-                [self getTopicDetails];
+                [SVProgressHUD showProgress:SVProgressHUDMaskTypeBlack status:@"已经是最后一页"];
             }
         }
     }
@@ -65,28 +89,27 @@
     _topicDetailTV.dataSource =self;
     
     [_topicDetailTV addHeaderWithCallback:^{
-        _topicDetailTV.headerRefreshingText = @"测试下拉刷新环境~";
+        _topicDetailTV.headerRefreshingText = @"下拉刷新~";
+        if (_topicDetailPageNumber == firstPage ) {
+            [self getTopicDetails];
+        }else{
+            _topicDetailPageNumber -= minPage;
+            [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",_topicDetailPageNumber]];
+            [self getTopicDetailsCache];
+        }
         
-        //pull to refresh,first look for data at cache
-        
-        [self getTopicDetails];
         [_topicDetailTV headerEndRefreshing];
     }];
     
     [_topicDetailTV addFooterWithCallback:^{
-        _topicDetailTV.footerRefreshingText = @"测试上拉刷新";
-#warning todo：获取下一页的所有帖子然后加载（会不会下一页和第一页重复了？）
-        
-//        int page = [[JHUserDefaults getPage]intValue]+1;
-//        [JHUserDefaults savePage:[NSString stringWithFormat:@"%d",page]];
+        _topicDetailTV.footerRefreshingText = @"上拉加载更多";
+        _topicDetailPageNumber += addPage;
+        [JHUserDefaults saveTopicDetailPage:[NSString stringWithFormat:@"%d",_topicDetailPageNumber]];
+        [self getTopicDetailsCache];
         
         [_topicDetailTV footerEndRefreshing];
         
     }];
-    
-}
--(void)getTopicDetailCache
-{
     
 }
 
@@ -134,7 +157,8 @@
 {
     JHTopicDetailsCell *topicDetailCell = [tableView dequeueReusableCellWithIdentifier:@"JHTopicDetailsCell"];
     
-    if (indexPath.row==0&&_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0 ) {
+    
+    if (indexPath.row==0&&_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0 &&_topicDetailPageNumber==1 ) {
         [topicDetailCell displayValuesOfAuthor:(JHTopicAuthorItem *)_topicsDetailsItems[0]];
     }else if (_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0) {
         [topicDetailCell displayValues:(JHTopicDetailItem *)_topicsDetailsItems[indexPath.row]];

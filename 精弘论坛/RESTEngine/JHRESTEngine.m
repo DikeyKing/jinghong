@@ -54,10 +54,12 @@ static NSString* const kCachedTopicsList = @"TopicsList";
             break;
             
         case CacheType_TopicsDetails:{
-            NSString *currentTopicsID = [JHUserDefaults getTopicID];
-            NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:currentTopicsID];
+            NSString *topicDetailFileNameParameter = [[JHUserDefaults getTopicID]stringByAppendingString:[JHUserDefaults getTopicDetailPage]];
+            NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:topicDetailFileNameParameter];
             
             cachedData = [[JHCache sharedInstance]getCachedItem:cacheTopicDetail];
+            [self getNextPageTopicDetailsToCache];
+
         }
             break;
             
@@ -265,7 +267,7 @@ static NSString* const kCachedTopicsList = @"TopicsList";
             NSString *cachedRecentTopicFileName = [kCachedRecentTopics stringByAppendingString:recentTopicPage];
             [[JHCache sharedInstance] cacheDataToFile:topicsItemArray fileName:cachedRecentTopicFileName];
             
-            pageNumber-= 1;
+            pageNumber -= 1;
             [JHUserDefaults saveRecentTopicPage:[NSString stringWithFormat:@"%d",pageNumber]];
 
 
@@ -332,18 +334,62 @@ static NSString* const kCachedTopicsList = @"TopicsList";
 
             succeededBlock(topicsDetailItemArray);
           
-            NSString *currentTopicsID = [JHUserDefaults getTopicID];
-            NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:currentTopicsID];
+            NSString *topicDetailFileNameParameter = [[JHUserDefaults getTopicID]stringByAppendingString:[JHUserDefaults getTopicDetailPage]];
+            NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:topicDetailFileNameParameter];
             
             [[JHCache sharedInstance] cacheDataToFile:topicsDetailItemArray fileName:cacheTopicDetail];
+            [self getNextPageTopicDetailsToCache];
         }
-    
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         errorBlock(error);
     }];
     
     return self;
+}
+
+-(instancetype)getNextPageTopicDetailsToCache
+{
+    __block int pageNumber= [[JHUserDefaults getTopicDetailPage]intValue];
+    pageNumber+= 1;
+    [JHUserDefaults saveTopicDetailPage:[NSString stringWithFormat:@"%d",pageNumber]];
+    
+    [self GET:kJHBaseURLString parameters:[JHForumAPI getParameterDic:GET_TOPICS_DETAIL] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *objectDic = responseObject;
+        if ([objectDic objectForKey:@"rs"]!=nil &&[objectDic objectForKey:@"rs"]!= 0) {
+            
+            //坑...author 和 回帖人是分开的
+//            NSDictionary *topicsAuthorDic = [objectDic objectForKey:@"topic"];
+//            JHTopicAuthorItem *tempAuthorItem = [[JHTopicAuthorItem alloc]initWithDictionary:topicsAuthorDic];
+            
+            NSArray *topicsDetailArray = [objectDic objectForKey:@"list"];
+            NSMutableArray *topicsDetailItemArray = [[NSMutableArray alloc]initWithCapacity:topicsDetailArray.count];
+            
+//            [topicsDetailItemArray addObject:tempAuthorItem];
+            
+            for (NSMutableDictionary *topicsDic in topicsDetailArray) {
+                [topicsDetailItemArray addObject:[[JHTopicDetailItem alloc]initWithDictionary:topicsDic]];
+            }
+         
+
+            NSString *topicDetailFileNameParameter = [[JHUserDefaults getTopicID]stringByAppendingString:[JHUserDefaults getTopicDetailPage]];
+            NSString *cacheTopicDetail = [kCachedTopicDetails stringByAppendingString:topicDetailFileNameParameter];
+            
+            if (topicsDetailItemArray.count != 0) {
+                [[JHCache sharedInstance] cacheDataToFile:topicsDetailItemArray fileName:cacheTopicDetail];
+            }
+            
+            pageNumber -= 1;
+            [JHUserDefaults saveTopicDetailPage:[NSString stringWithFormat:@"%d",pageNumber]];
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Topic Detail 下一页获取失败");
+    }];
+    
+    return self;
+
 }
 
 -(instancetype)postNewTopicOnSucceeded:(ArrayBlock)succdedBlock

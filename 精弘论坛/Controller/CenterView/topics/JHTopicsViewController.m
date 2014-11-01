@@ -38,6 +38,17 @@
     [self setTableViewHeaderAndFoot];
 }
 
+
+
+//        if (!_recentTopcicList) {
+//            _recentTopcicList = [NSMutableArray new];
+//            for (JHTopicItem *item in data) {
+//                if (![_recentTopcicList containsObject:item]) {
+//                    [_recentTopcicList addObject:item];
+//                }
+//            }
+//            [_recentTopicsTV reloadData];
+
 -(void)getTopicsListCache
 {
     NSArray *data =[[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsList];
@@ -46,15 +57,27 @@
         [self getTopics];
     }else{
         if (!_topicsItemList) {
-            _topicsItemList = [[NSArray alloc]initWithArray:data];
+            _topicsItemList = [NSMutableArray new];
+            for (id object in data) {
+                if (![_topicsItemList containsObject:object]) {
+                    [_topicsItemList addObject:object];
+                }
+            }
             [_topicsTableView reloadData];
          }else{
-            _topicsItemList = data;
-             if (_topicsItemList.count!=0) {
-                 [_topicsTableView reloadData];
-             }else{
-                 [SVProgressHUD showProgress:SVProgressHUDMaskTypeBlack status:@"已经是最后一页"];
+             for (id object in data) {
+                 if (![_topicsItemList containsObject:object]) {
+                     [_topicsItemList addObject:object];
+                 }
              }
+             [_topicsTableView reloadData];
+             
+//            _topicsItemList = data;
+//             if (_topicsItemList.count!=0) {
+//                 [_topicsTableView reloadData];
+//             }else{
+//                 [SVProgressHUD showProgress:SVProgressHUDMaskTypeBlack status:@"已经是最后一页"];
+//             }
         }
     }
 }

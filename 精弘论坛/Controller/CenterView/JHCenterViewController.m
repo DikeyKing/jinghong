@@ -177,7 +177,6 @@
                     [_recentTopcicList addObject:item];
                 }
             }
-//            _recentTopcicList = [modelObjects copy];
             [_recentTopicsTV reloadData];
         }else{
             [SVProgressHUD showErrorWithStatus:@"没有返回列表"];
@@ -247,7 +246,7 @@
     return 0;
 }
 
-#warning 这里还需要加入判定，可能板块中还有板块(会闪退)
+#warning 这里还需要加入判定，板块中还有其它板块
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     JHForumListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JHForumListCell"];

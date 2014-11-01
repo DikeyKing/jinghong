@@ -26,6 +26,11 @@
 {
     _position.text = @"楼主";
     _detailText.text = topicAuthorItem.contenttypeInfor;
+    
+    //第二页的时候没有作者
+    //2014-11-01 09:55:00.033 精弘论坛[6430:220257] *** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[JHTopicDetailItem contenttypeInfor]: unrecognized selector sent to instance 0x7fbab0c55270'
+
+    
     _reply_name.text = topicAuthorItem.user_nick_name;
     _userTitle.text = topicAuthorItem.userTitle;
     
