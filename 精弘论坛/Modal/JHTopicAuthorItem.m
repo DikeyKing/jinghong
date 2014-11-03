@@ -35,8 +35,17 @@
         NSArray *array =  (NSArray *)value;
         if (array!=nil && array.count!= 0) {
             NSDictionary *dic = array[0];
+            
+            if ([[dic objectForKey:@"infor"]isKindOfClass:[NSNull class]]) {
+                [_contenttypeInfor appendString:@" "];
+            }else{
+                _contenttypeInfor = [dic objectForKey:@"infor"];
+            }
+            
             _contenttypeInfor = [dic objectForKey:@"infor"];
             _contentType = [[dic objectForKey:@"type"]intValue];
+
+            
             _cellHeight = [self calculateCellHeight:_contenttypeInfor];
         }
     }

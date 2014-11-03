@@ -24,6 +24,10 @@
 
 -(CGFloat)calculateCellHeight:(NSString *)sizeString
 {
+    if (!sizeString ) {
+        sizeString = @"";
+    }
+    
     CGFloat currentDeviceWidth = [UIScreen mainScreen].bounds.size.width;
     CGSize constrain = CGSizeMake((currentDeviceWidth - 2*CELL_CONTENT_MARGIN), 9999);
     

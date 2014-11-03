@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *topicsTableView;
 
 
-@property (strong, nonatomic) NSMutableArray *topicsItemList;
+@property (copy, nonatomic) NSMutableArray *topicsItemList;
 @property (weak,nonatomic) IBOutlet UILabel *pageNumberLabel;
 
 

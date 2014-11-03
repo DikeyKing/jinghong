@@ -131,7 +131,7 @@
     [[JHRESTEngine sharedJHRESTManager]getTopicsListOnSucceeded:^(NSArray *modelObjects) {
         [SVProgressHUD dismiss];
         
-        _topicsItemList = [modelObjects copy];
+        _topicsItemList = [modelObjects mutableCopy];
         [_topicsTableView reloadData];
         
     } onError:^(NSError *engineError) {

@@ -18,9 +18,9 @@
 
 #define ORIGIN_CELL_HEIGHT 300.0f
 
-const static int addPage =1;
+const static int addPage = 1;
 const static int minPage = 1;
-const static int firstPage =1;
+const static int firstPage = 1;
 
 @interface JHTopicDetailsViewController ()
 
@@ -54,28 +54,23 @@ const static int firstPage =1;
 {
     NSArray *data = [[JHRESTEngine sharedJHRESTManager]getCachedArray:CacheType_TopicsDetails];
     
-    if (!data && data.count==0) {
-//        [self getTopicDetails];
-        [SVProgressHUD showProgress:SVProgressHUDMaskTypeGradient status:@"已经是最后一页"];
-        [SVProgressHUD dismiss];
-        
-    }else{
+    if (data!=nil && data.count!=0) {
         if (!_topicsDetailsItems) {
             _topicsDetailsItems = [[NSMutableArray alloc]init];
-
         }
         for (id object in data) {
             if (![_topicsDetailsItems containsObject:object]) {
                 [_topicsDetailsItems addObject:object];
             }
         }
-        
         if (_topicsDetailsItems.count!=0) {
             [_topicDetailTV reloadData];
-        }else{
-            [SVProgressHUD showProgress:SVProgressHUDMaskTypeBlack status:@"已经是最后一页"];
         }
+        
+    }else{
+        [SVProgressHUD showSuccessWithStatus:@"已经是最后一页"];
     }
+    
 }
 
 -(void)setTableViewHeaderAndFoot
@@ -101,7 +96,6 @@ const static int firstPage =1;
         _topicDetailPageNumber += addPage;
         [JHUserDefaults saveTopicDetailPage:[NSString stringWithFormat:@"%d",_topicDetailPageNumber]];
         [self getTopicDetailsCache];
-        
         [_topicDetailTV footerEndRefreshing];
         
     }];
@@ -157,7 +151,6 @@ const static int firstPage =1;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     JHTopicDetailsCell *topicDetailCell = [tableView dequeueReusableCellWithIdentifier:@"JHTopicDetailsCell"];
-    
 
     if (indexPath.row==0&&_topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0 ) {
         if ([_topicsDetailsItems[0] isKindOfClass:[JHTopicAuthorItem class]]) {
@@ -165,7 +158,6 @@ const static int firstPage =1;
         }
     }else if ( _topicsDetailsItems!=nil&&_topicsDetailsItems.count!=0) {
         if ([_topicsDetailsItems[indexPath.row] isKindOfClass:[JHTopicDetailItem class]]) {
-//            JHTopicDetailItem *detailItem = (JHTopicDetailItem *)_topicsDetailsItems[indexPath.row];
             [topicDetailCell displayValues:(JHTopicDetailItem *)_topicsDetailsItems[indexPath.row]];
         }
     }
@@ -190,7 +182,7 @@ const static int firstPage =1;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+
 }
 
 @end
